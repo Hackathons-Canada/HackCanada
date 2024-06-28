@@ -1,9 +1,9 @@
 function About() {
   return (
-    <main className=" py-10 px-3.5 w-full bg-cover bg-top bg-[url('.\assets\aboutbg.png')]">
-      <div className="mx-auto container text-left text-[#E6F6FF] max-w-5xl">
+    <main className="w-full bg-[url('.\\assets\\aboutbg.png')] bg-cover bg-top px-3.5 py-10">
+      <div className="container mx-auto max-w-5xl text-left text-[#E6F6FF]">
         <h3 className="mt-4 text-4xl font-extrabold">What is HackCanada?</h3>
-        <h4 className="text-3xl mt-4">
+        <h4 className="mt-4 text-3xl">
           This September, join 1,000+ hackers from around the world for a
           hackathon like no other. Discover a community of like-minded hackers,
           connect with world-class mentors, and build because you love to build.
