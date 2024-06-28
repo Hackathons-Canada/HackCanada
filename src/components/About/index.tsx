@@ -1,6 +1,6 @@
 function About() {
   return (
-    <main className="w-full bg-[url('.\\assets\\aboutbg.png')] bg-cover bg-top px-3.5 py-10">
+    <main className="w-full bg-[url('./assets/aboutbg.png')] bg-cover bg-top px-3.5 py-10">
       <div className="container mx-auto max-w-5xl text-left text-[#E6F6FF]">
         <h3 className="mt-4 text-4xl font-extrabold">What is HackCanada?</h3>
         <h4 className="mt-4 text-3xl">
