@@ -2,9 +2,12 @@ import { aboutSectionMilestones } from "../../lib/constants";
 
 function About() {
   return (
-    <section className="px-6 py-20 sm:px-12 md:py-28 lg:py-36">
+    <section
+      id="about"
+      className="sticky top-0 px-6 py-20 sm:px-12 md:py-28 lg:py-36"
+    >
       <div className="mx-auto mb-16 max-w-screen-md md:mb-24">
-        <h3 className="font-alfa mb-6 text-xl tracking-wider text-white md:mb-8 md:text-2xl lg:text-3xl">
+        <h3 className="mb-6 font-alfa text-xl tracking-wider text-white drop-shadow-sm md:mb-8 md:text-2xl lg:text-3xl">
           What is HackCanada?
         </h3>
         <div className="space-y-2.5 font-medium text-white/75 md:space-y-4 md:text-lg">
@@ -28,7 +31,7 @@ function About() {
             key={heading}
             className="flex flex-col items-center justify-center"
           >
-            <p className="font-alfa text-center text-4xl text-white lg:text-5xl">
+            <p className="text-center font-alfa text-4xl text-white lg:text-5xl">
               {heading}
             </p>
             <p className="text-center text-lg font-medium text-white/75 lg:text-xl">
