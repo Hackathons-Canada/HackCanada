@@ -2,7 +2,10 @@ import heroBg from "../../assets/herobg.png";
 
 function Hero() {
   return (
-    <section className="relative mb-40 flex min-h-[100dvh] w-full items-center justify-center">
+    <section
+      id="hero"
+      className="relative mb-40 flex min-h-[100dvh] w-full items-center justify-center"
+    >
       <div
         className="pointer-events-none absolute inset-x-0 -bottom-40 top-0"
         aria-label="Hero background image"
