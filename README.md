@@ -1,47 +1,176 @@
-# Astro Starter Kit: Minimal
+# HackCanada
 
-```sh
-npm create astro@latest -- --template minimal
+HackCanada is the official website for the HackCanada hackathon, hosted by HackathonsCanada. Built with a combination of Astro, TypeScript, React, TailwindCSS + more!
+
+## Getting Started
+
+To get started with the HackCanada project, follow the instructions below.
+
+### Prerequisites
+
+Make sure you have Node.js installed. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node versions.
+
+### Installation
+
+You can use `npm`, `pnpm`, `yarn`, or `bun` to install the dependencies:
+
+(Use `npm` to keep things consistent with other HackCanada devs for now)
+
+```bash
+# Using npm
+npm install
+
+# Using pnpm
+pnpm install
+
+# Using yarn
+yarn install
+
+# Using bun
+bun install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### Running the Project
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+To start the development server, use the following command:
 
-## 🚀 Project Structure
+```bash
+npm run dev
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+The project will run on `localhost:4321` by default.
 
-```text
+If you're using `pnpm`, `yarn`, or `bun`, you can run:
+
+```bash
+# Using pnpm
+pnpm run dev
+
+# Using yarn
+yarn dev
+
+# Using bun
+bun run dev
+```
+
+### Building the Project
+
+To build the project for production, run:
+
+```bash
+npm run build
+```
+
+If you are using `pnpm`, `yarn`, or `bun`:
+
+```bash
+# Using pnpm
+pnpm run build
+
+# Using yarn
+yarn build
+
+# Using bun
+bun build
+```
+
+### Previewing the Build
+
+To preview the build, run:
+
+```bash
+npm run preview
+```
+
+Other package managers:
+
+```bash
+# Using pnpm
+pnpm run preview
+
+# Using yarn
+yarn preview
+
+# Using bun
+bun preview
+```
+
+### Formatting the Code
+
+To format the codebase using Prettier, run:
+
+```bash
+npm run format
+```
+
+You can also format with `pnpm`, `yarn`, or `bun`:
+
+```bash
+# Using pnpm
+pnpm run format
+
+# Using yarn
+yarn format
+
+# Using bun
+bun format
+```
+
+## Project Structure
+
+The following is an overview of the project's structure:
+
+```plaintext
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── src
+│   ├── layouts
+│   │   ├── BaseLayout.astro    # Base layout with essential structure
+│   │   └── MainLayout.astro    # Main layout for the landing page
+│   ├── pages
+│   │   └── index.astro         # Home page of the website
+│   ├── styles
+│   │   └── global.css          # Global styles for the website
+│   ├── types
+│   │   └── types.d.ts          # TypeScript type definitions
+│   ├── config
+│   │   ├── site.ts             # Site-wide configurations + SEO stuff
+│   └── components
+│       └── ui                  # shadcn-ui components for the UI
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Detailed Overview
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **`src/layouts`**: Contains layout files that define the overall structure of the pages.
+  - `BaseLayout.astro`: A base layout providing fundamental html structure.
+  - `MainLayout.astro`: The main layout used for the landing page.
 
-Any static assets, like images, can be placed in the `public/` directory.
+- **`src/pages`**: Holds the Astro page components.
+  - `index.astro`: The homepage component.
 
-## 🧞 Commands
+- **`src/styles`**: Includes global stylesheets.
+  - `global.css`: Global styles applied throughout the website.
 
-All commands are run from the root of the project, from a terminal:
+- **`src/types`**: TypeScript definitions for type safety.
+  - `types.d.ts`: General type definitions used across the project.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **`src/config`**: Configuration files for site-specific settings and data.
+  - `site.ts`: Site-wide configuration settings, mostly for SEO.
 
-## 👀 Want to learn more?
+- **`src/components/ui`**: Collection of UI components built using shadcn-ui.
+  - Contains reusable UI components for the website.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Scripts Overview
+
+- **`dev`**: Start the development server.
+- **`build`**: Check the code and build for production.
+- **`preview`**: Preview the built project.
+- **`format`**: Format the code using Prettier with the specified configuration in `.prettierrc.mjs`.
+
+## Technologies Used
+
+- **Astro**: World's fastest static site generator.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Typed JavaScript.
+- **TailwindCSS**: Utility-first CSS framework.
+- **Lucide**: Icon library.
+- **More to come.
