@@ -1,6 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import "@/styles/global.css";
+
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 ---
 
-<BaseLayout> <slot /></BaseLayout>
+<BaseLayout>
+  <div class="min-h-svh flex flex-col bg-slate-100">
+    <Navbar />
+    <main class="flex-1 mt-16">
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

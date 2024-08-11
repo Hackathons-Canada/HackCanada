@@ -1,3 +1,7 @@
+---
+import { Toaster } from "@/components/ui/sonner";
+---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -7,6 +11,12 @@
     <title>Astro</title>
   </head>
   <body>
+    <Toaster
+      richColors
+      client:only="react"
+      theme="dark"
+      position="bottom-center"
+    />
     <slot />
   </body>
 </html>
