@@ -58,6 +58,7 @@ export default [
     plugins: {
       astro: astroPlugin,
     },
+    processor: astroPlugin.processors["client-side-ts"],
     rules: {
       ...astroPlugin.configs.recommended.rules,
     },
@@ -68,6 +69,18 @@ export default [
       globals: {
         ...globals.node,
       },
+    },
+  },
+  {
+    files: ["**/*.astro/*.ts", "*.astro/*.ts"],
+    languageOptions: {
+      parser: tseslintParser,
+      parserOptions: {
+        project: null, // Disable project resolution for performance
+      },
+    },
+    rules: {
+      // Add any TypeScript-specific rules for client-side scripts here as we go
     },
   },
   {

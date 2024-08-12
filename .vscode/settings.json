@@ -18,6 +18,13 @@
     "strings": "on",
     "other": "on"
   },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact"
+  ],
   "editor.tabSize": 2,
   "files.eol": "\r\n",
   // Auto save files after TS refactoring
