@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Run ESLint to check code standards
+npm run lint ||
+(
+    echo '😤🏀👋😤 Linting failed! 😤🏀👋😤 
+            ESLint check did not pass. Please make the required changes listed above, add them, and try to push again.'
+    false; 
+)
+
+# Run Astro check for TypeScript errors
+npm run astro check ||
+(
+    echo '😳😥❌😳 Astro check failed! 😳😥❌😳
+            Please make the changes required above.'
+    false;
+)
+
+# Run Prettier to ensure consistent formatting
+npm run format ||
+(
+    echo '😵💫🔧😵 Formatting check failed! 😵💫🔧😵
+            Please run "npm run format" to fix formatting issues.'
+    false;
+)
+
+# If all checks pass, proceed with the push
+echo '✅✅✅✅ Congrats! All checks passed. Pushing now... ✅✅✅✅'
