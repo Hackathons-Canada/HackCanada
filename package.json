@@ -10,6 +10,7 @@
     "astro": "astro",
     "format": "prettier --config .prettierrc.mjs --write .",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky"
   },
   "dependencies": {
@@ -34,6 +35,7 @@
     "@eslint/js": "^9.9.0",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@typescript-eslint/parser": "^8.0.1",
+    "astro-eslint-parser": "^1.0.2",
     "eslint": "^9.9.0",
     "eslint-plugin-astro": "^1.2.3",
     "eslint-plugin-react": "^7.35.0",

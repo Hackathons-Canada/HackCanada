@@ -4,6 +4,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tseslintParser from "@typescript-eslint/parser";
 import reactPlugin from "eslint-plugin-react";
 import astroPlugin from "eslint-plugin-astro";
+import astroParser from "astro-eslint-parser";
 
 export default [
   js.configs.recommended,
@@ -28,7 +29,6 @@ export default [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      // Add any additional TypeScript rules here
     },
   },
   {
@@ -38,7 +38,7 @@ export default [
     },
     rules: {
       ...reactPlugin.configs.recommended.rules,
-      // Add any additional React rules here
+      "react/react-in-jsx-scope": "off",
     },
     settings: {
       react: {
@@ -48,12 +48,26 @@ export default [
   },
   {
     files: ["**/*.astro"],
+    languageOptions: {
+      parser: astroParser,
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"],
+      },
+    },
     plugins: {
       astro: astroPlugin,
     },
     rules: {
       ...astroPlugin.configs.recommended.rules,
-      // Add any additional Astro rules here
+    },
+  },
+  {
+    files: ["**/*.mjs"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
   {
