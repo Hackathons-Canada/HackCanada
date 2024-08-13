@@ -1,4 +1,12 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    // Required Extensions
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "GitHub.vscode-github-actions",
+    // Recommended Extensions
+    "usernamehw.errorlens"
+  ],
   "unwantedRecommendations": []
 }

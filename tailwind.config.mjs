@@ -1,7 +1,10 @@
+import plugin from "tailwindcss/plugin";
+import animatePlugin from "tailwindcss-animate";
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,}"],
   prefix: "",
   theme: {
     container: {
@@ -68,5 +71,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant("hocus", ["&:hover", "&:focus"]);
+    }),
+    animatePlugin,
+  ],
 };

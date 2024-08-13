@@ -1,7 +1,5 @@
 // Update as we go
 
-import type { LucideIcon } from "lucide-react";
-
 export type NavLink = {
   label: string;
   href: string;
@@ -11,7 +9,7 @@ export type NavLink = {
 export type SocialLinks = {
   label?: string;
   href: string;
-  icon: any; // Update as needed depending on the type of icon we use
+  icon: string; // Update as needed depending on the type of icon we use
 };
 
 export type FooterLink = {

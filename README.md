@@ -141,19 +141,24 @@ The following is an overview of the project's structure:
 ### Detailed Overview
 
 - **`src/layouts`**: Contains layout files that define the overall structure of the pages.
+
   - `BaseLayout.astro`: A base layout providing fundamental html structure.
   - `MainLayout.astro`: The main layout used for the landing page.
 
 - **`src/pages`**: Holds the Astro page components.
+
   - `index.astro`: The homepage component.
 
 - **`src/styles`**: Includes global stylesheets.
+
   - `global.css`: Global styles applied throughout the website.
 
 - **`src/types`**: TypeScript definitions for type safety.
+
   - `types.d.ts`: General type definitions used across the project.
 
 - **`src/config`**: Configuration files for site-specific settings and data.
+
   - `site.ts`: Site-wide configuration settings, mostly for SEO.
 
 - **`src/components/ui`**: Collection of UI components built using shadcn-ui.
@@ -173,4 +178,4 @@ The following is an overview of the project's structure:
 - **TypeScript**: Typed JavaScript.
 - **TailwindCSS**: Utility-first CSS framework.
 - **Lucide**: Icon library.
-- **More to come.
+- \*\*More to come.

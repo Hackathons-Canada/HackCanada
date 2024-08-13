@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "hackcanadawebsite",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -8,7 +8,10 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --config .prettierrc.mjs --write ."
+    "format": "prettier --config .prettierrc.mjs --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.2",
@@ -21,18 +24,26 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.427.0",
-    "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.9",
-    "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.5.4"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "astro-eslint-parser": "^1.0.2",
+    "eslint": "^9.9.0",
+    "eslint-plugin-astro": "^1.2.3",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.0.0-insiders.0368ffb"
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "typescript": "^5.5.4"
   }
 }
