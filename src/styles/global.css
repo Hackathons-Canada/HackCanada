@@ -90,7 +90,7 @@
   }
 
   .section-layout {
-    @apply w-full relative flex h-svh text-center z-10;
+    @apply w-full relative flex h-svh text-center;
   }
 
   .section-layout-right {

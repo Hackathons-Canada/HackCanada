@@ -1,0 +1,23 @@
+---
+import { heroContent } from "@/config/site";
+import HeadingGSAP from "../../animations/HeadingGSAP.astro";
+
+interface Props {
+  className?: string;
+  id?: string;
+}
+
+const { className = "", id = "" } = Astro.props;
+---
+
+<section
+  class:list={["flex flex-col overflow-x-clip py-20 text-center", className]}
+  aria-labelledby="hero-heading"
+  id={id}
+>
+  <HeadingGSAP
+    title={heroContent.title}
+    year={heroContent.year}
+    tagline={heroContent.tagline}
+  />
+</section>

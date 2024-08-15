@@ -1,7 +1,29 @@
 ---
+import Hero from "@/components/layout/sections/Hero.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import Boundary from "@/components/ui/Boundary.astro";
+import About from "@/components/layout/sections/About.astro";
+import Sponsors from "@/components/layout/sections/Sponsors.astro";
+import FAQS from "@/components/layout/sections/FAQS.astro";
+import Team from "@/components/layout/sections/Teams.astro";
 ---
 
 <MainLayout>
-  <h1 class="">HackCanada</h1>
+  <Hero
+    className="section-layout-center"
+    data-bg-color="#b1f1ff"
+    id="heroSection"
+  />
+  <Boundary id="aboutSection">
+    <About className="section-layout-left" data-bg-color="#ffb1b1" />
+  </Boundary>
+  <Boundary id="sponsorSection">
+    <Sponsors className="section-layout-right" data-bg-color="#b1ffb1" />
+  </Boundary>
+  <Boundary id="faqsSection">
+    <FAQS className="section-layout-left" data-bg-color="#ffb1ff" />
+  </Boundary>
+  <Boundary id="teamsSection">
+    <Team className="section-layout-right" data-bg-color="#b1b1ff" />
+  </Boundary>
 </MainLayout>
