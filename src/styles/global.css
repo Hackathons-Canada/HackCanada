@@ -59,19 +59,18 @@
   }
 }
 
-
 @layer base {
   @font-face {
-    font-family: 'HeadingFont';
-    src: url('/fonts/temp_heading.woff2') format('woff2');
+    font-family: "HeadingFont";
+    src: url("/fonts/temp_heading.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'ContentFont';
-    src: url('/fonts/temp_content.woff2') format('woff2');
+    font-family: "ContentFont";
+    src: url("/fonts/temp_content.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -79,18 +78,18 @@
 
   .custom-text {
     @apply text-3d;
-    font-family: 'HeadingFont', sans-serif;
+    font-family: "HeadingFont", sans-serif;
   }
 
   body {
-    @apply  text-white;
-    font-family: 'ContentFont', sans-serif;
+    @apply text-white;
+    font-family: "ContentFont", sans-serif;
     transition: background-color 0.5s ease;
     scroll-behavior: smooth;
   }
 
   .section-layout {
-    @apply w-full relative flex h-svh text-center;
+    @apply relative flex h-svh w-full text-center;
   }
 
   .section-layout-right {
@@ -111,20 +110,20 @@
 }
 
 #aboutSection {
-  background: linear-gradient(180deg, #B0E6FB 0%, #AAD6FA 20.5%, #AAD6FA 100%);
+  background: linear-gradient(180deg, #b0e6fb 0%, #aad6fa 20.5%, #aad6fa 100%);
 }
 
 #sponsorSection {
-  background: linear-gradient(180deg, #ABD7FB 0%, #FCE6A9 35%, #FCE6A9 100%);
+  background: linear-gradient(180deg, #abd7fb 0%, #fce6a9 35%, #fce6a9 100%);
 }
 
 #faqsSection {
-  background: linear-gradient(180deg, #FDE6AA 0%, #FFF4C7 50%, #FFF4C7 100%);
+  background: linear-gradient(180deg, #fde6aa 0%, #fff4c7 50%, #fff4c7 100%);
 }
 
 #teamsSection {
-  background: linear-gradient(180deg, #FFF5C8 0%, #E2EED6 27.5%, #E2EED6 100%);
+  background: linear-gradient(180deg, #fff5c8 0%, #e2eed6 27.5%, #e2eed6 100%);
 }
-footer{
+footer {
   background: #e5eed8;
 }
