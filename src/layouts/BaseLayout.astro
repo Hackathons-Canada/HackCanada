@@ -1,9 +1,9 @@
 ---
 import Head from "@/components/layout/Head.astro";
-import { Toaster } from "@/components/ui/sonner";
 import "@/styles/global.css";
 
-type Props = {
+
+interface Props {
   title?: string;
   description?: string;
 };
@@ -16,12 +16,6 @@ const { title, description } = Astro.props;
     <Head title={title} description={description} />
   </head>
   <body>
-    <Toaster
-      richColors
-      client:only="react"
-      theme="dark"
-      position="bottom-center"
-    />
     <slot />
   </body>
 </html>
