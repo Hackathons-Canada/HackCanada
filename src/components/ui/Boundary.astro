@@ -1,0 +1,15 @@
+---
+
+interface Props {
+  className?: string;
+  as?: string;
+}
+
+const { as: Comp = "section", className = "", ...rest } = Astro.props;
+---
+
+<Comp class:List={[className, "sm:px-4 md:px-6 lg:px-16"]} {...rest}>
+  <div class="mx-auto w-full max-w-7xl">
+    <slot />
+  </div>
+</Comp>
