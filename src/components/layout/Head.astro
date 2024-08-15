@@ -1,30 +1,49 @@
 ---
-import { siteConfig } from "@/config/site";
+import { metaConfig } from "@/config/metaTags";
 
 type Props = {
   title?: string;
   description?: string;
 };
 
-const { title, description = siteConfig.description } = Astro.props;
+const { title, description = metaConfig.description } = Astro.props;
+const pageTitle = title ? `${title} | ${metaConfig.title}` : metaConfig.title;
 ---
 
 <!-- Global Metadata -->
-<meta charset="utf-8" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="viewport" content="width=device-width" />
+<meta charset={metaConfig.meta.charset} />
+<meta name="viewport" content={metaConfig.meta.viewport} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Primary Meta Tags -->
-<title>
-  {title ? `${title} | ${siteConfig.title}` : `${siteConfig.title}`}
-</title>
-<meta
-  name="title"
-  content={title ? `${title} | ${siteConfig.title}` : `${siteConfig.title}`}
-/>
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
 
-<!-- TODO: Opengraph -->
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={metaConfig.og.type} />
+<meta property="og:url" content={metaConfig.url} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={metaConfig.og.image} />
 
-<!-- TODO: Twitter Card -->
+<!-- Twitter -->
+<meta name="twitter:card" content={metaConfig.twitter.card} />
+<meta name="twitter:url" content={metaConfig.url} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={metaConfig.twitter.image} />
+
+<!-- Favicon -->
+<link
+  rel="icon"
+  href={metaConfig.icons.favicon.href}
+  type={metaConfig.icons.favicon.type}
+  sizes={metaConfig.icons.favicon.sizes}
+/>
+<link
+  rel="apple-touch-icon"
+  href={metaConfig.icons.appleTouchIcon.href}
+  type={metaConfig.icons.appleTouchIcon.type}
+  sizes={metaConfig.icons.appleTouchIcon.sizes}
+/>
