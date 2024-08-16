@@ -1,4 +1,5 @@
 ---
+import { cn } from "@/lib/utils";
 import { heroSection } from "@/config/site";
 import HeadingGSAP from "../../animations/HeadingGSAP.astro";
 
@@ -7,11 +8,11 @@ interface Props {
   id?: string;
 }
 
-const { className = "", id = "" } = Astro.props;
+const { className, id } = Astro.props;
 ---
 
 <section
-  class:list={["flex flex-col overflow-x-clip py-20 text-center", className]}
+  class={cn("flex flex-col overflow-x-clip py-20 text-center", className)}
   aria-labelledby="hero-heading"
   id={id}
 >
