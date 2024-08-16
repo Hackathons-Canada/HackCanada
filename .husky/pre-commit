@@ -1,26 +1,26 @@
 #!/bin/sh
 
-# Run ESLint to check code standards
+# Format the staged files
+npm run format
+
+# Add the formatted changes
+git add .
+
+# Check lint
 npm run lint ||
 (
     echo '😤🏀👋😤 Linting failed! 😤🏀👋😤 
             ESLint check did not pass. Please make the required changes listed above, add them, and try to push again.'
-    false; 
+    exit 1
 )
 
-# Run Astro check for TypeScript errors
+# Check Astro
 npm run astro check ||
 (
     echo '😳😥❌😳 Astro check failed! 😳😥❌😳
             Please make the changes required above.'
-    false;
+    exit 1
 )
-
-# Run Prettier to ensure consistent formatting
-npm run format
-
-# Stage all changes, including newly created files
-git add .
 
 # If all checks pass, proceed with the push
 echo '✅✅✅✅ Congrats! All checks passed. Pushing now... ✅✅✅✅'
