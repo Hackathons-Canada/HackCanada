@@ -20,11 +20,6 @@ export const metaConfig = {
       href: "/favicon.ico",
       type: "image/x-icon",
       sizes: "16x16",
-    },
-    appleTouchIcon: {
-      href: "/apple-icon.png",
-      type: "image/png",
-      sizes: "114x114",
-    },
+    }
   },
 };

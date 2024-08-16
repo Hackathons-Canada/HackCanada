@@ -1,5 +1,5 @@
 ---
-import { heroContent } from "@/config/site";
+import { heroSection } from "@/config/site";
 import HeadingGSAP from "../../animations/HeadingGSAP.astro";
 
 interface Props {
@@ -16,8 +16,8 @@ const { className = "", id = "" } = Astro.props;
   id={id}
 >
   <HeadingGSAP
-    title={heroContent.title}
-    year={heroContent.year}
-    tagline={heroContent.tagline}
+    title={heroSection.title}
+    year={heroSection.year}
+    tagline={heroSection.tagline}
   />
 </section>
