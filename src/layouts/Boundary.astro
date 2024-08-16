@@ -4,10 +4,17 @@ interface Props {
   as?: string;
 }
 
-const { as: ComponentWrapper = "section", className = "", ...rest } = Astro.props;
+const {
+  as: ComponentWrapper = "section",
+  className = "",
+  ...rest
+} = Astro.props;
 ---
 
-<ComponentWrapper class:list={[className, "sm:px-4 md:px-6 lg:px-16"]} {...rest}>
+<ComponentWrapper
+  class:list={[className, "sm:px-4 md:px-6 lg:px-16"]}
+  {...rest}
+>
   <div class="mx-auto w-full max-w-7xl">
     <slot />
   </div>

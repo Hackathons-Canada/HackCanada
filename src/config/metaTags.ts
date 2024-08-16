@@ -20,6 +20,6 @@ export const metaConfig = {
       href: "/favicon.ico",
       type: "image/x-icon",
       sizes: "16x16",
-    }
+    },
   },
 };
