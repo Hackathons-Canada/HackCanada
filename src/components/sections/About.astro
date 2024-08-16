@@ -1,0 +1,13 @@
+---
+import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+  id?: string;
+}
+
+const { className, id } = Astro.props;
+---
+
+<SectionWrapper id={id} className={cn(className)}> About </SectionWrapper>
