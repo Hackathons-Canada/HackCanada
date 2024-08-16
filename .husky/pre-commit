@@ -17,12 +17,10 @@ npm run astro check ||
 )
 
 # Run Prettier to ensure consistent formatting
-npm run format ||
-(
-    echo '😵💫🔧😵 Formatting check failed! 😵💫🔧😵
-            Please run "npm run format" to fix formatting issues.'
-    false;
-)
+npm run format
+
+# Stage all changes, including newly created files
+git add .
 
 # If all checks pass, proceed with the push
 echo '✅✅✅✅ Congrats! All checks passed. Pushing now... ✅✅✅✅'
