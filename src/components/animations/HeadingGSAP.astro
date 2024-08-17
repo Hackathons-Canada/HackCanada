@@ -1,0 +1,90 @@
+---
+interface Props {
+  title: string;
+  year: string;
+  tagline: string;
+}
+
+const { title, year, tagline } = Astro.props;
+
+function renderLetters(heading: string, key: string) {
+  return heading
+    .split("")
+    .map(
+      (letter, index) =>
+        `<span
+      class="heading-animation heading-animation-${key} inline-block opacity-0"
+      data-index="${index}"
+    >
+      ${letter}
+    </span>`,
+    )
+    .join("");
+}
+---
+
+<h1
+  id="hero-heading"
+  class="mb-4 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tight"
+>
+  <span class="custom-text block" set:html={renderLetters(title, "first")} />
+  <span
+    class="custom-text -mt-[0.5rem] block"
+    aria-label={`${year}, the year of the event`}
+    set:html={renderLetters(year, "last")}
+  />
+</h1>
+<p
+  class="hero-tagline block text-2xl font-black uppercase tracking-[.2em] text-[#FFFF00] opacity-0 text-3d md:text-4xl"
+>
+  {tagline}
+</p>
+
+<script>
+  import { gsap } from "gsap";
+
+  function animateHeading() {
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      ".heading-animation",
+      {
+        x: -50,
+        y: -100,
+        opacity: 0,
+        rotate: -10,
+      },
+      {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        rotate: 0,
+        ease: "elastic.out(1,0.3)",
+        duration: 1,
+        transformOrigin: "left top",
+        stagger: {
+          each: 0.1,
+          from: "random",
+        },
+      },
+    );
+
+    tl.fromTo(
+      ".hero-tagline",
+      {
+        y: 20,
+        opacity: 0,
+        scale: 1.2,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scale: 1,
+        ease: "elastic.out(1,0.3)",
+      },
+      "-=0.5",
+    );
+  }
+  animateHeading();
+</script>
