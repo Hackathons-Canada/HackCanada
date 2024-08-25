@@ -1,11 +1,10 @@
 ---
 interface Props {
   title: string;
-  year: string;
   tagline: string;
 }
 
-const { title, year, tagline } = Astro.props;
+const { title, tagline } = Astro.props;
 
 function renderLetters(heading: string, key: string) {
   return heading
@@ -28,11 +27,6 @@ function renderLetters(heading: string, key: string) {
   class="mb-4 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tight"
 >
   <span class="custom-text block" set:html={renderLetters(title, "first")} />
-  <span
-    class="custom-text -mt-[0.5rem] block"
-    aria-label={`${year}, the year of the event`}
-    set:html={renderLetters(year, "last")}
-  />
 </h1>
 <p
   class="hero-tagline block text-2xl font-black uppercase tracking-[.2em] text-[#FFFF00] opacity-0 text-3d md:text-4xl"

@@ -26,8 +26,8 @@ export const siteConfig = {
 
 export const heroSection = {
   title: "HackCanada",
-  year: "2025",
-  tagline: "Innovate. Connect. Transform.",
+  // year: "2025",
+  tagline: "Feb 30-32, 2025 | In-Person Event | Unofficial MLH Partner",
 };
 
 export const aboutSection = {

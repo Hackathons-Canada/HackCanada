@@ -8,6 +8,10 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<header class={cn(className, "fixed")}>
-  <div>Navbar</div>
+<header class={cn(className, "w-full h-20 py-3 fixed")}>
+  <nav
+    class="mx-auto max-w-screen-lg rounded-full border border-b-2 border-white bg-white/50 px-3 py-2 text-center text-lg text-black backdrop-blur-[20px]"
+  >
+    Navbar
+  </nav>
 </header>
