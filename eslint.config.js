@@ -9,6 +9,9 @@ import astroParser from "astro-eslint-parser";
 export default [
   js.configs.recommended,
   {
+    ignores: ["dist/*"],
+  },
+  {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx,astro}"],
     languageOptions: {
       globals: {

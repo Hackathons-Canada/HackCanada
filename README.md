@@ -9,25 +9,12 @@ To get started with the HackCanada project, follow the instructions below.
 ### Prerequisites
 
 Make sure you have Node.js installed. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node versions.
+Also make sure you have [pnpm](https://pnpm.io/) installed.
 
 ### Installation
 
-You can use `npm`, `pnpm`, `yarn`, or `bun` to install the dependencies:
-
-(Use `npm` to keep things consistent with other HackCanada devs for now)
-
 ```bash
-# Using npm
-npm install
-
-# Using pnpm
 pnpm install
-
-# Using yarn
-yarn install
-
-# Using bun
-bun install
 ```
 
 ### Running the Project
@@ -35,43 +22,17 @@ bun install
 To start the development server, use the following command:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 The project will run on `localhost:4321` by default.
-
-If you're using `pnpm`, `yarn`, or `bun`, you can run:
-
-```bash
-# Using pnpm
-pnpm run dev
-
-# Using yarn
-yarn dev
-
-# Using bun
-bun run dev
-```
 
 ### Building the Project
 
 To build the project for production, run:
 
 ```bash
-npm run build
-```
-
-If you are using `pnpm`, `yarn`, or `bun`:
-
-```bash
-# Using pnpm
 pnpm run build
-
-# Using yarn
-yarn build
-
-# Using bun
-bun build
 ```
 
 ### Previewing the Build
@@ -79,20 +40,7 @@ bun build
 To preview the build, run:
 
 ```bash
-npm run preview
-```
-
-Other package managers:
-
-```bash
-# Using pnpm
 pnpm run preview
-
-# Using yarn
-yarn preview
-
-# Using bun
-bun preview
 ```
 
 ### Formatting the Code
@@ -100,20 +48,7 @@ bun preview
 To format the codebase using Prettier, run:
 
 ```bash
-npm run format
-```
-
-You can also format with `pnpm`, `yarn`, or `bun`:
-
-```bash
-# Using pnpm
 pnpm run format
-
-# Using yarn
-yarn format
-
-# Using bun
-bun format
 ```
 
 ## Project Structure
