@@ -1,6 +1,7 @@
 ---
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import { cn } from "@/lib/utils";
+import faqs from "@/config/faqs";
 
 interface Props {
   className?: string;
@@ -10,4 +11,23 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn(className)}> FAQs </SectionWrapper>
+<SectionWrapper id={id} className={cn(className)}>
+  FAQs
+  <p>Here are some frequently asked questions.</p>
+  <br />
+  <ul>
+    {
+      faqs.map((category) => (
+        <div>
+          <h3>{category.type}</h3>
+          {category.faqs.map((faq) => (
+            <li>
+              <h4>{faq.question}</h4>
+              <p>{faq.answer}</p>
+            </li>
+          ))}
+        </div>
+      ))
+    }
+  </ul>
+</SectionWrapper>
