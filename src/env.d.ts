@@ -1,5 +1,2 @@
-import types from "astro/client";
-
-declare global {
-  const env: typeof types.env;
-}
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../.astro/types.d.ts" />

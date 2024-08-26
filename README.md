@@ -22,7 +22,7 @@ pnpm install
 To start the development server, use the following command:
 
 ```bash
-pnpm run dev
+pnpm  dev
 ```
 
 The project will run on `localhost:4321` by default.
@@ -32,7 +32,7 @@ The project will run on `localhost:4321` by default.
 To build the project for production, run:
 
 ```bash
-pnpm run build
+pnpm build
 ```
 
 ### Previewing the Build
@@ -40,7 +40,7 @@ pnpm run build
 To preview the build, run:
 
 ```bash
-pnpm run preview
+pnpm preview
 ```
 
 ### Formatting the Code
@@ -48,7 +48,7 @@ pnpm run preview
 To format the codebase using Prettier, run:
 
 ```bash
-pnpm run format
+pnpm format
 ```
 
 ## Project Structure
