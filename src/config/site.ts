@@ -17,7 +17,7 @@ export const siteConfig = {
   },
   icons: {
     favicon: {
-      href: "/favicon.ico",
+      href: "/favicon.svg",
       type: "image/x-icon",
       sizes: "16x16",
     },
@@ -25,7 +25,7 @@ export const siteConfig = {
 };
 
 export const heroSection = {
-  title: "HackCanada",
+  title: "Hack Canada",
   // year: "2025",
   tagline: "Feb 30-32, 2025 | In-Person Event | Unofficial MLH Partner",
 };

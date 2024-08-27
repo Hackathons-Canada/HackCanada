@@ -76,8 +76,7 @@
     font-display: swap;
   }
 
-  .custom-text {
-    @apply text-3d;
+  .hero-heading-text {
     font-family: "HeadingFont", sans-serif;
   }
 

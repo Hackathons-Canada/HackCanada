@@ -12,12 +12,13 @@ const { className, id } = Astro.props;
 ---
 
 <section
-  class={cn(
-    "flex flex-col w-full overflow-x-clip py-20 text-center",
-    className,
-  )}
+  class={cn("flex flex-col justify-center w-full overflow-x-clip", className)}
   aria-labelledby="hero-heading"
   id={id}
 >
-  <HeadingGSAP title={heroSection.title} tagline={heroSection.tagline} />
+  <HeadingGSAP
+    title={heroSection.title}
+    tagline={heroSection.tagline}
+    className="md:pr-40"
+  />
 </section>
