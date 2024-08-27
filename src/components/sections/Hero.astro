@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { heroSection } from "@/config/site";
 import HeadingGSAP from "@/components/animations/HeadingGSAP.astro";
+import Snowfall from "@/components/animations/Snowfall.astro";
 
 interface Props {
   className?: string;
@@ -12,13 +13,24 @@ const { className, id } = Astro.props;
 ---
 
 <section
-  class={cn("flex flex-col justify-center w-full overflow-x-clip", className)}
+  class={cn(
+    "flex flex-col justify-center w-full overflow-x-clip relative",
+    className,
+  )}
   aria-labelledby="hero-heading"
   id={id}
 >
   <HeadingGSAP
     title={heroSection.title}
     tagline={heroSection.tagline}
-    className="md:pr-40"
+    className="relative z-10 md:pr-40"
+  />
+  <Snowfall
+    client:load
+    snowflakeCount={200}
+    speed={1}
+    wind={0.5}
+    color="#ffffff"
+    size={3}
   />
 </section>
