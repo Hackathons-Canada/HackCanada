@@ -89,7 +89,7 @@
 }
 
 #heroSection {
-  background-image: url("/hero-bg.webp");
+  background-image: url("/hero/hero-bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

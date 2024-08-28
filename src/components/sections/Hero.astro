@@ -1,8 +1,8 @@
 ---
 import { cn } from "@/lib/utils";
 import { heroSection } from "@/config/site";
-import HeadingGSAP from "@/components/animations/HeadingGSAP.astro";
-import Snowfall from "@/components/animations/Snowfall.astro";
+import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
+import Snowfall from "@/components/animations/hero/Snowfall.astro";
 
 interface Props {
   className?: string;
@@ -26,7 +26,6 @@ const { className, id } = Astro.props;
     className="relative z-10 md:pr-40"
   />
   <Snowfall
-    client:load
     snowflakeCount={200}
     speed={1}
     wind={0.5}
