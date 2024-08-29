@@ -5,7 +5,16 @@
 <div
   class="duration-5000 animate-fade-in absolute right-0 top-0 max-w-[800px] opacity-0 transition-opacity ease-in-out"
 >
-  <img src="hero-aurora.webp" alt="Aurora hero image" class="h-auto w-full" />
+  <img
+    src="/hero-aurora-small.webp"
+    srcset="/hero-aurora-small.webp 783w, /hero-aurora-large.webp 1402w"
+    sizes="(max-width: 800px) 100vw, 800px"
+    alt="Aurora hero image"
+    width="1402"
+    height="572"
+    loading="lazy"
+    class="h-auto w-full"
+  />
 </div>
 
 <style>
