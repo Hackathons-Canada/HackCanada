@@ -95,6 +95,12 @@
   background-position: center;
   height: 100svh;
   position: relative;
+  overflow: hidden;
+}
+
+#container {
+  pointer-events: none;
+  z-index: 20;
 }
 
 #heroSection::after {
