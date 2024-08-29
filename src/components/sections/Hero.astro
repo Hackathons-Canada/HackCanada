@@ -4,6 +4,7 @@ import { heroSection } from "@/config/site";
 import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
 import Snowfall from "@/components/animations/hero/Snowfall.astro";
 import Sledge from "@/components/animations/hero/Sledge.astro";
+import Aurora from "@/components/animations/hero/Aurora.astro";
 
 interface Props {
   className?: string;
@@ -22,6 +23,7 @@ const { className, id } = Astro.props;
   id={id}
 >
   <Sledge />
+  <Aurora />
 
   <HeadingGSAP
     title={heroSection.title}
