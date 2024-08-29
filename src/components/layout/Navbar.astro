@@ -1,5 +1,8 @@
 ---
 import { cn } from "@/lib/utils";
+import logo from "../../images/logo-v1.webp";
+import { Image } from "astro:assets";
+import { navLinks, socialLinks } from "@/config/links";
 
 interface Props {
   className?: string;
@@ -8,10 +11,47 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<header class={cn(className, "w-full h-20 py-3 fixed")}>
+<header class={cn(className, "w-full sm:px-4 h-20 mt-6 fixed")}>
   <nav
-    class="mx-auto max-w-screen-lg rounded-full border border-b-2 border-white bg-white/50 px-3 py-2 text-center text-lg text-black backdrop-blur-[20px]"
+    class="mx-auto flex max-w-6xl items-center justify-between rounded-full border-2 border-white bg-white/50 px-3 pb-2 pt-2.5 text-center text-lg text-black backdrop-blur-[20px] md:px-6 lg:px-10"
   >
-    Navbar
+    <ul class="flex items-center gap-8">
+      <!-- Logo -->
+      <Image
+        src={logo}
+        alt="logo"
+        width={144}
+        height={144}
+        class="size-12 object-contain"
+      />
+
+      {
+        navLinks.map((link) => (
+          <li class="group relative font-bold">
+            <a href={link.href}>{link.label}</a>
+            <span class="absolute inset-x-0 bottom-0 h-0.5 scale-x-0 rounded-full bg-black transition-transform duration-200 group-hover:scale-x-100" />
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Social Links -->
+    <ul class="flex items-center gap-8">
+      {
+        socialLinks.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={link.icon}
+                alt={link.label || link.href}
+                width={48}
+                height={48}
+                class="size-7"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </nav>
 </header>
