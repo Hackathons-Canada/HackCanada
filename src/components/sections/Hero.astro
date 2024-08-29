@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { heroSection } from "@/config/site";
 import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
 import Snowfall from "@/components/animations/hero/Snowfall.astro";
-import Sledge from "@/components/animations/hero/Sledge.astro";
+import Hills from "@/components/animations/hero/Hills.astro";
 import Aurora from "@/components/animations/hero/Aurora.astro";
 
 interface Props {
@@ -22,7 +22,7 @@ const { className, id } = Astro.props;
   aria-labelledby="hero-heading"
   id={id}
 >
-  <Sledge />
+  <Hills />
   <Aurora />
 
   <HeadingGSAP

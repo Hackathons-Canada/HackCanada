@@ -8,11 +8,10 @@ interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<div class={cn("absolute w-80 z-10", className)}>
+<!-- <div class={cn("absolute w-80 z-10", className)}>
   <img src="hero-beaver-sledge.svg" alt="Beaver on a sledge" id="sledge" />
-</div>
-
-<div class="absolute bottom-0 w-full lg:-bottom-40">
+</div> -->
+<div class={cn("absolute bottom-0 w-full lg:-bottom-40", className)}>
   <img
     src="hero-hills1.svg"
     alt=""
@@ -41,7 +40,7 @@ const { className = "" } = Astro.props;
         S700 128, 750 147
         S850 179, 874 179"
       stroke-linecap="round"
-      stroke="black"><!-- temporary stroke--></path
+      stroke="none"><!-- temporary stroke--></path
     >
   </svg>
 </div>
