@@ -24,34 +24,41 @@ const { title, tagline, className } = Astro.props;
     {title}
   </h1>
   <p
-    class="hero-tagline text-center text-lg font-black uppercase tracking-tighter text-[#485B7C] opacity-0 md:text-right"
+    class="gsapFade hero-tagline text-center text-lg font-black uppercase tracking-tighter text-[#485B7C] md:text-right"
   >
     {tagline}
   </p>
-  <Button className="w-auto bg-[#0A1F44] hover:bg-[#0A1F44]/95"
+  <Button className="gsapFade w-auto bg-[#0A1F44] hover:bg-[#0A1F44]/95"
     >Hacker Application</Button
   >
 </div>
 
 <script>
-  import { gsap } from "gsap";
+  import { initGsapFade } from "@/lib/gsapAnimations";
 
-  function animateHeading() {
-    const tl = gsap.timeline();
+  // Animate title characters
+  initGsapFade({
+    selector: ".hero-heading-text",
+    duration: 1.5,
+    direction: "up",
+    distance: 50,
+  });
 
-    tl.fromTo(
-      ".heading-animation",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-    );
+  // Animate tagline
+  initGsapFade({
+    selector: ".hero-tagline",
+    duration: 0.5,
+    delay: 0.4,
+    direction: "up",
+    distance: 20,
+  });
 
-    tl.fromTo(
-      ".hero-tagline",
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-      "-=0.5",
-    );
-  }
-
-  animateHeading();
+  // Animate button
+  initGsapFade({
+    selector: "button",
+    duration: 0.5,
+    delay: 0.6,
+    direction: "up",
+    distance: 20,
+  });
 </script>
