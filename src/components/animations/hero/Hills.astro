@@ -15,12 +15,12 @@ const { className = "" } = Astro.props;
   <img
     src="hero-hills1.svg"
     alt=""
-    class="absolute -bottom-28 right-0 w-full min-w-[800px]"
+    class="gsapPopup absolute -bottom-28 right-0 w-full min-w-[800px]"
   />
   <img
     src="hero-hills2.svg"
     alt=""
-    class="absolute bottom-0 w-full min-w-[800px]"
+    class="gsapPopup absolute bottom-0 w-full min-w-[800px]"
   />
 
   <svg
@@ -46,6 +46,7 @@ const { className = "" } = Astro.props;
 </div>
 
 <script>
+  import { initGsapPopup } from "@/lib/gsapAnimations";
   import { gsap } from "gsap";
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -57,45 +58,66 @@ const { className = "" } = Astro.props;
     const path = document.getElementById("sledgeMotionPath");
 
     if (sledge && path) {
+      // Initial animation to move the sledge into view
       gsap.fromTo(
         sledge,
         {
-          motionPath: {
-            path: "#sledgeMotionPath",
-            align: "#sledgeMotionPath",
-            autoRotate: true,
-            alignOrigin: [0, 0.9],
-            start: 0,
-            end: 0,
-          },
+          x: "0",
+          opacity: 0,
         },
         {
-          motionPath: {
-            path: "#sledgeMotionPath",
-            align: "#sledgeMotionPath",
-            autoRotate: true,
-            alignOrigin: [0, 0.9],
-            start: 0,
-            end: 1,
-          },
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#heroSection",
-            start: "top top",
-            end: "bottom center",
-            scrub: 2,
-            markers: false,
-          },
+          x: "100%",
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          delay: 1,
         },
       );
+
+      // Motion path animation
+      gsap.to(sledge, {
+        motionPath: {
+          path: "#sledgeMotionPath",
+          align: "#sledgeMotionPath",
+          autoRotate: true,
+          alignOrigin: [0, 0.8],
+          start: 0,
+          end: 1,
+        },
+        ease: "power4.Out",
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#heroSection",
+          start: "top top",
+          end: "bottom center",
+          markers: false,
+        },
+      });
     } else {
       // console.error("Sledge element or motion path not found");
     }
   }
 
-  document.addEventListener("DOMContentLoaded", setupAnimation);
-  window.addEventListener("resize", () => {
-    gsap.killTweensOf("#sledge");
+  function initAnimations() {
     setupAnimation();
+    initGsapPopup({
+      duration: 0.8,
+      stagger: 0.3,
+      delay: 0.5,
+      start: "top bottom-=50",
+    });
+  }
+
+  // Initialize animations on DOM content loaded
+  document.addEventListener("DOMContentLoaded", initAnimations);
+
+  // Reinitialize animations on window resize
+  let resizeTimer: number;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      gsap.killTweensOf("#sledge");
+      initAnimations();
+    }, 250);
   });
 </script>
