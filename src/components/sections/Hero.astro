@@ -1,7 +1,10 @@
 ---
 import { cn } from "@/lib/utils";
 import { heroSection } from "@/config/site";
-import HeadingGSAP from "@/components/animations/HeadingGSAP.astro";
+import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
+import Snowfall from "@/components/animations/hero/Snowfall.astro";
+import Hills from "@/components/animations/hero/Hills.astro";
+import Aurora from "@/components/animations/hero/Aurora.astro";
 
 interface Props {
   className?: string;
@@ -13,11 +16,26 @@ const { className, id } = Astro.props;
 
 <section
   class={cn(
-    "flex flex-col w-full overflow-x-clip py-20 text-center",
+    "flex flex-col justify-center w-full overflow-hidden relative min-h-screen",
     className,
   )}
   aria-labelledby="hero-heading"
   id={id}
 >
-  <HeadingGSAP title={heroSection.title} tagline={heroSection.tagline} />
+  <Hills />
+  <Aurora />
+
+  <HeadingGSAP
+    title={heroSection.title}
+    tagline={heroSection.tagline}
+    className="relative z-10 md:pr-40"
+  />
+
+  <Snowfall
+    snowflakeCount={200}
+    speed={1}
+    wind={0.5}
+    color="#ffffff"
+    size={3}
+  />
 </section>

@@ -76,8 +76,7 @@
     font-display: swap;
   }
 
-  .custom-text {
-    @apply text-3d;
+  .hero-heading-text {
     font-family: "HeadingFont", sans-serif;
   }
 
@@ -86,6 +85,7 @@
     font-family: "ContentFont", sans-serif;
     transition: background-color 0.5s ease;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
@@ -96,6 +96,12 @@
   background-position: center;
   height: 100svh;
   position: relative;
+  overflow: hidden;
+}
+
+#container {
+  pointer-events: none;
+  z-index: 20;
 }
 
 #heroSection::after {

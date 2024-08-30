@@ -12,22 +12,23 @@ const { className, id } = Astro.props;
 ---
 
 <SectionWrapper id={id} className={cn(className)}>
-  FAQs
+  <h2>FAQs</h2>
   <p>Here are some frequently asked questions.</p>
-  <br />
-  <ul>
+  <div class="faq-categories">
     {
       faqs.map((category) => (
-        <div>
+        <div class="faq-category">
           <h3>{category.type}</h3>
-          {category.faqs.map((faq) => (
-            <li>
-              <h4>{faq.question}</h4>
-              <p>{faq.answer}</p>
-            </li>
-          ))}
+          <ul>
+            {category.faqs.map((faq) => (
+              <li>
+                <h4>{faq.question}</h4>
+                <p>{faq.answer}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       ))
     }
-  </ul>
+  </div>
 </SectionWrapper>
