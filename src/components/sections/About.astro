@@ -1,5 +1,6 @@
 ---
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import { aboutSection } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -10,4 +11,20 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn(className)}> About </SectionWrapper>
+<SectionWrapper id={id} className={cn("relative overflow-hidden", className)}>
+  <div class="container relative z-10 mx-auto px-4 py-16">
+    <h2
+      class="hero-heading-text mb-6 text-5xl font-bold text-[#0A1F44] md:text-6xl"
+    >
+      {aboutSection.title}
+    </h2>
+    <div class="max-w-3xl space-y-6 text-lg text-[#485B7C]">
+      <p>
+        {aboutSection.description1}
+      </p>
+      <p>
+        {aboutSection.description2}
+      </p>
+    </div>
+  </div>
+</SectionWrapper>

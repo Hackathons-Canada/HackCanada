@@ -31,9 +31,11 @@ export const heroSection = {
 };
 
 export const aboutSection = {
-  title: "About us",
-  description:
-    "The largest hackathon in Canada. With over 3000+ hackers and 300+ sponsors, we aim to bring together the best hackers from around the world to create projects that will push forward the world of technology!",
+  title: "Who Are We?",
+  description1:
+    " Join us at Hack Canada this February, where innovators from around the world will come together to create and connect in a dynamic and supportive environment. Experience hands-on workshops, expert mentorship, and exciting activities designed to fuel your creativity and enhance your skills.",
+  description2:
+    " We are a Canadian-focused hackathon, aiming to solve national problems using the amazing hacker minds to help and focus on changing Canada's future in many ways. Join us in shaping a brighter future for Canada through innovation and collaboration.",
 };
 
 export const sponsorSection = {
