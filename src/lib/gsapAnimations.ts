@@ -6,114 +6,139 @@ gsap.registerPlugin(ScrollTrigger);
 
 type Direction = "up" | "down" | "left" | "right";
 
-interface AnimationOptions {
+interface BaseAnimationOptions {
   duration?: number;
   ease?: string;
   delay?: number;
   start?: string;
+  inView?: boolean;
 }
 
-interface FadeOptions extends AnimationOptions {
+interface FadeOptions extends BaseAnimationOptions {
   direction?: Direction;
   distance?: number;
 }
 
-interface PopupOptions extends AnimationOptions {
+interface PopupOptions extends BaseAnimationOptions {
   y?: number;
 }
 
-interface BounceOptions extends AnimationOptions {
+interface BounceOptions extends BaseAnimationOptions {
   height?: number;
   squash?: number;
+}
+
+function validateSelector(selector: string): void {
+  if (typeof selector !== "string" || selector.trim() === "") {
+    throw new Error("Invalid selector: must be a non-empty string");
+  }
+}
+
+function createAnimation(
+  selector: string,
+  from: gsap.TweenVars,
+  to: gsap.TweenVars,
+  options: BaseAnimationOptions,
+): gsap.core.Tween {
+  validateSelector(selector);
+
+  const { inView = true, start = "top bottom-=100" } = options;
+
+  if (inView) {
+    to.scrollTrigger = {
+      trigger: selector,
+      start: start,
+    };
+  }
+
+  return gsap.fromTo(selector, from, to);
+}
+
+function createTimelineAnimation(
+  selector: string,
+  timeline: gsap.core.Timeline,
+  options: BaseAnimationOptions,
+): gsap.core.Timeline {
+  validateSelector(selector);
+
+  const { inView = true, start = "top bottom-=100" } = options;
+
+  if (inView) {
+    ScrollTrigger.create({
+      trigger: selector,
+      start: start,
+      animation: timeline,
+    });
+  }
+
+  return timeline;
 }
 
 export function initGsapFade(
   selector: string,
   options: FadeOptions = {},
-): void {
+): gsap.core.Tween {
   const {
     duration = 1,
     ease = "power3.out",
     delay = 0,
-    start = "top bottom-=100",
     direction = "up",
     distance = 50,
   } = options;
 
-  const from = {
+  const from: gsap.TweenVars = {
     opacity: 0,
     x: direction === "left" ? distance : direction === "right" ? -distance : 0,
     y: direction === "up" ? distance : direction === "down" ? -distance : 0,
   };
 
-  const to = {
+  const to: gsap.TweenVars = {
     opacity: 1,
     x: 0,
     y: 0,
-    duration: duration,
-    ease: ease,
-    scrollTrigger: {
-      trigger: selector,
-      start: start,
-    },
-    delay: delay,
+    duration,
+    ease,
+    delay,
   };
 
-  gsap.fromTo(selector, from, to);
+  return createAnimation(selector, from, to, options);
 }
 
 export function initGsapPopup(
   selector: string,
   options: PopupOptions = {},
-): void {
-  const {
-    duration = 0.5,
-    ease = "back.out(1.7)",
-    delay = 0,
-    y = 70,
-    start = "top bottom-=100",
-  } = options;
+): gsap.core.Tween {
+  const { duration = 0.5, ease = "back.out(1.7)", delay = 0, y = 70 } = options;
 
-  const from = {
+  const from: gsap.TweenVars = {
     opacity: 0,
-    y: y,
+    y,
   };
 
-  const to = {
+  const to: gsap.TweenVars = {
     opacity: 1,
     y: 0,
-    duration: duration,
-    ease: ease,
-    scrollTrigger: {
-      trigger: selector,
-      start: start,
-    },
-    delay: delay,
+    duration,
+    ease,
+    delay,
   };
 
-  gsap.fromTo(selector, from, to);
+  return createAnimation(selector, from, to, options);
 }
 
 export function initGsapBounceUp(
   selector: string,
   options: BounceOptions = {},
-): void {
+): gsap.core.Timeline {
   const {
     duration = 0.8,
     ease = "bounce.out",
     delay = 0,
-    start = "top bottom-=100",
     height = 100,
     squash = 0.8,
   } = options;
 
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: selector,
-      start: start,
-    },
-    delay: delay,
-  });
+  const timeline = gsap.timeline({ delay });
 
   timeline
     .from(selector, {
@@ -134,6 +159,8 @@ export function initGsapBounceUp(
       scaleY: 1,
       scaleX: 1,
       duration: duration * 0.25,
-      ease: ease,
+      ease,
     });
+
+  return createTimelineAnimation(selector, timeline, options);
 }
