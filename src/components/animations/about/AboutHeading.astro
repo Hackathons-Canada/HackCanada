@@ -1,0 +1,41 @@
+---
+import { aboutSection } from "@/config/site";
+---
+
+<div class="container relative z-10 mx-auto px-4">
+  <h2
+    class="about-heading-text heading-font mb-6 text-6xl font-bold text-[#0A1F44] opacity-0 md:text-7xl"
+  >
+    {aboutSection.title}
+  </h2>
+  <div class="max-w-3xl space-y-6 text-lg text-[#485B7C] md:text-xl">
+    <p class="about-paragraph opacity-0">
+      {aboutSection.description1}
+    </p>
+    <p class="about-paragraph opacity-0">
+      {aboutSection.description2}
+    </p>
+  </div>
+</div>
+
+<script>
+  import { initGsapFade, initGsapPopup } from "@/lib/gsapAnimations";
+
+  // Animate the heading
+  initGsapPopup(".about-heading-text", {
+    duration: 0.8,
+    delay: 0.2,
+    y: 50,
+  });
+
+  // Animate the paragraphs
+  const paragraphs = document.querySelectorAll(".about-paragraph");
+  paragraphs.forEach((p, index) => {
+    initGsapFade(`.about-paragraph:nth-child(${index + 1})`, {
+      duration: 0.8,
+      delay: 0.5 + index * 0.2,
+      direction: "up",
+      distance: 30,
+    });
+  });
+</script>

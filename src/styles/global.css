@@ -76,7 +76,7 @@
     font-display: swap;
   }
 
-  .hero-heading-text {
+  .heading-font {
     font-family: "HeadingFont", sans-serif;
   }
 
@@ -90,7 +90,19 @@
 }
 
 #heroSection {
-  background-image: url("/hero-bg.webp");
+  background: linear-gradient(
+    to bottom,
+    #090e19 0%,
+    #1a2539 8%,
+    #2c3b5d 16%,
+    #5f718f 30%,
+    #98a5bf 44%,
+    #c2cce1 58%,
+    #e6eaf0 72%,
+    #f4f6f9 86%,
+    #ffffff 100%
+  );
+  /* background-image: url("/hero-bg.webp"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

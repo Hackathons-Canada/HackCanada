@@ -19,16 +19,15 @@ const { className, id } = Astro.props;
     "flex flex-col justify-center w-full overflow-hidden relative min-h-screen",
     className,
   )}
-  aria-labelledby="hero-heading"
+  aria-labelledby="Hero Section"
   id={id}
 >
-  <Hills />
   <Aurora />
 
   <HeadingGSAP
     title={heroSection.title}
     tagline={heroSection.tagline}
-    className="relative z-10 md:pr-40"
+    className="container relative z-10 md:pr-40"
   />
 
   <Snowfall
@@ -38,4 +37,5 @@ const { className, id } = Astro.props;
     color="#ffffff"
     size={3}
   />
+  <Hills />
 </section>
