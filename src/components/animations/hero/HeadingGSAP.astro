@@ -13,7 +13,7 @@ const { title, tagline, className } = Astro.props;
 
 <div
   class={cn(
-    "flex flex-col items-center justify-center md:items-end space-y-4 ",
+    "flex flex-col items-center justify-center md:items-end ",
     className,
   )}
 >
@@ -28,7 +28,7 @@ const { title, tagline, className } = Astro.props;
     {tagline}
   </p>
   <Button
-    className="gsapFade w-auto bg-[#0A1F44] opacity-0 hover:bg-[#0A1F44]/95"
+    className="gsapFade mt-6 w-auto bg-[#0A1F44] opacity-0 hover:bg-[#0A1F44]/95"
     >Hacker Application</Button
   >
 </div>
