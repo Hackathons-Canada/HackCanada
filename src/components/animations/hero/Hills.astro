@@ -80,7 +80,7 @@ const { className = "" } = Astro.props;
           path: "#sledgeMotionPath",
           align: "#sledgeMotionPath",
           autoRotate: true,
-          alignOrigin: [0, 0.8],
+          alignOrigin: [0, 0.9],
           start: 0,
           end: 1,
         },
@@ -113,4 +113,14 @@ const { className = "" } = Astro.props;
 
   // Initialize animations on DOM content loaded
   document.addEventListener("DOMContentLoaded", initAnimations);
+
+  // Reinitialize animations on window resize
+  let resizeTimer: number;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      gsap.killTweensOf("#sledge");
+      setupAnimation();
+    }, 250);
+  });
 </script>
