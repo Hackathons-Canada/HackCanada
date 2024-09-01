@@ -15,12 +15,12 @@ const { className = "" } = Astro.props;
   <img
     src="hero-hills1.svg"
     alt=""
-    class="gsapPopup absolute -bottom-28 right-0 w-full min-w-[800px]"
+    class="gsapHill1Popup absolute -bottom-28 right-0 w-full min-w-[800px] opacity-0"
   />
   <img
     src="hero-hills2.svg"
     alt=""
-    class="gsapPopup absolute bottom-0 w-full min-w-[800px]"
+    class="gsapHill2Popup absolute bottom-0 w-full min-w-[800px] opacity-0"
   />
 
   <svg
@@ -70,7 +70,7 @@ const { className = "" } = Astro.props;
           opacity: 1,
           duration: 1,
           ease: "power2.out",
-          delay: 1,
+          delay: 1.5,
         },
       );
 
@@ -93,31 +93,24 @@ const { className = "" } = Astro.props;
           markers: false,
         },
       });
-    } else {
-      // console.error("Sledge element or motion path not found");
     }
   }
 
   function initAnimations() {
-    setupAnimation();
-    initGsapPopup({
+    // Initialize popup animations for hills
+    initGsapPopup(".gsapHill1Popup", {
       duration: 0.8,
-      stagger: 0.3,
-      delay: 0.5,
+      delay: 0.6,
       start: "top bottom-=50",
     });
+    initGsapPopup(".gsapHill2Popup", {
+      duration: 0.8,
+      delay: 0.9,
+      start: "top bottom-=50",
+    });
+    setupAnimation();
   }
 
   // Initialize animations on DOM content loaded
   document.addEventListener("DOMContentLoaded", initAnimations);
-
-  // Reinitialize animations on window resize
-  let resizeTimer: number;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      gsap.killTweensOf("#sledge");
-      initAnimations();
-    }, 250);
-  });
 </script>
