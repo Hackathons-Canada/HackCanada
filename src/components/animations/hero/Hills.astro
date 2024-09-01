@@ -92,6 +92,10 @@ const { className = "" } = Astro.props;
           end: "10% center",
           markers: true,
         },
+        onComplete: () => {
+          // Remove the sledge element after the animation is complete
+          sledge.remove();
+        },
       });
     }
   }
