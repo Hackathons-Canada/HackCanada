@@ -8,41 +8,39 @@ interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<!-- <div class={cn("absolute w-80 z-10", className)}>
-  <img src="hero-beaver-sledge.svg" alt="Beaver on a sledge" id="sledge" />
-</div> -->
-<div class={cn("absolute bottom-0 w-full lg:-bottom-40", className)}>
+<div class={cn("absolute bottom-0 w-full lg:-bottom-32", className)}>
   <img
     src="hero-hills1.svg"
     alt=""
-    class="gsapHill1Popup absolute -bottom-48 right-0 w-full min-w-[800px] opacity-0"
+    class="gsapHill1Popup absolute -bottom-36 right-0 w-full min-w-[800px] opacity-0 md:-bottom-24 lg:-bottom-12"
   />
   <img
     src="hero-hills2.svg"
     alt=""
-    class="gsapHill2Popup absolute bottom-0 w-full min-w-[800px] opacity-0"
+    class="gsapHill2Popup absolute -bottom-20 -left-32 w-full min-w-[800px] opacity-0 sm:bottom-3 sm:left-0 md:-bottom-0 lg:bottom-4"
   />
-
-  <svg
-    viewBox="0 0 874 220"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="absolute bottom-0 w-full min-w-[800px]"
-    preserveAspectRatio="none"
-  >
-    <path
-      id="sledgeMotionPath"
-      d="M0 1
-        C50 1, 100 0, 150 1
-        S250 4, 300 8
-        S400 20, 450 32
-        S550 61, 600 82
-        S700 128, 750 147
-        S850 179, 874 179"
-      stroke-linecap="round"
-      stroke="none"><!-- temporary stroke--></path
+  <div class="absolute bottom-0 w-full">
+    <svg
+      viewBox="0 0 874 220"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      class="max-w-screen h-auto w-full min-w-[320px]"
     >
-  </svg>
+      <path
+        id="sledgeMotionPath"
+        d="M0 1
+            C50 1, 100 0, 150 1
+            S250 4, 300 8
+            S400 20, 450 32
+            S550 61, 600 82
+            S700 128, 750 147
+            S850 179, 874 179"
+        stroke-linecap="round"
+        stroke="none"
+        vector-effect="non-scaling-stroke"></path>
+    </svg>
+  </div>
 </div>
 
 <script>
