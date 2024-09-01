@@ -15,7 +15,7 @@ const { className = "" } = Astro.props;
   <img
     src="hero-hills1.svg"
     alt=""
-    class="gsapHill1Popup absolute -bottom-28 right-0 w-full min-w-[800px] opacity-0"
+    class="gsapHill1Popup absolute -bottom-48 right-0 w-full min-w-[800px] opacity-0"
   />
   <img
     src="hero-hills2.svg"
@@ -90,7 +90,7 @@ const { className = "" } = Astro.props;
           trigger: "#heroSection",
           start: "5% top",
           end: "10% center",
-          markers: true,
+          markers: false,
         },
         onComplete: () => {
           // Remove the sledge element after the animation is complete
