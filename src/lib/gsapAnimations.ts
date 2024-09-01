@@ -12,6 +12,7 @@ interface BaseAnimationOptions {
   delay?: number;
   start?: string;
   inView?: boolean;
+  animateEachTime?: boolean; // New property
 }
 
 interface FadeOptions extends BaseAnimationOptions {
@@ -42,12 +43,19 @@ function createAnimation(
 ): gsap.core.Tween {
   validateSelector(selector);
 
-  const { inView = true, start = "top bottom-=100" } = options;
+  const {
+    inView = true,
+    start = "top bottom-=100",
+    animateEachTime = false,
+  } = options;
 
   if (inView) {
     to.scrollTrigger = {
       trigger: selector,
       start: start,
+      toggleActions: animateEachTime
+        ? "restart pause resume pause"
+        : "play none none none",
     };
   }
 
@@ -61,13 +69,20 @@ function createTimelineAnimation(
 ): gsap.core.Timeline {
   validateSelector(selector);
 
-  const { inView = true, start = "top bottom-=100" } = options;
+  const {
+    inView = true,
+    start = "top bottom-=100",
+    animateEachTime = false,
+  } = options;
 
   if (inView) {
     ScrollTrigger.create({
       trigger: selector,
       start: start,
       animation: timeline,
+      toggleActions: animateEachTime
+        ? "restart pause resume pause"
+        : "play none none none",
     });
   }
 
