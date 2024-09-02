@@ -36,27 +36,31 @@ const { title, tagline, className } = Astro.props;
 <script>
   import { initGsapFade } from "@/lib/gsapAnimations";
 
-  // Animate title characters
-  initGsapFade(".hero-heading", {
-    duration: 1.5,
-    direction: "up",
-    distance: 50,
-    delay: 0,
-  });
+  function headingAnimations() {
+    // Animate title characters
+    initGsapFade(".hero-heading", {
+      duration: 1.5,
+      direction: "up",
+      distance: 50,
+      delay: 0,
+    });
 
-  // Animate tagline
-  initGsapFade(".hero-tagline", {
-    duration: 0.5,
-    delay: 0.4,
-    direction: "up",
-    distance: 20,
-  });
+    // Animate tagline
+    initGsapFade(".hero-tagline", {
+      duration: 0.5,
+      delay: 0.4,
+      direction: "up",
+      distance: 20,
+    });
 
-  // Animate button
-  initGsapFade("button", {
-    duration: 0.5,
-    delay: 0.6,
-    direction: "up",
-    distance: 20,
-  });
+    // Animate button
+    initGsapFade("button", {
+      duration: 0.5,
+      delay: 0.6,
+      direction: "up",
+      distance: 20,
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", headingAnimations);
 </script>

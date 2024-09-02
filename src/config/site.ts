@@ -32,10 +32,10 @@ export const heroSection = {
 
 export const aboutSection = {
   title: "Who Are We?",
-  description1:
-    " Join us at Hack Canada this February, where innovators from around the world will come together to create and connect in a dynamic and supportive environment. Experience hands-on workshops, expert mentorship, and exciting activities designed to fuel your creativity and enhance your skills.",
-  description2:
-    " We are a Canadian-focused hackathon, aiming to solve national problems using the amazing hacker minds to help and focus on changing Canada's future in many ways. Join us in shaping a brighter future for Canada through innovation and collaboration.",
+  descriptions: [
+    "Hack Canada is the premier event organized by [Hackathons Canada](https://hackathonscanada.com). It's where the brightest minds gather to push the limits of innovation—because who needs sleep when you have code to write? Expect 36 hours of creativity, collaboration, and the occasional 'I-just-fixed-it' dance.",
+    "At Hack Canada, our motto is simple: have fun, make something awesome, and maybe even catch a nap between all the brilliance.",
+  ],
 };
 
 export const sponsorSection = {

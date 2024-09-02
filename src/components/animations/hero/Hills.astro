@@ -17,7 +17,7 @@ const { className = "" } = Astro.props;
   <img
     src="hero-hills2.svg"
     alt=""
-    class="gsapHill2Popup absolute -bottom-20 -left-32 w-full min-w-[800px] opacity-0 sm:bottom-3 sm:left-0 md:-bottom-10 lg:-bottom-14"
+    class="gsapHill2Popup absolute -bottom-10 -left-28 w-full min-w-[800px] opacity-0 sm:bottom-3 sm:left-0 md:-bottom-10 lg:-bottom-14"
   />
   <div class="absolute bottom-0 w-full md:-bottom-14">
     <svg
@@ -37,7 +37,7 @@ const { className = "" } = Astro.props;
             S700 128, 750 147
             S850 179, 874 179"
         stroke-linecap="round"
-        stroke="black"
+        stroke="none"
         vector-effect="non-scaling-stroke"></path>
     </svg>
   </div>
@@ -116,13 +116,14 @@ const { className = "" } = Astro.props;
   // Initialize animations on DOM content loaded
   document.addEventListener("DOMContentLoaded", initAnimations);
 
-  // Reinitialize animations on window resize
-  let resizeTimer: number;
+  // Reinitialize animations on window width change
+  let prevWidth = window.innerWidth;
   window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
+    const currentWidth = window.innerWidth;
+    if (currentWidth !== prevWidth) {
+      prevWidth = currentWidth;
       gsap.killTweensOf("#sledge");
       setupAnimation();
-    }, 250);
+    }
   });
 </script>
