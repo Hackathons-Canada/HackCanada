@@ -11,8 +11,9 @@ interface BaseAnimationOptions {
   ease?: string;
   delay?: number;
   start?: string;
+  end?: string; // New property
   inView?: boolean;
-  animateEachTime?: boolean; // New property
+  animateEachTime?: boolean;
 }
 
 interface FadeOptions extends BaseAnimationOptions {
@@ -46,20 +47,25 @@ function createAnimation(
   const {
     inView = true,
     start = "top bottom-=100",
+    end = "bottom top+=100", // New default end value
     animateEachTime = false,
   } = options;
 
+  const tween = gsap.fromTo(selector, from, to);
+
   if (inView) {
-    to.scrollTrigger = {
+    ScrollTrigger.create({
       trigger: selector,
       start: start,
+      end: end,
       toggleActions: animateEachTime
-        ? "restart pause resume pause"
+        ? "play reverse play reverse"
         : "play none none none",
-    };
+      animation: tween,
+    });
   }
 
-  return gsap.fromTo(selector, from, to);
+  return tween;
 }
 
 function createTimelineAnimation(
@@ -72,6 +78,7 @@ function createTimelineAnimation(
   const {
     inView = true,
     start = "top bottom-=100",
+    end = "bottom top+=100", // New default end value
     animateEachTime = false,
   } = options;
 
@@ -79,10 +86,11 @@ function createTimelineAnimation(
     ScrollTrigger.create({
       trigger: selector,
       start: start,
-      animation: timeline,
+      end: end,
       toggleActions: animateEachTime
-        ? "restart pause resume pause"
+        ? "play reverse play reverse"
         : "play none none none",
+      animation: timeline,
     });
   }
 
