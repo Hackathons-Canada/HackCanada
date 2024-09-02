@@ -1,3 +1,33 @@
 ---
+import { cn } from "@/lib/utils";
 
+interface Props {
+  className?: string;
+  id?: string;
+}
+
+const { className, id } = Astro.props;
 ---
+
+<h2
+  class={cn(
+    "section-heading-text heading-font text-6xl font-bold opacity-0 md:text-7xl py-6",
+    className,
+  )}
+  id={id}
+>
+  <slot />
+</h2>
+
+<script>
+  import { initGsapPopup } from "@/lib/gsapAnimations";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initGsapPopup(".section-heading-text", {
+      duration: 0.8,
+      delay: 0.2,
+      y: 50,
+      animateEachTime: true,
+    });
+  });
+</script>

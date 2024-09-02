@@ -1,4 +1,5 @@
 ---
+import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { aboutSection } from "@/config/site";
 import { marked } from "marked";
 
@@ -9,11 +10,10 @@ const parsedDescriptions = aboutSection.descriptions.map((description) =>
 ---
 
 <div class="container relative z-10 mx-auto px-4">
-  <h2
-    class="about-heading-text heading-font mb-6 text-6xl font-bold text-[#0A1F44] opacity-0 md:text-7xl"
-  >
+  <SectionHeading>
     {aboutSection.title}
-  </h2>
+  </SectionHeading>
+
   <div class="max-w-3xl space-y-6 text-lg md:text-xl">
     {
       parsedDescriptions.map((description, index) => (
@@ -35,6 +35,7 @@ const parsedDescriptions = aboutSection.descriptions.map((description) =>
     duration: 0.8,
     delay: 0.2,
     y: 50,
+    animateEachTime: true,
   });
 
   // Animate the paragraphs
