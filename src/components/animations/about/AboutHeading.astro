@@ -1,5 +1,11 @@
 ---
 import { aboutSection } from "@/config/site";
+import { marked } from "marked";
+
+// Parse the Markdown-style links in the descriptions
+const parsedDescriptions = aboutSection.descriptions.map((description) =>
+  marked.parseInline(description),
+);
 ---
 
 <div class="container relative z-10 mx-auto px-4">
@@ -9,12 +15,15 @@ import { aboutSection } from "@/config/site";
     {aboutSection.title}
   </h2>
   <div class="max-w-3xl space-y-6 text-lg text-[#485B7C] md:text-xl">
-    <p class="about-paragraph opacity-0">
-      {aboutSection.description1}
-    </p>
-    <p class="about-paragraph opacity-0">
-      {aboutSection.description2}
-    </p>
+    {
+      parsedDescriptions.map((description, index) => (
+        <p
+          id={`${index}`}
+          class="about-paragraph prose opacity-0 lg:prose-xl"
+          set:html={description}
+        />
+      ))
+    }
   </div>
 </div>
 
