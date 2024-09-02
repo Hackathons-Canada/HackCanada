@@ -27,17 +27,47 @@ export const socialLinks: SocialLink[] = [
   {
     href: "https://discord.com",
     icon: "/icons/discord.svg",
+    iconV2: "/icons/discord-footer.svg",
   },
   {
     href: "https://instagram.com",
     icon: "/icons/instagram.svg",
+    iconV2: "/icons/ig-footer.svg",
   },
   {
     href: "https://linkedin.com",
     icon: "/icons/linkedin.svg",
+    iconV2: "/icons/linkedin-footer.svg",
   },
   {
     href: "mailto:uQqzD@example.com",
     icon: "/icons/mail.svg",
+    iconV2: "/icons/mail-footer.svg",
+  },
+];
+
+export const footerCol1Links = [
+  {
+    label: "Apply as a Mentor",
+    href: "",
+  },
+  {
+    label: "Apply as a Judge",
+    href: "",
+  },
+];
+
+export const footerCol2Links = [
+  {
+    label: "Terms of Service",
+    href: "",
+  },
+  {
+    label: "Privacy Policy",
+    href: "",
+  },
+  {
+    label: "Contact Us",
+    href: "",
   },
 ];

@@ -9,7 +9,8 @@ export type NavLink = {
 export type SocialLink = {
   label?: string;
   href: string;
-  icon: string; // Update as needed depending on the type of icon we use
+  icon: string;
+  iconV2?: string;
 };
 
 export type FooterLink = {
