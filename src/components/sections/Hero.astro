@@ -4,7 +4,6 @@ import { heroSection } from "@/config/site";
 import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
 import Snowfall from "@/components/animations/hero/Snowfall.astro";
 import Hills from "@/components/animations/hero/Hills.astro";
-import Aurora from "@/components/animations/hero/Aurora.astro";
 
 interface Props {
   className?: string;
@@ -22,7 +21,7 @@ const { className, id } = Astro.props;
   aria-labelledby="Hero Section"
   id={id}
 >
-  <Aurora />
+  <!-- <Aurora /> -->
 
   <HeadingGSAP
     title={heroSection.title}
