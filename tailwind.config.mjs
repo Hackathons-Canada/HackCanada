@@ -1,5 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
+import tailwindTypography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -85,5 +86,6 @@ export default {
       });
     }),
     animatePlugin,
+    tailwindTypography,
   ],
 };

@@ -32,10 +32,10 @@ export const heroSection = {
 
 export const aboutSection = {
   title: "Who Are We?",
-  description1:
-    "Hack Canada is the premier event organized by <link>Hackathons Canada</link>. It's where the brightest minds gather to push the limits of innovation—because who needs sleep when you have code to write? Expect 36 hours of creativity, collaboration, and the occasional 'I-just-fixed-it' dance.",
-  description2:
+  descriptions: [
+    "Hack Canada is the premier event organized by [Hackathons Canada](https://hackathonscanada.com). It's where the brightest minds gather to push the limits of innovation—because who needs sleep when you have code to write? Expect 36 hours of creativity, collaboration, and the occasional 'I-just-fixed-it' dance.",
     "At Hack Canada, our motto is simple: have fun, make something awesome, and maybe even catch a nap between all the brilliance.",
+  ],
 };
 
 export const sponsorSection = {
