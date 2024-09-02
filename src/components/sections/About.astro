@@ -1,5 +1,6 @@
 ---
 import AboutHeading from "@/components/animations/about/AboutHeading.astro";
+import Glaciers from "@/components/animations/about/Glaciers.astro";
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import { cn } from "@/lib/utils";
 
@@ -13,4 +14,6 @@ const { className, id } = Astro.props;
 
 <SectionWrapper id={id} className={cn("relative overflow-hidden", className)}>
   <AboutHeading />
+
+  <Glaciers />
 </SectionWrapper>
