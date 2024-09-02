@@ -38,6 +38,13 @@ export const aboutSection = {
   ],
 };
 
+export const locationSection = {
+  tag: "Yep, its happening",
+  collegeName: "Laurier University | Business",
+  card1: { description: "" },
+  card2: { image: "", address: "" },
+};
+
 export const sponsorSection = {
   sponsors: [{ sponsorName: "", sponsorImage: "", sponsorWebsite: "" }],
   tagline: "more to come",

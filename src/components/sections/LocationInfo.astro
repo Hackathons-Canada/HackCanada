@@ -1,0 +1,18 @@
+---
+import IglooBg from "@/components/animations/location/IglooBg.astro";
+import LocationHeading from "@/components/animations/location/LocationHeading.astro";
+import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+  id?: string;
+}
+
+const { className, id } = Astro.props;
+---
+
+<SectionWrapper id={id} className={cn(className)}>
+  <LocationHeading />
+  <IglooBg />
+</SectionWrapper>
