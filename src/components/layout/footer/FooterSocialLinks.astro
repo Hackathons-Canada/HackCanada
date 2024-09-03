@@ -1,0 +1,22 @@
+---
+import { socialLinks } from "@/config/links";
+import { Image } from "astro:assets";
+---
+
+<ul class="flex items-center gap-6 md:gap-6">
+  {
+    socialLinks.map((item) => (
+      <li>
+        <a href={item.href} target="_blank" rel="noopener noreferrer">
+          <Image
+            src={item.iconV2 || item.icon}
+            alt={item.label || item.href}
+            width={20}
+            height={20}
+            class="size-5 xl:size-6"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

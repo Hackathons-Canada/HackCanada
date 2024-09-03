@@ -1,0 +1,39 @@
+---
+import logo from "../../../images/logo-v1.webp";
+import { Image } from "astro:assets";
+---
+
+<div class="space-y-8 sm:space-y-4">
+  <div class="flex items-center max-sm:flex-col max-sm:text-center sm:gap-4">
+    <Image
+      src={logo}
+      alt="logo"
+      width={144}
+      height={144}
+      class="size-28 object-contain max-sm:size-16"
+    />
+    <p class="text-xl font-bold sm:text-2xl">
+      Hack<br class="max-sm:hidden" />{" "}Canada
+    </p>
+  </div>
+
+  <div class="flex-col items-center max-sm:flex">
+    <p
+      class="max-md:text-600 font-semibold text-slate-600 max-sm:text-sm sm:mb-2"
+    >
+      Hosted by
+    </p>
+    <div class="flex items-center gap-4">
+      <Image
+        src="/hackathons-canada-logo.webp"
+        alt="Hackathons Canada logo"
+        width={144}
+        height={144}
+        class="size-16 object-contain max-sm:size-10"
+      />
+      <p class="font-bold sm:text-lg">
+        Hackathons<br class="max-sm:hidden" />{" "}Canada
+      </p>
+    </div>
+  </div>
+</div>
