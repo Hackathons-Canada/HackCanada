@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 import NavbarToggle from "./NavbarToggle.astro";
 import NavLinks from "./NavLinks.astro";
 import Image from "astro/components/Image.astro";
-import logo from "../../../images/logo-v1.webp";
-import NavbarSocials from "@/components/layout/navbar/NavbarSocials.astro";
+import NavbarSocials from "./NavbarSocials.astro";
 
 interface Props {
   className?: string;
@@ -26,7 +25,7 @@ const { className } = Astro.props;
     <div class="flex w-full items-center gap-8 max-lg:justify-between">
       <a href="/" class="flex items-center">
         <Image
-          src={logo}
+          src={"/logo-v1.webp"}
           alt="logo"
           width={144}
           height={144}
