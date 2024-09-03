@@ -1,5 +1,4 @@
 ---
-import IglooBg from "@/components/animations/location/IglooBg.astro";
 import LocationCard from "@/components/animations/location/LocationCard.astro";
 import LocationHeading from "@/components/animations/location/LocationHeading.astro";
 import { cn } from "@/lib/utils";
@@ -13,7 +12,68 @@ const { className, id } = Astro.props;
 ---
 
 <section id={id} class={cn("relative", className)}>
-  <LocationHeading />
-  <LocationCard />
-  <IglooBg />
+  <div
+    id="wrapper"
+    class="locationCard-wrapper relative flex h-screen w-screen flex-col overflow-hidden bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/bg.png');"
+  >
+    <LocationHeading />
+    <LocationCard />
+  </div>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function setupScrollTrigger() {
+    const wrapper = document.getElementById("wrapper");
+    const card = document.getElementById("card");
+    const items = document.querySelectorAll(".location-item");
+
+    if (wrapper && card && items.length > 1) {
+      let scrollTriggerInstance: ScrollTrigger | undefined;
+
+      function createAnimation() {
+        if (scrollTriggerInstance) {
+          scrollTriggerInstance.kill();
+        }
+
+        const totalWidth = 100 * (items.length - 1);
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: () => `${totalWidth}%`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        tl.to(card, {
+          x: () => `-${totalWidth}%`,
+          ease: "none",
+        });
+
+        const allScrollTriggers = ScrollTrigger.getAll();
+        scrollTriggerInstance = allScrollTriggers[allScrollTriggers.length - 1];
+      }
+
+      createAnimation();
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupScrollTrigger);
+  } else {
+    setupScrollTrigger();
+  }
+
+  document.addEventListener("astro:before-swap", () => {
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+  });
+</script>
