@@ -1,0 +1,22 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+import Prose from "@/components/utility/Prose.astro";
+import { locationSection } from "@/config/site";
+---
+
+<div id="card" class="locationCard relative flex-grow">
+  {
+    locationSection.cards.map((card, index) => (
+      <div
+        class={`location-item absolute inset-0 flex items-center justify-center`}
+        style={`transform: translateX(${index * 100}%);`}
+      >
+        <Card className="location-item-card w-3/4 max-w-xl">
+          <CardContent className="p-6">
+            <Prose>{card.description}</Prose>
+          </CardContent>
+        </Card>
+      </div>
+    ))
+  }
+</div>

@@ -131,7 +131,7 @@ export function initGsapPopup(
   selector: string,
   options: PopupOptions = {},
 ): gsap.core.Tween {
-  const { duration = 0.5, ease = "back.out(1.7)", delay = 0, y = 70 } = options;
+  const { duration = 0.8, ease = "back.out(1.7)", delay = 0, y = 70 } = options;
 
   const from: gsap.TweenVars = {
     opacity: 0,
