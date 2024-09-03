@@ -42,7 +42,7 @@ export const socialLinks: SocialLink[] = [
   {
     href: "mailto:uQqzD@example.com",
     icon: "/icons/mail.svg",
-    iconV2: "/icons/mail-footer.svg",
+    iconV2: "/icons/gmail-footer.svg",
   },
 ];
 

@@ -49,7 +49,11 @@ const { className } = Astro.props;
 
       <div class="flex items-end justify-end gap-8 md:gap-12 xl:gap-16">
         <ul class="space-y-2.5">
-          {footerCol1Links.map((item) => <li class="">{item.label}</li>)}
+          {
+            footerCol1Links.map((item) => (
+              <li class="cursor-not-allowed opacity-50">{item.label}</li>
+            ))
+          }
         </ul>
 
         <ul class="space-y-2.5">
@@ -62,10 +66,12 @@ const { className } = Astro.props;
   <hr class="mx-auto my-8 max-w-7xl border-t-2 border-t-slate-700" />
 
   <div
-    class="mx-auto flex max-w-7xl items-center justify-between max-lg:flex-col-reverse"
+    class="mx-auto flex max-w-7xl items-center justify-between py-4 max-lg:flex-col-reverse max-lg:gap-8"
   >
-    <p class="text-slate-600">© 2025 Hack Canada. All rights reserved.</p>
-    <ul class="flex items-center gap-4 md:gap-6 lg:gap-8">
+    <p class="text-center text-slate-600">
+      © 2025 Hack Canada. All rights reserved.
+    </p>
+    <ul class="flex items-center gap-6 md:gap-6">
       {
         socialLinks.map((item) => (
           <li class="">
@@ -73,9 +79,9 @@ const { className } = Astro.props;
               <Image
                 src={item.iconV2 || item.icon}
                 alt={item.label || item.href}
-                width={32}
-                height={32}
-                class="size-6 xl:size-7"
+                width={20}
+                height={20}
+                class="size-5 xl:size-6"
               />
             </a>
           </li>
