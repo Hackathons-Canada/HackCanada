@@ -1,3 +1,89 @@
 ---
-
+import { Card, CardContent } from "@/components/ui/card";
+import Prose from "@/components/utility/Prose.astro";
+import { locationSection } from "@/config/site";
 ---
+
+<div
+  id="wrapper"
+  class="locationCard-wrapper h-[100vh] w-[100vw] overflow-hidden"
+>
+  <div id="card" class="locationCard relative h-full w-full">
+    {
+      locationSection.cards.map((card, index) => (
+        <div
+          class={`location-item absolute flex h-full w-full items-center justify-center text-2xl font-bold`}
+          style={`transform: translateX(${index * 100}%);`}
+        >
+          <Card>
+            <CardContent>
+              <Prose>{card.description}</Prose>
+            </CardContent>
+          </Card>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function setupScrollTrigger() {
+    const wrapper = document.getElementById("wrapper");
+    const card = document.getElementById("card");
+    const items = document.querySelectorAll(".location-item");
+
+    if (wrapper && card && items.length > 1) {
+      let scrollTriggerInstance: ScrollTrigger | undefined;
+
+      function createAnimation() {
+        // Kill the previous ScrollTrigger instance if it exists
+        if (scrollTriggerInstance) {
+          scrollTriggerInstance.kill();
+        }
+
+        const totalWidth = 100 * (items.length - 1);
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: () => `${totalWidth}%`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            markers: true,
+          },
+        });
+
+        tl.to(card, {
+          x: () => `-${totalWidth}%`,
+          ease: "none",
+        });
+
+        // Store the new ScrollTrigger instance
+        const allScrollTriggers = ScrollTrigger.getAll();
+        scrollTriggerInstance = allScrollTriggers[allScrollTriggers.length - 1];
+      }
+
+      // Initial creation
+      createAnimation();
+    }
+  }
+
+  // Run setup when the DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupScrollTrigger);
+  } else {
+    setupScrollTrigger();
+  }
+
+  // Clean up function
+  document.addEventListener("astro:before-swap", () => {
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+  });
+</script>

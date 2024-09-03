@@ -39,12 +39,28 @@ export const aboutSection = {
 };
 
 export const locationSection = {
-  tag: "Yep, its happening",
+  tag: "Yep, it's happening",
   collegeName: "Laurier University",
-  card1: { description: "" },
-  card2: { image: "", address: "" },
+  cards: [
+    {
+      title: "Event Details",
+      description:
+        "Join us for an exciting event at Laurier University. Don't miss out on this opportunity!",
+      image: null,
+    },
+    {
+      title: "Location",
+      description: "75 University Ave W, Waterloo, ON N2L 3C5",
+      image: "/api/placeholder/400/200",
+    },
+    {
+      title: "Schedule",
+      description:
+        "Check out our event schedule and plan your day accordingly.",
+      image: null,
+    },
+  ],
 };
-
 export const sponsorSection = {
   sponsors: [{ sponsorName: "", sponsorImage: "", sponsorWebsite: "" }],
   tagline: "more to come",
