@@ -30,12 +30,12 @@ export const socialLinks: SocialLink[] = [
     iconV2: "/icons/discord-footer.svg",
   },
   {
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/hackathoncanada/",
     icon: "/icons/instagram.svg",
     iconV2: "/icons/ig-footer.svg",
   },
   {
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/company/hackathonscanada/?originalSubdomain=ca",
     icon: "/icons/linkedin.svg",
     iconV2: "/icons/linkedin-footer.svg",
   },
