@@ -6,10 +6,11 @@ export type NavLink = {
   external?: string; // If we want to open the link in a new tab
 };
 
-export type SocialLinks = {
+export type SocialLink = {
   label?: string;
   href: string;
-  icon: string; // Update as needed depending on the type of icon we use
+  icon: string;
+  iconV2?: string;
 };
 
 export type FooterLink = {
