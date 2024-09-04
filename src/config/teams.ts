@@ -18,7 +18,7 @@ export const teamMembers: TeamMember[] = [
   // TeamA members
   {
     name: "Alice",
-    image: "/images/alice.jpg",
+    image: "/teamAvatars/alice.webp",
     team: "TeamA",
     tag: "Developer",
     link: "https://alice-portfolio.com",
@@ -26,7 +26,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Bob",
-    image: "/images/bob.jpg",
+    image: "/teamAvatars/bob.webp",
     team: "TeamA",
     tag: "Designer",
     link: "https://twitter.com/bob_designs",
@@ -34,7 +34,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Charlie",
-    image: "/images/charlie.jpg",
+    image: "/teamAvatars/charlie.webp",
     team: "TeamA",
     tag: "Product Manager",
     link: "https://linkedin.com/in/charlie-pm",
@@ -42,34 +42,9 @@ export const teamMembers: TeamMember[] = [
   },
 
   // TeamB members
-
   {
     name: "David",
-    image: "/images/david.jpg",
-    team: "TeamB",
-    tag: "Frontend Developer",
-    link: "https://david-portfolio.com",
-    quote: "Creating seamless user experiences through code.",
-  },
-  {
-    name: "David",
-    image: "/images/david.jpg",
-    team: "TeamB",
-    tag: "Frontend Developer",
-    link: "https://david-portfolio.com",
-    quote: "Creating seamless user experiences through code.",
-  },
-  {
-    name: "David",
-    image: "/images/david.jpg",
-    team: "TeamB",
-    tag: "Frontend Developer",
-    link: "https://david-portfolio.com",
-    quote: "Creating seamless user experiences through code.",
-  },
-  {
-    name: "David",
-    image: "/images/david.jpg",
+    image: "/teamAvatars/david.webp",
     team: "TeamB",
     tag: "Frontend Developer",
     link: "https://david-portfolio.com",
@@ -77,7 +52,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Eva",
-    image: "/images/eva.jpg",
+    image: "/teamAvatars/eva.webp",
     team: "TeamB",
     tag: "Backend Developer",
     link: "https://github.com/eva-dev",
@@ -85,7 +60,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Frank",
-    image: "/images/frank.jpg",
+    image: "/teamAvatars/frank.webp",
     team: "TeamB",
     tag: "UX Researcher",
     link: "https://medium.com/@frank_ux",
@@ -93,7 +68,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Grace",
-    image: "/images/grace.jpg",
+    image: "/teamAvatars/grace.webp",
     team: "TeamB",
     tag: "Data Scientist",
     link: "https://kaggle.com/grace_data",
@@ -101,7 +76,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Henry",
-    image: "/images/henry.jpg",
+    image: "/teamAvatars/henry.webp",
     team: "TeamB",
     tag: "DevOps Engineer",
     link: "https://henry-devops.tech",
@@ -109,7 +84,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Ivy",
-    image: "/images/ivy.jpg",
+    image: "/teamAvatars/ivy.webp",
     team: "TeamB",
     tag: "Quality Assurance",
     link: "https://linkedin.com/in/ivy-qa",
