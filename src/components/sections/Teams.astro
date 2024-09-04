@@ -1,5 +1,6 @@
 ---
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 
@@ -61,37 +62,64 @@ const imageExists = async (url: string) => {
 
 <SectionWrapper
   id={id}
-  className={cn(
-    "flex items-end overflow-hidden border border-black px-5",
-    className,
-  )}
+  className={cn("relative flex flex-col overflow-hidden px-5", className)}
 >
-  <div class="relative flex h-[200px] w-full gap-10 bg-black/60">
-    {
-      teams.map((team, index) => {
-        const memberCount = team.teamMembers.length;
-        const [compartment1Count, compartment2Count] =
-          getCompartmentSizes(memberCount);
-        const containerWidth = getContainerWidth(memberCount);
-        const isCompartment1Visible = compartment1Count > 0;
-        const shouldDisplayBoat = memberCount >= 3;
+  <SectionHeading className="text-center">Meet Our Team</SectionHeading>
 
-        return (
-          shouldDisplayBoat && (
-            <div
-              class="boat relative h-0 shrink-0 rounded border-l-[80px] border-r-[50px] border-t-[100px] border-l-transparent border-r-transparent border-t-amber-700"
-              style={`width: ${containerWidth}; min-width: 550px; max-width: 1000px;`}
-              data-index={index}
-              aria-hidden="true"
-            >
-              {isCompartment1Visible && (
-                <div class="absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-blue-500/25 border-l-transparent border-r-transparent">
+  <div class="absolute bottom-0 left-0 h-fit w-full">
+    <div class="relative flex h-[150px] w-full gap-10">
+      {
+        teams.map((team, index) => {
+          const memberCount = team.teamMembers.length;
+          const [compartment1Count, compartment2Count] =
+            getCompartmentSizes(memberCount);
+          const containerWidth = getContainerWidth(memberCount);
+          const isCompartment1Visible = compartment1Count > 0;
+          const shouldDisplayBoat = memberCount >= 3;
+
+          return (
+            shouldDisplayBoat && (
+              <div
+                class="boat relative h-0 shrink-0 rounded border-l-[80px] border-r-[50px] border-t-[100px] border-l-transparent border-r-transparent border-t-amber-700"
+                style={`width: ${containerWidth}; min-width: 550px; max-width: 1000px;`}
+                data-index={index}
+                aria-hidden="true"
+              >
+                {isCompartment1Visible && (
+                  <>
+                    <div class="absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent">
+                      {team.teamMembers
+                        .slice(0, compartment1Count)
+                        .map(async (member, index) => (
+                          <div
+                            class="border-1 absolute h-[80px] w-[80px] overflow-hidden rounded-full border border-amber-800 border-b-transparent"
+                            style={`left: ${index * 90}px; top: 33px;`}
+                          >
+                            <img
+                              src={
+                                (await imageExists(member.image))
+                                  ? member.image
+                                  : "/teamAvatars/default-avatar.webp"
+                              }
+                              alt={`${member.name}'s avatar`}
+                              width={80}
+                              height={80}
+                              class="h-full w-full object-cover"
+                            />
+                          </div>
+                        ))}
+                    </div>
+                    <div class="absolute -top-[300px] right-[65px] h-px w-[calc(70%-120px)] bg-amber-600" />
+                  </>
+                )}
+
+                <div class="absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent">
                   {team.teamMembers
-                    .slice(0, compartment1Count)
+                    .slice(-compartment2Count)
                     .map(async (member, index) => (
                       <div
-                        class="border-1 absolute h-[80px] w-[80px] overflow-hidden rounded-full border border-amber-800 border-b-transparent"
-                        style={`left: ${index * 90}px; top: 33px;`}
+                        class="border-1 absolute h-[80px] w-[80px] overflow-hidden rounded-full border border-amber-800"
+                        style={`left: ${index * 90}px; top: 20px;`}
                       >
                         <img
                           src={
@@ -107,61 +135,43 @@ const imageExists = async (url: string) => {
                       </div>
                     ))}
                 </div>
-              )}
-
-              <div class="absolute -top-[200px] right-[20px] h-px w-[calc(80%+20px)] bg-amber-600" />
-
-              <div class="absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-blue-500/25 border-l-transparent border-r-transparent">
-                {team.teamMembers
-                  .slice(-compartment2Count)
-                  .map(async (member, index) => (
-                    <div
-                      class="border-1 absolute h-[80px] w-[80px] overflow-hidden rounded-full border border-amber-800"
-                      style={`left: ${index * 90}px; top: 20px;`}
-                    >
-                      <img
-                        src={
-                          (await imageExists(member.image))
-                            ? member.image
-                            : "/teamAvatars/default-avatar.webp"
-                        }
-                        alt={`${member.name}'s avatar`}
-                        width={80}
-                        height={80}
-                        class="h-full w-full object-cover"
-                      />
-                    </div>
-                  ))}
-              </div>
-
-              <div
-                class="absolute"
-                style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
-              >
-                <div class="absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden">
-                  <div class="/skew-x-12 absolute inset-0 transform rounded-md bg-gradient-to-br from-blue-500 to-blue-700" />
-                  <div class="absolute inset-0 translate-x-4 -skew-x-12 scale-x-75 transform bg-white bg-opacity-20" />
-                  <div class="absolute left-0 top-0 h-2 w-full rounded-full bg-yellow-400" />
-                  <div class="absolute bottom-0 left-0 h-2 w-full rounded-full bg-yellow-400" />
-                  <span class="relative z-10 text-sm font-bold text-white drop-shadow-md">
-                    {team.teamName}
-                  </span>
-                </div>
-                <div class="h-[100px] w-2 rounded-t-full bg-gradient-to-b from-gray-400 to-gray-600" />
-              </div>
-
-              <div class="absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600" />
-
-              {[75, 50, 25].map((offset, index) => (
+                <div class="absolute -top-[200px] right-[20px] h-px w-[calc(80%+20px)] bg-amber-600" />
                 <div
-                  class={`absolute h-px bg-gradient-to-r from-transparent via-black to-transparent`}
-                  style={`top: -${offset}px; left: ${10 * index}px; width: ${100 - 10 * index}%;`}
-                />
-              ))}
-            </div>
-          )
-        );
-      })
-    }
+                  class="absolute"
+                  style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
+                >
+                  <div class="absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden">
+                    <div class="relative h-[75px] w-[150px] bg-white shadow-md">
+                      {/* Left red bar */}
+                      <div class="absolute left-0 top-0 h-full w-1/4 bg-red-600" />
+
+                      {/* Right red bar */}
+                      <div class="absolute right-0 top-0 h-full w-1/4 bg-red-600" />
+
+                      {/* Center white area with team name */}
+                      <div class="absolute left-1/4 top-0 flex h-full w-1/2 items-center justify-center">
+                        <span class="px-1 text-center text-sm font-bold text-red-600">
+                          {team.teamName}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="h-[100px] w-2 rounded-t-full bg-gradient-to-b from-amber-700 to-amber-900" />
+                </div>
+
+                <div class="absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600" />
+
+                {[75, 50, 25].map((offset, index) => (
+                  <div
+                    class={`absolute h-px bg-gradient-to-r from-transparent via-black to-transparent`}
+                    style={`top: -${offset}px; left: ${10 * index}px; width: ${100 - 10 * index}%;`}
+                  />
+                ))}
+              </div>
+            )
+          );
+        })
+      }
+    </div>
   </div>
 </SectionWrapper>
