@@ -1,5 +1,7 @@
 ---
+// src/components/TeamDisplay.astro
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -8,6 +10,124 @@ interface Props {
 }
 
 const { className, id } = Astro.props;
+
+const getContainerWidth = (memberCount: number): string => {
+  const widths = {
+    13: "1000px",
+    12: "950px",
+    11: "900px",
+    10: "800px",
+    9: "750px",
+    8: "650px",
+    7: "650px",
+    6: "550px",
+    5: "550px",
+    4: "550px",
+    3: "550px",
+  };
+  return widths[memberCount as keyof typeof widths] || "550px";
+};
+const getCompartmentSizes = (memberCount: number): [number, number] => {
+  const sizes: { [key: number]: [number, number] } = {
+    13: [5, 8],
+    12: [5, 7],
+    11: [4, 7],
+    10: [4, 6],
+    9: [3, 6],
+    8: [3, 5],
+    7: [2, 5],
+    6: [2, 4],
+    5: [1, 4],
+    4: [0, 4],
+    3: [0, 3],
+  };
+  return sizes[memberCount] || [0, memberCount];
+};
 ---
 
-<SectionWrapper id={id} className={cn(className)}> Teams </SectionWrapper>
+<SectionWrapper
+  id={id}
+  className={cn(
+    "flex items-end overflow-hidden border border-black px-5",
+    className,
+  )}
+>
+  <div class="relative flex h-[200px] w-full gap-10 bg-black/60">
+    {
+      teams.map((team, index) => {
+        const memberCount = team.teamMembers.length;
+        const [compartment1Count, compartment2Count] =
+          getCompartmentSizes(memberCount);
+        const containerWidth = getContainerWidth(memberCount);
+        const isCompartment1Visible = compartment1Count > 0;
+        const shouldDisplayBoat = memberCount >= 3;
+
+        return (
+          shouldDisplayBoat && (
+            <div
+              class="boat relative h-0 shrink-0 rounded border-l-[80px] border-r-[50px] border-t-[100px] border-l-transparent border-r-transparent border-t-amber-700"
+              style={`width: ${containerWidth}; min-width: 550px; max-width: 1000px;`}
+              data-index={index}
+              aria-hidden="true"
+            >
+              {isCompartment1Visible && (
+                <div class="absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-blue-500/25 border-l-transparent border-r-transparent">
+                  {team.teamMembers
+                    .slice(0, compartment1Count)
+                    .map((member, index) => (
+                      <div
+                        class="border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800 border-b-transparent"
+                        style={`left: ${index * 90}px; top: 33px;`}
+                      >
+                        {member.name}
+                      </div>
+                    ))}
+                </div>
+              )}
+
+              <div class="absolute -top-[200px] right-[20px] h-px w-[calc(80%+20px)] bg-amber-600" />
+
+              <div class="absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-blue-500/25 border-l-transparent border-r-transparent">
+                {team.teamMembers
+                  .slice(-compartment2Count)
+                  .map((member, index) => (
+                    <div
+                      class="border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800"
+                      style={`left: ${index * 90}px; top: 20px;`}
+                    >
+                      {member.name}
+                    </div>
+                  ))}
+              </div>
+
+              <div
+                class="absolute"
+                style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
+              >
+                <div class="absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden">
+                  <div class="/skew-x-12 absolute inset-0 transform rounded-md bg-gradient-to-br from-blue-500 to-blue-700" />
+                  <div class="absolute inset-0 translate-x-4 -skew-x-12 scale-x-75 transform bg-white bg-opacity-20" />
+                  <div class="absolute left-0 top-0 h-2 w-full rounded-full bg-yellow-400" />
+                  <div class="absolute bottom-0 left-0 h-2 w-full rounded-full bg-yellow-400" />
+                  <span class="relative z-10 text-sm font-bold text-white drop-shadow-md">
+                    {team.teamName}
+                  </span>
+                </div>
+                <div class="h-[100px] w-2 rounded-t-full bg-gradient-to-b from-gray-400 to-gray-600" />
+              </div>
+
+              <div class="absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600" />
+
+              {[75, 50, 25].map((offset, index) => (
+                <div
+                  class={`absolute h-px bg-gradient-to-r from-transparent via-black to-transparent`}
+                  style={`top: -${offset}px; left: ${10 * index}px; width: ${100 - 10 * index}%;`}
+                />
+              ))}
+            </div>
+          )
+        );
+      })
+    }
+  </div>
+</SectionWrapper>
