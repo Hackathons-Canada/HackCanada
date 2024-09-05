@@ -180,6 +180,8 @@ const imageExists = async (url: string): Promise<boolean> => {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  let marqueeTimeline: gsap.core.Timeline;
+
   function infiniteScroll() {
     const boatContainer = document.querySelector(
       ".boat-container",
@@ -199,27 +201,45 @@ const imageExists = async (url: string): Promise<boolean> => {
 
     gsap.set(boatContainer, { x: window.innerWidth });
 
-    const tl = gsap.timeline({ repeat: -1 });
+    marqueeTimeline = gsap.timeline({ repeat: -1 });
 
-    tl.to(boatContainer, {
-      x: -(totalWidth + 100),
-      duration: 30,
-      ease: "none",
-    }).set(boatContainer, { x: window.innerWidth }, "+=0.01");
+    marqueeTimeline
+      .to(boatContainer, {
+        x: -(totalWidth + 100),
+        duration: 30,
+        ease: "none",
+      })
+      .set(boatContainer, { x: window.innerWidth }, "+=0.01");
 
     // Add wiggle effect to each boat
     boats.forEach((boat) => {
       gsap.to(boat, {
-        yPercent: () => gsap.utils.random(-10, 10),
-        rotate: () => gsap.utils.random(-5, 5),
+        yPercent: () => gsap.utils.random(-15, 15),
+        rotate: () => gsap.utils.random(-2, 2),
         duration: () => gsap.utils.random(1.5, 2.5),
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
     });
+
+    // Add event listeners to team members
+    const teamMembers = document.querySelectorAll(
+      ".team-member-1, .team-member-2",
+    );
+    teamMembers.forEach((member) => {
+      member.addEventListener("mouseenter", pauseMarquee);
+      member.addEventListener("mouseleave", resumeMarquee);
+    });
   }
 
+  function pauseMarquee() {
+    marqueeTimeline.pause();
+  }
+
+  function resumeMarquee() {
+    marqueeTimeline.play();
+  }
   function animateTeams() {
     const boats = document.querySelectorAll(".boat");
 
