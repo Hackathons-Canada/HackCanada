@@ -66,7 +66,11 @@ const imageExists = async (url: string): Promise<boolean> => {
   >
 
   <div class="team-container absolute bottom-0 left-0 h-fit w-full">
-    <div class="boat-container relative flex h-[150px] w-full gap-10">
+    <div
+      class="boat-container relative flex h-[150px] w-full gap-10"
+      role="list"
+      aria-label="Team boats"
+    >
       {
         teams.map((team, index) => {
           const memberCount = team.teamMembers.length;
@@ -82,7 +86,8 @@ const imageExists = async (url: string): Promise<boolean> => {
                 class="boat relative h-0 shrink-0 rounded border-l-[80px] border-r-[50px] border-t-[100px] border-l-transparent border-r-transparent border-t-amber-700"
                 style={`width: ${containerWidth}; min-width: 550px; max-width: 1000px;`}
                 data-index={index}
-                aria-hidden="true"
+                role="listitem"
+                aria-label={`${team.teamName} boat`}
               >
                 <div
                   class="flag-container absolute"
@@ -103,15 +108,58 @@ const imageExists = async (url: string): Promise<boolean> => {
                 </div>
 
                 {isCompartment1Visible && (
-                  <div class="compartment-1-group absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent">
+                  <div
+                    class="compartment-1-group absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent"
+                    role="group"
+                    aria-label="Compartment 1"
+                  >
                     <div class="compartment-1">
                       {team.teamMembers
                         .slice(0, compartment1Count)
-                        .map(async (member, index) => (
+                        .map(async (member, memberIndex) => (
                           <div
-                            class="team-member-1 border-1 absolute h-[80px] w-[80px] overflow-hidden rounded-full border border-amber-800 border-b-transparent"
-                            style={`left: ${index * 90}px; top: 33px;`}
+                            class="team-member-1 border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800 border-b-transparent"
+                            style={`left: ${memberIndex * 90}px; top: 33px;`}
+                            role="img"
+                            aria-label={`${member.name}'s avatar`}
                           >
+                            <div class="h-full w-full overflow-hidden rounded-full">
+                              <img
+                                src={
+                                  (await imageExists(member.image))
+                                    ? member.image
+                                    : "/teamAvatars/default-avatar.webp"
+                                }
+                                alt={`${member.name}'s avatar`}
+                                width={80}
+                                height={80}
+                                class="h-full w-full object-cover"
+                                loading="lazy"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                    <div class="compartment-1-divider absolute -top-[0px] right-[0px] h-px w-full bg-amber-600" />
+                  </div>
+                )}
+
+                <div
+                  class="compartment-2-group absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent"
+                  role="group"
+                  aria-label="Compartment 2"
+                >
+                  <div class="compartment-2">
+                    {team.teamMembers
+                      .slice(-compartment2Count)
+                      .map(async (member, memberIndex) => (
+                        <div
+                          class="team-member-2 border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800"
+                          style={`left: ${memberIndex * 90}px; top: 20px;`}
+                          role="img"
+                          aria-label={`${member.name}'s avatar`}
+                        >
+                          <div class="h-full w-full overflow-hidden rounded-full">
                             <img
                               src={
                                 (await imageExists(member.image))
@@ -122,35 +170,9 @@ const imageExists = async (url: string): Promise<boolean> => {
                               width={80}
                               height={80}
                               class="h-full w-full object-cover"
+                              loading="lazy"
                             />
                           </div>
-                        ))}
-                    </div>
-                    <div class="compartment-1-divider absolute -top-[0px] right-[0px] h-px w-full bg-amber-600" />
-                  </div>
-                )}
-
-                <div class="compartment-2-group absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent">
-                  <div class="compartment-2">
-                    {team.teamMembers
-                      .slice(-compartment2Count)
-                      .map(async (member, index) => (
-                        <div
-                          class="team-member-2 border-1 absolute h-[80px] w-[80px] overflow-hidden rounded-full border border-amber-800"
-                          style={`left: ${index * 90}px; top: 20px;`}
-                        >
-                          <img
-                            src={
-                              (await imageExists(member.image))
-                                ? member.image
-                                : "/teamAvatars/default-avatar.webp"
-                            }
-                            alt={`${member.name}'s avatar`}
-                            width={80}
-                            height={80}
-                            class="h-full w-full object-cover"
-                            loading="lazy"
-                          />
                         </div>
                       ))}
                   </div>
@@ -159,10 +181,11 @@ const imageExists = async (url: string): Promise<boolean> => {
 
                 <div class="boat-base absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600" />
 
-                {[75, 50, 25].map((offset, index) => (
+                {[75, 50, 25].map((offset, lineIndex) => (
                   <div
                     class={`water-line absolute h-px bg-gradient-to-r from-transparent via-black to-transparent`}
-                    style={`top: -${offset}px; left: ${10 * index}px; width: ${100 - 10 * index}%;`}
+                    style={`top: -${offset}px; left: ${10 * lineIndex}px; width: ${100 - 10 * lineIndex}%;`}
+                    aria-hidden="true"
                   />
                 ))}
               </div>
@@ -240,6 +263,7 @@ const imageExists = async (url: string): Promise<boolean> => {
   function resumeMarquee() {
     marqueeTimeline.play();
   }
+
   function animateTeams() {
     const boats = document.querySelectorAll(".boat");
 
@@ -247,7 +271,7 @@ const imageExists = async (url: string): Promise<boolean> => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: boat,
-          start: "top bottom-=100",
+          start: "top bottom-=50",
           end: "bottom top",
           toggleActions: "play none none reverse",
         },
@@ -295,8 +319,6 @@ const imageExists = async (url: string): Promise<boolean> => {
         },
         "-=0.5",
       );
-
-      // Remove flag and flagpole animations from here
     });
 
     gsap.from(".team-heading", {
@@ -318,42 +340,44 @@ const imageExists = async (url: string): Promise<boolean> => {
 
     boats.forEach((boat) => {
       const flagContainer = boat.querySelector(".flag-container");
-      const flag = flagContainer!.querySelector(".flag");
-      const flagpole = flagContainer!.querySelector(".flagpole");
+      const flag = flagContainer?.querySelector(".flag");
+      const flagpole = flagContainer?.querySelector(".flagpole");
 
-      // Set initial state
-      gsap.set(flag, { autoAlpha: 0, y: -50 });
-      gsap.set(flagpole, { autoAlpha: 0, y: 50 });
+      if (flag && flagpole) {
+        // Set initial state
+        gsap.set(flag, { autoAlpha: 0, y: -50 });
+        gsap.set(flagpole, { autoAlpha: 0, y: 50 });
 
-      boat.addEventListener("mouseenter", () => {
-        gsap.to(flag, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "back.out(1.7)",
+        boat.addEventListener("mouseenter", () => {
+          gsap.to(flag, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          });
+          gsap.to(flagpole, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          });
         });
-        gsap.to(flagpole, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        });
-      });
 
-      boat.addEventListener("mouseleave", () => {
-        gsap.to(flag, {
-          autoAlpha: 0,
-          y: -50,
-          duration: 0.3,
-          ease: "power2.in",
+        boat.addEventListener("mouseleave", () => {
+          gsap.to(flag, {
+            autoAlpha: 0,
+            y: -50,
+            duration: 0.3,
+            ease: "power2.in",
+          });
+          gsap.to(flagpole, {
+            autoAlpha: 0,
+            y: 50,
+            duration: 0.3,
+            ease: "power2.in",
+          });
         });
-        gsap.to(flagpole, {
-          autoAlpha: 0,
-          y: 50,
-          duration: 0.3,
-          ease: "power2.in",
-        });
-      });
+      }
     });
   }
 
