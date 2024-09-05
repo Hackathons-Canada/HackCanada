@@ -40,16 +40,16 @@ export const teamMembers: TeamMember[] = [
     link: "https://linkedin.com/in/charlie-pm",
     quote: "Turning ideas into reality, one sprint at a time.",
   },
+  {
+    name: "Diana",
+    image: "/teamAvatars/diana.webp",
+    team: "TeamA",
+    tag: "Marketing Specialist",
+    link: "https://instagram.com/diana_markets",
+    quote: "Bridging the gap between product and people.",
+  },
 
   // TeamB members
-  {
-    name: "David",
-    image: "/teamAvatars/david.webp",
-    team: "TeamB",
-    tag: "Frontend Developer",
-    link: "https://david-portfolio.com",
-    quote: "Creating seamless user experiences through code.",
-  },
   {
     name: "David",
     image: "/teamAvatars/david.webp",
@@ -98,6 +98,40 @@ export const teamMembers: TeamMember[] = [
     link: "https://linkedin.com/in/ivy-qa",
     quote: "Quality is not an act, it's a habit.",
   },
+
+  // TeamC members (new team)
+  {
+    name: "Jack",
+    image: "/teamAvatars/jack.webp",
+    team: "TeamC",
+    tag: "AI Researcher",
+    link: "https://jack-ai.research",
+    quote: "Pushing the boundaries of artificial intelligence.",
+  },
+  {
+    name: "Karen",
+    image: "/teamAvatars/karen.webp",
+    team: "TeamC",
+    tag: "Blockchain Developer",
+    link: "https://github.com/karen-blockchain",
+    quote: "Decentralizing the future, one block at a time.",
+  },
+  {
+    name: "Leo",
+    image: "/teamAvatars/leo.webp",
+    team: "TeamC",
+    tag: "VR/AR Specialist",
+    link: "https://leo-vr-portfolio.com",
+    quote: "Blending realities to create immersive experiences.",
+  },
+  {
+    name: "Mia",
+    image: "/teamAvatars/mia.webp",
+    team: "TeamC",
+    tag: "Cybersecurity Expert",
+    link: "https://linkedin.com/in/mia-security",
+    quote: "Protecting digital assets in an interconnected world.",
+  },
 ];
 
 export const teams: Team[] = [
@@ -108,5 +142,9 @@ export const teams: Team[] = [
   {
     teamName: "TeamB",
     teamMembers: teamMembers.filter((member) => member.team === "TeamB"),
+  },
+  {
+    teamName: "TeamC",
+    teamMembers: teamMembers.filter((member) => member.team === "TeamC"),
   },
 ];
