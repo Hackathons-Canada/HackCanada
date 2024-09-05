@@ -51,6 +51,14 @@ export const teamMembers: TeamMember[] = [
     quote: "Creating seamless user experiences through code.",
   },
   {
+    name: "David",
+    image: "/teamAvatars/david.webp",
+    team: "TeamB",
+    tag: "Frontend Developer",
+    link: "https://david-portfolio.com",
+    quote: "Creating seamless user experiences through code.",
+  },
+  {
     name: "Eva",
     image: "/teamAvatars/eva.webp",
     team: "TeamB",
