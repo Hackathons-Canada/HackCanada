@@ -181,7 +181,39 @@ const imageExists = async (url: string) => {
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
+  function infiniteScroll() {
+    const boatContainer = document.querySelector(
+      ".boat-container",
+    ) as HTMLElement;
+    if (!boatContainer) return; // Exit if boatContainer is null
 
+    const boats = boatContainer.querySelectorAll(".boat");
+    const totalWidth = Array.from(boats).reduce(
+      (acc, boat) => acc + (boat as HTMLElement).offsetWidth,
+      0,
+    );
+
+    // Clone boats and append to the container for seamless looping
+    boats.forEach((boat) => {
+      const clone = boat.cloneNode(true) as HTMLElement;
+      boatContainer.appendChild(clone);
+    });
+
+    // Set initial position to the right
+    gsap.set(boatContainer, { x: window.innerWidth });
+
+    // Create the animation
+    const tl = gsap.timeline({ repeat: -1 });
+
+    tl.to(boatContainer, {
+      x: -(totalWidth + 50),
+      duration: 30, // Adjust this value to control the speed
+      ease: "none",
+    });
+
+    // When the animation completes, immediately reset to the starting position
+    tl.set(boatContainer, { x: window.innerWidth }, "+=0.01");
+  }
   function animateTeams() {
     const boats = document.querySelectorAll(".boat");
 
@@ -189,7 +221,7 @@ const imageExists = async (url: string) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: boat,
-          start: "top bottom-=100",
+          start: "top bottom-=50",
           end: "bottom top",
           toggleActions: "play none none reverse",
           markers: true,
@@ -292,5 +324,8 @@ const imageExists = async (url: string) => {
   }
 
   // Run the animation when the DOM is ready
-  document.addEventListener("DOMContentLoaded", animateTeams);
+  document.addEventListener("DOMContentLoaded", () => {
+    animateTeams();
+    infiniteScroll();
+  });
 </script>
