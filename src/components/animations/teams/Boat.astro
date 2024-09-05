@@ -1,0 +1,58 @@
+---
+import type { Team } from "@/config/teams";
+import Compartment from "./Compartment.astro";
+import Flag from "./Flag.astro";
+interface Props {
+  team: Team;
+  containerWidth: string;
+  compartment1Count: number;
+  compartment2Count: number;
+  index: number;
+}
+
+const { team, containerWidth, compartment1Count, compartment2Count, index } =
+  Astro.props;
+const isCompartment1Visible = compartment1Count > 0;
+---
+
+<div
+  class="boat relative h-0 shrink-0 rounded border-l-[80px] border-r-[50px] border-t-[100px] border-l-transparent border-r-transparent border-t-amber-700"
+  style={`width: ${containerWidth}; min-width: 550px; max-width: 1000px;`}
+  data-index={index}
+  role="listitem"
+  aria-label={`${team.teamName} boat`}
+>
+  <Flag
+    teamName={team.teamName}
+    isCompartment1Visible={isCompartment1Visible}
+  />
+
+  {
+    isCompartment1Visible && (
+      <Compartment
+        members={team.teamMembers.slice(0, compartment1Count)}
+        compartmentNumber={1}
+      />
+    )
+  }
+
+  <Compartment
+    members={team.teamMembers.slice(-compartment2Count)}
+    compartmentNumber={2}
+  />
+
+  <div
+    class="boat-base absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600"
+  >
+  </div>
+
+  {
+    [75, 50, 25].map((offset, lineIndex) => (
+      <div
+        class={`water-line absolute h-px bg-gradient-to-r from-transparent via-black to-transparent`}
+        style={`top: -${offset}px; left: ${10 * lineIndex}px; width: ${100 - 10 * lineIndex}%;`}
+        aria-hidden="true"
+      />
+    ))
+  }
+</div>

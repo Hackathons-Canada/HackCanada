@@ -1,0 +1,36 @@
+---
+import { imageExists } from "@/lib/TeamUtils";
+import type { TeamMember as TeamMemberType } from "@/config/teams";
+
+interface Props {
+  member: TeamMemberType;
+  memberIndex: number;
+  compartmentNumber: 1 | 2;
+}
+
+const { member, memberIndex, compartmentNumber } = Astro.props;
+
+const memberClass = `team-member-${compartmentNumber} border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800${compartmentNumber === 1 ? " border-b-transparent" : ""}`;
+const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1 ? "33" : "20"}px;`;
+---
+
+<div
+  class={memberClass}
+  style={memberStyle}
+  role="img"
+  aria-label={`${member.name}'s avatar`}
+>
+  <div class="h-full w-full overflow-hidden rounded-full">
+    <img
+      src={(await imageExists(member.image))
+        ? member.image
+        : "/teamAvatars/default-avatar.webp"}
+      alt={`${member.name}'s avatar`}
+      width={80}
+      height={80}
+      class="h-full w-full object-cover"
+      loading="lazy"
+    />
+  </div>
+  {/* tooltip component */}
+</div>

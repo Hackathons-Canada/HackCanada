@@ -1,0 +1,37 @@
+---
+interface Props {
+  teamName: string;
+  isCompartment1Visible: boolean;
+}
+
+const { teamName, isCompartment1Visible } = Astro.props;
+---
+
+<div
+  class="flag-container absolute"
+  style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
+>
+  <div
+    class="flag-wrapper absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden"
+  >
+    <div class="flag relative h-[75px] w-[150px] bg-white shadow-md">
+      <div class="flag-left-bar absolute left-0 top-0 h-full w-1/4 bg-red-600">
+      </div>
+      <div
+        class="flag-right-bar absolute right-0 top-0 h-full w-1/4 bg-red-600"
+      >
+      </div>
+      <div
+        class="flag-center absolute left-1/4 top-0 flex h-full w-1/2 items-center justify-center"
+      >
+        <span class="team-name px-1 text-center text-sm font-bold text-red-600">
+          {teamName}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flagpole h-[100px] w-2 rounded-t-full bg-gradient-to-b from-amber-700 to-amber-900"
+  >
+  </div>
+</div>

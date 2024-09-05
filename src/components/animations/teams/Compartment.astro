@@ -1,0 +1,38 @@
+---
+import TeamMember from "./TeamMember.astro";
+import type { TeamMember as TeamMemberType } from "@/config/teams";
+
+interface Props {
+  members: TeamMemberType[];
+  compartmentNumber: 1 | 2;
+}
+
+const { members, compartmentNumber } = Astro.props;
+
+const compartmentClass =
+  compartmentNumber === 1
+    ? "compartment-1-group absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent"
+    : "compartment-2-group absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent";
+---
+
+<div
+  class={compartmentClass}
+  role="group"
+  aria-label={`Compartment ${compartmentNumber}`}
+>
+  <div class={`compartment-${compartmentNumber}`}>
+    {
+      members.map((member, memberIndex) => (
+        <TeamMember
+          member={member}
+          memberIndex={memberIndex}
+          compartmentNumber={compartmentNumber}
+        />
+      ))
+    }
+  </div>
+  <div
+    class={`compartment-${compartmentNumber}-divider absolute ${compartmentNumber === 1 ? "-top-[0px]" : "top-[0px]"} right-[0px] h-px w-full bg-amber-600`}
+  >
+  </div>
+</div>

@@ -1,8 +1,10 @@
 ---
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
+import Boat from "../animations/teams/Boat.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
+import { getCompartmentSizes, getContainerWidth } from "@/lib/TeamUtils";
 
 interface Props {
   className?: string;
@@ -10,51 +12,6 @@ interface Props {
 }
 
 const { className, id } = Astro.props;
-
-const containerWidths = {
-  13: "1000px",
-  12: "950px",
-  11: "900px",
-  10: "800px",
-  9: "750px",
-  8: "650px",
-  7: "650px",
-  6: "550px",
-  5: "550px",
-  4: "550px",
-  3: "550px",
-};
-
-const compartmentSizes: { [key: number]: [number, number] } = {
-  13: [5, 8],
-  12: [5, 7],
-  11: [4, 7],
-  10: [4, 6],
-  9: [3, 6],
-  8: [3, 5],
-  7: [2, 5],
-  6: [2, 4],
-  5: [1, 4],
-  4: [0, 4],
-  3: [0, 3],
-};
-
-const getCompartmentSizes = (memberCount: number): [number, number] =>
-  compartmentSizes[memberCount as keyof typeof compartmentSizes] || [
-    0,
-    memberCount,
-  ];
-const getContainerWidth = (memberCount: number): string =>
-  containerWidths[memberCount as keyof typeof containerWidths] || "550px";
-
-const imageExists = async (url: string): Promise<boolean> => {
-  try {
-    const response = await fetch(url);
-    return response.ok && (await response.blob()).size > 0;
-  } catch {
-    return false;
-  }
-};
 ---
 
 <SectionWrapper
@@ -77,118 +34,17 @@ const imageExists = async (url: string): Promise<boolean> => {
           const [compartment1Count, compartment2Count] =
             getCompartmentSizes(memberCount);
           const containerWidth = getContainerWidth(memberCount);
-          const isCompartment1Visible = compartment1Count > 0;
           const shouldDisplayBoat = memberCount >= 3;
 
           return (
             shouldDisplayBoat && (
-              <div
-                class="boat relative h-0 shrink-0 rounded border-l-[80px] border-r-[50px] border-t-[100px] border-l-transparent border-r-transparent border-t-amber-700"
-                style={`width: ${containerWidth}; min-width: 550px; max-width: 1000px;`}
-                data-index={index}
-                role="listitem"
-                aria-label={`${team.teamName} boat`}
-              >
-                <div
-                  class="flag-container absolute"
-                  style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
-                >
-                  <div class="flag-wrapper absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden">
-                    <div class="flag relative h-[75px] w-[150px] bg-white shadow-md">
-                      <div class="flag-left-bar absolute left-0 top-0 h-full w-1/4 bg-red-600" />
-                      <div class="flag-right-bar absolute right-0 top-0 h-full w-1/4 bg-red-600" />
-                      <div class="flag-center absolute left-1/4 top-0 flex h-full w-1/2 items-center justify-center">
-                        <span class="team-name px-1 text-center text-sm font-bold text-red-600">
-                          {team.teamName}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flagpole h-[100px] w-2 rounded-t-full bg-gradient-to-b from-amber-700 to-amber-900" />
-                </div>
-
-                {isCompartment1Visible && (
-                  <div
-                    class="compartment-1-group absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent"
-                    role="group"
-                    aria-label="Compartment 1"
-                  >
-                    <div class="compartment-1">
-                      {team.teamMembers
-                        .slice(0, compartment1Count)
-                        .map(async (member, memberIndex) => (
-                          <div
-                            class="team-member-1 border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800 border-b-transparent"
-                            style={`left: ${memberIndex * 90}px; top: 33px;`}
-                            role="img"
-                            aria-label={`${member.name}'s avatar`}
-                          >
-                            <div class="h-full w-full overflow-hidden rounded-full">
-                              <img
-                                src={
-                                  (await imageExists(member.image))
-                                    ? member.image
-                                    : "/teamAvatars/default-avatar.webp"
-                                }
-                                alt={`${member.name}'s avatar`}
-                                width={80}
-                                height={80}
-                                class="h-full w-full object-cover"
-                                loading="lazy"
-                              />
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                    <div class="compartment-1-divider absolute -top-[0px] right-[0px] h-px w-full bg-amber-600" />
-                  </div>
-                )}
-
-                <div
-                  class="compartment-2-group absolute -right-[20px] -top-[200px] h-0 w-[calc(80%+140px)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent"
-                  role="group"
-                  aria-label="Compartment 2"
-                >
-                  <div class="compartment-2">
-                    {team.teamMembers
-                      .slice(-compartment2Count)
-                      .map(async (member, memberIndex) => (
-                        <div
-                          class="team-member-2 border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800"
-                          style={`left: ${memberIndex * 90}px; top: 20px;`}
-                          role="img"
-                          aria-label={`${member.name}'s avatar`}
-                        >
-                          <div class="h-full w-full overflow-hidden rounded-full">
-                            <img
-                              src={
-                                (await imageExists(member.image))
-                                  ? member.image
-                                  : "/teamAvatars/default-avatar.webp"
-                              }
-                              alt={`${member.name}'s avatar`}
-                              width={80}
-                              height={80}
-                              class="h-full w-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                  <div class="compartment-2-divider absolute right-[0px] top-[0px] h-px w-full bg-amber-600" />
-                </div>
-
-                <div class="boat-base absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600" />
-
-                {[75, 50, 25].map((offset, lineIndex) => (
-                  <div
-                    class={`water-line absolute h-px bg-gradient-to-r from-transparent via-black to-transparent`}
-                    style={`top: -${offset}px; left: ${10 * lineIndex}px; width: ${100 - 10 * lineIndex}%;`}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
+              <Boat
+                team={team}
+                containerWidth={containerWidth}
+                compartment1Count={compartment1Count}
+                compartment2Count={compartment2Count}
+                index={index}
+              />
             )
           );
         })
