@@ -11,49 +11,46 @@ interface Props {
 
 const { className, id } = Astro.props;
 
-const getContainerWidth = (memberCount: number): string => {
-  const widths = {
-    13: "1000px",
-    12: "950px",
-    11: "900px",
-    10: "800px",
-    9: "750px",
-    8: "650px",
-    7: "650px",
-    6: "550px",
-    5: "550px",
-    4: "550px",
-    3: "550px",
-  };
-  return widths[memberCount as keyof typeof widths] || "550px";
+const containerWidths = {
+  13: "1000px",
+  12: "950px",
+  11: "900px",
+  10: "800px",
+  9: "750px",
+  8: "650px",
+  7: "650px",
+  6: "550px",
+  5: "550px",
+  4: "550px",
+  3: "550px",
 };
 
-const getCompartmentSizes = (memberCount: number): [number, number] => {
-  const sizes: { [key: number]: [number, number] } = {
-    13: [5, 8],
-    12: [5, 7],
-    11: [4, 7],
-    10: [4, 6],
-    9: [3, 6],
-    8: [3, 5],
-    7: [2, 5],
-    6: [2, 4],
-    5: [1, 4],
-    4: [0, 4],
-    3: [0, 3],
-  };
-  return sizes[memberCount] || [0, memberCount];
+const compartmentSizes: { [key: number]: [number, number] } = {
+  13: [5, 8],
+  12: [5, 7],
+  11: [4, 7],
+  10: [4, 6],
+  9: [3, 6],
+  8: [3, 5],
+  7: [2, 5],
+  6: [2, 4],
+  5: [1, 4],
+  4: [0, 4],
+  3: [0, 3],
 };
 
-// Function to check if an image exists
-const imageExists = async (url: string) => {
+const getCompartmentSizes = (memberCount: number): [number, number] =>
+  compartmentSizes[memberCount as keyof typeof compartmentSizes] || [
+    0,
+    memberCount,
+  ];
+const getContainerWidth = (memberCount: number): string =>
+  containerWidths[memberCount as keyof typeof containerWidths] || "550px";
+
+const imageExists = async (url: string): Promise<boolean> => {
   try {
     const response = await fetch(url);
-    if (response.ok) {
-      const blob = await response.blob();
-      return blob.size > 0;
-    }
-    return false;
+    return response.ok && (await response.blob()).size > 0;
   } catch {
     return false;
   }
@@ -181,11 +178,12 @@ const imageExists = async (url: string) => {
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
+
   function infiniteScroll() {
     const boatContainer = document.querySelector(
       ".boat-container",
     ) as HTMLElement;
-    if (!boatContainer) return; // Exit if boatContainer is null
+    if (!boatContainer) return;
 
     const boats = boatContainer.querySelectorAll(".boat");
     const totalWidth = Array.from(boats).reduce(
@@ -193,27 +191,22 @@ const imageExists = async (url: string) => {
       0,
     );
 
-    // Clone boats and append to the container for seamless looping
     boats.forEach((boat) => {
       const clone = boat.cloneNode(true) as HTMLElement;
       boatContainer.appendChild(clone);
     });
 
-    // Set initial position to the right
     gsap.set(boatContainer, { x: window.innerWidth });
 
-    // Create the animation
     const tl = gsap.timeline({ repeat: -1 });
 
     tl.to(boatContainer, {
-      x: -(totalWidth + 50),
-      duration: 30, // Adjust this value to control the speed
+      x: -(totalWidth + 100),
+      duration: 30,
       ease: "none",
-    });
-
-    // When the animation completes, immediately reset to the starting position
-    tl.set(boatContainer, { x: window.innerWidth }, "+=0.01");
+    }).set(boatContainer, { x: window.innerWidth }, "+=0.01");
   }
+
   function animateTeams() {
     const boats = document.querySelectorAll(".boat");
 
@@ -221,14 +214,12 @@ const imageExists = async (url: string) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: boat,
-          start: "top bottom-=50",
+          start: "top bottom-=100",
           end: "bottom top",
           toggleActions: "play none none reverse",
-          markers: true,
         },
       });
 
-      // Animate the boat
       tl.from(boat, {
         scaleY: 0,
         transformOrigin: "center",
@@ -236,11 +227,9 @@ const imageExists = async (url: string) => {
         ease: "power2.out",
       });
 
-      // Animate the compartments
       const compartment2Group = boat.querySelector(".compartment-2-group");
       const compartment1Group = boat.querySelector(".compartment-1-group");
 
-      // Animate compartment 2 group first
       tl.from(compartment2Group, {
         scaleY: 0,
         transformOrigin: "bottom",
@@ -248,7 +237,6 @@ const imageExists = async (url: string) => {
         ease: "back.out(1.7)",
       });
 
-      // Then animate compartment 1 group if it exists
       if (compartment1Group) {
         tl.from(
           compartment1Group,
@@ -259,10 +247,9 @@ const imageExists = async (url: string) => {
             ease: "back.out(1.7)",
           },
           "-=0.3",
-        ); // Slight overlap for a smoother transition
+        );
       }
 
-      // Animate team members
       const members = boat.querySelectorAll(".team-member-1, .team-member-2");
       tl.from(
         members,
@@ -276,7 +263,6 @@ const imageExists = async (url: string) => {
         "-=0.5",
       );
 
-      // Animate the flag
       const flag = boat.querySelector(".flag");
       tl.from(
         flag,
@@ -289,7 +275,6 @@ const imageExists = async (url: string) => {
         "-=0.3",
       );
 
-      // Animate the flagpole
       const flagpole = boat.querySelector(".flagpole");
       tl.from(
         flagpole,
@@ -301,11 +286,8 @@ const imageExists = async (url: string) => {
         },
         "-=0.5",
       );
-
-      // Water lines animation removed as it might interfere with the marquee effect
     });
 
-    // Animate section heading
     gsap.from(".team-heading", {
       y: 50,
       opacity: 0,
@@ -318,12 +300,8 @@ const imageExists = async (url: string) => {
         toggleActions: "play none none reverse",
       },
     });
-
-    // Set up the marquee animation
-    // setupMarquee();
   }
 
-  // Run the animation when the DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
     animateTeams();
     infiniteScroll();
