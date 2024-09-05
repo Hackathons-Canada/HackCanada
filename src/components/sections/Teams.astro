@@ -84,6 +84,24 @@ const imageExists = async (url: string): Promise<boolean> => {
                 data-index={index}
                 aria-hidden="true"
               >
+                <div
+                  class="flag-container absolute"
+                  style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
+                >
+                  <div class="flag-wrapper absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden">
+                    <div class="flag relative h-[75px] w-[150px] bg-white shadow-md">
+                      <div class="flag-left-bar absolute left-0 top-0 h-full w-1/4 bg-red-600" />
+                      <div class="flag-right-bar absolute right-0 top-0 h-full w-1/4 bg-red-600" />
+                      <div class="flag-center absolute left-1/4 top-0 flex h-full w-1/2 items-center justify-center">
+                        <span class="team-name px-1 text-center text-sm font-bold text-red-600">
+                          {team.teamName}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flagpole h-[100px] w-2 rounded-t-full bg-gradient-to-b from-amber-700 to-amber-900" />
+                </div>
+
                 {isCompartment1Visible && (
                   <div class="compartment-1-group absolute -top-[300px] right-[25px] h-10 w-[calc(70%)] border-b-[100px] border-l-[80px] border-r-[40px] border-b-[#bfd2de] border-l-transparent border-r-transparent">
                     <div class="compartment-1">
@@ -137,23 +155,6 @@ const imageExists = async (url: string): Promise<boolean> => {
                       ))}
                   </div>
                   <div class="compartment-2-divider absolute right-[0px] top-[0px] h-px w-full bg-amber-600" />
-                </div>
-                <div
-                  class="flag-container absolute"
-                  style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
-                >
-                  <div class="flag-wrapper absolute -left-[0px] top-2 flex h-[60px] w-[100px] items-center justify-center overflow-hidden">
-                    <div class="flag relative h-[75px] w-[150px] bg-white shadow-md">
-                      <div class="flag-left-bar absolute left-0 top-0 h-full w-1/4 bg-red-600" />
-                      <div class="flag-right-bar absolute right-0 top-0 h-full w-1/4 bg-red-600" />
-                      <div class="flag-center absolute left-1/4 top-0 flex h-full w-1/2 items-center justify-center">
-                        <span class="team-name px-1 text-center text-sm font-bold text-red-600">
-                          {team.teamName}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flagpole h-[100px] w-2 rounded-t-full bg-gradient-to-b from-amber-700 to-amber-900" />
                 </div>
 
                 <div class="boat-base absolute -left-[85px] -top-[115px] h-5 w-[calc(100%+140px)] rounded-xl bg-amber-600" />
@@ -263,29 +264,7 @@ const imageExists = async (url: string): Promise<boolean> => {
         "-=0.5",
       );
 
-      const flag = boat.querySelector(".flag");
-      tl.from(
-        flag,
-        {
-          y: -50,
-          opacity: 0,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3",
-      );
-
-      const flagpole = boat.querySelector(".flagpole");
-      tl.from(
-        flagpole,
-        {
-          scaleY: 0,
-          transformOrigin: "bottom",
-          duration: 0.3,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      );
+      // Remove flag and flagpole animations from here
     });
 
     gsap.from(".team-heading", {
@@ -302,8 +281,53 @@ const imageExists = async (url: string): Promise<boolean> => {
     });
   }
 
+  function animateFlagOnHover() {
+    const boats = document.querySelectorAll(".boat");
+
+    boats.forEach((boat) => {
+      const flagContainer = boat.querySelector(".flag-container");
+      const flag = flagContainer!.querySelector(".flag");
+      const flagpole = flagContainer!.querySelector(".flagpole");
+
+      // Set initial state
+      gsap.set(flag, { autoAlpha: 0, y: -50 });
+      gsap.set(flagpole, { autoAlpha: 0, y: 50 });
+
+      boat.addEventListener("mouseenter", () => {
+        gsap.to(flag, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        });
+        gsap.to(flagpole, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        });
+      });
+
+      boat.addEventListener("mouseleave", () => {
+        gsap.to(flag, {
+          autoAlpha: 0,
+          y: -50,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+        gsap.to(flagpole, {
+          autoAlpha: 0,
+          y: 50,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     animateTeams();
     infiniteScroll();
+    animateFlagOnHover();
   });
 </script>
