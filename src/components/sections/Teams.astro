@@ -61,7 +61,7 @@ const { className, id } = Astro.props;
 
   let marqueeTimeline: gsap.core.Timeline;
 
-  function infiniteScroll() {
+  function setupInfiniteScroll() {
     const boatContainer = document.querySelector(
       ".boat-container",
     ) as HTMLElement;
@@ -89,8 +89,10 @@ const { className, id } = Astro.props;
         ease: "none",
       })
       .set(boatContainer, { x: window.innerWidth }, "+=0.01");
+  }
 
-    // Add wiggle effect to each boat
+  function addWiggleEffect() {
+    const boats = document.querySelectorAll(".boat");
     boats.forEach((boat) => {
       gsap.to(boat, {
         yPercent: () => gsap.utils.random(-15, 15),
@@ -101,8 +103,9 @@ const { className, id } = Astro.props;
         ease: "sine.inOut",
       });
     });
+  }
 
-    // Add event listeners to team members
+  function setupTeamMemberInteractions() {
     const teamMembers = document.querySelectorAll(
       ".team-member-1, .team-member-2",
     );
@@ -120,63 +123,115 @@ const { className, id } = Astro.props;
     marqueeTimeline.play();
   }
 
-  function animateTeams() {
-    const boats = document.querySelectorAll(".boat");
+  function animateBoat(boat: Element) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: boat,
+        start: "top bottom-=50",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
+      },
+    });
 
-    boats.forEach((boat) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: boat,
-          start: "top bottom-=50",
-          end: "bottom top",
-          toggleActions: "play none none reverse",
-        },
-      });
+    tl.from(boat, {
+      scaleY: 0,
+      transformOrigin: "center bottom",
+      duration: 0.5,
+      ease: "power2.out",
+    });
 
-      tl.from(boat, {
-        scaleY: 0,
-        transformOrigin: "center",
-        duration: 0.5,
-        ease: "power2.out",
-      });
+    const compartment2Group = boat.querySelector(".compartment-2-group");
+    const compartment1Group = boat.querySelector(".compartment-1-group");
 
-      const compartment2Group = boat.querySelector(".compartment-2-group");
-      const compartment1Group = boat.querySelector(".compartment-1-group");
+    tl.from(compartment2Group, {
+      scaleY: 0,
+      transformOrigin: "bottom",
+      duration: 0.5,
+      ease: "back.out(1.7)",
+    });
 
-      tl.from(compartment2Group, {
-        scaleY: 0,
-        transformOrigin: "bottom",
-        duration: 0.5,
-        ease: "back.out(1.7)",
-      });
-
-      if (compartment1Group) {
-        tl.from(
-          compartment1Group,
-          {
-            scaleY: 0,
-            transformOrigin: "bottom",
-            duration: 0.5,
-            ease: "back.out(1.7)",
-          },
-          "-=0.3",
-        );
-      }
-
-      const members = boat.querySelectorAll(".team-member-1, .team-member-2");
+    if (compartment1Group) {
       tl.from(
-        members,
+        compartment1Group,
         {
-          scale: 0,
-          y: 50,
-          stagger: 0.1,
+          scaleY: 0,
+          transformOrigin: "bottom",
           duration: 0.5,
           ease: "back.out(1.7)",
         },
-        "-=0.5",
+        "-=0.3",
       );
-    });
+    }
 
+    const members = boat.querySelectorAll(".team-member-1, .team-member-2");
+    tl.from(
+      members,
+      {
+        scale: 0,
+        y: 50,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: "back.out(1.7)",
+      },
+      "-=0.5",
+    );
+
+    animateFlag(boat, tl);
+  }
+
+  function animateFlag(boat: Element, tl: gsap.core.Timeline) {
+    const flag = boat.querySelector(".flag");
+    const flagpole = boat.querySelector(".flagpole");
+
+    if (flag && flagpole) {
+      gsap.set([flag, flagpole], { autoAlpha: 0, y: 20 });
+
+      tl.to(
+        [flagpole, flag],
+        {
+          autoAlpha: 1,
+          y: 10,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+          stagger: 0.1,
+        },
+        "-=0.3",
+      );
+
+      setupFlagHoverAnimation(boat, flag, flagpole);
+    }
+  }
+
+  function setupFlagHoverAnimation(
+    boat: Element,
+    flag: Element,
+    flagpole: Element,
+  ) {
+    const compartments = [
+      boat.querySelector(".compartment-2-group"),
+      boat.querySelector(".compartment-1-group"),
+    ].filter(Boolean);
+
+    compartments.forEach((compartment) => {
+      compartment!.addEventListener("mouseenter", () => {
+        gsap.to([flagpole, flag], {
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+
+      compartment!.addEventListener("mouseleave", () => {
+        gsap.to([flagpole, flag], {
+          y: 10,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    });
+  }
+
+  function animateTeamHeading() {
     gsap.from(".team-heading", {
       y: 50,
       opacity: 0,
@@ -191,55 +246,18 @@ const { className, id } = Astro.props;
     });
   }
 
-  function animateFlagOnHover() {
+  function animateTeams() {
     const boats = document.querySelectorAll(".boat");
-
-    boats.forEach((boat) => {
-      const flagContainer = boat.querySelector(".flag-container");
-      const flag = flagContainer?.querySelector(".flag");
-      const flagpole = flagContainer?.querySelector(".flagpole");
-
-      if (flag && flagpole) {
-        // Set initial state
-        gsap.set(flag, { autoAlpha: 0, y: -50 });
-        gsap.set(flagpole, { autoAlpha: 0, y: 50 });
-
-        boat.addEventListener("mouseenter", () => {
-          gsap.to(flag, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "back.out(1.7)",
-          });
-          gsap.to(flagpole, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "back.out(1.7)",
-          });
-        });
-
-        boat.addEventListener("mouseleave", () => {
-          gsap.to(flag, {
-            autoAlpha: 0,
-            y: -50,
-            duration: 0.3,
-            ease: "power2.in",
-          });
-          gsap.to(flagpole, {
-            autoAlpha: 0,
-            y: 50,
-            duration: 0.3,
-            ease: "power2.in",
-          });
-        });
-      }
-    });
+    boats.forEach(animateBoat);
+    animateTeamHeading();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function initializeAnimations() {
     animateTeams();
-    infiniteScroll();
-    animateFlagOnHover();
-  });
+    addWiggleEffect();
+    setupTeamMemberInteractions();
+    setupInfiniteScroll();
+  }
+
+  document.addEventListener("DOMContentLoaded", initializeAnimations);
 </script>
