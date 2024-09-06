@@ -21,7 +21,9 @@ const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1
   role="img"
   aria-label={`${member.name}'s avatar`}
 >
-  <div class="team-member-gsap h-full w-full overflow-hidden rounded-full">
+  <div
+    class="team-member-gsap h-full w-full cursor-pointer overflow-hidden rounded-full"
+  >
     <img
       src={(await imageExists(member.image))
         ? member.image
