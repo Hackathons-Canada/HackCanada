@@ -20,6 +20,10 @@ const compartmentClass =
   role="group"
   aria-label={`Compartment ${compartmentNumber}`}
 >
+  <div
+    class={`compartment-${compartmentNumber}-divider absolute ${compartmentNumber === 1 ? "-top-[0px]" : "top-[0px]"} right-[0px] h-px w-full bg-amber-600`}
+  >
+  </div>
   <div class={`compartment-${compartmentNumber}`}>
     {
       members.map((member, memberIndex) => (
@@ -30,9 +34,5 @@ const compartmentClass =
         />
       ))
     }
-  </div>
-  <div
-    class={`compartment-${compartmentNumber}-divider absolute ${compartmentNumber === 1 ? "-top-[0px]" : "top-[0px]"} right-[0px] h-px w-full bg-amber-600`}
-  >
   </div>
 </div>
