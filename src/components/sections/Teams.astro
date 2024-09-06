@@ -190,7 +190,7 @@ const { className, id } = Astro.props;
         [flagpole, flag],
         {
           autoAlpha: 1,
-          y: 10,
+          y: 0,
           duration: 0.5,
           ease: "back.out(1.7)",
           stagger: 0.1,
@@ -215,7 +215,7 @@ const { className, id } = Astro.props;
     compartments.forEach((compartment) => {
       compartment!.addEventListener("mouseenter", () => {
         gsap.to([flagpole, flag], {
-          y: 0,
+          y: 10,
           duration: 0.3,
           ease: "power2.out",
         });
@@ -223,7 +223,7 @@ const { className, id } = Astro.props;
 
       compartment!.addEventListener("mouseleave", () => {
         gsap.to([flagpole, flag], {
-          y: 10,
+          y: 0,
           duration: 0.3,
           ease: "power2.out",
         });

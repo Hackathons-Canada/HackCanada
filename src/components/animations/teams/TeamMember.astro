@@ -35,3 +35,46 @@ const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1
   </div>
   <TeamMemberTooltip member={member} />
 </div>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const teamMembers = document.querySelectorAll(".team-member-gsap");
+
+    teamMembers.forEach((member) => {
+      const chatBubble = member.nextElementSibling;
+      if (chatBubble) {
+        const bubble1 = chatBubble.querySelector(".bubble1");
+        const bubble2 = chatBubble.querySelector(".bubble2");
+        const bubble3 = chatBubble.querySelector(".bubble3");
+
+        if (bubble1 && bubble2 && bubble3) {
+          // Set initial state
+          gsap.set(bubble1, { scale: 0, x: 0, y: 8 });
+          gsap.set(bubble2, { scale: 0, x: -10, y: 15 });
+          gsap.set(bubble3, { scale: 0, x: -15, y: 15 });
+
+          // Create timeline for animation
+          const tl = gsap.timeline({ paused: true });
+
+          tl.to(bubble1, { scale: 1, duration: 0.3, ease: "back.out(1.7)" })
+            .to(
+              bubble2,
+              { scale: 1, x: 0, y: 0, duration: 0.3, ease: "back.out(1.7)" },
+              "-=0.2",
+            )
+            .to(
+              bubble3,
+              { scale: 1, x: 0, y: 0, duration: 0.3, ease: "back.out(1.7)" },
+              "-=0.3",
+            );
+
+          // Add event listeners
+          member.addEventListener("mouseenter", () => tl.play());
+          member.addEventListener("mouseleave", () => tl.reverse());
+        }
+      }
+    });
+  });
+</script>
