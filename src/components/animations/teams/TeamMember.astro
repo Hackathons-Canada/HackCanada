@@ -11,7 +11,7 @@ interface Props {
 
 const { member, memberIndex, compartmentNumber } = Astro.props;
 
-const memberClass = `team-member-${compartmentNumber} border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800${compartmentNumber === 1 ? " border-b-transparent" : ""} group`;
+const memberClass = `team-member-${compartmentNumber} border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800${compartmentNumber === 1 ? " border-b-transparent" : ""}`;
 const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1 ? "33" : "20"}px;`;
 ---
 
@@ -35,7 +35,6 @@ const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1
   </div>
   <TeamMemberTooltip member={member} />
 </div>
-
 <script>
   import { gsap } from "gsap";
 
