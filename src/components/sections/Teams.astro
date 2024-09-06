@@ -5,6 +5,7 @@ import Boat from "../animations/teams/Boat.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 import { getCompartmentSizes, getContainerWidth } from "@/lib/TeamUtils";
+import Wave from "@/components/animations/teams/Wave.astro";
 
 interface Props {
   className?: string;
@@ -51,6 +52,7 @@ const { className, id } = Astro.props;
       }
     </div>
   </div>
+  <Wave />
 </SectionWrapper>
 
 <script>
@@ -134,7 +136,7 @@ const { className, id } = Astro.props;
     });
 
     tl.from(boat, {
-      scaleY: 0,
+      scale: 0,
       transformOrigin: "center bottom",
       duration: 0.5,
       ease: "power2.out",
