@@ -60,8 +60,12 @@ const { className, id } = Astro.props;
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
-
   let marqueeTimeline: gsap.core.Timeline;
+
+  type BoatElement = HTMLElement & {
+    wiggleAnimation?: gsap.core.Tween;
+    initialY?: number;
+  };
 
   function setupInfiniteScroll() {
     const boatContainer = document.querySelector(
@@ -96,17 +100,59 @@ const { className, id } = Astro.props;
   function addWiggleEffect() {
     const boats = document.querySelectorAll(".boat");
     boats.forEach((boat) => {
-      gsap.to(boat, {
+      const wiggleAnimation = gsap.to(boat, {
         yPercent: () => gsap.utils.random(-15, 15),
         rotate: () => gsap.utils.random(-2, 2),
         duration: () => gsap.utils.random(1.5, 2.5),
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-      });
+      }) as gsap.core.Tween;
+
+      // Store the animation on the boat element for easy access
+      (boat as BoatElement).wiggleAnimation = wiggleAnimation;
     });
   }
 
+  function addClickAnimation() {
+    const boats = document.querySelectorAll(".boat");
+    boats.forEach((boat) => {
+      let currentAnimation: ReturnType<typeof gsap.timeline> | null = null;
+
+      boat.addEventListener("click", () => {
+        const boatElement = boat as BoatElement;
+        if (currentAnimation) {
+          currentAnimation.kill();
+        }
+
+        boatElement.wiggleAnimation?.pause();
+
+        const currentY = gsap.getProperty(boat, "y") as number;
+        const initialY = boatElement.initialY || currentY;
+
+        if (!boatElement.initialY) {
+          boatElement.initialY = initialY;
+        }
+
+        currentAnimation = gsap
+          .timeline()
+          .to(boat, {
+            y: `${parseFloat(initialY.toString()) + 30}`,
+            duration: 0.3,
+            ease: "power2.out",
+          })
+          .to(boat, {
+            y: initialY,
+            duration: 2,
+            ease: "elastic.out(1.5,0.3)",
+            onComplete: () => {
+              boatElement.wiggleAnimation?.resume();
+              currentAnimation = null;
+            },
+          });
+      });
+    });
+  }
   function setupTeamMemberInteractions() {
     const teamMembers = document.querySelectorAll(
       ".team-member-1, .team-member-2",
@@ -259,6 +305,7 @@ const { className, id } = Astro.props;
     addWiggleEffect();
     setupTeamMemberInteractions();
     setupInfiniteScroll();
+    addClickAnimation(); // Add this line to initialize the click animation
   }
 
   document.addEventListener("DOMContentLoaded", initializeAnimations);
