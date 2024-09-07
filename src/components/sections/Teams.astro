@@ -96,19 +96,14 @@ const { className, id } = Astro.props;
       },
     });
 
-    // Play the animation
-    marqueeAnimation.play();
-
-    // Add scroll-based speed control
-    ScrollTrigger.create({
-      trigger: boatContainer,
-      start: "top bottom",
-      end: "bottom top",
-      onUpdate: (self) => {
-        const scrollSpeed = Math.abs(self.getVelocity() / 1000);
-        const newDuration = gsap.utils.clamp(30, 120, duration - scrollSpeed);
-        marqueeAnimation.timeScale(duration / newDuration);
-      },
+    const hoverClassNames = ["team-member-gsap"]; // Assuming this is the class you want to target
+    // Add hover pause functionality
+    hoverClassNames.forEach((className) => {
+      const elements = document.querySelectorAll(`.${className}`);
+      elements.forEach((element) => {
+        element.addEventListener("mouseenter", () => marqueeAnimation.pause());
+        element.addEventListener("mouseleave", () => marqueeAnimation.play());
+      });
     });
   }
   function addWiggleEffect() {
