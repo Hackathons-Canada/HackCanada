@@ -1,11 +1,13 @@
 ---
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
-import Boat from "../animations/teams/Boat.astro";
+import Boat from "@/components/animations/teams/Boat.astro";
+import Wave from "@/components/animations/teams/Wave.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 import { getCompartmentSizes, getContainerWidth } from "@/lib/TeamUtils";
-import Wave from "@/components/animations/teams/Wave.astro";
+import { teamSection } from "@/config/site";
+import Prose from "@/components/utility/Prose.astro";
 
 interface Props {
   className?: string;
@@ -20,9 +22,9 @@ const { className, id } = Astro.props;
   className={cn("relative flex flex-col overflow-hidden px-5", className)}
 >
   <SectionHeading className="team-heading text-center"
-    >Meet Our Team</SectionHeading
+    >{teamSection.title}</SectionHeading
   >
-
+  <Prose className="text-center" set:html={teamSection.tagline} />
   <div class="team-container absolute bottom-0 left-0 h-fit w-full">
     <div
       class="boat-container relative flex h-[150px] w-full gap-10"
@@ -60,12 +62,8 @@ const { className, id } = Astro.props;
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
-  let marqueeTimeline: gsap.core.Timeline;
 
-  type BoatElement = HTMLElement & {
-    wiggleAnimation?: gsap.core.Tween;
-    initialY?: number;
-  };
+  let marqueeTimeline: gsap.core.Timeline;
 
   function setupInfiniteScroll() {
     const boatContainer = document.querySelector(
@@ -86,9 +84,8 @@ const { className, id } = Astro.props;
 
     gsap.set(boatContainer, { x: window.innerWidth });
 
-    marqueeTimeline = gsap.timeline({ repeat: -1 });
-
-    marqueeTimeline
+    marqueeTimeline = gsap
+      .timeline({ repeat: -1 })
       .to(boatContainer, {
         x: -(totalWidth + 100),
         duration: 30,
@@ -98,46 +95,30 @@ const { className, id } = Astro.props;
   }
 
   function addWiggleEffect() {
-    const boats = document.querySelectorAll(".boat");
-    boats.forEach((boat) => {
-      const wiggleAnimation = gsap.to(boat, {
+    gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
+      gsap.to(boat, {
         yPercent: () => gsap.utils.random(-15, 15),
         rotate: () => gsap.utils.random(-2, 2),
         duration: () => gsap.utils.random(1.5, 2.5),
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-      }) as gsap.core.Tween;
-
-      // Store the animation on the boat element for easy access
-      (boat as BoatElement).wiggleAnimation = wiggleAnimation;
+      });
     });
   }
 
   function addClickAnimation() {
-    const boats = document.querySelectorAll(".boat");
-    boats.forEach((boat) => {
-      let currentAnimation: ReturnType<typeof gsap.timeline> | null = null;
+    gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
+      let currentAnimation: gsap.core.Timeline | null = null;
+      const initialY = gsap.getProperty(boat, "y") as number;
 
       boat.addEventListener("click", () => {
-        const boatElement = boat as BoatElement;
-        if (currentAnimation) {
-          currentAnimation.kill();
-        }
-
-        boatElement.wiggleAnimation?.pause();
-
-        const currentY = gsap.getProperty(boat, "y") as number;
-        const initialY = boatElement.initialY || currentY;
-
-        if (!boatElement.initialY) {
-          boatElement.initialY = initialY;
-        }
+        if (currentAnimation) currentAnimation.kill();
 
         currentAnimation = gsap
           .timeline()
           .to(boat, {
-            y: `${parseFloat(initialY.toString()) + 30}`,
+            y: initialY + 30,
             duration: 0.3,
             ease: "power2.out",
           })
@@ -146,32 +127,25 @@ const { className, id } = Astro.props;
             duration: 2,
             ease: "elastic.out(1.5,0.3)",
             onComplete: () => {
-              boatElement.wiggleAnimation?.resume();
               currentAnimation = null;
             },
           });
       });
     });
   }
+
   function setupTeamMemberInteractions() {
     const teamMembers = document.querySelectorAll(
       ".team-member-1, .team-member-2",
     );
     teamMembers.forEach((member) => {
-      member.addEventListener("mouseenter", pauseMarquee);
-      member.addEventListener("mouseleave", resumeMarquee);
+      member.addEventListener("mouseenter", () => marqueeTimeline?.pause());
+      member.addEventListener("mouseleave", () => marqueeTimeline?.play());
     });
   }
 
-  function pauseMarquee() {
-    marqueeTimeline.pause();
-  }
-
-  function resumeMarquee() {
-    marqueeTimeline.play();
-  }
-
-  function animateBoat(boat: Element) {
+  function animateBoat(boat: Element | unknown) {
+    if (!(boat instanceof Element)) return;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: boat,
@@ -188,28 +162,22 @@ const { className, id } = Astro.props;
       ease: "power2.out",
     });
 
-    const compartment2Group = boat.querySelector(".compartment-2-group");
-    const compartment1Group = boat.querySelector(".compartment-1-group");
-
-    tl.from(compartment2Group, {
-      scaleY: 0,
-      transformOrigin: "bottom",
-      duration: 0.5,
-      ease: "back.out(1.7)",
+    const compartments = [".compartment-2-group", ".compartment-1-group"];
+    compartments.forEach((compartment) => {
+      const element = boat.querySelector(compartment);
+      if (element) {
+        tl.from(
+          element,
+          {
+            scaleY: 0,
+            transformOrigin: "bottom",
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          },
+          "-=0.3",
+        );
+      }
     });
-
-    if (compartment1Group) {
-      tl.from(
-        compartment1Group,
-        {
-          scaleY: 0,
-          transformOrigin: "bottom",
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3",
-      );
-    }
 
     const members = boat.querySelectorAll(".team-member-1, .team-member-2");
     tl.from(
@@ -224,16 +192,10 @@ const { className, id } = Astro.props;
       "-=0.5",
     );
 
-    animateFlag(boat, tl);
-  }
-
-  function animateFlag(boat: Element, tl: gsap.core.Timeline) {
     const flag = boat.querySelector(".flag");
     const flagpole = boat.querySelector(".flagpole");
-
     if (flag && flagpole) {
       gsap.set([flag, flagpole], { autoAlpha: 0, y: 20 });
-
       tl.to(
         [flagpole, flag],
         {
@@ -246,40 +208,30 @@ const { className, id } = Astro.props;
         "-=0.3",
       );
 
-      setupFlagHoverAnimation(boat, flag, flagpole);
+      compartments.forEach((compartment) => {
+        const element = boat.querySelector(compartment);
+        if (element) {
+          element.addEventListener("mouseenter", () => {
+            gsap.to([flagpole, flag], {
+              y: 10,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+          element.addEventListener("mouseleave", () => {
+            gsap.to([flagpole, flag], {
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+        }
+      });
     }
   }
 
-  function setupFlagHoverAnimation(
-    boat: Element,
-    flag: Element,
-    flagpole: Element,
-  ) {
-    const compartments = [
-      boat.querySelector(".compartment-2-group"),
-      boat.querySelector(".compartment-1-group"),
-    ].filter(Boolean);
-
-    compartments.forEach((compartment) => {
-      compartment!.addEventListener("mouseenter", () => {
-        gsap.to([flagpole, flag], {
-          y: 10,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-
-      compartment!.addEventListener("mouseleave", () => {
-        gsap.to([flagpole, flag], {
-          y: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-    });
-  }
-
-  function animateTeamHeading() {
+  function animateTeams() {
+    gsap.utils.toArray(".boat").forEach(animateBoat);
     gsap.from(".team-heading", {
       y: 50,
       opacity: 0,
@@ -294,18 +246,12 @@ const { className, id } = Astro.props;
     });
   }
 
-  function animateTeams() {
-    const boats = document.querySelectorAll(".boat");
-    boats.forEach(animateBoat);
-    animateTeamHeading();
-  }
-
   function initializeAnimations() {
-    animateTeams();
-    addWiggleEffect();
-    setupTeamMemberInteractions();
     setupInfiniteScroll();
-    addClickAnimation(); // Add this line to initialize the click animation
+    addWiggleEffect();
+    addClickAnimation();
+    setupTeamMemberInteractions();
+    animateTeams();
   }
 
   document.addEventListener("DOMContentLoaded", initializeAnimations);
