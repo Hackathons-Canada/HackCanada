@@ -27,7 +27,7 @@ const { className, id } = Astro.props;
   <Prose className="text-center" set:html={teamSection.tagline} />
   <div class="team-container absolute bottom-0 left-0 h-fit w-full">
     <div
-      class="boat-container relative flex h-[150px] w-full gap-10"
+      class="boat-container relative flex h-[150px] w-fit gap-[40px]"
       role="list"
       aria-label="Team boats"
     >
@@ -64,36 +64,53 @@ const { className, id } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   let marqueeTimeline: gsap.core.Timeline;
-
   function setupInfiniteScroll() {
-    const boatContainer = document.querySelector(
-      ".boat-container",
-    ) as HTMLElement;
+    const boatContainer = document.querySelector(".boat-container");
     if (!boatContainer) return;
 
-    const boats = boatContainer.querySelectorAll(".boat");
+    const boats = boatContainer.children;
+    const gap = 40;
     const totalWidth = Array.from(boats).reduce(
-      (acc, boat) => acc + (boat as HTMLElement).offsetWidth,
+      (acc, boat) => acc + (boat as HTMLElement).offsetWidth + gap,
       0,
     );
 
-    boats.forEach((boat) => {
-      const clone = boat.cloneNode(true) as HTMLElement;
+    // Clone boats and append to the container
+    Array.from(boats).forEach((boat) => {
+      const clone = boat.cloneNode(true);
       boatContainer.appendChild(clone);
     });
 
-    gsap.set(boatContainer, { x: window.innerWidth });
+    // Set initial position
+    gsap.set(boatContainer, { x: 0 });
 
-    marqueeTimeline = gsap
-      .timeline({ repeat: -1 })
-      .to(boatContainer, {
-        x: -(totalWidth + 100),
-        duration: 30,
-        ease: "none",
-      })
-      .set(boatContainer, { x: window.innerWidth }, "+=0.01");
+    // Create the marquee animation
+    const duration = 30; // Adjust this value to control the speed
+    const marqueeAnimation = gsap.to(boatContainer, {
+      x: -totalWidth,
+      duration: duration,
+      ease: "none",
+      repeat: -1,
+      onRepeat: () => {
+        gsap.set(boatContainer, { x: 0 });
+      },
+    });
+
+    // Play the animation
+    marqueeAnimation.play();
+
+    // Add scroll-based speed control
+    ScrollTrigger.create({
+      trigger: boatContainer,
+      start: "top bottom",
+      end: "bottom top",
+      onUpdate: (self) => {
+        const scrollSpeed = Math.abs(self.getVelocity() / 1000);
+        const newDuration = gsap.utils.clamp(30, 120, duration - scrollSpeed);
+        marqueeAnimation.timeScale(duration / newDuration);
+      },
+    });
   }
-
   function addWiggleEffect() {
     gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
       gsap.to(boat, {
