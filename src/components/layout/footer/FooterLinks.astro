@@ -5,15 +5,15 @@ import { footerCol1Links, footerCol2Links } from "@/config/links";
 <div
   class="flex w-full items-center gap-8 max-sm:flex-col max-sm:text-center max-sm:text-sm sm:items-end sm:justify-end md:gap-12 xl:gap-16"
 >
-  <ul class="space-y-2.5 pt-4">
+  <ul class="space-y-2.5 lg:space-y-4">
     {
       footerCol1Links.map((item) => (
-        <li class="cursor-not-allowed opacity-50">{item.label}</li>
+        <li class="cursor-not-allowed text-slate-500">{item.label}</li>
       ))
     }
   </ul>
 
-  <ul class="space-y-2.5">
+  <ul class="space-y-2.5 lg:space-y-4">
     {footerCol2Links.map((item) => <li>{item.label}</li>)}
   </ul>
 </div>
