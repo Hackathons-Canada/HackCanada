@@ -1,0 +1,28 @@
+---
+import type { TeamMember } from "@/config/teams";
+
+interface Props {
+  member: TeamMember;
+}
+
+const { member } = Astro.props;
+---
+
+<!-- Chat bubble tooltip -->
+<div
+  class="chat-bubble absolute bottom-full left-[80%] transition-all duration-300 ease-in-out"
+>
+  <div
+    class="bubble3 relative flex w-fit items-center justify-center rounded-full bg-amber-700 px-4 py-2 text-white"
+  >
+    {member.name}
+  </div>
+  <div
+    class="bubble2 absolute -bottom-[2px] -left-[3px] h-[15px] w-[15px] rounded-full bg-amber-700"
+  >
+  </div>
+  <div
+    class="bubble1 absolute -bottom-[4px] -left-[13px] h-[10px] w-[10px] rounded-full bg-amber-700"
+  >
+  </div>
+</div>

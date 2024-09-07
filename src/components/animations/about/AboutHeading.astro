@@ -2,28 +2,30 @@
 import Prose from "@/components/utility/Prose.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { aboutSection } from "@/config/site";
-import { marked } from "marked";
-
-// Parse the Markdown-style links in the descriptions
-const parsedDescriptions = aboutSection.descriptions.map((description) =>
-  marked.parseInline(description),
-);
 ---
 
-<div class="container relative z-10 mx-auto px-4">
-  <SectionHeading className="about-heading-text opacity-0">
+<div
+  class="container relative z-10 mx-auto px-4"
+  role="region"
+  aria-labelledby="about-heading"
+>
+  <SectionHeading id="about-heading" className="about-heading-text opacity-0">
     {aboutSection.title}
   </SectionHeading>
 
   <div class="max-w-3xl space-y-6 text-lg md:text-xl">
     {
-      parsedDescriptions.map((description, index) => (
-        <Prose
-          id={`${index}`}
-          className="about-paragraph"
-          set:html={description}
-        />
-      ))
+      aboutSection.descriptions.length > 0 ? (
+        aboutSection.descriptions.map((description, index) => (
+          <Prose
+            id={`about-paragraph-${index}`}
+            className="about-paragraph"
+            set:html={description}
+          />
+        ))
+      ) : (
+        <p>No description available.</p>
+      )
     }
   </div>
 </div>
