@@ -1,7 +1,19 @@
+export type TeamName =
+  | "Admin"
+  | "Tech"
+  | "Design"
+  | "Outreach"
+  | "Finance"
+  | "Logistics"
+  | "Marketing"
+  | "Mentor";
+
 export interface TeamMember {
-  name: string;
-  image: string;
-  team: string;
+  firstName: string;
+  lastName?: string;
+  image?: string;
+  pronouns?: string;
+  team: TeamName;
   tag: string;
   link: string;
   quote: string;

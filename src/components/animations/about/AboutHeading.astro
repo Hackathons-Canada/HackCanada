@@ -19,7 +19,7 @@ import { aboutSection } from "@/config/site";
         aboutSection.descriptions.map((description, index) => (
           <Prose
             id={`about-paragraph-${index}`}
-            className="about-paragraph"
+            className="about-paragraph opacity-0"
             set:html={description}
           />
         ))

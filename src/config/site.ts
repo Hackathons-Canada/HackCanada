@@ -87,4 +87,5 @@ export const teamSection = {
   tagline: parseMarkdown(
     "[@hackcanada](/) / [@hackathonscanada](https://hackathonscanada.com)",
   ),
+  placeholder: "/teamAvatars/default-avatar.webp",
 };

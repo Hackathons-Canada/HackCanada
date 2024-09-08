@@ -1,7 +1,7 @@
 ---
-import { imageExists } from "@/lib/TeamUtils";
-import type { TeamMember as TeamMemberType } from "@/config/teams";
+import type { TeamMember as TeamMemberType } from "@/types/teams";
 import TeamMemberTooltip from "./TeamMemberTooltip.astro";
+import { teamSection } from "@/config/site";
 
 interface Props {
   member: TeamMemberType;
@@ -13,30 +13,31 @@ const { member, memberIndex, compartmentNumber } = Astro.props;
 
 const memberClass = `team-member-${compartmentNumber} border-1 absolute h-[80px] w-[80px] rounded-full border border-amber-800${compartmentNumber === 1 ? " border-b-transparent" : ""}`;
 const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1 ? "33" : "20"}px;`;
+
+const placeholder = teamSection.placeholder;
 ---
 
 <div
   class={memberClass}
   style={memberStyle}
   role="img"
-  aria-label={`${member.name}'s avatar`}
+  aria-label={`${member.firstName}'s avatar`}
 >
   <div
     class="team-member-gsap h-full w-full cursor-pointer overflow-hidden rounded-full"
   >
     <img
-      src={(await imageExists(member.image))
-        ? member.image
-        : "/teamAvatars/default-avatar.webp"}
-      alt={`${member.name}'s avatar`}
-      width={80}
-      height={80}
+      src={member.image || placeholder}
+      alt={`${member.firstName}'s avatar`}
+      width={100}
+      height={100}
       class="h-full w-full object-cover"
       loading="lazy"
     />
   </div>
   <TeamMemberTooltip member={member} />
 </div>
+
 <script>
   import { gsap } from "gsap";
 
@@ -52,7 +53,6 @@ const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1
 
         if (bubble1 && bubble2 && bubble3) {
           // Set initial state
-
           gsap.set(chatBubble, { visibility: "hidden" });
           gsap.set(bubble1, { scale: 0, x: 0, y: 8 });
           gsap.set(bubble2, { scale: 0, x: -10, y: 15 });

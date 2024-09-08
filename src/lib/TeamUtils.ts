@@ -34,12 +34,3 @@ export const getCompartmentSizes = (memberCount: number): [number, number] =>
 
 export const getContainerWidth = (memberCount: number): string =>
   containerWidths[memberCount as keyof typeof containerWidths] || "550px";
-
-export const imageExists = async (url: string): Promise<boolean> => {
-  try {
-    const response = await fetch(url);
-    return response.ok && (await response.blob()).size > 0;
-  } catch {
-    return false;
-  }
-};

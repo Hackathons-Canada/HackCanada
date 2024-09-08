@@ -1,5 +1,5 @@
 ---
-import type { TeamMember } from "@/config/teams";
+import type { TeamMember } from "@/types/teams";
 
 interface Props {
   member: TeamMember;
@@ -15,7 +15,7 @@ const { member } = Astro.props;
   <div
     class="bubble3 relative flex w-fit items-center justify-center rounded-full bg-amber-700 px-4 py-2 text-white"
   >
-    {member.name}
+    {member.firstName}
   </div>
   <div
     class="bubble2 absolute -bottom-[2px] -left-[3px] h-[15px] w-[15px] rounded-full bg-amber-700"
