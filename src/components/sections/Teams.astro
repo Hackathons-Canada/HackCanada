@@ -19,7 +19,10 @@ const { className, id } = Astro.props;
 
 <SectionWrapper
   id={id}
-  className={cn("relative flex flex-col overflow-hidden px-5", className)}
+  className={cn(
+    "relative flex flex-col items-center overflow-hidden px-5",
+    className,
+  )}
 >
   <SectionHeading className="team-heading text-center"
     >{teamSection.title}</SectionHeading

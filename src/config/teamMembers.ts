@@ -13,7 +13,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "James",
-    image: "/teamAvatars/james.webp",
+    // image: "/teamAvatars/james.webp",
     team: "Admin",
     tag: "Admin Member",
     link: "https://example.com/james",
@@ -21,7 +21,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Jerry",
-    image: "/teamAvatars/jerry.webp",
+    // image: "/teamAvatars/jerry.webp",
     team: "Admin",
     tag: "Admin Member",
     link: "https://example.com/jerry",
@@ -38,7 +38,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Arnnav",
-    image: "/teamAvatars/arnnav.webp",
+    // image: "/teamAvatars/arnnav.webp",
     team: "Mentor",
     tag: "Mentor",
     link: "https://example.com/arnnav",
@@ -49,7 +49,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Jason",
     lastName: "Cameron",
-    image: "/teamAvatars/jason.webp",
+    // image: "/teamAvatars/jason.webp",
     team: "Tech",
     tag: "Tech Lead",
     link: "https://www.linkedin.com/in/jasoncameron/",
@@ -57,7 +57,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Amol",
-    image: "/teamAvatars/amol.webp",
+    // image: "/teamAvatars/amol.webp",
     team: "Tech",
     tag: "Tech Lead",
     link: "https://example.com/amol",
@@ -66,7 +66,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Araf",
     lastName: "A Alam",
-    image: "/teamAvatars/araf.webp",
+    // image: "/teamAvatars/araf.webp",
     team: "Tech",
     tag: "Project Manager",
     link: "https://www.linkedin.com/in/arafa821/",
@@ -76,13 +76,13 @@ export const teamMembers: TeamMember[] = [
     firstName: "Chirag",
     image: "/teamAvatars/chirag.webp",
     team: "Tech",
-    tag: "Tech Member",
+    tag: "Div Centerer",
     link: "https://example.com/chirag",
-    quote: "Placeholder quote",
+    quote: "I made this landing page ;)",
   },
   {
     firstName: "Sohel",
-    image: "/teamAvatars/sohel.webp",
+    // image: "/teamAvatars/sohel.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/sohel",
@@ -90,7 +90,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Aayan",
-    image: "/teamAvatars/aayan.webp",
+    // image: "/teamAvatars/aayan.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/aayan",
@@ -98,7 +98,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Aiden",
-    image: "/teamAvatars/aiden.webp",
+    // image: "/teamAvatars/aiden.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/aiden",
@@ -106,7 +106,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Joudat",
-    image: "/teamAvatars/joudat.webp",
+    // image: "/teamAvatars/joudat.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/joudat",
@@ -114,7 +114,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "James",
-    image: "/teamAvatars/james_l.webp",
+    // image: "/teamAvatars/james_l.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/james_l",
@@ -122,7 +122,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Fiona",
-    image: "/teamAvatars/fiona.webp",
+    // image: "/teamAvatars/fiona.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/fiona",
@@ -130,7 +130,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Edem",
-    image: "/teamAvatars/edem.webp",
+    // image: "/teamAvatars/edem.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/edem",
@@ -138,7 +138,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Aryan",
-    image: "/teamAvatars/aryan.webp",
+    // image: "/teamAvatars/aryan.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/aryan",
@@ -146,7 +146,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Wahib",
-    image: "/teamAvatars/wahib.webp",
+    // image: "/teamAvatars/wahib.webp",
     team: "Tech",
     tag: "Tech Member",
     link: "https://example.com/wahib",
@@ -156,7 +156,7 @@ export const teamMembers: TeamMember[] = [
   // Design team
   {
     firstName: "Jess",
-    image: "/teamAvatars/jess.webp",
+    // image: "/teamAvatars/jess.webp",
     team: "Design",
     tag: "Design Lead",
     link: "https://example.com/jess",
@@ -164,7 +164,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Julia",
-    image: "/teamAvatars/julia.webp",
+    // image: "/teamAvatars/julia.webp",
     team: "Design",
     tag: "Design Member",
     link: "https://example.com/julia",
@@ -172,7 +172,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Tina",
-    image: "/teamAvatars/tina.webp",
+    // image: "/teamAvatars/tina.webp",
     team: "Design",
     tag: "Design Member",
     link: "https://example.com/tina",
@@ -182,7 +182,7 @@ export const teamMembers: TeamMember[] = [
   // Outreach team
   {
     firstName: "Nirek",
-    image: "/teamAvatars/nirek.webp",
+    // image: "/teamAvatars/nirek.webp",
     team: "Outreach",
     tag: "Outreach Lead",
     link: "https://example.com/nirek",
@@ -190,7 +190,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Jad",
-    image: "/teamAvatars/jad.webp",
+    // image: "/teamAvatars/jad.webp",
     team: "Outreach",
     tag: "Outreach Member",
     link: "https://example.com/jad",
@@ -198,7 +198,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Greg",
-    image: "/teamAvatars/greg.webp",
+    // image: "/teamAvatars/greg.webp",
     team: "Outreach",
     tag: "Outreach Member",
     link: "https://example.com/greg",
@@ -207,7 +207,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Ray",
     lastName: "Tan",
-    image: "",
+    // image: "/teamAvatars/greg.webp",
     team: "Outreach",
     tag: "Outreach Officer",
     link: "https://www.linkedin.com/in/ray-tan-054ab4228/",
@@ -215,7 +215,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Tom",
-    image: "/teamAvatars/tom.webp",
+    // image: "/teamAvatars/tom.webp",
     team: "Outreach",
     tag: "Outreach Member",
     link: "https://example.com/tom",
@@ -226,7 +226,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Uday",
     lastName: "Khanna",
-    image: "/teamAvatars/uday.webp",
+    // image: "/teamAvatars/uday.webp",
     team: "Finance",
     tag: "Finance Lead",
     link: "https://www.linkedin.com/in/udaykhanna25/",
@@ -234,7 +234,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Derek",
-    image: "/teamAvatars/derek.webp",
+    // image: "/teamAvatars/derek.webp",
     team: "Finance",
     tag: "Finance Member",
     link: "https://example.com/derek",
@@ -242,7 +242,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Shayaan",
-    image: "/teamAvatars/shayaan.webp",
+    // image: "/teamAvatars/shayaan.webp",
     team: "Finance",
     tag: "Finance Member",
     link: "https://example.com/shayaan",
@@ -250,7 +250,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Sardaul",
-    image: "/teamAvatars/sardaul.webp",
+    // image: "/teamAvatars/sardaul.webp",
     team: "Finance",
     tag: "Finance Member",
     link: "https://example.com/sardaul",
@@ -260,7 +260,7 @@ export const teamMembers: TeamMember[] = [
   // Logistics team
   {
     firstName: "Aayan",
-    image: "/teamAvatars/aayan_l.webp",
+    // image: "/teamAvatars/aayan_l.webp",
     team: "Logistics",
     tag: "Logistics Lead",
     link: "https://example.com/aayan_l",
@@ -268,7 +268,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Emilo",
-    image: "/teamAvatars/emilo.webp",
+    // image: "/teamAvatars/emilo.webp",
     team: "Logistics",
     tag: "Logistics Lead",
     link: "https://example.com/emilo",
@@ -276,7 +276,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Jia",
-    image: "/teamAvatars/jia.webp",
+    // image: "/teamAvatars/jia.webp",
     team: "Logistics",
     tag: "Logistics Member",
     link: "https://example.com/jia",
@@ -284,7 +284,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Yang",
-    image: "/teamAvatars/yang.webp",
+    // image: "/teamAvatars/yang.webp",
     team: "Logistics",
     tag: "Logistics Member",
     link: "https://example.com/yang",
@@ -292,7 +292,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Arnav",
-    image: "/teamAvatars/arnav.webp",
+    // image: "/teamAvatars/arnav.webp",
     team: "Logistics",
     tag: "Logistics Member",
     link: "https://example.com/arnav",
@@ -300,7 +300,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Advaith",
-    image: "/teamAvatars/advaith.webp",
+    // image: "/teamAvatars/advaith.webp",
     team: "Logistics",
     tag: "Logistics Member",
     link: "https://example.com/advaith",
@@ -308,7 +308,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Edward",
-    image: "/teamAvatars/edward.webp",
+    // image: "/teamAvatars/edward.webp",
     team: "Logistics",
     tag: "Logistics Member",
     link: "https://example.com/edward",
@@ -319,7 +319,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Chelsea",
     lastName: "Wong",
-    image: "/teamAvatars/chelsea.webp",
+    // image: "/teamAvatars/chelsea.webp",
     team: "Marketing",
     tag: "Head of Marketing",
     pronouns: "she/her",
@@ -328,7 +328,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Ev",
-    image: "/teamAvatars/ev.webp",
+    // image: "/teamAvatars/ev.webp",
     team: "Marketing",
     tag: "Marketing Lead",
     link: "https://example.com/ev",
@@ -336,7 +336,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Yashas",
-    image: "/teamAvatars/yashas.webp",
+    // image: "/teamAvatars/yashas.webp",
     team: "Marketing",
     tag: "Marketing Lead",
     link: "https://example.com/yashas",
@@ -344,7 +344,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Naman",
-    image: "/teamAvatars/naman.webp",
+    // image: "/teamAvatars/naman.webp",
     team: "Marketing",
     tag: "Marketing Member",
     link: "https://example.com/naman",
@@ -352,7 +352,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Anushka",
-    image: "/teamAvatars/anushka.webp",
+    // image: "/teamAvatars/anushka.webp",
     team: "Marketing",
     tag: "Marketing Member",
     link: "https://example.com/anushka",
