@@ -25,6 +25,7 @@ const placeholder = teamSection.placeholder;
 >
   <div
     class="team-member-gsap h-full w-full cursor-pointer overflow-hidden rounded-full"
+    data-member={JSON.stringify(member)}
   >
     <img
       src={member.image || placeholder}
@@ -40,11 +41,21 @@ const placeholder = teamSection.placeholder;
 
 <script>
   import { gsap } from "gsap";
+  import { selectMember } from "@/stores/memberStore";
 
   document.addEventListener("DOMContentLoaded", () => {
     const teamMembers = document.querySelectorAll(".team-member-gsap");
 
     teamMembers.forEach((member) => {
+      if (!(member instanceof HTMLElement)) return;
+
+      member.addEventListener("click", () => {
+        const memberData = member.getAttribute("data-member");
+        if (memberData) {
+          selectMember(JSON.parse(memberData));
+        }
+      });
+
       const chatBubble = member.nextElementSibling;
       if (chatBubble) {
         const bubble1 = chatBubble.querySelector(".bubble1");
