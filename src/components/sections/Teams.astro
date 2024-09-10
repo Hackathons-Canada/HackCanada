@@ -20,7 +20,7 @@ const { className, id } = Astro.props;
 <SectionWrapper
   id={id}
   className={cn(
-    "relative flex flex-col items-center overflow-hidden px-5",
+    "relative flex flex-col items-center overflow-hidden",
     className,
   )}
 >
@@ -28,7 +28,12 @@ const { className, id } = Astro.props;
     >{teamSection.title}</SectionHeading
   >
   <Prose className="text-center" set:html={teamSection.tagline} />
-  <div class="team-container absolute bottom-0 left-0 h-fit w-full">
+  <div
+    class="absolute h-4/6 w-full translate-y-80 transform border-4 border-black"
+    onmouseover="console.log('hovered on this box')"
+  >
+  </div>
+  <div class="team-container absolute bottom-0 left-0 h-fit w-full px-5">
     <div
       class="boat-container relative flex h-[150px] w-fit gap-[40px]"
       role="list"
@@ -88,7 +93,25 @@ const { className, id } = Astro.props;
     gsap.set(boatContainer, { x: 0 });
 
     // Create the marquee animation
-    const duration = 30; // Adjust this value to control the speed
+    var duration = 30; // Adjust this value to control the speed
+
+    // function to make duration go from 30 -> 0 slowly
+
+    function decreaseValue(newDuration: number) {
+      const interval = setInterval(() => {
+        if (newDuration <= 0) {
+          clearInterval(interval);
+        } else {
+          newDuration -= 1;
+          console.log(newDuration);
+          return newDuration;
+        }
+      }, 30);
+    }
+    decreaseValue(duration);
+    const sigma = 1;
+    console.log(`hello i am ${sigma}`);
+
     const marqueeAnimation = gsap.to(boatContainer, {
       x: -totalWidth,
       duration: duration,
