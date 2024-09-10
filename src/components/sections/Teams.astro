@@ -20,7 +20,7 @@ const { className, id } = Astro.props;
 <SectionWrapper
   id={id}
   className={cn(
-    "relative flex flex-col items-center overflow-hidden",
+    "relative flex flex-col items-center overflow-hidden px-5",
     className,
   )}
 >
@@ -28,12 +28,7 @@ const { className, id } = Astro.props;
     >{teamSection.title}</SectionHeading
   >
   <Prose className="text-center" set:html={teamSection.tagline} />
-  <div
-    class="absolute h-4/6 w-full translate-y-80 transform border-4 border-black"
-    onmouseover="console.log('hovered on this box')"
-  >
-  </div>
-  <div class="team-container absolute bottom-0 left-0 h-fit w-full px-5">
+  <div class="team-container absolute bottom-0 left-0 h-fit w-full">
     <div
       class="boat-container relative flex h-[150px] w-fit gap-[40px]"
       role="list"
@@ -71,10 +66,9 @@ const { className, id } = Astro.props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  let marqueeTimeline: gsap.core.Timeline;
   function setupInfiniteScroll() {
     const boatContainer = document.querySelector(".boat-container");
-    if (!boatContainer) return;
+    if (!boatContainer) return null;
 
     const boats = boatContainer.children;
     const gap = 40;
@@ -93,25 +87,7 @@ const { className, id } = Astro.props;
     gsap.set(boatContainer, { x: 0 });
 
     // Create the marquee animation
-    var duration = 30; // Adjust this value to control the speed
-
-    // function to make duration go from 30 -> 0 slowly
-
-    function decreaseValue(newDuration: number) {
-      const interval = setInterval(() => {
-        if (newDuration <= 0) {
-          clearInterval(interval);
-        } else {
-          newDuration -= 1;
-          console.log(newDuration);
-          return newDuration;
-        }
-      }, 30);
-    }
-    decreaseValue(duration);
-    const sigma = 1;
-    console.log(`hello i am ${sigma}`);
-
+    const duration = 30; // Adjust this value to control the speed
     const marqueeAnimation = gsap.to(boatContainer, {
       x: -totalWidth,
       duration: duration,
@@ -122,16 +98,28 @@ const { className, id } = Astro.props;
       },
     });
 
-    const hoverClassNames = ["team-member-gsap"]; // Assuming this is the class you want to target
-    // Add hover pause functionality
-    hoverClassNames.forEach((className) => {
-      const elements = document.querySelectorAll(`.${className}`);
-      elements.forEach((element) => {
-        element.addEventListener("mouseenter", () => marqueeAnimation.pause());
-        element.addEventListener("mouseleave", () => marqueeAnimation.play());
-      });
-    });
+    return marqueeAnimation;
   }
+
+  function smoothPausePlay(animation: gsap.core.Tween, pause: boolean) {
+    const duration = 0.5; // Adjust this value to control the smoothness
+    const ease = "power2.inOut"; // Adjust this easing function as needed
+
+    if (pause) {
+      gsap.to(animation, {
+        timeScale: 0,
+        duration: duration,
+        ease: ease,
+      });
+    } else {
+      gsap.to(animation, {
+        timeScale: 1,
+        duration: duration,
+        ease: ease,
+      });
+    }
+  }
+
   function addWiggleEffect() {
     gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
       gsap.to(boat, {
@@ -172,16 +160,19 @@ const { className, id } = Astro.props;
     });
   }
 
-  function setupTeamMemberInteractions() {
+  function setupTeamMemberInteractions(marqueeAnimation: gsap.core.Tween) {
     const teamMembers = document.querySelectorAll(
       ".team-member-1, .team-member-2",
     );
     teamMembers.forEach((member) => {
-      member.addEventListener("mouseenter", () => marqueeTimeline?.pause());
-      member.addEventListener("mouseleave", () => marqueeTimeline?.play());
+      member.addEventListener("mouseenter", () =>
+        smoothPausePlay(marqueeAnimation, true),
+      );
+      member.addEventListener("mouseleave", () =>
+        smoothPausePlay(marqueeAnimation, false),
+      );
     });
   }
-
   function animateBoat(boat: Element | unknown) {
     if (!(boat instanceof Element)) return;
     const tl = gsap.timeline({
@@ -285,11 +276,13 @@ const { className, id } = Astro.props;
   }
 
   function initializeAnimations() {
-    setupInfiniteScroll();
-    addWiggleEffect();
-    addClickAnimation();
-    setupTeamMemberInteractions();
-    animateTeams();
+    const marqueeAnimation = setupInfiniteScroll();
+    if (marqueeAnimation) {
+      addWiggleEffect();
+      addClickAnimation();
+      setupTeamMemberInteractions(marqueeAnimation);
+      animateTeams();
+    }
   }
 
   document.addEventListener("DOMContentLoaded", initializeAnimations);
