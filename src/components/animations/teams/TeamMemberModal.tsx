@@ -116,7 +116,7 @@ export default function TeamMemberModal() {
           </div>
           <button
             ref={buttonRef}
-            className="rounded-full bg-amber-900 bg-opacity-50 p-2 text-gray-300 hover:bg-opacity-100 hover:text-white hover:shadow-lg"
+            className="rounded-full bg-amber-900 bg-opacity-50 p-2 text-gray-300 hover:bg-opacity-100 hover:text-yellow-400 hover:shadow-lg"
             onClick={() => window.open(link, "_blank")}
             aria-label={`Visit ${firstName}'s profile`}
           >
@@ -126,7 +126,7 @@ export default function TeamMemberModal() {
         <p
           ref={quoteRef}
           className="mt-4 text-lg italic text-gray-300"
-        >{`"${quote}"`}</p>
+        >{`${quote}`}</p>
       </div>
     </div>
   );
