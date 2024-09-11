@@ -1,0 +1,172 @@
+---
+
+---
+
+<!-- Enhanced Team Card component -->
+<div
+  id="member-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <div class="w-full max-w-2xl rounded-lg bg-white p-6 shadow-xl">
+    <div class="mb-4 flex items-start justify-between">
+      <div class="flex items-center space-x-4">
+        <div
+          id="member-image"
+          class="h-24 w-24 overflow-hidden rounded-full bg-gray-200"
+        >
+        </div>
+        <div>
+          <h2 id="member-name" class="text-2xl font-bold" id="modal-title"></h2>
+          <p id="member-pronouns" class="text-sm text-gray-600"></p>
+        </div>
+      </div>
+      <button
+        class="rounded-full p-1 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        id="close-member-details"
+        aria-label="Close modal"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div>
+        <p class="font-semibold text-gray-700">Role:</p>
+        <p id="member-role" class="text-gray-600"></p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700">Team:</p>
+        <p id="member-team" class="text-gray-600"></p>
+      </div>
+    </div>
+    <div class="mb-4">
+      <p class="font-semibold text-gray-700">Quote:</p>
+      <p id="member-quote" class="italic text-gray-600"></p>
+    </div>
+    <div>
+      <a
+        id="member-link"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded px-2 py-1 text-blue-500 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        Learn more
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { selectedMember, clearSelectedMember } from "@/stores/memberStore";
+  import type { TeamMember } from "@/types/teams";
+
+  class MemberModal {
+    private modal: HTMLElement | null;
+    private memberImage: HTMLElement | null;
+    private memberName: HTMLElement | null;
+    private memberPronouns: HTMLElement | null;
+    private memberRole: HTMLElement | null;
+    private memberTeam: HTMLElement | null;
+    private memberQuote: HTMLElement | null;
+    private memberLink: HTMLAnchorElement | null;
+    private closeButton: HTMLElement | null;
+
+    constructor() {
+      this.modal = document.getElementById("member-modal");
+      this.memberImage = document.getElementById("member-image");
+      this.memberName = document.getElementById("member-name");
+      this.memberPronouns = document.getElementById("member-pronouns");
+      this.memberRole = document.getElementById("member-role");
+      this.memberTeam = document.getElementById("member-team");
+      this.memberQuote = document.getElementById("member-quote");
+      this.memberLink = document.getElementById(
+        "member-link",
+      ) as HTMLAnchorElement;
+      this.closeButton = document.getElementById("close-member-details");
+
+      this.initEventListeners();
+    }
+
+    private initEventListeners() {
+      selectedMember.subscribe(this.updateModal.bind(this));
+
+      if (this.closeButton) {
+        this.closeButton.addEventListener("click", clearSelectedMember);
+      }
+
+      if (this.modal) {
+        this.modal.addEventListener("click", (e) => {
+          if (e.target === this.modal) {
+            clearSelectedMember();
+          }
+        });
+      }
+
+      // Add keyboard event listener for accessibility
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !this.modal?.classList.contains("hidden")) {
+          clearSelectedMember();
+        }
+      });
+    }
+
+    private updateModal(member: TeamMember | null) {
+      if (
+        !this.modal ||
+        !this.memberImage ||
+        !this.memberName ||
+        !this.memberPronouns ||
+        !this.memberRole ||
+        !this.memberTeam ||
+        !this.memberQuote ||
+        !this.memberLink
+      )
+        return;
+
+      if (member) {
+        this.memberImage.style.backgroundImage = `url(${member.image || "/placeholder.svg"})`;
+        this.memberImage.style.backgroundSize = "cover";
+        this.memberImage.style.backgroundPosition = "center";
+        this.memberName.textContent = `${member.firstName} ${member.lastName || ""}`;
+        this.memberPronouns.textContent = member.pronouns || "";
+        this.memberRole.textContent = member.tag;
+        this.memberTeam.textContent = member.team;
+        this.memberQuote.textContent = member.quote;
+        this.memberLink.href = member.link;
+        this.showModal();
+      } else {
+        this.hideModal();
+      }
+    }
+
+    private showModal() {
+      this.modal?.classList.remove("hidden");
+      this.modal?.classList.add("flex");
+      document.body.classList.add("overflow-hidden");
+      this.closeButton?.focus(); // Focus on close button for accessibility
+    }
+
+    private hideModal() {
+      this.modal?.classList.add("hidden");
+      this.modal?.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+
+  // Initialize the MemberModal when the script runs
+  new MemberModal();
+</script>
