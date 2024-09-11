@@ -2,14 +2,12 @@
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import Boat from "@/components/animations/teams/Boat.astro";
-import Wave from "@/components/animations/teams/Wave.astro";
+import Wave from "@/components/animations/teams/WaveTeamCard.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 import { getCompartmentSizes, getContainerWidth } from "@/lib/TeamUtils";
 import { teamSection } from "@/config/site";
 import Prose from "@/components/utility/Prose.astro";
-import TeamMemberCard from "@/components/animations/teams/TeamMemberCard.astro";
-
 interface Props {
   className?: string;
   id?: string;
@@ -59,7 +57,7 @@ const { className, id } = Astro.props;
     </div>
   </div>
   <Wave />
-  <TeamMemberCard />
+  <!-- <TeamMemberCard /> -->
 </SectionWrapper>
 
 <script>

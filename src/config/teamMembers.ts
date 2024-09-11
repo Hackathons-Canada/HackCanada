@@ -74,10 +74,11 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Chirag",
+    pronouns: "he/him",
     image: "/teamAvatars/chirag.webp",
     team: "Tech",
-    tag: "Div Centerer",
-    link: "https://example.com/chirag",
+    tag: "Senior Div Centerer",
+    link: "https://chiragdalmia.me",
     quote: "I made this landing page ;)",
   },
   {
