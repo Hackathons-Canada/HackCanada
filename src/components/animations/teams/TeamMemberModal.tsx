@@ -1,74 +1,67 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useStore } from "@nanostores/react";
 import { selectedMember, clearSelectedMember } from "@/stores/memberStore";
-import { Globe } from "lucide-react";
 
 export default function TeamMemberModal() {
   const member = useStore(selectedMember);
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const modalRef = useRef(null);
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (member && dialog && !dialog.open) {
-      dialog.showModal();
-    } else if (!member && dialog && dialog.open) {
-      dialog.close();
-    }
-  }, [member]);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    const handleCancel = (event: Event) => {
-      event.preventDefault();
-      clearSelectedMember();
-    };
-    dialog?.addEventListener("cancel", handleCancel);
-    return () => dialog?.removeEventListener("cancel", handleCancel);
+  const handleClose = useCallback(() => {
+    clearSelectedMember();
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+
+    if (member) {
+      document.body.classList.add("overflow-hidden");
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [member, handleClose]);
 
   if (!member) return null;
 
+  const { firstName, lastName, tag, quote, image } = member;
+
   return (
-    <dialog
-      ref={dialogRef}
-      className="w-[350px] rounded-3xl bg-amber-950 p-6 shadow-xl backdrop:bg-black backdrop:bg-opacity-50"
-      onClick={(e) => {
-        if (e.target === dialogRef.current) clearSelectedMember();
-      }}
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      onClick={handleClose}
     >
-      <div className="flex items-start space-x-4">
-        <div className="flex flex-col items-center gap-2">
+      <div
+        ref={modalRef}
+        className="w-[350px] rounded-3xl bg-amber-950 p-6 shadow-xl focus:outline-none"
+        onClick={(e) => e.stopPropagation()}
+        tabIndex={-1}
+      >
+        <div className="flex items-start space-x-4">
           <div
-            className="h-16 w-16 rounded-full"
+            className="h-16 w-16 rounded-full bg-cover bg-center"
             style={{
-              backgroundImage: `url(${member.image || "/teamAvatars/default-avatar.webp"})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundImage: `url(${image || "/teamAvatars/default-avatar.webp"})`,
             }}
           />
-          <div className="h-fit w-fit text-yellow-500">
-            <a
-              href={member.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="outline-none"
-            >
-              <Globe className="h-6 w-6" />
-            </a>
+          <div className="flex-1">
+            <h2 id="modal-title" className="text-2xl font-bold text-white">
+              {`${firstName} ${lastName || ""}`}
+            </h2>
+            <p className="text-sm text-gray-400">{tag}</p>
           </div>
         </div>
-        <div className="flex-1">
-          <h2 id="modal-title" className="text-2xl font-bold text-white">
-            {`${member.firstName} ${member.lastName || ""}`}
-          </h2>
-          <p className="text-sm text-gray-400">{member.tag}</p>
-          <div className="mt-4">
-            <p className="text-lg italic text-gray-300">{`${member.quote}`}</p>
-          </div>
-        </div>
+        <p className="mt-4 text-lg italic text-gray-300">{`"${quote}"`}</p>
       </div>
-    </dialog>
+    </div>
   );
 }
