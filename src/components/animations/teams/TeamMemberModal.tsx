@@ -6,9 +6,12 @@ import { selectedMember, clearSelectedMember } from "@/stores/memberStore";
 import { Globe } from "lucide-react";
 import gsap from "gsap";
 
+// Custom hook for isomorphic layout effect
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export default function TeamMemberModal() {
   const member = useStore(selectedMember);
-  // const modalRef = useRef(null);
   const bgRef = useRef(null);
   const contentRef = useRef(null);
   const imageRef = useRef(null);
@@ -43,8 +46,8 @@ export default function TeamMemberModal() {
     };
   }, [member, handleClose]);
 
-  useLayoutEffect(() => {
-    if (member) {
+  useIsomorphicLayoutEffect(() => {
+    if (member && typeof window !== "undefined") {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(bgRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 })
