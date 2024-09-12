@@ -3,12 +3,24 @@
 import { useEffect, useRef, useCallback, useLayoutEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { selectedMember, clearSelectedMember } from "@/stores/memberStore";
-import { Globe } from "lucide-react";
+import { Globe, Github, Linkedin } from "lucide-react";
 import gsap from "gsap";
 
 // Custom hook for isomorphic layout effect
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+const getLinkIcon = (link: string) => {
+  if (link.includes("github.com")) return Github;
+  if (link.includes("linkedin.com")) return Linkedin;
+  return Globe;
+};
+
+const getLinkType = (link: string) => {
+  if (link.includes("github.com")) return "GitHub";
+  if (link.includes("linkedin.com")) return "LinkedIn";
+  return "profile";
+};
 
 export default function TeamMemberModal() {
   const member = useStore(selectedMember);
@@ -87,6 +99,8 @@ export default function TeamMemberModal() {
   if (!member) return null;
 
   const { firstName, lastName, tag, quote, image, link } = member;
+  const LinkIcon = getLinkIcon(link);
+  const linkType = getLinkType(link);
 
   return (
     <div
@@ -121,9 +135,9 @@ export default function TeamMemberModal() {
             ref={buttonRef}
             className="rounded-full bg-amber-900 bg-opacity-50 p-2 text-gray-300 hover:bg-opacity-100 hover:text-yellow-400 hover:shadow-lg"
             onClick={() => window.open(link, "_blank")}
-            aria-label={`Visit ${firstName}'s profile`}
+            aria-label={`Visit ${firstName}'s ${linkType} profile`}
           >
-            <Globe className="h-7 w-7" />
+            <LinkIcon className="h-7 w-7" />
           </button>
         </div>
         <p

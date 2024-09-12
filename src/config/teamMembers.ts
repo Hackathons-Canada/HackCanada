@@ -78,7 +78,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/chirag.webp",
     team: "Tech",
     tag: "Senior Div Centerer",
-    link: "https://chiragdalmia.me",
+    link: "https://github.com/ChiragDalmia/",
     quote: "I made this landing page ;)",
   },
   {

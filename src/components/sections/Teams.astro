@@ -113,14 +113,12 @@ const { className, id } = Astro.props;
     // Use ScrollTrigger to start the animation seconds after the section comes into view
     ScrollTrigger.create({
       trigger: ".team-container",
-      start: "top bottom-=100",
+      start: "bottom-=50 bottom-=50",
+      once: true, // This makes the trigger fire only once
       onEnter: () => {
         setTimeout(() => {
           marqueeAnimation.play();
-        }, 500);
-      },
-      onLeaveBack: () => {
-        marqueeAnimation.pause();
+        }, 1000);
       },
     });
   }
