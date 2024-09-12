@@ -137,33 +137,6 @@ const { className, id } = Astro.props;
     });
   }
 
-  function addClickAnimation() {
-    gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
-      let currentAnimation: gsap.core.Timeline | null = null;
-      const initialY = gsap.getProperty(boat, "y") as number;
-
-      boat.addEventListener("click", () => {
-        if (currentAnimation) currentAnimation.kill();
-
-        currentAnimation = gsap
-          .timeline()
-          .to(boat, {
-            y: initialY + 30,
-            duration: 0.3,
-            ease: "power2.out",
-          })
-          .to(boat, {
-            y: initialY,
-            duration: 2,
-            ease: "elastic.out(1.5,0.3)",
-            onComplete: () => {
-              currentAnimation = null;
-            },
-          });
-      });
-    });
-  }
-
   function setupTeamMemberInteractions() {
     const teamMembers = document.querySelectorAll(
       ".team-member-1, .team-member-2",
@@ -279,7 +252,6 @@ const { className, id } = Astro.props;
   function initializeAnimations() {
     setupInfiniteScroll();
     addWiggleEffect();
-    addClickAnimation();
     setupTeamMemberInteractions();
     animateTeams();
   }
