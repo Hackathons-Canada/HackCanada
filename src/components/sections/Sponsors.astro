@@ -1,5 +1,4 @@
 ---
-import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -10,4 +9,4 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn(className)}> Sponsors </SectionWrapper>
+<section id={id} class={cn("min-h-screen", className)}>top</section>
