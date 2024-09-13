@@ -94,9 +94,6 @@ const { className, id } = Astro.props;
       duration: duration,
       ease: "none",
       repeat: -1,
-      onRepeat: () => {
-        gsap.set(boatContainer, { x: 0 });
-      },
     });
 
     const hoverClassNames = ["team-member-gsap"]; // Assuming this is the class you want to target
