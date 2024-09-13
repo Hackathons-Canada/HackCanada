@@ -1,7 +1,7 @@
 {
   "name": "hackcanadawebsite",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -48,9 +48,22 @@
     "eslint-plugin-react": "^7.36.1",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "typescript": "^5.6.2"
+  },
+  "lint-staged": {
+    "*.astro": [
+      "astro check"
+    ],
+    "*.{astro,js,jsx,ts,tsx,mjs,cjs}": [
+      "prettier --config .prettierrc.mjs --write",
+      "eslint --fix"
+    ],
+    "*.{css,md,json,html}": [
+      "prettier --config .prettierrc.mjs --write"
+    ]
   }
 }

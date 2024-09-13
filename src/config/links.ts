@@ -25,7 +25,7 @@ export const navLinks: NavLink[] = [
 
 export const socialLinks: SocialLink[] = [
   {
-    href: "https://discord.com",
+    href: "https://discord.gg/wp42amwcWy",
     icon: "/icons/discord.svg",
     iconV2: "/icons/discord-footer.svg",
   },
@@ -35,12 +35,12 @@ export const socialLinks: SocialLink[] = [
     iconV2: "/icons/ig-footer.svg",
   },
   {
-    href: "https://www.linkedin.com/company/hackathonscanada/?originalSubdomain=ca",
+    href: "https://www.linkedin.com/company/hackathonscanada/",
     icon: "/icons/linkedin.svg",
     iconV2: "/icons/linkedin-footer.svg",
   },
   {
-    href: "mailto:uQqzD@example.com",
+    href: "mailto:contact@hackcanada.org",
     icon: "/icons/mail.svg",
     iconV2: "/icons/gmail-footer.svg",
   },

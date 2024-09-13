@@ -1,8 +1,8 @@
-import { FaqCategories, type FaqCategory } from "@/types/faqs";
+import { type FaqCategory } from "@/types/faqs";
 
 const faqs: FaqCategory[] = [
   {
-    type: FaqCategories.General,
+    type: "General",
     faqs: [
       {
         question: "What is Hack Canada?",
@@ -37,7 +37,7 @@ const faqs: FaqCategory[] = [
     ],
   },
   {
-    type: FaqCategories.Registration,
+    type: "Registration",
     faqs: [
       {
         question: "When do hacker applications open?",
@@ -46,7 +46,7 @@ const faqs: FaqCategory[] = [
     ],
   },
   {
-    type: FaqCategories.Logistics,
+    type: "Logistics",
     faqs: [
       {
         question: "Will Hack Canada 2025 happen in person or virtually?",
@@ -59,7 +59,7 @@ const faqs: FaqCategory[] = [
     ],
   },
   {
-    type: FaqCategories.CodeOfConduct,
+    type: "Code of Conduct",
     faqs: [],
   },
 ];

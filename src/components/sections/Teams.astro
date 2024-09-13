@@ -94,10 +94,6 @@ const { className, id } = Astro.props;
       duration: duration,
       ease: "none",
       repeat: -1,
-      onRepeat: () => {
-        gsap.set(boatContainer, { x: 0 });
-      },
-      paused: true, // Start paused
     });
 
     const hoverClassNames = ["team-member-gsap"];
