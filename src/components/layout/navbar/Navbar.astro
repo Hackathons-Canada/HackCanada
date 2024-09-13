@@ -15,7 +15,7 @@ const { className } = Astro.props;
 <header
   class={cn(
     className,
-    "w-full px-4 h-20 mt-4 sm:mt-6 fixed top-0 left-0 right-0 z-50",
+    "w-full px-4 h-20 mt-4 sm:mt-6 fixed top-0 left-0 right-0 z-50 navbar-animation opacity-0",
   )}
 >
   <!-- TODO: Modify once we have mobile designs -->
@@ -40,48 +40,36 @@ const { className } = Astro.props;
   </nav>
 </header>
 
-<!-- Add the following script tag for the scrolling logic -->
 <script>
   import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  const navbar = document.querySelector("header");
+  gsap.registerPlugin(ScrollTrigger);
+
+  const navbar = document.querySelector(".navbar-animation");
 
   // Initial animation
-  gsap.from(navbar, {
-    y: -100,
-    duration: 0.5,
-    ease: "power3.out",
-  });
+  gsap.fromTo(
+    navbar,
+    { y: -100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+  );
 
-  let lastScrollTop = 0;
+  // Create a ScrollTrigger for smoother scroll-based animations
+  ScrollTrigger.create({
+    start: "top top",
+    end: "max",
+    onUpdate: (self) => {
+      const scrollDirection = self.direction;
+      const scrollVelocity = self.getVelocity();
 
-  // Pop up on scroll up
-  const showNavbar = () => {
-    gsap.to(navbar, { y: 0, duration: 0.3, ease: "power3.out" });
-  };
-
-  // Hide on scroll down
-  const hideNavbar = () => {
-    if (!navbar) return;
-
-    gsap.to(navbar, {
-      y: -100,
-      duration: 0.5,
-      ease: "power3.out",
-    });
-  };
-
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    if (scrollTop < 100) {
-      showNavbar();
-    } else if (scrollTop > lastScrollTop) {
-      hideNavbar();
-    } else {
-      showNavbar();
-    }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      if (scrollDirection === 1 && scrollVelocity > 50) {
+        // Scrolling down fast, hide navbar
+        gsap.to(navbar, { y: -100, duration: 0.5, ease: "power2.out" });
+      } else if (scrollDirection === -1 || self.scroll() < 100) {
+        // Scrolling up or near the top, show navbar
+        gsap.to(navbar, { y: 0, duration: 0.5, ease: "power2.out" });
+      }
+    },
   });
 </script>
