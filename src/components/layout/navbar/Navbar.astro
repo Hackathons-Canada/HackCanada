@@ -48,28 +48,48 @@ const { className } = Astro.props;
 
   const navbar = document.querySelector(".navbar-animation");
 
-  // Initial animation
-  gsap.fromTo(
-    navbar,
-    { y: -100, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-  );
+  // Function to run the initial animation
+  function runInitialAnimation() {
+    return gsap.fromTo(
+      navbar,
+      { y: -100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        onComplete: setupScrollTrigger,
+      },
+    );
+  }
 
-  // Create a ScrollTrigger for smoother scroll-based animations
-  ScrollTrigger.create({
-    start: "top top",
-    end: "max",
-    onUpdate: (self) => {
-      const scrollDirection = self.direction;
-      const scrollVelocity = self.getVelocity();
+  // Function to setup ScrollTrigger
+  function setupScrollTrigger() {
+    ScrollTrigger.create({
+      start: "top top",
+      end: "max",
+      onUpdate: (self) => {
+        const scrollDirection = self.direction;
+        const scrollVelocity = self.getVelocity();
 
-      if (scrollDirection === 1 && scrollVelocity > 50) {
-        // Scrolling down fast, hide navbar
-        gsap.to(navbar, { y: -100, duration: 0.5, ease: "power2.out" });
-      } else if (scrollDirection === -1 || self.scroll() < 100) {
-        // Scrolling up or near the top, show navbar
-        gsap.to(navbar, { y: 0, duration: 0.5, ease: "power2.out" });
-      }
-    },
-  });
+        if (scrollDirection === 1 && scrollVelocity > 50) {
+          // Scrolling down fast, hide navbar
+          gsap.to(navbar, { y: -100, duration: 0.5, ease: "power2.out" });
+        } else if (scrollDirection === -1 || self.scroll() < 100) {
+          // Scrolling up or near the top, show navbar
+          gsap.to(navbar, { y: 0, duration: 0.5, ease: "power2.out" });
+        }
+      },
+    });
+  }
+
+  // Run initial animation on page load
+  if (document.readyState === "complete") {
+    runInitialAnimation();
+  } else {
+    window.addEventListener("load", runInitialAnimation);
+  }
+
+  // Re-run initial animation on page transitions
+  document.addEventListener("astro:after-swap", runInitialAnimation);
 </script>
