@@ -1,26 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# Format the staged files
-npm run format
-
-# Add the formatted changes
-git add .
-
-# Check lint
-npm run lint ||
-(
-    echo '😤🏀👋😤 Linting failed! 😤🏀👋😤 
-            ESLint check did not pass. Please make the required changes listed above, add them, and try to push again.'
-    exit 1
-)
-
-# Check Astro
-npm run astro check ||
-(
-    echo '😳😥❌😳 Astro check failed! 😳😥❌😳
-            Please make the changes required above.'
-    exit 1
-)
-
-# If all checks pass, proceed with the push
-echo '✅✅✅✅ Congrats! All checks passed. Pushing now... ✅✅✅✅'
+pnpm dlx lint-staged
