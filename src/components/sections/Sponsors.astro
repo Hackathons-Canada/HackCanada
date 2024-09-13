@@ -1,4 +1,6 @@
 ---
+import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -9,4 +11,72 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<section id={id} class={cn("min-h-screen", className)}>top</section>
+<SectionWrapper id={id} className={cn(className)}>
+  <SectionHeading>Sponsor Us</SectionHeading>
+  <div class="flex w-full justify-center">
+    <div
+      class="jar-container relative flex h-fit w-full max-w-4xl justify-between bg-black"
+    >
+      <div class="relative z-0 h-40 w-40">
+        <div
+          class="absolute -bottom-48 right-0 -z-10 h-[208px] w-[20px] rounded-tr-full bg-orange-400"
+        >
+          <div
+            class="absolute -bottom-[5px] right-0 h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+          <div
+            class="absolute -bottom-[4px] right-[5px] h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+          <div
+            class="absolute -bottom-[7px] right-[10px] h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+          <div
+            class="absolute -bottom-[5px] right-[15px] h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+        </div>
+        <img
+          src="/sponsors/design/jarleft.svg"
+          alt="jar"
+          width="100"
+          height="100"
+          style="width: 100%;"
+        />
+      </div>
+      <div class="relative z-0 h-40 w-40">
+        <div
+          class="absolute -bottom-48 left-0 -z-10 h-[208px] w-[20px] rounded-tl-full bg-orange-400"
+        >
+          <div
+            class="absolute -bottom-[5px] right-0 h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+          <div
+            class="absolute -bottom-[4px] right-[5px] h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+          <div
+            class="absolute -bottom-[7px] right-[10px] h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+          <div
+            class="absolute -bottom-[5px] right-[15px] h-[10px] w-[5px] rounded bg-orange-400"
+          >
+          </div>
+        </div>
+        <img
+          src="/sponsors/design/jarright.svg"
+          alt="jar"
+          width="100"
+          height="100"
+          style="width: 100%;"
+        />
+      </div>
+    </div>
+
+    <div class="h-15 w-15 absolute bottom-0 bg-white"></div>
+  </div>
+</SectionWrapper>
