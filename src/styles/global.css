@@ -71,7 +71,7 @@
   @font-face {
     font-family: "ContentFont";
     src: url("/fonts/temp_content.woff2") format("woff2");
-    font-weight: normal;
+    font-weight: black;
     font-style: normal;
     font-display: swap;
   }

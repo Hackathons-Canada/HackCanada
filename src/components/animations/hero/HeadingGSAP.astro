@@ -1,5 +1,6 @@
 ---
 import { Button } from "@/components/ui/button";
+import Prose from "@/components/utility/Prose.astro";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -22,11 +23,10 @@ const { title, tagline, className } = Astro.props;
   >
     {title}
   </h1>
-  <p
-    class="gsapFade hero-tagline text-center text-lg font-black uppercase tracking-tighter opacity-0 md:text-right"
+  <Prose
+    className="gsapFade hero-tagline text-center text-xl font-black uppercase tracking-tighter opacity-0 md:text-right"
+    >{tagline}</Prose
   >
-    {tagline}
-  </p>
   <Button
     className="gsapFade mt-6 w-auto bg-[#0A1F44] opacity-0 hover:bg-[#0A1F44]/95"
     >Hacker Application</Button

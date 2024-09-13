@@ -2,13 +2,13 @@
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import Boat from "@/components/animations/teams/Boat.astro";
-import Wave from "@/components/animations/teams/Wave.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 import { getCompartmentSizes, getContainerWidth } from "@/lib/TeamUtils";
 import { teamSection } from "@/config/site";
 import Prose from "@/components/utility/Prose.astro";
-
+import Wave from "@/components/animations/teams/Wave.astro";
+import TeamMemberModal from "@/components/animations/teams/TeamMemberModal";
 interface Props {
   className?: string;
   id?: string;
@@ -58,8 +58,8 @@ const { className, id } = Astro.props;
     </div>
   </div>
   <Wave />
+  <TeamMemberModal client:load />
 </SectionWrapper>
-
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -96,7 +96,7 @@ const { className, id } = Astro.props;
       repeat: -1,
     });
 
-    const hoverClassNames = ["team-member-gsap"]; // Assuming this is the class you want to target
+    const hoverClassNames = ["team-member-gsap"];
     // Add hover pause functionality
     hoverClassNames.forEach((className) => {
       const elements = document.querySelectorAll(`.${className}`);
@@ -104,6 +104,18 @@ const { className, id } = Astro.props;
         element.addEventListener("mouseenter", () => marqueeAnimation.pause());
         element.addEventListener("mouseleave", () => marqueeAnimation.play());
       });
+    });
+
+    // Use ScrollTrigger to start the animation seconds after the section comes into view
+    ScrollTrigger.create({
+      trigger: ".team-container",
+      start: "bottom-=50 bottom-=50",
+      once: true, // This makes the trigger fire only once
+      onEnter: () => {
+        setTimeout(() => {
+          marqueeAnimation.play();
+        }, 1000);
+      },
     });
   }
   function addWiggleEffect() {
@@ -115,33 +127,6 @@ const { className, id } = Astro.props;
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-      });
-    });
-  }
-
-  function addClickAnimation() {
-    gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
-      let currentAnimation: gsap.core.Timeline | null = null;
-      const initialY = gsap.getProperty(boat, "y") as number;
-
-      boat.addEventListener("click", () => {
-        if (currentAnimation) currentAnimation.kill();
-
-        currentAnimation = gsap
-          .timeline()
-          .to(boat, {
-            y: initialY + 30,
-            duration: 0.3,
-            ease: "power2.out",
-          })
-          .to(boat, {
-            y: initialY,
-            duration: 2,
-            ease: "elastic.out(1.5,0.3)",
-            onComplete: () => {
-              currentAnimation = null;
-            },
-          });
       });
     });
   }
@@ -261,7 +246,6 @@ const { className, id } = Astro.props;
   function initializeAnimations() {
     setupInfiniteScroll();
     addWiggleEffect();
-    addClickAnimation();
     setupTeamMemberInteractions();
     animateTeams();
   }

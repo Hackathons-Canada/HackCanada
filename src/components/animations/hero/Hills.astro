@@ -51,6 +51,17 @@ const { className = "" } = Astro.props;
 
   gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
+  function calculateDuration() {
+    const screenWidth = window.innerWidth;
+    const normalDesktopWidth = 1024; // Assuming 1024px as the breakpoint for normal desktop
+
+    if (screenWidth < normalDesktopWidth) {
+      return 2; // 2 seconds for screens smaller than normal desktop
+    } else {
+      return 4; // 4 seconds for normal desktop and larger screens
+    }
+  }
+
   function setupAnimation() {
     const sledge = document.getElementById("sledge");
     const path = document.getElementById("sledgeMotionPath");
@@ -83,10 +94,10 @@ const { className = "" } = Astro.props;
           end: 1,
         },
         ease: "power4.Out",
-        duration: 2, //make this responsive (increase with screen size)
+        duration: calculateDuration(), // Use the calculated duration
         scrollTrigger: {
           trigger: "#heroSection",
-          start: "5% top",
+          start: "10% top",
           end: "10% center",
           markers: false,
         },
