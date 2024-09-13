@@ -28,6 +28,11 @@ const { className, id } = Astro.props;
     >{teamSection.title}</SectionHeading
   >
   <Prose className="text-center" set:html={teamSection.tagline} />
+  <div
+    class="absolute h-4/6 w-full translate-y-80 transform border-4 border-black"
+    onmouseover="console.log('hovered on this box')"
+  >
+  </div>
   <div class="team-container absolute bottom-0 left-0 h-fit w-full">
     <div
       class="boat-container relative flex h-[150px] w-fit gap-[40px]"
