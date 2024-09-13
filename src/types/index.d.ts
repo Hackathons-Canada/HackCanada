@@ -12,14 +12,3 @@ export type SocialLink = {
   icon: string;
   iconV2?: string;
 };
-
-export type FooterLink = {
-  label: string;
-  href: string;
-  external?: string; // If we want to open the link in a new tab
-};
-
-export type faqItem = {
-  question: string;
-  answer: string;
-};
