@@ -2,6 +2,21 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="500 - Server Error">
-  <h1>500 - Server Error</h1>
+<BaseLayout title="500" description="Internal Server Error">
+  <div
+    class="container mx-auto h-screen max-w-4xl content-center px-4 py-16 pt-40"
+  >
+    <h1 class="mb-8 text-8xl font-bold text-gray-800">500</h1>
+
+    <div class="space-y-8 text-gray-700">
+      <section>
+        <p class="mb-4">
+          Internal Server Error, please try again later. If the problem
+          persists, please contact us at <a href="mailto:contact@hackcanada.org"
+            >contact@hackcanada.org</a
+          >
+        </p>
+      </section>
+    </div>
+  </div>
 </BaseLayout>

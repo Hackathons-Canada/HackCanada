@@ -64,10 +64,11 @@ export const footerCol2Links = [
   },
   {
     label: "Privacy Policy",
-    href: "",
+    href: "/privacy",
   },
   {
     label: "Contact Us",
-    href: "",
+    href: "mailto:contact@hackcanada.org",
+    blank: true,
   },
 ];

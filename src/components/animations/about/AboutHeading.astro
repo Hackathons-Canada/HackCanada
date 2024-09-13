@@ -43,7 +43,7 @@ import { aboutSection } from "@/config/site";
 
   // Animate the paragraphs
   const paragraphs = document.querySelectorAll(".about-paragraph");
-  paragraphs.forEach((p, index) => {
+  paragraphs.forEach((_, index) => {
     initGsapFade(`.about-paragraph:nth-child(${index + 1})`, {
       duration: 0.8,
       delay: 0.5 + index * 0.2,
