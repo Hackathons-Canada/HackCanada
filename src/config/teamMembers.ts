@@ -52,7 +52,7 @@ export const teamMembers: TeamMember[] = [
     // image: "/teamAvatars/jason.webp",
     team: "Tech",
     tag: "Tech Lead",
-    link: "https://www.linkedin.com/in/jasoncameron/",
+    link: "https://www.linkedin.com/in/jsoncameron/",
     quote: "Sleep is for the week",
   },
   {
