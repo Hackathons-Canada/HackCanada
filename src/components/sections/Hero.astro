@@ -13,6 +13,15 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
+<div id="sledge" class="absolute -left-80 z-10 w-80">
+  <img
+    src="hero-beaver-sledge.svg"
+    alt="Beaver on a sledge"
+    width="320"
+    height="320"
+    style="width: 100%; height: auto; opacity: 1;"
+  />
+</div>
 <section
   class={cn(
     "flex flex-col justify-center w-full overflow-hidden relative min-h-screen",
