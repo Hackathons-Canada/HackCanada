@@ -32,7 +32,10 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
       tl.to(socials, {
         opacity: 0,
         y: 10,
-        stagger: staggerTime,
+        stagger: {
+          each: staggerTime,
+          from: "end",
+        },
         duration: durationExit,
         ease: "power2.in",
       })
