@@ -54,13 +54,13 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
           duration: durationExit,
           ease: "circ.in",
           onComplete: () => {
-            dropdown?.classList.add("hidden");
+            dropdown.classList.add("hidden");
             body.classList.remove("overflow-hidden");
           },
         });
     } else {
       // Enter animations
-      dropdown?.classList.remove("hidden");
+      dropdown.classList.remove("hidden");
       body.classList.add("overflow-hidden");
 
       const tl = gsap.timeline();

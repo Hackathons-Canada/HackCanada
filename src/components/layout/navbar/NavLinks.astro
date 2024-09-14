@@ -17,3 +17,13 @@ import { navLinks } from "@/config/links";
     ))
   }
 </ul>
+
+<script>
+  // Globally accessible function
+  window.handleScrollToSection = function (section) {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+</script>

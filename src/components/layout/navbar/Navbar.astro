@@ -46,58 +46,64 @@ const { className } = Astro.props;
       <DropdownMenu />
     </div>
   </nav>
-
-  <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const navbar = document.querySelector(".navbar-animation");
-
-    // Function to run the initial animation
-    function runInitialAnimation() {
-      return gsap.fromTo(
-        navbar,
-        { y: -100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          onComplete: setupScrollTrigger,
-        },
-      );
-    }
-
-    // Function to setup ScrollTrigger
-    function setupScrollTrigger() {
-      ScrollTrigger.create({
-        start: "top top",
-        end: "max",
-        onUpdate: (self) => {
-          const scrollDirection = self.direction;
-          const scrollVelocity = self.getVelocity();
-
-          if (scrollDirection === 1 && scrollVelocity > 50) {
-            // Scrolling down fast, hide navbar
-            gsap.to(navbar, { y: -100, duration: 0.5, ease: "power2.out" });
-          } else if (scrollDirection === -1 || self.scroll() < 100) {
-            // Scrolling up or near the top, show navbar
-            gsap.to(navbar, { y: 0, duration: 0.5, ease: "power2.out" });
-          }
-        },
-      });
-    }
-
-    // Run initial animation on page load
-    if (document.readyState === "complete") {
-      runInitialAnimation();
-    } else {
-      window.addEventListener("load", runInitialAnimation);
-    }
-
-    // Re-run initial animation on page transitions
-    document.addEventListener("astro:after-swap", runInitialAnimation);
-  </script>
 </header>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const navbar = document.querySelector(".navbar-animation");
+  const body = document.querySelector("body");
+
+  // Function to run the initial animation
+  function runInitialAnimation() {
+    return gsap.fromTo(
+      navbar,
+      { y: -100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        onComplete: setupScrollTrigger,
+      },
+    );
+  }
+
+  // Function to setup ScrollTrigger
+  function setupScrollTrigger() {
+    ScrollTrigger.create({
+      start: "top top",
+      end: "max",
+      onUpdate: (self) => {
+        const scrollDirection = self.direction;
+        const scrollVelocity = self.getVelocity();
+
+        // Return early if the mobile menu is open
+        if (body?.classList.contains("overflow-hidden")) {
+          return;
+        }
+
+        if (scrollDirection === 1 && scrollVelocity > 50) {
+          // Scrolling down fast, hide navbar
+          gsap.to(navbar, { y: -100, duration: 0.5, ease: "power2.out" });
+        } else if (scrollDirection === -1 || self.scroll() < 100) {
+          // Scrolling up or near the top, show navbar
+          gsap.to(navbar, { y: 0, duration: 0.5, ease: "power2.out" });
+        }
+      },
+    });
+  }
+
+  // Run initial animation on page load
+  if (document.readyState === "complete") {
+    runInitialAnimation();
+  } else {
+    window.addEventListener("load", runInitialAnimation);
+  }
+
+  // Re-run initial animation on page transitions
+  document.addEventListener("astro:after-swap", runInitialAnimation);
+</script>
