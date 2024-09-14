@@ -6,8 +6,20 @@ import { navLinks } from "@/config/links";
   {
     navLinks.map((link) => (
       <li class="navlink rounded-lg bg-white/30 pb-1.5 pt-2 text-lg font-semibold">
-        <a href={link.href}>{link.label}</a>
+        <button onclick={`window.handleScrollToSection('${link.href}')`}>
+          {link.label}
+        </button>
       </li>
     ))
   }
 </ul>
+
+<script>
+  // Make the function globally accessible
+  window.handleScrollToSection = function (section) {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+</script>
