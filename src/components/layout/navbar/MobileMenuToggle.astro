@@ -3,29 +3,11 @@
   class="relative flex h-8 w-8 items-center justify-center focus:outline-none sm:hidden"
 >
   <div
-    class="menu-line absolute top-1/3 h-0.5 w-6 bg-black transition duration-1000 ease-in-out"
+    class="menu-line absolute top-1/3 h-[3px] w-6 rounded-full bg-black transition duration-500 ease-in-out"
   >
   </div>
   <div
-    class="menu-line absolute top-2/3 h-0.5 w-6 bg-black transition duration-1000 ease-in-out"
+    class="menu-line absolute top-2/3 h-[3px] w-6 rounded-full bg-black transition duration-500 ease-in-out"
   >
   </div>
 </button>
-
-<script>
-  const toggleButton = document.querySelector("#dropdownToggle");
-  const hamburgerLines = toggleButton?.querySelectorAll(".menu-line");
-
-  toggleButton?.addEventListener("click", () => {
-    hamburgerLines?.forEach((line, index) => {
-      setTimeout(() => {
-        line.classList.toggle(
-          index === 0 ? "rotate-[405deg]" : "-rotate-[405deg]",
-        );
-        line.classList.toggle(
-          index === 0 ? "translate-y-[5.5px]" : "-translate-y-[5.5px]",
-        );
-      }, index * 100); // 100ms delay between first and second line
-    });
-  });
-</script>

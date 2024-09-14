@@ -11,97 +11,128 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
 <script>
   import gsap from "gsap";
 
-  const body = document.querySelector("body");
   const dropdown = document.querySelector("#mobileDropdown");
-  const toggleButton = document.querySelector("#dropdownToggle");
-  const navLinks = dropdown?.querySelectorAll(".navlink");
-  const socials = dropdown?.querySelectorAll(".socialLink");
   let isDropdownOpen = false;
 
-  toggleButton?.addEventListener("click", () => {
-    if (!navLinks || !dropdown || !socials || !body) return;
+  const navLinks = dropdown?.querySelectorAll(".navlink");
+  const socials = dropdown?.querySelectorAll(".socialLink");
 
-    const durationEnter = 0.3;
+  const toggleButton = document.querySelector("#dropdownToggle");
+  const hamburgerLines = toggleButton?.querySelectorAll(".menu-line");
+
+  const toggleMenuButton = () => {
+    hamburgerLines?.forEach((line, index) => {
+      setTimeout(() => {
+        line.classList.toggle(
+          index === 0 ? "rotate-[405deg]" : "-rotate-[405deg]",
+        );
+        line.classList.toggle(
+          index === 0 ? "translate-y-[5.5px]" : "-translate-y-[5.5px]",
+        );
+      }, index * 100); // 100ms delay between first and second line
+    });
+  };
+
+  window.closeDropdown = function () {
+    toggleMenuButton();
+
+    if (!navLinks || !dropdown || !socials || !isDropdownOpen) return;
+
     const durationExit = 0.2;
     const staggerTime = 0.05;
 
-    if (isDropdownOpen) {
-      // Exit animations
-      const tl = gsap.timeline();
+    const tl = gsap.timeline();
 
-      tl.to(socials, {
+    tl.to(socials, {
+      opacity: 0,
+      y: 10,
+      stagger: {
+        each: staggerTime,
+        from: "end",
+      },
+      duration: durationExit,
+      ease: "power2.in",
+    })
+      .to(navLinks, {
         opacity: 0,
         y: 10,
         stagger: {
           each: staggerTime,
-          from: "end",
+          from: "edges",
         },
         duration: durationExit,
         ease: "power2.in",
       })
-        .to(navLinks, {
+      .to(dropdown, {
+        height: 0,
+        duration: durationExit,
+        ease: "circ.in",
+        onComplete: () => {
+          dropdown.classList.add("hidden");
+        },
+      });
+
+    isDropdownOpen = false;
+  };
+
+  const openDropdown = () => {
+    toggleMenuButton();
+
+    if (!navLinks || !dropdown || !socials || isDropdownOpen) return;
+
+    const durationEnter = 0.3;
+    const staggerTime = 0.05;
+
+    dropdown.classList.remove("hidden");
+
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      dropdown,
+      { height: 0 },
+      { height: "auto", duration: durationEnter, ease: "circ.out" },
+    )
+      .fromTo(
+        navLinks,
+        {
           opacity: 0,
           y: 10,
+        },
+        {
+          opacity: 1,
+          y: 0,
           stagger: {
             each: staggerTime,
-            from: "edges",
+            from: "center",
           },
-          duration: durationExit,
-          ease: "power2.in",
-        })
-        .to(dropdown, {
-          height: 0,
-          duration: durationExit,
-          ease: "circ.in",
-          onComplete: () => {
-            dropdown.classList.add("hidden");
-            body.classList.remove("overflow-hidden");
-          },
-        });
-    } else {
-      // Enter animations
-      dropdown.classList.remove("hidden");
-      body.classList.add("overflow-hidden");
-
-      const tl = gsap.timeline();
-
-      tl.fromTo(
-        dropdown,
-        { height: 0 },
-        { height: "auto", duration: durationEnter, ease: "circ.out" },
+          duration: durationEnter,
+          ease: "power2.out",
+        },
       )
-        .fromTo(
-          navLinks,
-          {
-            opacity: 0,
-            y: 10,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: {
-              each: staggerTime,
-              from: "center",
-            },
-            duration: durationEnter,
-            ease: "power2.out",
-          },
-        )
-        .fromTo(
-          socials,
-          {
-            opacity: 0,
-            y: 10,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: staggerTime,
-            duration: durationEnter,
-            ease: "power2.out",
-          },
-        );
+      .fromTo(
+        socials,
+        {
+          opacity: 0,
+          y: 10,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: staggerTime,
+          duration: durationEnter,
+          ease: "power2.out",
+        },
+      );
+
+    isDropdownOpen = true;
+  };
+
+  // Toggle dropdown on button click
+  toggleButton?.addEventListener("click", () => {
+    if (isDropdownOpen) {
+      window.closeDropdown();
+    } else {
+      openDropdown();
     }
-    isDropdownOpen = !isDropdownOpen;
   });
 </script>

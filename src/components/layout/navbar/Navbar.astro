@@ -55,7 +55,7 @@ const { className } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   const navbar = document.querySelector(".navbar-animation");
-  const body = document.querySelector("body");
+  const dropdown = navbar?.querySelector("#mobileDropdown");
 
   // Function to run the initial animation
   function runInitialAnimation() {
@@ -82,7 +82,7 @@ const { className } = Astro.props;
         const scrollVelocity = self.getVelocity();
 
         // Return early if the mobile menu is open
-        if (body?.classList.contains("overflow-hidden")) {
+        if (!dropdown?.classList.contains("hidden")) {
           return;
         }
 
