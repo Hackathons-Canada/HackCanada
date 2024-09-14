@@ -2,10 +2,10 @@
 import { navLinks } from "@/config/links";
 ---
 
-<ul class="flex flex-col gap-y-6 pb-6 pt-4 text-center">
+<ul class="flex flex-col gap-y-2.5 pb-4 pt-2 text-center">
   {
     navLinks.map((link) => (
-      <li class="navlink text-xl font-semibold">
+      <li class="navlink rounded-lg bg-white/10 pb-1.5 pt-2 text-lg font-semibold backdrop-blur-sm">
         <a href={link.href}>{link.label}</a>
       </li>
     ))

@@ -15,13 +15,11 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
   const dropdown = document.querySelector("#mobileDropdown");
   const toggleButton = document.querySelector("#dropdownToggle");
   const navLinks = dropdown?.querySelectorAll(".navlink");
-  const socialsContainer = dropdown?.querySelector(".socialContainer");
   const socials = dropdown?.querySelectorAll(".socialLink");
   let isDropdownOpen = false;
 
   toggleButton?.addEventListener("click", () => {
-    if (!navLinks || !socials || !dropdown || !socialsContainer || !body)
-      return;
+    if (!navLinks || !dropdown || !socials || !body) return;
 
     const durationEnter = 0.3;
     const durationExit = 0.2;
@@ -31,16 +29,20 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
       // Exit animations
       const tl = gsap.timeline();
 
-      tl.to(socialsContainer, {
+      tl.to(socials, {
         opacity: 0,
         y: 10,
+        stagger: staggerTime,
         duration: durationExit,
         ease: "power2.in",
       })
         .to(navLinks, {
           opacity: 0,
           y: 10,
-          stagger: staggerTime,
+          stagger: {
+            each: staggerTime,
+            from: "edges",
+          },
           duration: durationExit,
           ease: "power2.in",
         })
@@ -74,13 +76,16 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
           {
             opacity: 1,
             y: 0,
-            stagger: staggerTime,
+            stagger: {
+              each: staggerTime,
+              from: "center",
+            },
             duration: durationEnter,
             ease: "power2.out",
           },
         )
         .fromTo(
-          socialsContainer,
+          socials,
           {
             opacity: 0,
             y: 10,
@@ -88,6 +93,7 @@ import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
           {
             opacity: 1,
             y: 0,
+            stagger: staggerTime,
             duration: durationEnter,
             ease: "power2.out",
           },
