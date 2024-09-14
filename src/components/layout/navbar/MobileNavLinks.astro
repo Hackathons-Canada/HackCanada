@@ -2,14 +2,11 @@
 import { navLinks } from "@/config/links";
 ---
 
-<ul class="">
+<ul class="flex flex-col gap-y-6 pb-6 pt-4 text-center">
   {
     navLinks.map((link) => (
-      <li class="group relative font-bold">
-        <a href={link.href} class="xl:text-lg">
-          {link.label}
-        </a>
-        <span class="absolute inset-x-0 bottom-0 h-0.5 scale-x-0 rounded-full bg-black transition-transform duration-200 group-hover:scale-x-100" />
+      <li class="navlink text-xl font-semibold">
+        <a href={link.href}>{link.label}</a>
       </li>
     ))
   }

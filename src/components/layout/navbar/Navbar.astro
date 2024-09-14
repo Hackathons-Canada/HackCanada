@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 import NavLinks from "./NavLinks.astro";
 import Image from "astro/components/Image.astro";
 import NavbarSocials from "./NavbarSocials.astro";
-import MobileNavLinks from "@/components/layout/navbar/MobileNavLinks.astro";
-import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
+import DropdownMenu from "@/components/layout/navbar/DropdownMenu.astro";
 
 interface Props {
   className?: string;
@@ -21,7 +20,7 @@ const { className } = Astro.props;
 >
   <!-- TODO: Modify once we have mobile designs -->
   <nav
-    class="mx-auto flex max-w-6xl items-center justify-between rounded-[2em] border-[1.5px] border-white bg-gradient-to-br from-white/50 to-white/30 px-3 pb-2 pt-2.5 text-center text-black backdrop-blur-sm max-sm:flex-col sm:px-6 md:px-6 lg:px-10"
+    class="mx-auto flex max-w-6xl items-center justify-between rounded-[1.8em] border-[0.5px] border-white bg-gradient-to-br from-white/50 to-white/30 px-4 pb-2 pt-2.5 text-center text-black backdrop-blur-md max-sm:flex-col max-sm:px-6 sm:px-6 md:px-6 lg:px-10"
   >
     <div class="flex w-full items-center gap-8 max-lg:justify-between">
       <a href="/" class="flex items-center">
@@ -35,19 +34,18 @@ const { className } = Astro.props;
       </a>
 
       <!-- Mobile dropdown menu toggle -->
-      <button id="dropdownToggle">click me</button>
+      <button id="dropdownToggle" class="sm:hidden">click me</button>
 
       <!-- Tablet and Desktop only -->
       <NavLinks />
     </div>
-
-    <div id="mobileDropdown" class="dropdown hidden">
-      <MobileNavLinks />
-      <MobileSocials />
-    </div>
-
     <!-- Tablet and Desktop only -->
     <NavbarSocials />
+
+    <!-- Mobile dropdown -->
+    <div class="w-full sm:hidden">
+      <DropdownMenu />
+    </div>
   </nav>
 
   <script>
@@ -102,32 +100,5 @@ const { className } = Astro.props;
 
     // Re-run initial animation on page transitions
     document.addEventListener("astro:after-swap", runInitialAnimation);
-
-    // --------- MOBILE DROPDOWN ---------
-
-    const dropdown = document.querySelector("#mobileDropdown");
-    const toggleButton = document.querySelector("#dropdownToggle");
-    let isDropdownOpen = false;
-
-    toggleButton?.addEventListener("click", () => {
-      if (isDropdownOpen) {
-        gsap.to(dropdown, {
-          height: 0,
-          duration: 0.3,
-          ease: "power2.out",
-          onComplete: () => {
-            dropdown?.classList.add("hidden");
-          },
-        });
-      } else {
-        dropdown?.classList.remove("hidden");
-        gsap.fromTo(
-          dropdown,
-          { height: 0 },
-          { height: "auto", duration: 0.3, ease: "power2.out" },
-        );
-      }
-      isDropdownOpen = !isDropdownOpen;
-    });
   </script>
 </header>

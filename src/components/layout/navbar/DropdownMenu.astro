@@ -1,0 +1,98 @@
+---
+import MobileNavLinks from "@/components/layout/navbar/MobileNavLinks.astro";
+import MobileSocials from "@/components/layout/navbar/MobileSocials.astro";
+---
+
+<div id="mobileDropdown" class="dropdown hidden py-4">
+  <MobileNavLinks />
+  <MobileSocials />
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  const body = document.querySelector("body");
+  const dropdown = document.querySelector("#mobileDropdown");
+  const toggleButton = document.querySelector("#dropdownToggle");
+  const navLinks = dropdown?.querySelectorAll(".navlink");
+  const socialsContainer = dropdown?.querySelector(".socialContainer");
+  const socials = dropdown?.querySelectorAll(".socialLink");
+  let isDropdownOpen = false;
+
+  toggleButton?.addEventListener("click", () => {
+    if (!navLinks || !socials || !dropdown || !socialsContainer || !body)
+      return;
+
+    const durationEnter = 0.3;
+    const durationExit = 0.2;
+    const staggerTime = 0.05;
+
+    if (isDropdownOpen) {
+      // Exit animations
+      const tl = gsap.timeline();
+
+      tl.to(socialsContainer, {
+        opacity: 0,
+        y: 10,
+        duration: durationExit,
+        ease: "power2.in",
+      })
+        .to(navLinks, {
+          opacity: 0,
+          y: 10,
+          stagger: staggerTime,
+          duration: durationExit,
+          ease: "power2.in",
+        })
+        .to(dropdown, {
+          height: 0,
+          duration: durationExit,
+          ease: "circ.in",
+          onComplete: () => {
+            dropdown?.classList.add("hidden");
+            body.classList.remove("overflow-hidden");
+          },
+        });
+    } else {
+      // Enter animations
+      dropdown?.classList.remove("hidden");
+      body.classList.add("overflow-hidden");
+
+      const tl = gsap.timeline();
+
+      tl.fromTo(
+        dropdown,
+        { height: 0 },
+        { height: "auto", duration: durationEnter, ease: "circ.out" },
+      )
+        .fromTo(
+          navLinks,
+          {
+            opacity: 0,
+            y: 10,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: staggerTime,
+            duration: durationEnter,
+            ease: "power2.out",
+          },
+        )
+        .fromTo(
+          socialsContainer,
+          {
+            opacity: 0,
+            y: 10,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: durationEnter,
+            ease: "power2.out",
+          },
+        );
+    }
+    isDropdownOpen = !isDropdownOpen;
+  });
+</script>
