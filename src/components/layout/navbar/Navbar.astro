@@ -4,6 +4,7 @@ import NavLinks from "./NavLinks.astro";
 import Image from "astro/components/Image.astro";
 import NavbarSocials from "./NavbarSocials.astro";
 import DropdownMenu from "@/components/layout/navbar/DropdownMenu.astro";
+import MobileMenuToggle from "@/components/layout/navbar/MobileMenuToggle.astro";
 
 interface Props {
   className?: string;
@@ -34,7 +35,7 @@ const { className } = Astro.props;
       </a>
 
       <!-- Mobile dropdown menu toggle -->
-      <button id="dropdownToggle" class="sm:hidden">click me</button>
+      <MobileMenuToggle />
 
       <!-- Tablet and Desktop only -->
       <NavLinks />
