@@ -1,13 +1,14 @@
 export const sponsorConfig = {
-  heading: "Sponsors",
+  heading: "Our Sponsors",
   description: [
-    "Join us in this amazing ride to host the best hackathon across Canada.",
-    "Your support will be sweeter than the finest maple syrup",
+    "Be a part of an extraordinary journey to host Canada's top hackathon.",
+    "Your contribution will be more valued than the richest maple syrup.",
   ],
   sponsorText: {
-    text: "JOIN US",
-    buttonText: "Contact",
-    buttonClassName: "bg-[#fce6a9] text-[#4b5977]",
+    text: "BECOME A SPONSOR",
+    buttonText: "Get in Touch",
+    buttonClassName:
+      "bg-yellow-100 text-slate-700 hover:bg-yellow-200 focus:ring-2 focus:ring-yellow-500 rounded-md py-2 px-4 transition duration-200",
   },
   sponsors: [
     { name: "microsoft", image: "" },
