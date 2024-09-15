@@ -34,7 +34,7 @@ const { className, id } = Astro.props;
     >
       <!-- jar left -->
       <div
-        class="jar-left opacity-0change relative z-0 h-28 w-28 md:h-40 md:w-40"
+        class="jar-left relative z-0 h-28 w-28 origin-center -rotate-[135deg] md:h-40 md:w-40"
       >
         <!-- pour -->
         <div
@@ -43,7 +43,7 @@ const { className, id } = Astro.props;
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 43.5 250"
-            class="jar-drip h-[150px] w-[45px] md:h-[200px]"
+            class="jar-drip h-[150px] w-[45px] origin-top scale-y-0 md:h-[200px]"
             version="1.1"
           >
             <path
@@ -63,7 +63,7 @@ const { className, id } = Astro.props;
       <!-- jar right -->
 
       <div
-        class="jar-right opacity-0change relative z-0 h-28 w-28 md:h-40 md:w-40"
+        class="jar-right relative z-0 h-28 w-28 origin-center rotate-[135deg] md:h-40 md:w-40"
       >
         <!-- pour -->
         <div
@@ -72,7 +72,7 @@ const { className, id } = Astro.props;
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 43.5 250"
-            class="jar-drip h-[150px] w-[45px] md:h-[200px]"
+            class="jar-drip h-[150px] w-[45px] origin-top scale-y-0 md:h-[200px]"
             version="1.1"
           >
             <path
@@ -93,7 +93,7 @@ const { className, id } = Astro.props;
 
     <!-- pool -->
     <div
-      class="syrup-pool absolute left-1/2 top-[calc(100%+115px)] h-80 w-[90%] max-w-4xl -translate-x-1/2 rounded-[3px] rounded-t-[50px] bg-orange-400 shadow-2xl md:top-[calc(100%+160px)] md:rounded-t-[80px]"
+      class="syrup-pool absolute left-1/2 top-[calc(100%+115px)] h-80 w-[90%] max-w-4xl origin-top -translate-x-1/2 scale-y-0 rounded-[3px] rounded-t-[50px] bg-orange-400 shadow-2xl md:top-[calc(100%+160px)] md:rounded-t-[80px]"
     >
       <div class="syrup-wave absolute top-[98%] h-fit w-full">
         <div class="mx-auto w-full max-w-4xl">
@@ -112,7 +112,7 @@ const { className, id } = Astro.props;
     </div>
     <!-- text -->
     <div
-      class="sponsor-text absolute left-1/2 top-[calc(100%+115px+5rem)] flex h-32 w-fit -translate-x-1/2 flex-col items-center justify-center gap-5 md:top-[calc(100%+160px+5rem)]"
+      class="sponsor-text absolute left-1/2 top-[calc(100%+115px+5rem)] flex h-32 w-fit -translate-x-1/2 scale-[0.85] flex-col items-center justify-center gap-5 opacity-0 md:top-[calc(100%+160px+5rem)]"
     >
       <span
         class="heading-font text-nowrap text-3xl text-[#ffffff] md:text-6xl"
@@ -124,9 +124,6 @@ const { className, id } = Astro.props;
       >
     </div>
   </div>
-  <!-- <div class="h-[500px] w-full md:h-[600px]"></div> -->
-
-  <!--TODO: sponsor cards -->
 </SectionWrapper>
 
 <script>
