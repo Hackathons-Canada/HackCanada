@@ -119,8 +119,9 @@ const { className, id } = Astro.props;
       >
         {sponsorConfig.sponsorText.text}
       </span>
-      <Button className={sponsorConfig.sponsorText.buttonClassName}
-        >{sponsorConfig.sponsorText.buttonText}</Button
+      <Button
+        className={sponsorConfig.sponsorText.buttonClassName}
+        id="sponsorButton">{sponsorConfig.sponsorText.buttonText}</Button
       >
     </div>
   </div>
@@ -129,6 +130,9 @@ const { className, id } = Astro.props;
 <script>
   import { gsap } from "gsap";
   import animateSVG from "@/lib/honeySpillMorph";
+  import { sponsorConfig } from "@/config/sponsorConfig";
+
+  const sponsorButton = document.querySelector("#sponsorButton");
 
   const sponsorSectionClass = document.querySelector("#sponsorSection");
   function animateJars() {
@@ -139,6 +143,7 @@ const { className, id } = Astro.props;
         start: "top+=100 center",
         end: "bottom bottom",
         scrub: true,
+        once: true,
       },
     });
 
@@ -176,6 +181,11 @@ const { className, id } = Astro.props;
       1.5,
     );
   }
-
-  document.addEventListener("DOMContentLoaded", animateJars);
+  function handleSponsorButtonClick() {
+    window.location.href = `mailto:${sponsorConfig.sponsorText.email}`;
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    animateJars();
+    sponsorButton?.addEventListener("click", handleSponsorButtonClick);
+  });
 </script>
