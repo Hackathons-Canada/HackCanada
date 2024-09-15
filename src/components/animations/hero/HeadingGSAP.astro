@@ -28,7 +28,7 @@ const { title, tagline, className } = Astro.props;
     >{tagline}</Prose
   >
   <Button
-    className="gsapFade mt-6 w-auto bg-[#0A1F44] opacity-0 hover:bg-[#0A1F44]/95"
+    className="gsapFade hero-button mt-6 w-auto bg-[#0A1F44] opacity-0 hover:bg-[#0A1F44]/95"
     >Hacker Application</Button
   >
 </div>
@@ -54,7 +54,7 @@ const { title, tagline, className } = Astro.props;
     });
 
     // Animate button
-    initGsapFade("button", {
+    initGsapFade(".hero-button", {
       duration: 0.5,
       delay: 0.6,
       direction: "up",
