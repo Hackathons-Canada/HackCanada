@@ -1,4 +1,5 @@
 ---
+import WavyLineAnimation from "@/components/animations/sponsors/WavyLineAnimation.astro";
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { cn } from "@/lib/utils";
@@ -11,13 +12,21 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn(className)}>
-  <SectionHeading>Sponsor Us</SectionHeading>
-  <div class="flex w-full justify-center">
+<SectionWrapper id={id} className={cn("relative py-20", className)}>
+  <div class="container">
+    <SectionHeading className="">Sponsor Us</SectionHeading>
+    <div>
+      Join us in this amazing ride to host the best hackathon across Canada.
+      <br />
+      Your support will be sweeter than the finest maple syrup
+    </div>
+  </div>
+
+  <div class="relative flex w-full justify-center">
     <div
       class="jar-container relative flex h-fit w-full max-w-4xl justify-between bg-black"
     >
-      <div class="relative z-0 h-40 w-40">
+      <div class="relative z-0 h-32 w-32 md:h-40 md:w-40">
         <div
           class="absolute -bottom-48 right-0 -z-10 h-[208px] w-[20px] rounded-tr-full bg-orange-400"
         >
@@ -46,7 +55,7 @@ const { className, id } = Astro.props;
           style="width: 100%;"
         />
       </div>
-      <div class="relative z-0 h-40 w-40">
+      <div class="relative z-0 h-32 w-32 md:h-40 md:w-40">
         <div
           class="absolute -bottom-48 left-0 -z-10 h-[208px] w-[20px] rounded-tl-full bg-orange-400"
         >
@@ -76,7 +85,13 @@ const { className, id } = Astro.props;
         />
       </div>
     </div>
-
-    <div class="h-15 w-15 absolute bottom-0 bg-white"></div>
+    <div
+      class="absolute left-1/2 top-[calc(6rem+208px)] h-80 w-full max-w-4xl -translate-x-1/2 rounded-t-3xl bg-orange-400 md:top-[calc(8rem+208px)]"
+    >
+      <div class="absolute -bottom-[110px] h-fit w-full">
+        <WavyLineAnimation />
+      </div>
+    </div>
   </div>
+  <div class="right-0 h-[600px] w-full bg-white"></div>
 </SectionWrapper>
