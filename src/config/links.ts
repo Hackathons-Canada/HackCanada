@@ -3,23 +3,23 @@ import type { NavLink, SocialLink } from "@/types";
 export const navLinks: NavLink[] = [
   {
     label: "About",
-    href: "#about",
+    href: "aboutSection",
   },
   {
     label: "Venue",
-    href: "#venue",
+    href: "locationInfoSection",
   },
   {
     label: "Sponsors",
-    href: "#sponsors",
+    href: "sponsorSection",
   },
   {
     label: "FAQs",
-    href: "#faqs",
+    href: "faqsSection",
   },
   {
     label: "Team",
-    href: "#team",
+    href: "teamsSection",
   },
 ];
 

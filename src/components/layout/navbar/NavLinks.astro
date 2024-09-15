@@ -6,11 +6,27 @@ import { navLinks } from "@/config/links";
   {
     navLinks.map((link) => (
       <li class="group relative font-bold">
-        <a href={link.href} class="xl:text-lg">
+        <button
+          onclick={`window.handleScrollToSection('${link.href}')`}
+          class="xl:text-lg"
+        >
           {link.label}
-        </a>
+        </button>
         <span class="absolute inset-x-0 bottom-0 h-0.5 scale-x-0 rounded-full bg-black transition-transform duration-200 group-hover:scale-x-100" />
       </li>
     ))
   }
 </ul>
+
+<script>
+  // Globally accessible function
+  window.handleScrollToSection = function (section) {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Close mobile nav
+    window.closeDropdown();
+  };
+</script>

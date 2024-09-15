@@ -1,9 +1,10 @@
 ---
 import { cn } from "@/lib/utils";
-import NavbarToggle from "./NavbarToggle.astro";
 import NavLinks from "./NavLinks.astro";
 import Image from "astro/components/Image.astro";
 import NavbarSocials from "./NavbarSocials.astro";
+import DropdownMenu from "@/components/layout/navbar/DropdownMenu.astro";
+import MobileMenuToggle from "@/components/layout/navbar/MobileMenuToggle.astro";
 
 interface Props {
   className?: string;
@@ -15,12 +16,11 @@ const { className } = Astro.props;
 <header
   class={cn(
     className,
-    "w-full px-4 h-20 mt-4 sm:mt-6 fixed top-0 left-0 right-0 z-50 navbar-animation opacity-0",
+    "w-full px-6 h-20 mt-4 sm:mt-6 fixed top-0 left-0 right-0 z-50 navbar-animation opacity-0",
   )}
 >
-  <!-- TODO: Modify once we have mobile designs -->
   <nav
-    class="mx-auto flex max-w-6xl items-center justify-between rounded-full border-[1.5px] border-white bg-gradient-to-br from-white/50 to-white/30 px-3 pb-2 pt-2.5 text-center text-black backdrop-blur-sm max-sm:rounded-lg sm:px-6 md:px-6 lg:px-10"
+    class="mx-auto flex max-w-6xl items-center justify-between rounded-[1.8em] border-[0.5px] border-t border-white bg-gradient-to-br from-white/50 to-white/30 px-4 pb-2 pt-2.5 text-center text-black backdrop-blur-md max-sm:flex-col max-sm:px-6 sm:px-6 md:px-6 lg:px-10"
   >
     <div class="flex w-full items-center gap-8 max-lg:justify-between">
       <a href="/" class="flex items-center">
@@ -32,11 +32,19 @@ const { className } = Astro.props;
           class="size-12 object-contain max-sm:size-10"
         />
       </a>
-      <NavbarToggle />
+
+      <MobileMenuToggle />
+
+      <!-- Tablet and Desktop only -->
       <NavLinks />
     </div>
-
+    <!-- Tablet and Desktop only -->
     <NavbarSocials />
+
+    <!-- Mobile dropdown -->
+    <div class="w-full sm:hidden">
+      <DropdownMenu />
+    </div>
   </nav>
 </header>
 
@@ -47,6 +55,7 @@ const { className } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   const navbar = document.querySelector(".navbar-animation");
+  const dropdown = navbar?.querySelector("#mobileDropdown");
 
   // Function to run the initial animation
   function runInitialAnimation() {
@@ -71,6 +80,11 @@ const { className } = Astro.props;
       onUpdate: (self) => {
         const scrollDirection = self.direction;
         const scrollVelocity = self.getVelocity();
+
+        // Return early if the mobile menu is open
+        if (!dropdown?.classList.contains("hidden")) {
+          return;
+        }
 
         if (scrollDirection === 1 && scrollVelocity > 50) {
           // Scrolling down fast, hide navbar
