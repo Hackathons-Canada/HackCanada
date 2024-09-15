@@ -1,6 +1,6 @@
 ---
 import { socialLinks } from "@/config/links";
-import { Image } from "astro:assets";
+import IconButton from "@/components/utility/icons/IconButton.astro";
 ---
 
 <ul
@@ -9,15 +9,11 @@ import { Image } from "astro:assets";
   {
     socialLinks.map((link) => (
       <li class="shrink-0">
-        <a href={link.href} target="_blank" rel="noopener noreferrer">
-          <Image
-            src={link.icon}
-            alt={link.label || link.href}
-            width={32}
-            height={32}
-            class="socialLink size-6"
-          />
-        </a>
+        <IconButton
+          item={link}
+          size={32}
+          iconClasses="socialLink size-6 text-[#07152e] hover:scale-110"
+        />
       </li>
     ))
   }
