@@ -1,5 +1,6 @@
 ---
 import { socialLinks } from "@/config/links";
+import IconButton from "../../utility/icons/IconButton.astro";
 ---
 
 <ul class="flex items-center gap-6 md:gap-6">
@@ -7,17 +8,12 @@ import { socialLinks } from "@/config/links";
     socialLinks.map((item) => (
       <li class="group relative p-2.5">
         <span class="absolute inset-0 scale-y-50 rounded-full bg-black/50 opacity-0 transition group-hover:scale-y-100 group-hover:opacity-100" />
-        <a
-          class="relative text-slate-600 hover:scale-110"
-          href={item.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={
-            item.label || new URL(item.href).hostname + " page for Hack Canada"
-          }
-        >
-          <item.icon size={24} class:list="size-5 xl:size-6 hover:scale-110" />
-        </a>
+        <IconButton
+          item={item}
+          size={24}
+          class:list="relative text-slate-600 hover:scale-110"
+          iconClasses="size-5 xl:size-6 hover:scale-110"
+        />
       </li>
     ))
   }

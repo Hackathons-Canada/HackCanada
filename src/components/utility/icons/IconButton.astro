@@ -1,0 +1,24 @@
+---
+import type { Props as IconProps } from "./Icon.astro";
+import Icon from "./Icon.astro";
+
+interface Props extends IconProps {
+  alt?: string;
+  iconClasses?: string;
+  target?: string;
+}
+
+const { alt, iconClasses = "", item, size, target = "_blank" } = Astro.props;
+const label =
+  alt || item.label || new URL(item.href).hostname + " page for Hack Canada";
+---
+
+<a
+  class="relative text-slate-600 hover:scale-110"
+  href={item.href}
+  target={target}
+  rel="noopener noreferrer"
+  aria-label={label}
+>
+  <Icon item={item} size={size} class:list={iconClasses} />
+</a>
