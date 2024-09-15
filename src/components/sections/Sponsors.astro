@@ -1,5 +1,6 @@
 ---
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { cn } from "@/lib/utils";
 
@@ -87,9 +88,9 @@ const { className, id } = Astro.props;
 
     <!-- pool -->
     <div
-      class="syrup-pool absolute left-1/2 top-[calc(100%+100px)] h-80 w-[90%] max-w-4xl -translate-x-1/2 rounded-[3px] rounded-t-[50px] bg-orange-400 md:top-[calc(100%+150px)] md:rounded-t-[80px]"
+      class="syrup-pool absolute left-1/2 top-[calc(100%+115px)] h-80 w-[90%] max-w-4xl -translate-x-1/2 rounded-[3px] rounded-t-[50px] bg-orange-400 shadow-2xl md:top-[calc(100%+160px)] md:rounded-t-[80px]"
     >
-      <div class="syrup-wave m- absolute top-[98%] h-fit w-full">
+      <div class="syrup-wave absolute top-[98%] h-fit w-full">
         <div class="mx-auto w-full max-w-4xl">
           <svg
             id="morphingSvg"
@@ -104,20 +105,19 @@ const { className, id } = Astro.props;
         </div>
       </div>
     </div>
+    <!-- text -->
+    <div
+      class="sponsor-text .bg-pink-400 absolute top-[calc(100%+115px+5rem)] flex h-32 flex-col items-center justify-center gap-5 md:top-[calc(100%+160px+5rem)]"
+    >
+      <span class="heading-font text-5xl text-[#ffffff] md:text-7xl">
+        JOIN US
+      </span>
+      <Button className="bg-[#fce6a9] text-[#4b5977]">Contact</Button>
+    </div>
   </div>
-  <div class="h-[800px] w-full bg-white"></div>
+  <div class=".bg-white h-[800px] w-full"></div>
 </SectionWrapper>
 <script>
-  //initial value
-  /*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 46.9">
-  <path d="M3 3S-2 43 1 46c1 1 4-4 5-4 1 0 1 3 2 4 2 0 3-3 4-4 1 0 2 4 3 4 1 0 1-4 2-4 1-0 1 6 3 4C20 18 8 0 8 0" style="fill:#fb923c"/>
-</svg>
-*/
-  //M3 3S-2 43 1 46c1 1 4-4 5-4 1 0 1 3 2 4 2 0 3-3 4-4 1 0 2 4 3 4 1 0 1-4 2-4 1-0 1 6 3 4C20 18 8 0 8 0
-
-  //final
-
-  // M3 0S-2 0 1 0c1 0 4 0 5 0 1 0 1 0 2 0 2 0 3 0 4 0 1 0 2 0 3 0 1 0 1 0 2 0 1 0 1 0 3 0C20 0 8 0 8 0
   import { gsap } from "gsap";
   import animateSVG from "@/lib/honeySpillMorph";
 
@@ -128,8 +128,8 @@ const { className, id } = Astro.props;
       scrollTrigger: {
         trigger: sponsorSectionClass,
         start: "top center",
-        end: "bottom bottom",
-        scrub: true,
+        end: "center+=200 bottom",
+        scrub: false,
         markers: true,
       },
     });
@@ -150,7 +150,7 @@ const { className, id } = Astro.props;
     timeline.fromTo(
       ".jar-drip",
       { scaleY: 0, transformOrigin: "top" },
-      { scaleY: 1, duration: 1.5 },
+      { scaleY: 1, duration: 1 },
       0.5,
     );
 
@@ -158,8 +158,10 @@ const { className, id } = Astro.props;
       ".syrup-pool",
       { scaleY: 0, transformOrigin: "top" },
       { scaleY: 1, duration: 1, animateSVG },
-      1.5,
+      1.2,
     );
+
+    timeline.fromTo(".sponsor-text", { opacity: 0 }, { opacity: 1 }, 1.2);
   }
 
   document.addEventListener("DOMContentLoaded", animateJars);
