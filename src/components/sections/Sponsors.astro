@@ -9,57 +9,87 @@ interface Props {
 }
 
 const { className, id } = Astro.props;
-
-const jarStyles = "relative z-0 h-32 w-32 md:h-40 md:w-40";
-const drippingStyles =
-  "absolute -bottom-48 -z-10 h-[208px] w-[20px] rounded-t-full bg-orange-400";
-const dropStyles = "absolute h-[10px] w-[5px] rounded bg-orange-400";
 ---
 
 <SectionWrapper id={id} className={cn("relative py-20", className)}>
   <div class="container">
-    <SectionHeading className="">Sponsor Us</SectionHeading>
-    <div>
+    <SectionHeading>Sponsor Us</SectionHeading>
+    <p class="text-center">
       Join us in this amazing ride to host the best hackathon across Canada.
       <br />
       Your support will be sweeter than the finest maple syrup
-    </div>
+    </p>
   </div>
 
   <div class="relative flex w-full justify-center">
+    <!-- jar -->
     <div
-      class="jar-container relative flex h-fit w-full max-w-4xl justify-between bg-black"
+      class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
     >
-      {
-        ["left", "right"].map((side) => (
-          <div class={jarStyles}>
-            <div
-              class={`${drippingStyles} ${side === "left" ? "right-0 rounded-tr-full" : "left-0 rounded-tl-full"}`}
-            >
-              {[
-                "-bottom-[5px] right-0",
-                "-bottom-[4px] right-[5px]",
-                "-bottom-[7px] right-[10px]",
-                "-bottom-[5px] right-[15px]",
-              ].map((position) => (
-                <div class={`${dropStyles} ${position}`} />
-              ))}
-            </div>
-            <img
-              src={`/sponsors/design/jar${side}.svg`}
-              alt="jar"
-              width="100"
-              height="100"
-              style="width: 100%;"
-            />
-          </div>
-        ))
-      }
+      <!-- jar left -->
+      <div
+        class="jar-left opacity-0change relative z-0 h-28 w-28 md:h-40 md:w-40"
+      >
+        <!-- pour -->
+        <div
+          class="absolute -bottom-44 -right-8 -z-10 h-[200px] w-[60px] rounded-tr-full md:-bottom-44"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 43.5 250"
+            class="jar-drip h-[150px] w-[45px] md:h-[200px]"
+            version="1.1"
+          >
+            <path
+              d="M0 6.3s11.4 108.4 8 236.4c0 .3.3.6.5.7 1.6.7 5-3 5.8-3.2 3-1.2 1.3 6 3.6 6.5s3.4-1.3 5.7-1.3c2.3 0 3.3 4.8 5.6 4.6 3.2-.3 2.3-8.2 4.5-11 1.6-2.2 4 4.6 6 3 .2 0 .4-.8.4-.8C56.4 93 9.5 0 9.5 0"
+              fill="#fb923c"></path>
+          </svg>
+        </div>
+        <!-- jar image -->
+        <img
+          src="/sponsors/design/jarleft.svg"
+          alt="jar"
+          width="100"
+          height="100"
+          class="w-full"
+        />
+      </div>
+      <!-- jar right -->
+
+      <div
+        class="jar-right opacity-0change relative z-0 h-28 w-28 md:h-40 md:w-40"
+      >
+        <!-- pour -->
+        <div
+          class="absolute -bottom-44 -left-5 -z-10 h-[200px] w-[60px] rounded-tr-full md:-bottom-44"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 43.5 250"
+            class="jar-drip h-[150px] w-[45px] md:h-[200px]"
+            version="1.1"
+          >
+            <path
+              d="M44 6s-11 108-8 236c0 0-0 1-1 1-2 1-5-3-6-3-3-1-1 6-4 7-2 1-3-1-6-1-2 0-3 5-6 5-3-0-2-8-5-11-2-2-4 5-6 3-0 0-0-1-0-1C-13 93 34 0 34 0"
+              fill="#fb923c"></path>
+          </svg>
+        </div>
+        <!-- jar image -->
+        <img
+          src="/sponsors/design/jarright.svg"
+          alt="jar"
+          width="100"
+          height="100"
+          class="w-full"
+        />
+      </div>
     </div>
+
+    <!-- pool -->
     <div
-      class="absolute left-1/2 top-[calc(6rem+208px)] h-80 w-full max-w-4xl -translate-x-1/2 rounded-[3px] rounded-t-3xl bg-orange-400 md:top-[calc(8rem+208px)]"
+      class="syrup-pool absolute left-1/2 top-[calc(100%+100px)] h-80 w-[90%] max-w-4xl -translate-x-1/2 rounded-[3px] rounded-t-[50px] bg-orange-400 md:top-[calc(100%+150px)] md:rounded-t-[80px]"
     >
-      <div class="absolute -bottom-[110px] h-fit w-full">
+      <div class="syrup-wave m- absolute top-[98%] h-fit w-full">
         <div class="mx-auto w-full max-w-4xl">
           <svg
             id="morphingSvg"
@@ -75,11 +105,62 @@ const dropStyles = "absolute h-[10px] w-[5px] rounded bg-orange-400";
       </div>
     </div>
   </div>
-  <div class="right-0 h-[600px] w-full bg-white"></div>
+  <div class="h-[800px] w-full bg-white"></div>
 </SectionWrapper>
-
 <script>
+  //initial value
+  /*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 46.9">
+  <path d="M3 3S-2 43 1 46c1 1 4-4 5-4 1 0 1 3 2 4 2 0 3-3 4-4 1 0 2 4 3 4 1 0 1-4 2-4 1-0 1 6 3 4C20 18 8 0 8 0" style="fill:#fb923c"/>
+</svg>
+*/
+  //M3 3S-2 43 1 46c1 1 4-4 5-4 1 0 1 3 2 4 2 0 3-3 4-4 1 0 2 4 3 4 1 0 1-4 2-4 1-0 1 6 3 4C20 18 8 0 8 0
+
+  //final
+
+  // M3 0S-2 0 1 0c1 0 4 0 5 0 1 0 1 0 2 0 2 0 3 0 4 0 1 0 2 0 3 0 1 0 1 0 2 0 1 0 1 0 3 0C20 0 8 0 8 0
+  import { gsap } from "gsap";
   import animateSVG from "@/lib/honeySpillMorph";
 
-  document.addEventListener("DOMContentLoaded", () => animateSVG());
+  const sponsorSectionClass = document.querySelector("#sponsorSection");
+  function animateJars() {
+    const timeline = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      scrollTrigger: {
+        trigger: sponsorSectionClass,
+        start: "top center",
+        end: "bottom bottom",
+        scrub: true,
+        markers: true,
+      },
+    });
+
+    timeline.fromTo(
+      ".jar-left",
+      { rotation: -135 },
+      { rotation: 0, duration: 1 },
+      0,
+    );
+    timeline.fromTo(
+      ".jar-right",
+      { rotation: 135 },
+      { rotation: 0, duration: 1 },
+      0,
+    );
+
+    timeline.fromTo(
+      ".jar-drip",
+      { scaleY: 0, transformOrigin: "top" },
+      { scaleY: 1, duration: 1.5 },
+      0.5,
+    );
+
+    timeline.fromTo(
+      ".syrup-pool",
+      { scaleY: 0, transformOrigin: "top" },
+      { scaleY: 1, duration: 1, animateSVG },
+      1.5,
+    );
+  }
+
+  document.addEventListener("DOMContentLoaded", animateJars);
 </script>
