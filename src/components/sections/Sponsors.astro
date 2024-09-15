@@ -33,10 +33,12 @@ const { className, id } = Astro.props;
       class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
     >
       <!-- jar left -->
-      <div class="jar-left relative z-0 h-28 w-28 md:h-40 md:w-40">
+      <div
+        class="jar-left opacity-0change relative z-0 h-28 w-28 md:h-40 md:w-40"
+      >
         <!-- pour -->
         <div
-          class="absolute -bottom-44 -right-8 -z-10 h-[200px] w-[60px] rounded-tr-full md:-bottom-44"
+          class="absolute -bottom-44 -right-7 -z-10 h-[200px] w-[60px] rounded-tr-full"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +67,7 @@ const { className, id } = Astro.props;
       >
         <!-- pour -->
         <div
-          class="absolute -bottom-44 -left-5 -z-10 h-[200px] w-[60px] rounded-tr-full md:-bottom-44"
+          class="absolute -bottom-44 -left-5 -z-10 h-[200px] w-[60px] rounded-tr-full"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -135,16 +137,15 @@ const { className, id } = Astro.props;
       defaults: { ease: "power2.out" },
       scrollTrigger: {
         trigger: sponsorSectionClass,
-        start: "top center",
+        start: "top+=100 center",
         end: "bottom bottom",
-        scrub: true,
-        markers: true,
+        scrub: false,
       },
     });
 
     timeline.fromTo(
       ".jar-left",
-      { rotation: 0 },
+      { rotation: -135 },
       { rotation: 0, duration: 1 },
       0,
     );
