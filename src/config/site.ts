@@ -77,11 +77,6 @@ export const locationSection = {
   ],
 };
 
-export const sponsorSection = {
-  sponsors: [{ sponsorName: "", sponsorImage: "", sponsorWebsite: "" }],
-  tagline: "more to come",
-};
-
 export const teamSection = {
   title: "Meet Our Team",
   tagline: parseMarkdown(

@@ -2,6 +2,7 @@
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
+import { sponsorConfig } from "@/config/sponsorConfig";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -14,11 +15,11 @@ const { className, id } = Astro.props;
 
 <SectionWrapper id={id} className={cn("relative py-20", className)}>
   <div class="container">
-    <SectionHeading>Sponsor Us</SectionHeading>
+    <SectionHeading>{sponsorConfig.heading}</SectionHeading>
     <p class="text-center">
-      Join us in this amazing ride to host the best hackathon across Canada.
+      {sponsorConfig.description[0]}
       <br />
-      Your support will be sweeter than the finest maple syrup
+      {sponsorConfig.description[1]}
     </p>
   </div>
 
@@ -107,16 +108,19 @@ const { className, id } = Astro.props;
     </div>
     <!-- text -->
     <div
-      class="sponsor-text .bg-pink-400 absolute top-[calc(100%+115px+5rem)] flex h-32 flex-col items-center justify-center gap-5 md:top-[calc(100%+160px+5rem)]"
+      class="sponsor-text absolute top-[calc(100%+115px+5rem)] flex h-32 flex-col items-center justify-center gap-5 md:top-[calc(100%+160px+5rem)]"
     >
       <span class="heading-font text-5xl text-[#ffffff] md:text-7xl">
-        JOIN US
+        {sponsorConfig.sponsorText.text}
       </span>
-      <Button className="bg-[#fce6a9] text-[#4b5977]">Contact</Button>
+      <Button className={sponsorConfig.sponsorText.buttonClassName}
+        >{sponsorConfig.sponsorText.buttonText}</Button
+      >
     </div>
   </div>
-  <div class=".bg-white h-[800px] w-full"></div>
+  <div class="h-[800px] w-full"></div>
 </SectionWrapper>
+
 <script>
   import { gsap } from "gsap";
   import animateSVG from "@/lib/honeySpillMorph";
@@ -161,7 +165,7 @@ const { className, id } = Astro.props;
       1.2,
     );
 
-    timeline.fromTo(".sponsor-text", { opacity: 0 }, { opacity: 1 }, 1.2);
+    timeline.fromTo(".sponsor-text", { opacity: 0 }, { opacity: 1 }, 1.5);
   }
 
   document.addEventListener("DOMContentLoaded", animateJars);
