@@ -13,10 +13,14 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn("relative py-20", className)}>
-  <div class="container">
-    <SectionHeading>{sponsorConfig.heading}</SectionHeading>
-    <p class="text-center">
+<SectionWrapper id={id} className={cn("relative py-32", className)}>
+  <SectionHeading className="text-center"
+    >{sponsorConfig.heading}</SectionHeading
+  >
+  <div class="container absolute left-1/2 -translate-x-1/2">
+    <p
+      class="absolute left-1/2 max-w-xl -translate-x-1/2 text-wrap text-center"
+    >
       {sponsorConfig.description[0]}
       <br />
       {sponsorConfig.description[1]}
@@ -29,9 +33,7 @@ const { className, id } = Astro.props;
       class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
     >
       <!-- jar left -->
-      <div
-        class="jar-left opacity-0change relative z-0 h-28 w-28 md:h-40 md:w-40"
-      >
+      <div class="jar-left relative z-0 h-28 w-28 md:h-40 md:w-40">
         <!-- pour -->
         <div
           class="absolute -bottom-44 -right-8 -z-10 h-[200px] w-[60px] rounded-tr-full md:-bottom-44"
@@ -118,7 +120,9 @@ const { className, id } = Astro.props;
       >
     </div>
   </div>
-  <div class="h-[800px] w-full"></div>
+  <div class="h-[500px] w-full md:h-[600px]"></div>
+
+  <!--TODO: sponsor cards -->
 </SectionWrapper>
 
 <script>
@@ -132,15 +136,15 @@ const { className, id } = Astro.props;
       scrollTrigger: {
         trigger: sponsorSectionClass,
         start: "top center",
-        end: "center+=200 bottom",
-        scrub: false,
+        end: "bottom bottom",
+        scrub: true,
         markers: true,
       },
     });
 
     timeline.fromTo(
       ".jar-left",
-      { rotation: -135 },
+      { rotation: 0 },
       { rotation: 0, duration: 1 },
       0,
     );
@@ -162,10 +166,15 @@ const { className, id } = Astro.props;
       ".syrup-pool",
       { scaleY: 0, transformOrigin: "top" },
       { scaleY: 1, duration: 1, animateSVG },
-      1.2,
+      1.1,
     );
 
-    timeline.fromTo(".sponsor-text", { opacity: 0 }, { opacity: 1 }, 1.5);
+    timeline.fromTo(
+      ".sponsor-text",
+      { opacity: 0, scale: 0.85 },
+      { opacity: 1, scale: 1 },
+      1.5,
+    );
   }
 
   document.addEventListener("DOMContentLoaded", animateJars);
