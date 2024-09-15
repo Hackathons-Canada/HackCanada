@@ -1,4 +1,5 @@
 import type { NavLink, SocialLink } from "@/types";
+import { Discord, Gmail, Instagram, Linkedin } from "simple-icons-astro";
 
 export const navLinks: NavLink[] = [
   {
@@ -26,23 +27,19 @@ export const navLinks: NavLink[] = [
 export const socialLinks: SocialLink[] = [
   {
     href: "https://discord.gg/wp42amwcWy",
-    icon: "/icons/discord.svg",
-    iconV2: "/icons/discord-footer.svg",
+    icon: Discord,
   },
   {
     href: "https://www.instagram.com/hackathoncanada/",
-    icon: "/icons/instagram.svg",
-    iconV2: "/icons/ig-footer.svg",
+    icon: Instagram,
   },
   {
     href: "https://www.linkedin.com/company/hackathonscanada/",
-    icon: "/icons/linkedin.svg",
-    iconV2: "/icons/linkedin-footer.svg",
+    icon: Linkedin,
   },
   {
     href: "mailto:contact@hackcanada.org",
-    icon: "/icons/mail.svg",
-    iconV2: "/icons/gmail-footer.svg",
+    icon: Gmail,
   },
 ];
 
