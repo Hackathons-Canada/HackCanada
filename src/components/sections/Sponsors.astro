@@ -1,6 +1,8 @@
 ---
+import JarComponent from "@/components/animations/sponsors/JarComponent.astro";
+import SponsorText from "@/components/animations/sponsors/SponsorText.astro";
+import SyrupPool from "@/components/animations/sponsors/SyrupPool.astro";
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
-import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { sponsorConfig } from "@/config/sponsorConfig";
 import { cn } from "@/lib/utils";
@@ -28,118 +30,28 @@ const { className, id } = Astro.props;
   </div>
 
   <div class="relative flex w-full justify-center">
-    <!-- jar -->
     <div
       class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
     >
-      <!-- jar left -->
-      <div
-        class="jar-left relative z-0 h-28 w-28 origin-center -rotate-[135deg] md:h-40 md:w-40"
-      >
-        <!-- pour -->
-        <div
-          class="absolute -bottom-44 -right-8 -z-10 h-[200px] w-[60px] rounded-tr-full"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 43.5 250"
-            class="jar-drip h-[150px] w-[45px] origin-top scale-y-0 md:h-[200px]"
-            version="1.1"
-          >
-            <path
-              d="M0 6.3s11.4 108.4 8 236.4c0 .3.3.6.5.7 1.6.7 5-3 5.8-3.2 3-1.2 1.3 6 3.6 6.5s3.4-1.3 5.7-1.3c2.3 0 3.3 4.8 5.6 4.6 3.2-.3 2.3-8.2 4.5-11 1.6-2.2 4 4.6 6 3 .2 0 .4-.8.4-.8C56.4 93 9.5 0 9.5 0"
-              fill="#fb923c"></path>
-          </svg>
-        </div>
-        <!-- jar image -->
-        <img
-          src="/sponsors/design/jarleft.svg"
-          alt="jar"
-          width="100"
-          height="100"
-          class="w-full"
-        />
-      </div>
-      <!-- jar right -->
-
-      <div
-        class="jar-right relative z-0 h-28 w-28 origin-center rotate-[135deg] md:h-40 md:w-40"
-      >
-        <!-- pour -->
-        <div
-          class="absolute -bottom-44 -left-5 -z-10 h-[200px] w-[60px] rounded-tr-full"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 43.5 250"
-            class="jar-drip h-[150px] w-[45px] origin-top scale-y-0 md:h-[200px]"
-            version="1.1"
-          >
-            <path
-              d="M44 6s-11 108-8 236c0 0-0 1-1 1-2 1-5-3-6-3-3-1-1 6-4 7-2 1-3-1-6-1-2 0-3 5-6 5-3-0-2-8-5-11-2-2-4 5-6 3-0 0-0-1-0-1C-13 93 34 0 34 0"
-              fill="#fb923c"></path>
-          </svg>
-        </div>
-        <!-- jar image -->
-        <img
-          src="/sponsors/design/jarright.svg"
-          alt="jar"
-          width="100"
-          height="100"
-          class="w-full"
-        />
-      </div>
+      <JarComponent side="left" />
+      <JarComponent side="right" />
     </div>
-
-    <!-- pool -->
-    <div
-      class="syrup-pool absolute left-1/2 top-[calc(100%+115px)] h-80 w-[90%] max-w-4xl origin-top -translate-x-1/2 scale-y-0 rounded-[3px] rounded-t-[50px] bg-orange-400 shadow-2xl md:top-[calc(100%+160px)] md:rounded-t-[80px]"
-    >
-      <div class="syrup-wave absolute top-[98%] h-fit w-full">
-        <div class="mx-auto w-full max-w-4xl">
-          <svg
-            id="morphingSvg"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 871.18 111.83"
-          >
-            <path
-              fill="#fb923c"
-              d="M0 0s-3 0 56 0c57 0 49 0 74 0 15 0 32 0 56 0s37 0 58 0c19 0 18 0 54 0 31 0 32 0 45 0 8 0 18 0 31 0 16 0 16 0 30 0S418 0 433 0s15 0 36 0c20 0-4 0 33 0 40 0 20 0 40 0 10 0 20 0 45 0 29 0 37 0 55 0 13 0 28 0 48 0 28 0 36 0 52 0 28 0 18 0 66 0C844 0 871 0 871 0"
-            ></path>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <!-- text -->
-    <div
-      class="sponsor-text absolute left-1/2 top-[calc(100%+115px+5rem)] flex h-32 w-fit -translate-x-1/2 scale-[0.85] flex-col items-center justify-center gap-5 opacity-0 md:top-[calc(100%+160px+5rem)]"
-    >
-      <span
-        class="heading-font text-nowrap text-3xl text-[#ffffff] md:text-6xl"
-      >
-        {sponsorConfig.sponsorText.text}
-      </span>
-      <Button
-        className={sponsorConfig.sponsorText.buttonClassName}
-        id="sponsorButton">{sponsorConfig.sponsorText.buttonText}</Button
-      >
-    </div>
+    <SyrupPool />
+    <SponsorText />
   </div>
 </SectionWrapper>
 
 <script>
+  // animations.ts
   import { gsap } from "gsap";
   import animateSVG from "@/lib/honeySpillMorph";
   import { sponsorConfig } from "@/config/sponsorConfig";
 
-  const sponsorButton = document.querySelector("#sponsorButton");
-
-  const sponsorSectionClass = document.querySelector("#sponsorSection");
   function animateJars() {
     const timeline = gsap.timeline({
       defaults: { ease: "power2.out" },
       scrollTrigger: {
-        trigger: sponsorSectionClass,
+        trigger: "#sponsorSection",
         start: "top+=100 center",
         end: "bottom bottom",
         scrub: true,
@@ -181,11 +93,16 @@ const { className, id } = Astro.props;
       1.5,
     );
   }
+
   function handleSponsorButtonClick() {
     window.location.href = `mailto:${sponsorConfig.sponsorText.email}`;
   }
-  document.addEventListener("DOMContentLoaded", () => {
+
+  export function initializeAnimations() {
     animateJars();
+    const sponsorButton = document.querySelector("#sponsorButton");
     sponsorButton?.addEventListener("click", handleSponsorButtonClick);
-  });
+  }
+
+  document.addEventListener("DOMContentLoaded", initializeAnimations);
 </script>
