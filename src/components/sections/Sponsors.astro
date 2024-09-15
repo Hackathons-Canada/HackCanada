@@ -9,6 +9,11 @@ interface Props {
 }
 
 const { className, id } = Astro.props;
+
+const jarStyles = "relative z-0 h-32 w-32 md:h-40 md:w-40";
+const drippingStyles =
+  "absolute -bottom-48 -z-10 h-[208px] w-[20px] rounded-t-full bg-orange-400";
+const dropStyles = "absolute h-[10px] w-[5px] rounded bg-orange-400";
 ---
 
 <SectionWrapper id={id} className={cn("relative py-20", className)}>
@@ -25,64 +30,31 @@ const { className, id } = Astro.props;
     <div
       class="jar-container relative flex h-fit w-full max-w-4xl justify-between bg-black"
     >
-      <div class="relative z-0 h-32 w-32 md:h-40 md:w-40">
-        <div
-          class="absolute -bottom-48 right-0 -z-10 h-[208px] w-[20px] rounded-tr-full bg-orange-400"
-        >
-          <div
-            class="absolute -bottom-[5px] right-0 h-[10px] w-[5px] rounded bg-orange-400"
-          >
+      {
+        ["left", "right"].map((side) => (
+          <div class={jarStyles}>
+            <div
+              class={`${drippingStyles} ${side === "left" ? "right-0 rounded-tr-full" : "left-0 rounded-tl-full"}`}
+            >
+              {[
+                "-bottom-[5px] right-0",
+                "-bottom-[4px] right-[5px]",
+                "-bottom-[7px] right-[10px]",
+                "-bottom-[5px] right-[15px]",
+              ].map((position) => (
+                <div class={`${dropStyles} ${position}`} />
+              ))}
+            </div>
+            <img
+              src={`/sponsors/design/jar${side}.svg`}
+              alt="jar"
+              width="100"
+              height="100"
+              style="width: 100%;"
+            />
           </div>
-          <div
-            class="absolute -bottom-[4px] right-[5px] h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-          <div
-            class="absolute -bottom-[7px] right-[10px] h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-          <div
-            class="absolute -bottom-[5px] right-[15px] h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-        </div>
-        <img
-          src="/sponsors/design/jarleft.svg"
-          alt="jar"
-          width="100"
-          height="100"
-          style="width: 100%;"
-        />
-      </div>
-      <div class="relative z-0 h-32 w-32 md:h-40 md:w-40">
-        <div
-          class="absolute -bottom-48 left-0 -z-10 h-[208px] w-[20px] rounded-tl-full bg-orange-400"
-        >
-          <div
-            class="absolute -bottom-[5px] right-0 h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-          <div
-            class="absolute -bottom-[4px] right-[5px] h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-          <div
-            class="absolute -bottom-[7px] right-[10px] h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-          <div
-            class="absolute -bottom-[5px] right-[15px] h-[10px] w-[5px] rounded bg-orange-400"
-          >
-          </div>
-        </div>
-        <img
-          src="/sponsors/design/jarright.svg"
-          alt="jar"
-          width="100"
-          height="100"
-          style="width: 100%;"
-        />
-      </div>
+        ))
+      }
     </div>
     <div
       class="absolute left-1/2 top-[calc(6rem+208px)] h-80 w-full max-w-4xl -translate-x-1/2 rounded-[3px] rounded-t-3xl bg-orange-400 md:top-[calc(8rem+208px)]"
@@ -107,27 +79,7 @@ const { className, id } = Astro.props;
 </SectionWrapper>
 
 <script>
-  import anime from "animejs";
+  import animateSVG from "@/lib/honeySpillMorph";
 
-  const initialPoints =
-    "M0 0s-3 0 56 0c57 0 49 0 74 0 15 0 32 0 56 0s37 0 58 0c19 0 18 0 54 0 31 0 32 0 45 0 8 0 18 0 31 0 16 0 16 0 30 0S418 0 433 0s15 0 36 0c20 0-4 0 33 0 40 0 20 0 40 0 10 0 20 0 45 0 29 0 37 0 55 0 13 0 28 0 48 0 28 0 36 0 52 0 28 0 18 0 66 0C844 0 871 0 871 0";
-
-  const finalPoints =
-    "M0 0s-3 106 47 112c57 6 49-66 74-73 15-4 32 27 56 27s37-22 58-27c19-4 18 73 54 73 31 0 32-63 45-73 8-7 18 5 31 3 16-3 16-7 30-10S418 61 433 62s15-26 36-24c20 2-4 62 33 63 40 1 20-46 40-57 10-5 20 37 45 36 29-2 37-41 55-43 13-2 28 22 48 21 28-1 36-31 52-32 28-2 18 71 66 72C844 100 871 4 871 4";
-
-  function animateSVG() {
-    const svg = document.querySelector("#morphingSvg");
-    const path = svg!.querySelector("path");
-
-    anime({
-      targets: path,
-      d: [{ value: initialPoints }, { value: finalPoints }],
-      duration: 2000,
-      easing: "easeOutQuad",
-      direction: "d",
-    });
-  }
-
-  // Run the animation when the component mounts
-  document.addEventListener("DOMContentLoaded", animateSVG);
+  document.addEventListener("DOMContentLoaded", () => animateSVG());
 </script>
