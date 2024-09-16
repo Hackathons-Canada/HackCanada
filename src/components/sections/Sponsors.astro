@@ -15,7 +15,7 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn("h-[150svh] py-32", className)}>
+<SectionWrapper id={id} className={cn("h-fit pt-32", className)}>
   <SectionHeading className="text-center"
     >{sponsorConfig.heading}</SectionHeading
   >
@@ -38,6 +38,10 @@ const { className, id } = Astro.props;
     </div>
     <SyrupPool />
     <SponsorText />
+  </div>
+
+  <div class="h-[600px] w-full bg-white md:h-[800px]">
+    <div class="absolute bottom-0 left-0 z-0 h-full w-full bg-black"></div>
   </div>
 </SectionWrapper>
 
