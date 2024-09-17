@@ -1,4 +1,5 @@
 ---
+import BeeModel from "@/components/animations/sponsors/BeeModel.astro";
 import JarComponent from "@/components/animations/sponsors/JarComponent.astro";
 import SponsorText from "@/components/animations/sponsors/SponsorText.astro";
 import SyrupPool from "@/components/animations/sponsors/SyrupPool.astro";
@@ -6,8 +7,6 @@ import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import SectionHeading from "@/components/utility/SectionHeading.astro";
 import { sponsorConfig } from "@/config/sponsorConfig";
 import { cn } from "@/lib/utils";
-import Spline from "@splinetool/react-spline";
-
 interface Props {
   className?: string;
   id?: string;
@@ -41,12 +40,8 @@ const { className, id } = Astro.props;
     <SponsorText />
   </div>
 
-  <div class="h-[600px] w-full md:h-[800px]">
-    <Spline
-      className="absolute -bottom-20 left-0 z-0 h-full w-full"
-      scene="https://prod.spline.design/qOP5BElA-r5bTTZm/scene.splinecode"
-      client:visible
-    />
+  <div class="min-h-[600px] w-full md:min-h-[800px]">
+    <BeeModel />
   </div>
 </SectionWrapper>
 
