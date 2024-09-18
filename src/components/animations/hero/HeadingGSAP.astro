@@ -3,36 +3,44 @@ import { Button } from "@/components/ui/button";
 import Prose from "@/components/utility/Prose.astro";
 import { cn } from "@/lib/utils";
 
-interface Props {
+interface HeroSection {
   title: string;
   tagline: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+interface Props {
+  heroSectionConfig: HeroSection;
   className?: string;
 }
 
-const { title, tagline, className } = Astro.props;
+const { heroSectionConfig, className } = Astro.props;
+const { title, tagline, buttonText, buttonLink } = heroSectionConfig;
 ---
 
 <div
   class={cn(
-    "flex flex-col items-center justify-center md:items-end ",
+    "flex flex-col items-center justify-center md:items-end",
     className,
   )}
 >
   <h1
-    class="heading-animation hero-heading heading-font text-center text-7xl font-black text-[#0A1F44] opacity-0 md:text-right md:text-8xl lg:text-8xl"
+    class="heading-animation hero-heading heading-font text-center text-7xl opacity-0 md:text-right md:text-8xl lg:text-8xl"
   >
     {title}
   </h1>
   <Prose
     className="gsapFade hero-tagline text-center text-xl font-black uppercase tracking-tighter opacity-0 md:text-right"
-    >{tagline}</Prose
   >
-  <Button
-    className="gsapFade hero-button mt-6 w-auto bg-[#0A1F44] opacity-0 hover:bg-[#0A1F44]/95"
-    >Hacker Application</Button
-  >
+    {tagline}
+  </Prose>
+  <a href={buttonLink} class="gsapFade hero-button mt-6 w-auto opacity-0">
+    <Button client:load variant="hero" size="lg">
+      {buttonText}
+    </Button>
+  </a>
 </div>
-
 <script>
   import { initGsapFade } from "@/lib/gsapAnimations";
 
