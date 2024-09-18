@@ -2,6 +2,7 @@
 // SponsorText.astro
 import { Button } from "@/components/ui/button";
 import { sponsorConfig } from "@/config/sponsorConfig";
+import { Sparkles } from "lucide-react";
 ---
 
 <div
@@ -10,7 +11,34 @@ import { sponsorConfig } from "@/config/sponsorConfig";
   <span class="heading-font text-nowrap text-3xl text-[#ffffff] md:text-6xl">
     {sponsorConfig.sponsorText.text}
   </span>
-  <Button className="" id="sponsorButton"
-    >{sponsorConfig.sponsorText.buttonText}</Button
+  <Button
+    className="group relative overflow-hidden"
+    variant="sponsor"
+    size="lg"
+    id="sponsorButton"
   >
+    <div class="relative z-10 flex items-center space-x-2">
+      <Sparkles
+        className="h-5 w-5 transition-transform duration-300 ease-in-out group-hover:scale-125 group-active:scale-90"
+      />
+      <span
+        class="transition-transform duration-300 ease-in-out group-hover:scale-105 group-active:scale-95"
+        >{sponsorConfig.sponsorText.buttonText}</span
+      >
+    </div>
+    <div class="absolute inset-0 z-0">
+      <div
+        class="absolute left-0 top-0 h-2 w-2 animate-ping rounded-full bg-yellow-400"
+      >
+      </div>
+      <div
+        class="animation-delay-300 absolute right-0 top-1/2 h-2 w-2 animate-ping rounded-full bg-yellow-400"
+      >
+      </div>
+      <div
+        class="animation-delay-700 absolute bottom-0 left-1/2 h-2 w-2 animate-ping rounded-full bg-yellow-400"
+      >
+      </div>
+    </div>
+  </Button>
 </div>
