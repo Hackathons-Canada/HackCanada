@@ -1,5 +1,4 @@
 ---
-import LocationCard from "@/components/animations/location/LocationCard.astro";
 import LocationHeading from "@/components/animations/location/LocationHeading.astro";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +16,9 @@ const { className, id } = Astro.props;
     class="locationCard-wrapper relative flex h-screen flex-col overflow-hidden bg-cover bg-center bg-no-repeat"
   >
     <LocationHeading />
-    <LocationCard />
+
+    <!-- TODO: Redesign this card -->
+    <!-- <LocationCard /> -->
   </div>
 </section>
 

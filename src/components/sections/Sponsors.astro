@@ -21,11 +21,16 @@ const { className, id } = Astro.props;
   >
   <div class="container absolute left-1/2 -translate-x-1/2">
     <p
-      class="absolute left-1/2 max-w-xl -translate-x-1/2 text-wrap text-center"
+      class="absolute left-1/2 max-w-xl -translate-x-1/2 text-wrap text-center md:text-2xl"
     >
-      {sponsorConfig.description[0]}
-      <br />
-      {sponsorConfig.description[1]}
+      {
+        sponsorConfig.description.map((line, index) => (
+          <>
+            {line}
+            {index < sponsorConfig.description.length - 1 && <br />}
+          </>
+        ))
+      }
     </p>
   </div>
 
