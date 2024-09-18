@@ -2,9 +2,12 @@
 import Spline from "@splinetool/react-spline";
 ---
 
-<div class="absolute -bottom-20 left-0 z-0 h-full w-full">
+<div
+  class="pointer-events-none absolute -bottom-20 left-0 z-0 h-full w-full select-none"
+>
   <Spline
     scene="https://prod.spline.design/qOP5BElA-r5bTTZm/scene.splinecode"
     client:visible
+    className="pointer-events-auto"
   />
 </div>
