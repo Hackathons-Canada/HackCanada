@@ -1,6 +1,6 @@
 ---
 // SponsorText.astro
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/Button.astro";
 import { sponsorConfig } from "@/config/sponsorConfig";
 import { Sparkles } from "lucide-react";
 ---
@@ -12,10 +12,11 @@ import { Sparkles } from "lucide-react";
     {sponsorConfig.sponsorText.text}
   </span>
   <Button
-    className="group relative overflow-hidden"
+    class="group relative overflow-hidden"
     variant="sponsor"
     size="lg"
     id="sponsorButton"
+    link={`mailto:${sponsorConfig.sponsorText.email}`}
   >
     <div class="relative z-10 flex items-center space-x-2">
       <Sparkles

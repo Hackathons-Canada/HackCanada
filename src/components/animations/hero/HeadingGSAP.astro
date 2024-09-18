@@ -1,5 +1,5 @@
 ---
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/Button.astro";
 import Prose from "@/components/utility/Prose.astro";
 import { cn } from "@/lib/utils";
 
@@ -35,11 +35,11 @@ const { title, tagline, buttonText, buttonLink } = heroSectionConfig;
   >
     {tagline}
   </Prose>
-  <a href={buttonLink} class="gsapFade hero-button mt-6 w-auto opacity-0">
-    <Button client:load variant="hero" size="lg">
+  <div class="gsapFade hero-button mt-6 w-auto opacity-0">
+    <Button client:load variant="hero" size="lg" link={buttonLink}>
       {buttonText}
     </Button>
-  </a>
+  </div>
 </div>
 <script>
   import { initGsapFade } from "@/lib/gsapAnimations";

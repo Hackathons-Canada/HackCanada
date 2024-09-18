@@ -1,4 +1,5 @@
-import * as React from "react";
+---
+// Button.astro
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
@@ -10,9 +11,9 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         errorPage:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        hero: "bg-blue-950 text-white  ease-in-out hover:bg-blue-950/95 hover:shadow-lg",
+        hero: "bg-blue-950 text-white ease-in-out hover:bg-blue-950/95 hover:shadow-lg",
         sponsor:
-          " bg-yellow-200 px-6 py-3 font-bold text-yellow-800 shadow-lg hover:scale-110 hover:bg-yellow-300 active:scale-95",
+          "bg-yellow-200 px-6 py-3 font-bold text-yellow-800 shadow-lg hover:scale-110 hover:bg-yellow-300 active:scale-95",
         modalContent:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       },
@@ -30,21 +31,21 @@ const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+export interface Props extends VariantProps<typeof buttonVariants> {
+  link?: string;
+  class?: string;
+  id?: string;
+}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
-    return (
-      <button
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
-Button.displayName = "Button";
+const { variant, size, link, id, class: className, ...rest } = Astro.props;
 
-export { Button, buttonVariants };
+const classes = cn(buttonVariants({ variant, size, className }));
+---
+
+<a class={classes} href={link} id={id} {...rest}>
+  <slot />
+</a>
+
+<script>
+  // If we need any client-side JavaScript in future
+</script>

@@ -54,7 +54,6 @@ const { className, id } = Astro.props;
   // animations.ts
   import { gsap } from "gsap";
   import animateSVG from "@/lib/honeySpillMorph";
-  import { sponsorConfig } from "@/config/sponsorConfig";
 
   function animateJars() {
     const timeline = gsap.timeline({
@@ -102,14 +101,8 @@ const { className, id } = Astro.props;
     );
   }
 
-  function handleSponsorButtonClick() {
-    window.location.href = `mailto:${sponsorConfig.sponsorText.email}`;
-  }
-
   export function initializeAnimations() {
     animateJars();
-    const sponsorButton = document.querySelector("#sponsorButton");
-    sponsorButton?.addEventListener("click", handleSponsorButtonClick);
   }
 
   document.addEventListener("DOMContentLoaded", initializeAnimations);
