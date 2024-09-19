@@ -81,7 +81,7 @@
   }
 
   body {
-    @apply text-[#485B7C];
+    @apply text-[#112546];
     font-family: "ContentFont", sans-serif;
     transition: background-color 0.5s ease;
     scroll-behavior: smooth;
