@@ -39,6 +39,8 @@ export const siteConfig = {
 export const heroSection = {
   title: "Hack Canada",
   tagline: "Feb 30-32, 2025 | In-Person Event | Unofficial MLH Partner",
+  buttonText: "Hacker Application",
+  buttonLink: "/",
 };
 
 export const aboutSection = {
@@ -75,11 +77,6 @@ export const locationSection = {
       image: null,
     },
   ],
-};
-
-export const sponsorSection = {
-  sponsors: [{ sponsorName: "", sponsorImage: "", sponsorWebsite: "" }],
-  tagline: "more to come",
 };
 
 export const teamSection = {

@@ -75,19 +75,19 @@
     font-style: normal;
     font-display: swap;
   }
-
   .heading-font {
     font-family: "HeadingFont", sans-serif;
     color: #0a1f44;
   }
 
   body {
-    @apply text-[#485B7C];
+    @apply text-[#112546];
     font-family: "ContentFont", sans-serif;
     transition: background-color 0.5s ease;
     scroll-behavior: smooth;
     overflow-x: hidden;
     background-color: black;
+    position: relative;
   }
 }
 
@@ -97,7 +97,7 @@
     #090e19 0%,
     #1a2539 8%,
     #2c3b5d 16%,
-    #5f718f 30%,
+    #5f718f 32%,
     #98a5bf 44%,
     #c2cce1 58%,
     #e6eaf0 72%,
@@ -124,7 +124,7 @@
 }
 
 #aboutSection {
-  background: linear-gradient(180deg, #fff 0%, #aad6fa 50.5%, #aad6fa 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #aad6fa 50.5%, #aad6fa 100%);
 }
 
 #locationInfoSection {
@@ -132,7 +132,7 @@
 }
 
 #sponsorSection {
-  background: linear-gradient(180deg, #abd7fb 0%, #fce6a9 35%, #fce6a9 100%);
+  background: linear-gradient(180deg, #abd7fb 0%, #fce6a9 15%, #fce6a9 100%);
 }
 
 #faqsSection {

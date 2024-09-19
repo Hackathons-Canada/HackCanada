@@ -1,7 +1,13 @@
 ---
+import BeeModel from "@/components/animations/sponsors/BeeModel.astro";
+import JarComponent from "@/components/animations/sponsors/JarComponent.astro";
+import SponsorCard from "@/components/animations/sponsors/SponsorCard.astro";
+import SponsorText from "@/components/animations/sponsors/SponsorText.astro";
+import SyrupPool from "@/components/animations/sponsors/SyrupPool.astro";
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
+import SectionHeading from "@/components/utility/SectionHeading.astro";
+import { sponsorConfig } from "@/config/sponsorConfig";
 import { cn } from "@/lib/utils";
-
 interface Props {
   className?: string;
   id?: string;
@@ -10,4 +16,98 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn(className)}> Sponsors </SectionWrapper>
+<section id={id} class={cn("relative pt-32", className)}>
+  <SectionHeading className="text-center"
+    >{sponsorConfig.heading}</SectionHeading
+  >
+  <div class="container absolute left-1/2 -translate-x-1/2">
+    <p
+      class="absolute left-1/2 max-w-xl -translate-x-1/2 text-wrap text-center md:text-2xl"
+    >
+      {
+        sponsorConfig.description.map((line, index) => (
+          <>
+            {line}
+            {index < sponsorConfig.description.length - 1 && <br />}
+          </>
+        ))
+      }
+    </p>
+  </div>
+
+  <div class="relative flex w-full justify-center">
+    <div
+      class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
+    >
+      <JarComponent side="left" />
+      <JarComponent side="right" />
+    </div>
+    <SyrupPool />
+    <SponsorText />
+  </div>
+
+  <div class="min-h-[600px] w-full md:min-h-[650px]">
+    <BeeModel />
+  </div>
+</section>
+<SectionWrapper class="bg-[#fce6a9]">
+  <SponsorCard />
+</SectionWrapper>
+
+<script>
+  // animations.ts
+  import { gsap } from "gsap";
+  import animateSVG from "@/lib/honeySpillMorph";
+
+  function animateJars() {
+    const timeline = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      scrollTrigger: {
+        trigger: "#sponsorSection",
+        start: "top+=100 center",
+        end: "bottom bottom",
+        scrub: false,
+      },
+    });
+
+    timeline.fromTo(
+      ".jar-left",
+      { rotation: -135 },
+      { rotation: 0, duration: 1 },
+      0,
+    );
+    timeline.fromTo(
+      ".jar-right",
+      { rotation: 135 },
+      { rotation: 0, duration: 1 },
+      0,
+    );
+
+    timeline.fromTo(
+      ".jar-drip",
+      { scaleY: 0, transformOrigin: "top" },
+      { scaleY: 1, duration: 1 },
+      0.5,
+    );
+
+    timeline.fromTo(
+      ".syrup-pool",
+      { scaleY: 0, transformOrigin: "top" },
+      { scaleY: 1, duration: 1, animateSVG },
+      1.1,
+    );
+
+    timeline.fromTo(
+      ".sponsor-text",
+      { opacity: 0, scale: 0.85 },
+      { opacity: 1, scale: 1 },
+      1.5,
+    );
+  }
+
+  export function initializeAnimations() {
+    animateJars();
+  }
+
+  document.addEventListener("DOMContentLoaded", initializeAnimations);
+</script>
