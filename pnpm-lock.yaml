@@ -17,6 +17,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.1
         version: 5.1.1(astro@4.15.8(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.0)(terser@5.31.3)(typescript@5.6.2))(tailwindcss@3.4.12)
+      '@icons-pack/react-simple-icons':
+        specifier: ^10.0.0
+        version: 10.0.0(react@18.3.1)
       '@nanostores/react':
         specifier: ^0.7.3
         version: 0.7.3(nanostores@0.11.3)(react@18.3.1)
@@ -71,6 +74,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      simple-icons-astro:
+        specifier: ^13.10.0
+        version: 13.10.0(astro@4.15.8(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.0)(terser@5.31.3)(typescript@5.6.2))
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.5.2
@@ -498,6 +504,11 @@ packages:
   '@humanwhocodes/retry@0.3.0':
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
+
+  '@icons-pack/react-simple-icons@10.0.0':
+    resolution: {integrity: sha512-oU0PVDx9sbNQjRxJN555dsHbRApYN+aBq/O9+wo3JgNkEfvBMgAEtsSGtXWWXQsLAxJcYiFOCzBWege/Xj/JFQ==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -3085,6 +3096,11 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
+  simple-icons-astro@13.10.0:
+    resolution: {integrity: sha512-71QnjunFLQkEg7T3m3IUOKscmkf0mZb6AWRC5IczDNxWGKj+75IT97ZHwKSmOm/Yu+QgLGNpzWLJttkZmXa3Ow==}
+    peerDependencies:
+      astro: '>=2.7.1'
+
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
@@ -4040,6 +4056,10 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.3.0': {}
+
+  '@icons-pack/react-simple-icons@10.0.0(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
@@ -7080,6 +7100,10 @@ snapshots:
       object-inspect: 1.13.2
 
   signal-exit@4.1.0: {}
+
+  simple-icons-astro@13.10.0(astro@4.15.8(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.0)(terser@5.31.3)(typescript@5.6.2)):
+    dependencies:
+      astro: 4.15.8(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.0)(terser@5.31.3)(typescript@5.6.2)
 
   simple-swizzle@0.2.2:
     dependencies:
