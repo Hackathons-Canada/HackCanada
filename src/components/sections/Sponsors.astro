@@ -16,7 +16,7 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn("pt-32", className)}>
+<section id={id} class={cn("relative pt-32", className)}>
   <SectionHeading className="text-center"
     >{sponsorConfig.heading}</SectionHeading
   >
@@ -49,10 +49,10 @@ const { className, id } = Astro.props;
   <div class="min-h-[600px] w-full md:min-h-[650px]">
     <BeeModel />
   </div>
-</SectionWrapper>
-<div class="container z-10 h-fit w-full bg-[#fce6a9]">
+</section>
+<SectionWrapper class="bg-[#fce6a9]">
   <SponsorCard />
-</div>
+</SectionWrapper>
 
 <script>
   // animations.ts
