@@ -23,7 +23,7 @@
     "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
     "animejs": "^3.2.2",
-    "astro": "^4.15.7",
+    "astro": "^4.15.8",
     "astro-lenis": "^1.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
