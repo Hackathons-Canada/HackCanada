@@ -1,6 +1,7 @@
 ---
 import BeeModel from "@/components/animations/sponsors/BeeModel.astro";
 import JarComponent from "@/components/animations/sponsors/JarComponent.astro";
+import SponsorCard from "@/components/animations/sponsors/SponsorCard.astro";
 import SponsorText from "@/components/animations/sponsors/SponsorText.astro";
 import SyrupPool from "@/components/animations/sponsors/SyrupPool.astro";
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
@@ -15,7 +16,7 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn("h-fit pt-32", className)}>
+<SectionWrapper id={id} className={cn("pt-32", className)}>
   <SectionHeading className="text-center"
     >{sponsorConfig.heading}</SectionHeading
   >
@@ -45,10 +46,13 @@ const { className, id } = Astro.props;
     <SponsorText />
   </div>
 
-  <div class="min-h-[600px] w-full md:min-h-[800px]">
+  <div class="min-h-[600px] w-full md:min-h-[650px]">
     <BeeModel />
   </div>
 </SectionWrapper>
+<div class="container z-10 h-fit w-full bg-[#fce6a9]">
+  <SponsorCard />
+</div>
 
 <script>
   // animations.ts

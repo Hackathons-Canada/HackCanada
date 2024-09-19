@@ -1,0 +1,152 @@
+---
+import { Image } from "astro:assets";
+
+interface Sponsor {
+  name: string;
+  value: 1 | 2 | 3 | 4;
+  website: string;
+  logoUrl: string;
+  description: string;
+}
+
+const sponsors: Sponsor[] = [
+  {
+    name: "Alpha Corp",
+    value: 4,
+    website: "https://alpha.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Leading technology solutions",
+  },
+  {
+    name: "Beta Inc",
+    value: 2,
+    website: "https://beta.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Innovative software development",
+  },
+  {
+    name: "Gamma LLC",
+    value: 1,
+    website: "https://gamma.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Cutting-edge research",
+  },
+  {
+    name: "Delta Co",
+    value: 3,
+    website: "https://delta.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Sustainable energy solutions",
+  },
+  {
+    name: "Epsilon Ltd",
+    value: 1,
+    website: "https://epsilon.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Advanced manufacturing",
+  },
+  {
+    name: "Zeta Enterprises",
+    value: 2,
+    website: "https://zeta.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Global logistics services",
+  },
+  {
+    name: "Eta Industries",
+    value: 4,
+    website: "https://eta.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Aerospace and defense",
+  },
+  {
+    name: "Theta Systems",
+    value: 1,
+    website: "https://theta.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Cybersecurity experts",
+  },
+  {
+    name: "Iota Group",
+    value: 3,
+    website: "https://iota.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Financial technology solutions",
+  },
+  {
+    name: "Kappa Solutions",
+    value: 2,
+    website: "https://kappa.com",
+    logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+    description: "Healthcare innovations",
+  },
+];
+
+const getCardClass = (value: number) =>
+  [
+    "lg:col-span-1 col-span-2",
+    "col-span-1 lg:col-span-2",
+    "col-span-3",
+    "col-span-4",
+  ][value - 1] || "";
+
+const groupSponsors = (sponsors: Sponsor[]) =>
+  sponsors
+    .sort((a, b) => b.value - a.value)
+    .reduce((groups, sponsor) => {
+      const group =
+        groups.find(
+          (g) => g.reduce((sum, s) => sum + s.value, 0) + sponsor.value <= 4,
+        ) || [];
+      group.push(sponsor);
+      if (!groups.includes(group)) groups.push(group);
+      return groups;
+    }, [] as Sponsor[][])
+    .map((group) => ({
+      sponsors: group,
+      notFull: group.reduce((sum, s) => sum + s.value, 0) < 4,
+    }))
+    .sort(
+      (a, b) =>
+        b.sponsors.length - a.sponsors.length ||
+        b.sponsors.reduce((sum, s) => sum + s.value, 0) -
+          a.sponsors.reduce((sum, s) => sum + s.value, 0),
+    );
+
+const sponsorGroups = groupSponsors(sponsors);
+---
+
+<div class="space-y-6 p-6">
+  {
+    sponsorGroups.map(({ sponsors, notFull }, index) => (
+      <div
+        id={`${index}`}
+        class={`grid grid-cols-2 gap-4 lg:grid-cols-4 ${notFull ? "justify-center" : ""}`}
+      >
+        {sponsors.map((sponsor) => (
+          <a
+            href={sponsor.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`group relative max-h-[400px] overflow-hidden rounded-3xl bg-orange-400 shadow-md transition-transform duration-300 ease-in-out hover:scale-105 ${getCardClass(sponsor.value)}`}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <Image
+              src={sponsor.logoUrl}
+              alt={`${sponsor.name} logo`}
+              width={sponsor.value >= 3 ? 400 : 200}
+              height={sponsor.value >= 3 ? 200 : 100}
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+              <h3 class="text-center text-xl font-bold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {sponsor.name}
+                {sponsor.value}
+              </h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    ))
+  }
+</div>
