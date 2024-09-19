@@ -1,3 +1,5 @@
+import type { Sponsor } from "@/types/sponsors";
+
 export const sponsorConfig = {
   heading: "Our Sponsors",
   description: [
@@ -14,12 +16,76 @@ export const sponsorConfig = {
   },
 };
 
-export interface Sponsor {
-  name: string;
-  value: 1 | 2 | 3 | 4;
-  website: string;
-  logoUrl: string;
-  description: string;
-}
-
-export const sponsorsInfo: Sponsor[] = [];
+export const sponsorsInfo: Sponsor[] = [
+  // sample data. value determines the space they are given in the page
+  // {
+  //   name: "Alpha Corp",
+  //   value: 4,
+  //   website: "https://alpha.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Leading technology solutions",
+  // },
+  // {
+  //   name: "Beta Inc",
+  //   value: 2,
+  //   website: "https://beta.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Innovative software development",
+  // },
+  // {
+  //   name: "Gamma LLC",
+  //   value: 1,
+  //   website: "https://gamma.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Cutting-edge research",
+  // },
+  // {
+  //   name: "Delta Co",
+  //   value: 3,
+  //   website: "https://delta.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Sustainable energy solutions",
+  // },
+  // {
+  //   name: "Epsilon Ltd",
+  //   value: 1,
+  //   website: "https://epsilon.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Advanced manufacturing",
+  // },
+  // {
+  //   name: "Zeta Enterprises",
+  //   value: 2,
+  //   website: "https://zeta.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Global logistics services",
+  // },
+  // {
+  //   name: "Eta Industries",
+  //   value: 4,
+  //   website: "https://eta.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Aerospace and defense",
+  // },
+  // {
+  //   name: "Theta Systems",
+  //   value: 1,
+  //   website: "https://theta.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Cybersecurity experts",
+  // },
+  // {
+  //   name: "Iota Group",
+  //   value: 3,
+  //   website: "https://iota.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Financial technology solutions",
+  // },
+  // {
+  //   name: "Kappa Solutions",
+  //   value: 2,
+  //   website: "https://kappa.com",
+  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
+  //   description: "Healthcare innovations",
+  // },
+];
