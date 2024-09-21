@@ -9,9 +9,7 @@ interface Props {
 const { question, answer } = Astro.props;
 ---
 
-<li
-  class="faq-item cursor-pointer space-y-4 rounded-md border border-black/10 p-4"
->
+<li class="faq-item cursor-pointer rounded-md border border-black/10 p-4">
   <button
     class="faq-question-container flex w-full cursor-pointer items-center justify-between text-left text-xl font-semibold"
   >
@@ -22,37 +20,61 @@ const { question, answer } = Astro.props;
 </li>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Select all faq items and add a click event listener to each faq item
-    const faqItems = document.querySelectorAll(".faq-item");
-    faqItems.forEach((faqItem) => {
-      faqItem.addEventListener("click", () => toggleFaq(faqItem));
-    });
+  import gsap from "gsap";
 
-    function toggleFaq(faqItem: Element) {
-      const answerElement = faqItem.querySelector(".faq-answer");
-      const button = faqItem.querySelector(".faq-question-container");
-      const toggleIcon = faqItem.querySelector(".faq-toggle");
-
-      if (!button || !answerElement || !toggleIcon) return;
-
-      const isExpanded = button.getAttribute("aria-expanded") === "true";
-      button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-
-      answerElement.classList.toggle("hidden");
-      toggleIcon.textContent = isExpanded ? "+" : "−";
-    }
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach((faqItem) => {
+    faqItem.addEventListener("click", () => toggleFaq(faqItem));
   });
-</script>
 
-<style>
-  .faq-answer.hidden {
-    display: none;
+  function toggleFaq(faqItem: Element) {
+    const answerElement = faqItem.querySelector(".faq-answer");
+    const button = faqItem.querySelector(".faq-question-container");
+    const toggleIcon = faqItem.querySelector(".faq-toggle");
+
+    if (!button || !answerElement || !toggleIcon) return;
+
+    // Accessibility stuff
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+
+    toggleIcon.textContent = isExpanded ? "+" : "−";
+
+    // Animate open & close
+    if (isExpanded) {
+      // Close animations
+
+      const tl = gsap.timeline();
+
+      tl.to(answerElement, {
+        opacity: 0,
+        height: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+        onComplete: () => {
+          answerElement.classList.add("hidden");
+        },
+      });
+    } else {
+      // Open animations
+
+      const tl = gsap.timeline();
+
+      tl.fromTo(
+        answerElement,
+        {
+          height: 0,
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          height: "auto",
+          duration: 0.3,
+
+          ease: "power2.inOut",
+        },
+      );
+      answerElement.classList.remove("hidden");
+    }
   }
-  .faq-item {
-    cursor: pointer;
-  }
-  .faq-item .faq-toggle {
-    transition: transform 0.3s ease;
-  }
-</style>
+</script>
