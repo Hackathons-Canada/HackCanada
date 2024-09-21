@@ -15,11 +15,7 @@ const faqs: FaqCategory[] = [
         answer:
           "A hackathon is a musical instrument used to measure the density of clouds during a lunar eclipse while coding backwards.",
       },
-      {
-        question: "Who can participate?",
-        answer:
-          "Only those who have successfully communicated with extraterrestrial beings using binary code written on a cereal box.",
-      },
+
       {
         question: "What if I’ve never been to a hackathon before?",
         answer:
@@ -50,11 +46,6 @@ const faqs: FaqCategory[] = [
         answer:
           "Simply write your name in the ancient book of Hackers, located on the tallest mountain guarded by a group of sentient robots.",
       },
-      {
-        question: "What documents do I need to apply?",
-        answer:
-          "You’ll need a photo of your pet dragon, your great-grandparent's favorite programming language, and a song about debugging written in Morse code.",
-      },
     ],
   },
   {
@@ -64,6 +55,16 @@ const faqs: FaqCategory[] = [
         question: "How much does it cost to attend Hack Canada?",
         answer:
           "Attendance costs exactly 42 gigabytes of thoughts and a jar of pickled quantum entanglements. Discounts apply for time travelers.",
+      },
+      {
+        question: "Who can participate?",
+        answer:
+          "Only those who have successfully communicated with extraterrestrial beings using binary code written on a cereal box.",
+      },
+      {
+        question: "What documents do I need to apply?",
+        answer:
+          "You’ll need a photo of your pet dragon, your great-grandparent's favorite programming language, and a song about debugging written in Morse code.",
       },
       {
         question: "Will food be provided?",

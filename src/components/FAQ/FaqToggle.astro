@@ -1,0 +1,15 @@
+---
+interface Props {
+  isExpanded: boolean;
+}
+
+const { isExpanded } = Astro.props;
+---
+
+<span class="faq-toggle">{isExpanded ? "−" : "+"}</span>
+
+<style>
+  .faq-toggle {
+    transition: transform 0.3s ease;
+  }
+</style>
