@@ -61,6 +61,14 @@
 
 @layer base {
   @font-face {
+    font-family: "Baloo";
+    src: url("/fonts/baloo.woff2") format("woff2");
+    font-weight: 400, 500, 600, 700, 800, 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
     font-family: "HeadingFont";
     src: url("/fonts/temp_heading.woff2") format("woff2");
     font-weight: normal;
@@ -75,6 +83,7 @@
     font-style: normal;
     font-display: swap;
   }
+
   .heading-font {
     font-family: "HeadingFont", sans-serif;
     color: #0a1f44;

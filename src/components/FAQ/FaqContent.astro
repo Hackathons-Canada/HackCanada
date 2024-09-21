@@ -1,0 +1,22 @@
+---
+import type { FaqCategory } from "@/types/faqs";
+import FaqItem from "./FaqItem.astro";
+import CategoryHeading from "@/components/FAQ/CategoryHeading.astro";
+
+interface Props {
+  category: FaqCategory;
+}
+
+const { category } = Astro.props;
+---
+
+<div class="mx-auto h-fit max-w-3xl rounded-lg bg-white/30 p-6">
+  <CategoryHeading category={category.type} />
+  <ul class="space-y-6">
+    {
+      category.faqs.map((faq) => (
+        <FaqItem question={faq.question} answer={faq.answer} />
+      ))
+    }
+  </ul>
+</div>
