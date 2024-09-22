@@ -6,10 +6,4 @@ interface Props {
 const { isExpanded } = Astro.props;
 ---
 
-<span class="faq-toggle">{isExpanded ? "−" : "+"}</span>
-
-<style>
-  .faq-toggle {
-    transition: transform 0.3s ease;
-  }
-</style>
+<span class="faq-toggle text-lg md:text-xl">{isExpanded ? "−" : "+"}</span>
