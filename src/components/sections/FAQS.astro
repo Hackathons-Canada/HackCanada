@@ -2,8 +2,8 @@
 import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import { cn } from "@/lib/utils";
 import faqs from "@/config/faqs";
-import { Image } from "astro:assets";
 import FaqCategory from "../FAQ/FaqCategory.astro";
+import FaqAssets from "@/components/FAQ/FaqAssets.astro";
 
 interface Props {
   className?: string;
@@ -20,162 +20,10 @@ const { className, id } = Astro.props;
     className,
   )}
 >
-  <!-- Assets -->
-  <div
-    class="pointer-events-none absolute inset-x-0 bottom-0 h-fit select-none"
-  >
-    <!-- Grass background -->
-    <Image
-      src="/grass.webp"
-      alt={"Grass"}
-      width={1}
-      height={1}
-      class="absolute inset-x-0 bottom-0 h-80 w-full object-cover lg:h-[600px]"
-    />
-
-    <!-- Grass and dandelions -->
-    <Image
-      src="/grass-top.png"
-      alt="Grass top"
-      width={1}
-      height={1}
-      class="absolute bottom-[450px] left-1/2 w-[60%] -translate-x-1/2 object-contain"
-    />
-    <Image
-      src="/dandelion-1.png"
-      alt="Dandelion 1"
-      width={1}
-      height={1}
-      class="absolute bottom-[500px] left-[70%] -translate-x-1/2 object-contain lg:w-24 xl:w-32 2xl:w-40"
-    />
-    <Image
-      src="/dandelion-2.png"
-      alt="Dandelion 2"
-      width={1}
-      height={1}
-      class="absolute bottom-[500px] left-[80%] w-28 -translate-x-1/2 object-contain 2xl:w-36"
-    />
-    <Image
-      src="/dandelion-3.png"
-      alt="Dandelion 3"
-      width={1}
-      height={1}
-      class="absolute bottom-[550px] left-[55%] -translate-x-1/2 object-contain lg:w-20 xl:w-24 2xl:w-32"
-    />
-    <Image
-      src="/dandelion-4.png"
-      alt="Dandelion 4"
-      width={1}
-      height={1}
-      class="absolute bottom-[475px] left-[97%] w-32 -translate-x-1/2 object-contain 2xl:left-[calc(100%-48px)]"
-    />
-    <Image
-      src="/dandelion-6.png"
-      alt="Dandelion 6"
-      width={1}
-      height={1}
-      class="absolute bottom-[500px] left-[5%] -translate-x-1/2 object-contain lg:w-20 xl:w-28"
-    />
-
-    <Image
-      src="/dandelion-3.png"
-      alt="Dandelion 3"
-      width={1}
-      height={1}
-      class="absolute bottom-[550px] left-[90%] -translate-x-1/2 object-contain lg:w-20 xl:w-24"
-    />
-    <Image
-      src="/dandelion-5.png"
-      alt="Dandelion 6"
-      width={1}
-      height={1}
-      class="absolute bottom-[450px] left-[46%] w-24 -translate-x-1/2 rotate-12 object-contain max-2xl:hidden"
-    />
-    <Image
-      src="/dandelion-root.png"
-      alt="Dandelion root"
-      width={1}
-      height={1}
-      class="absolute bottom-[475px] left-[12%] -translate-x-1/2 rotate-[21deg] object-contain lg:w-16 xl:bottom-[425px] xl:left-[15%] xl:w-24"
-    />
-    <Image
-      src="/dandelion-root.png"
-      alt="Dandelion root"
-      width={1}
-      height={1}
-      class="absolute bottom-[450px] left-[65%] w-24 -translate-x-1/2 rotate-[20deg] object-contain max-2xl:hidden"
-    />
-    <Image
-      src="/dandelion-root.png"
-      alt="Dandelion root"
-      width={1}
-      height={1}
-      class="absolute bottom-[500px] left-[47%] w-24 -translate-x-1/2 object-contain xl:bottom-[475px] 2xl:left-[40%]"
-    />
-
-    <!-- Dandelion tips -->
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute bottom-[675px] left-[67%] w-10 -translate-x-1/2 object-contain"
-    />
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute bottom-[675px] left-[12%] w-8 -translate-x-1/2 object-contain"
-    />
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute bottom-[575px] left-[50%] w-10 -translate-x-1/2 object-contain"
-    />
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute left-[75%] -translate-x-1/2 object-contain xl:bottom-[575px] xl:w-8 2xl:bottom-[600px] 2xl:w-10"
-    />
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute bottom-[575px] left-[86%] -translate-x-1/2 object-contain lg:w-8 xl:w-12"
-    />
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute bottom-[450px] left-[80%] w-8 -translate-x-1/2 object-contain"
-    />
-    <Image
-      src="/dandelion-tip.png"
-      alt="Dandelion tip"
-      width={1}
-      height={1}
-      class="absolute bottom-[625px] left-[35%] w-10 -translate-x-1/2 object-contain"
-    />
-
-    <!-- Beaver -->
-    <Image
-      src="/beaver-sitting.png"
-      alt="Beaver sitting"
-      width={1}
-      height={1}
-      class="absolute bottom-0 lg:bottom-[500px] lg:left-[15%] lg:w-[450px] xl:w-[500px]"
-    />
-  </div>
+  <FaqAssets />
 
   <h2
-    class="mb-16 text-center font-baloo text-4xl font-black text-[#870A0A] md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
+    class="faq-heading mb-16 translate-y-10 text-center font-baloo text-4xl font-black text-[#870A0A] opacity-0 md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
   >
     Frequently Asked Questions
   </h2>
@@ -191,3 +39,25 @@ const { className, id } = Astro.props;
     </div>
   </div>
 </SectionWrapper>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    ".faq-heading",
+    { opacity: 0, translateY: 25 },
+    {
+      opacity: 1,
+      translateY: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".faq-heading",
+        start: "top 80%",
+      },
+    },
+  );
+</script>
