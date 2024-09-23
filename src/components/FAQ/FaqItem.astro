@@ -21,12 +21,6 @@ const { question, answer } = Astro.props;
   >
     {answer}
   </p>
-
-  <!-- Borders -->
-  <div
-    class="faq-border absolute bottom-0 left-0 right-0 hidden h-[2px] origin-center bg-red-950"
-  >
-  </div>
 </li>
 
 <script>
@@ -41,9 +35,8 @@ const { question, answer } = Astro.props;
     const answerElement = faqItem.querySelector(".faq-answer");
     const button = faqItem.querySelector(".faq-question-container");
     const toggleIcon = faqItem.querySelector(".faq-toggle");
-    const faqBorder = faqItem.querySelector(".faq-border");
 
-    if (!button || !answerElement || !toggleIcon || !faqBorder) return;
+    if (!button || !answerElement || !toggleIcon) return;
 
     // Accessibility
     const isExpanded = button.getAttribute("aria-expanded") === "true";
@@ -59,9 +52,9 @@ const { question, answer } = Astro.props;
           {
             opacity: 0,
             scaleY: 0,
-            duration: 0.2,
+            duration: 0.15,
             height: 0,
-            ease: "back.in",
+            ease: "sine.in",
             onComplete: () => {
               answerElement.classList.add("hidden");
             },
@@ -69,48 +62,22 @@ const { question, answer } = Astro.props;
           0,
         )
         .to(
-          faqBorder,
-          {
-            scaleX: 0,
-            duration: 0.2,
-            ease: "power3.in",
-            onComplete: () => {
-              faqBorder.classList.add("hidden");
-            },
-          },
-          0.2,
-        )
-        .to(
           faqItem,
           {
             boxShadow: "none",
-            duration: 0.3,
+            duration: 0.2,
             backgroundColor: "rgba(255, 255, 255, 0.3)",
           },
-          "-=0.3",
+          0,
         );
     } else {
       // Open animations
-      faqBorder.classList.remove("hidden");
+      answerElement.classList.remove("hidden");
       tl.to(faqItem, {
-        boxShadow: "0 0 20px rgba(0, 0, 0, 0.10)",
+        boxShadow: "0 0 24px rgba(0, 0, 0, 0.10)",
         backgroundColor: "rgba(255, 255, 255, 0.7)",
         duration: 0.1,
       })
-        .fromTo(
-          faqBorder,
-          {
-            scaleX: 0,
-          },
-          {
-            scaleX: 1,
-            duration: 0.1,
-            ease: "power3.out",
-            onComplete: () => {
-              answerElement.classList.remove("hidden");
-            },
-          },
-        )
         .fromTo(
           answerElement,
           {
@@ -123,11 +90,11 @@ const { question, answer } = Astro.props;
             opacity: 1,
             scaleY: 1,
             duration: 0.2,
-            ease: "back.out(1.5)",
+            ease: "back.out(2)",
           },
-          0.2,
+          0,
         )
-        .to(toggleIcon, { rotate: 45, duration: 0.2 }, 0.2);
+        .to(toggleIcon, { rotate: 45, duration: 0.2 });
     }
   }
 </script>
