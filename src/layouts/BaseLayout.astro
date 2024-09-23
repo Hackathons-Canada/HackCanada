@@ -3,6 +3,7 @@ import Head from "@/components/layout/Head.astro";
 import "@/styles/global.css";
 import Navbar from "../components/layout/navbar/Navbar.astro";
 import Footer from "../components/layout/footer/Footer.astro";
+import ScreenSizeOverlay from "@/components/utility/ScreenSizeOverlay.astro";
 
 interface Props {
   title?: string;
@@ -18,7 +19,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Navbar className="z-20" />
-
+    <ScreenSizeOverlay />
     <slot />
     <Footer />
   </body>
