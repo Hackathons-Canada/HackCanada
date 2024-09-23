@@ -1,6 +1,4 @@
 ---
-import FaqToggle from "./FaqToggle.astro";
-
 interface Props {
   question: string;
   answer: string;
@@ -10,21 +8,25 @@ const { question, answer } = Astro.props;
 ---
 
 <li
-  class="faq-item relative cursor-pointer overflow-hidden rounded-md border-2 border-red-900 p-4 transition-shadow duration-300"
+  class="faq-item group relative cursor-pointer overflow-hidden rounded-md bg-white/30 p-4 transition-shadow duration-300"
 >
   <button
-    class="faq-question-container relative flex w-full cursor-pointer items-center justify-between text-left font-baloo text-lg font-semibold"
+    class="faq-question-container relative flex w-full cursor-pointer justify-between gap-2.5 text-left font-baloo font-semibold md:text-lg"
   >
     <span class="faq-question">{question}</span>
-    <FaqToggle isExpanded={false} />
+    <span class="faq-toggle text-lg md:text-xl">+</span>
   </button>
-  <div
-    class="faq-border absolute bottom-0 left-0 top-0 hidden w-1 origin-center bg-red-800"
+  <p
+    class="faq-answer relative z-10 hidden w-full pt-4 text-slate-600 max-md:text-sm"
   >
-  </div>
-  <p class="faq-answer relative z-10 hidden w-full pt-4 text-black/70">
     {answer}
   </p>
+
+  <!-- Borders -->
+  <div
+    class="faq-border absolute bottom-0 left-0 right-0 hidden h-[2px] origin-center bg-red-950"
+  >
+  </div>
 </li>
 
 <script>
@@ -51,71 +53,81 @@ const { question, answer } = Astro.props;
 
     if (isExpanded) {
       // Close animations
-      tl.to(toggleIcon, { rotate: 0, duration: 0.1 });
-      tl.to(
-        faqBorder,
-        {
-          scaleY: 0,
-          duration: 0.2,
-          ease: "power3.in",
-          onComplete: () => {
-            faqBorder.classList.add("hidden");
+      tl.to(toggleIcon, { rotate: 0, duration: 0.1 })
+        .to(
+          answerElement,
+          {
+            opacity: 0,
+            scaleY: 0,
+            duration: 0.2,
+            height: 0,
+            ease: "back.in",
+            onComplete: () => {
+              answerElement.classList.add("hidden");
+            },
           },
-        },
-        0,
-      );
-      tl.to(
-        answerElement,
-        {
-          opacity: 0,
-          scaleY: 0,
-          duration: 0.2,
-          height: 0,
-          ease: "back.in",
-          onComplete: () => {
-            answerElement.classList.add("hidden");
+          0,
+        )
+        .to(
+          faqBorder,
+          {
+            scaleX: 0,
+            duration: 0.2,
+            ease: "power3.in",
+            onComplete: () => {
+              faqBorder.classList.add("hidden");
+            },
           },
-        },
-        "-=0.1",
-      );
-      tl.to(button, { padding: 0, duration: 0.1 });
-      tl.to(faqItem, { boxShadow: "none", duration: 0.3 }, "-=0.3"); // Remove shadow on close
+          0.2,
+        )
+        .to(
+          faqItem,
+          {
+            boxShadow: "none",
+            duration: 0.3,
+            backgroundColor: "rgba(255, 255, 255, 0.3)",
+          },
+          "-=0.3",
+        );
     } else {
       // Open animations
       faqBorder.classList.remove("hidden");
-      answerElement.classList.remove("hidden");
       tl.to(faqItem, {
-        boxShadow: "0 0 20px rgba(255, 0, 0, 0.10)",
+        boxShadow: "0 0 20px rgba(0, 0, 0, 0.10)",
+        backgroundColor: "rgba(255, 255, 255, 0.7)",
         duration: 0.1,
-      });
-      tl.fromTo(
-        faqBorder,
-        {
-          scaleY: 0,
-        },
-        {
-          scaleY: 1,
-          duration: 0.3,
-          ease: "power3.out",
-        },
-        0,
-      );
-      tl.fromTo(
-        answerElement,
-        {
-          height: 0,
-          opacity: 0,
-          scaleY: 0.5,
-        },
-        {
-          height: "auto",
-          opacity: 1,
-          scaleY: 1,
-          duration: 0.2,
-          ease: "back.out(1.5)",
-        },
-        0,
-      ).to(toggleIcon, { rotate: 45, duration: 0.2 }, 0);
+      })
+        .fromTo(
+          faqBorder,
+          {
+            scaleX: 0,
+          },
+          {
+            scaleX: 1,
+            duration: 0.1,
+            ease: "power3.out",
+            onComplete: () => {
+              answerElement.classList.remove("hidden");
+            },
+          },
+        )
+        .fromTo(
+          answerElement,
+          {
+            height: 0,
+            opacity: 0,
+            scaleY: 0.5,
+          },
+          {
+            height: "auto",
+            opacity: 1,
+            scaleY: 1,
+            duration: 0.2,
+            ease: "back.out(1.5)",
+          },
+          0.2,
+        )
+        .to(toggleIcon, { rotate: 45, duration: 0.2 }, 0.2);
     }
   }
 </script>
