@@ -16,8 +16,13 @@ const { category } = Astro.props;
   <CategoryHeading category={category.type} />
   <ul class="space-y-6">
     {
-      category.faqs.map((faq) => (
-        <FaqItem question={faq.question} answer={faq.answer} />
+      category.faqs.map((faq, index) => (
+        <FaqItem
+          id={category.type + "-" + index}
+          category={category.type}
+          question={faq.question}
+          answer={faq.answer}
+        />
       ))
     }
   </ul>

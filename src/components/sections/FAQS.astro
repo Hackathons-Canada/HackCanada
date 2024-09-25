@@ -3,7 +3,6 @@ import SectionWrapper from "@/components/layout/SectionWrapper.astro";
 import { cn } from "@/lib/utils";
 import faqs from "@/config/faqs";
 import FaqCategory from "../FAQ/FaqCategory.astro";
-import FaqAssets from "@/components/FAQ/FaqAssets.astro";
 
 interface Props {
   className?: string;
@@ -15,15 +14,12 @@ const { className, id } = Astro.props;
 
 <SectionWrapper
   id={id}
-  className={cn(
-    "relative z-10 overflow-hidden pb-32 pt-20 md:pb-[800px] md:pt-32",
-    className,
-  )}
+  className={cn("relative z-10 overflow-hidden py-20 md:py-32", className)}
 >
-  <FaqAssets />
+  <!-- <FaqAssets /> -->
 
   <h2
-    class="faq-heading mb-16 translate-y-10 text-center font-baloo text-4xl font-black text-[#870A0A] opacity-0 md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
+    class="faq-heading heading-font mb-16 translate-y-10 text-center text-4xl font-black text-[#870A0A] opacity-0 md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
   >
     Frequently Asked Questions
   </h2>
