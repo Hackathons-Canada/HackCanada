@@ -19,18 +19,18 @@ const { className, id } = Astro.props;
   <!-- <FaqAssets /> -->
 
   <h2
-    class="faq-heading heading-font mb-16 translate-y-10 text-center text-4xl font-black text-[#870A0A] opacity-0 md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
+    class="faq-heading heading-font mb-16 translate-y-10 text-center text-4xl font-black opacity-0 md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
   >
     Frequently Asked Questions
   </h2>
 
   <div
-    class="faq-categories mx-auto flex h-[2000px] max-w-screen-2xl flex-col items-start justify-start gap-12 px-4 max-sm:h-[2200px] xl:grid xl:h-[1000px] xl:grid-cols-2"
+    class="faq-categories mx-auto grid max-w-screen-2xl grid-cols-1 flex-col items-start justify-start gap-12 px-4 xl:grid-cols-2"
   >
-    <div class="flex w-full flex-col gap-12">
+    <div class="flex flex-col gap-12">
       {faqs.slice(0, 2).map((category) => <FaqCategory category={category} />)}
     </div>
-    <div class="flex w-full flex-col gap-12">
+    <div class="flex flex-col gap-12">
       {faqs.slice(2, 4).map((category) => <FaqCategory category={category} />)}
     </div>
   </div>

@@ -23,7 +23,7 @@ const { question, answer, category, id } = Astro.props;
     <span class="faq-toggle text-lg md:text-xl">+</span>
   </button>
   <p
-    class="faq-answer relative z-10 hidden w-full pt-4 text-slate-600 max-md:text-sm"
+    class="faq-answer relative z-10 hidden w-full origin-bottom pt-4 text-slate-600 max-md:text-sm"
   >
     {answer}
   </p>
@@ -64,7 +64,6 @@ const { question, answer, category, id } = Astro.props;
       if (currentOpenElement) closeFaq(currentOpenElement);
     }
 
-    // Open the clicked FAQ and update the open state
     openFaqs[category] = id;
     openFaq(faqItem);
   }
@@ -87,11 +86,13 @@ const { question, answer, category, id } = Astro.props;
         answerElement,
         {
           height: 0,
+          y: 50,
           opacity: 0,
-          scaleY: 0.5,
+          scaleY: 0,
         },
         {
           height: "auto",
+          y: 0,
           opacity: 1,
           scaleY: 1,
           duration: 0.2,
@@ -116,6 +117,7 @@ const { question, answer, category, id } = Astro.props;
         {
           opacity: 0,
           scaleY: 0,
+          y: 20,
           duration: 0.15,
           height: 0,
           ease: "sine.in",
