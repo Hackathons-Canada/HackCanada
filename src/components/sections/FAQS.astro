@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import faqs from "@/config/faqs";
 import FaqCategory from "../FAQ/FaqCategory.astro";
 import { Image } from "astro:assets";
+import { faqsSection } from "@/config/site";
 
 interface Props {
   className?: string;
@@ -24,49 +25,49 @@ const { className, id } = Astro.props;
       alt="Flower 1"
       width={1}
       height={1}
-      class="flower flower-1 absolute left-1/2 top-48 w-16 object-cover"
+      class="faq-asset absolute left-1/2 top-72 w-16 animate-rotateSlow object-cover"
     />
     <Image
       src="/flower-2.png"
       alt="Flower 2"
       width={1}
       height={1}
-      class="flower flower-2 absolute left-40 top-64 w-16 object-cover"
+      class="faq-asset absolute left-40 top-64 w-16 animate-float object-cover"
     />
     <Image
       src="/flower-3.png"
       alt="Flower 3"
       width={1}
       height={1}
-      class="flower flower-3 absolute left-3/4 top-96 w-16 object-cover"
-    />
-    <Image
-      src="/flower-1.png"
-      alt="Flower 1"
-      width={1}
-      height={1}
-      class="flower flower-1 absolute right-40 top-[757px] w-16 object-cover"
+      class="faq-asset absolute left-3/4 top-[500px] w-16 animate-float object-cover"
     />
     <Image
       src="/flower-4.png"
       alt="Flower 4"
       width={1}
       height={1}
-      class="flower flower-4 absolute left-[35%] top-[950px] w-16 object-cover"
+      class="faq-asset absolute left-[60%] top-[825px] w-16 animate-rotateSlow object-cover"
     />
     <Image
       src="/butterfly.png"
       alt="Butterfly"
       width={1}
       height={1}
-      class="butterfly absolute left-1/3 top-[600px] w-16 -translate-x-1/2 object-cover"
+      class="faq-asset absolute left-1/3 top-[600px] w-16 -translate-x-1/2 animate-float object-cover"
+    />
+    <Image
+      src="/butterfly-2.png"
+      alt="Butterfly 2"
+      width={1}
+      height={1}
+      class="faq-asset absolute left-[40%] top-[1000px] w-16 -translate-x-1/2 animate-float object-cover"
     />
   </div>
 
   <h2
-    class="faq-heading heading-font mb-16 translate-y-10 text-center text-4xl font-black opacity-0 md:mb-20 md:text-5xl xl:mb-28 xl:text-6xl"
+    class="faq-heading heading-font mb-20 translate-y-10 text-center text-4xl font-black sm:text-5xl md:mb-24 lg:text-6xl xl:mb-28 xl:text-7xl"
   >
-    Frequently Asked Questions
+    {faqsSection.title}
   </h2>
 
   <div
@@ -87,128 +88,16 @@ const { className, id } = Astro.props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // FAQ Heading Animation
-  gsap.fromTo(
-    ".faq-heading",
-    { opacity: 0, translateY: 25 },
-    {
-      opacity: 1,
-      translateY: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".faq-heading",
-        start: "top 80%",
-      },
+  gsap.from(".faq-heading", {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".faq-heading",
+      start: "top 80%",
+      end: "bottom top",
+      toggleActions: "play none none reverse",
     },
-  );
-
-  // Flower 1 - Subtle Rotation
-  gsap.fromTo(
-    ".flower-1",
-    { rotate: 0, transformOrigin: "center center" },
-    {
-      rotate: 180,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".flower-1",
-        start: "top 80%",
-      },
-    },
-  );
-
-  // Flower 2 - Gentle Scaling and Bobbing
-  gsap.fromTo(
-    ".flower-2",
-    { scale: 1, y: 0, rotate: 0 },
-    {
-      scale: 1.1,
-      rotate: 30,
-      y: -10,
-      duration: 4,
-      yoyo: true,
-      repeat: -1,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".flower-2",
-        start: "top 80%",
-      },
-    },
-  );
-
-  // Flower 3 - Horizontal Movement with Rotation
-  gsap.fromTo(
-    ".flower-3",
-    { x: -10, rotate: 0 },
-    {
-      x: 10,
-      rotate: -10,
-      duration: 6,
-      yoyo: true,
-      repeat: -1,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".flower-3",
-        start: "top 80%",
-      },
-    },
-  );
-
-  // Flower 4 - Vertical Bobbing
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".flower-4",
-        start: "top 80%",
-      },
-      repeat: -1,
-      yoyo: true, // Reverses the entire timeline on repeat
-    })
-    .to(".flower-4", {
-      y: 15, // Moves vertically up and down
-      rotation: 10, // Adds a slight rotation
-      duration: 5,
-      ease: "power1.inOut",
-    })
-    .to(
-      ".flower-4",
-      {
-        scale: 1.2, // Scales up slightly
-        opacity: 1, // Fades slightly
-        duration: 2,
-        ease: "power1.inOut",
-      },
-      "-=2",
-    ) // Starts 2 seconds before the previous animation ends
-    .to(
-      ".flower-4",
-      {
-        x: 10, // Adds a horizontal sway
-        duration: 3,
-        ease: "power1.inOut",
-      },
-      "-=2",
-    ); // Starts 2 seconds before the previous animation ends
-
-  // Butterfly - Smooth Fluttering with slight rotation
-  gsap.fromTo(
-    ".butterfly",
-    { x: -10, y: 0, rotate: -5 },
-    {
-      x: 10,
-      y: -10,
-      rotate: 5,
-      duration: 3,
-      yoyo: true,
-      repeat: -1,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".butterfly",
-        start: "top 80%",
-      },
-    },
-  );
+  });
 </script>

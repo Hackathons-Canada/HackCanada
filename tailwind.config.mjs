@@ -68,10 +68,21 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        rotateSlow: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        // Additional continuous animations
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        rotateSlow: "rotateSlow 10s linear infinite",
+        float: "float 6s ease-in-out infinite",
       },
       textShadow: {
         "3d": "0 1px 0 #e0e0e0, 0 2px 0 #d9d9d9, 0 3px 0 #ccc, 0 4px 0 #c9c9c9, 0 5px 0 #bbb, 0 6px 1px rgba(0,0,0,.05), 0 0 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.1), 0 3px 6px rgba(0,0,0,.12), 0 5px 5px rgba(0,0,0,.1), 0 10px 10px rgba(0,0,0,.08)",

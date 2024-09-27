@@ -79,6 +79,10 @@ export const locationSection = {
   ],
 };
 
+export const faqsSection = {
+  title: "Frequently Asked Questions",
+};
+
 export const teamSection = {
   title: "Meet Our Team",
   tagline: parseMarkdown(
