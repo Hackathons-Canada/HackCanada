@@ -1,0 +1,86 @@
+---
+import type { FaqCategory } from "@/types/faqs";
+import FaqItem from "./FaqItem.astro";
+import CategoryHeading from "@/components/FAQ/CategoryHeading.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  category: FaqCategory;
+}
+
+const { category } = Astro.props;
+---
+
+<div
+  class="relative mx-auto h-fit w-full max-w-3xl translate-y-10 rounded-2xl bg-white/40 p-6 opacity-0"
+>
+  {
+    category.type === "Code of Conduct" && (
+      <Image
+        src="/flower-3.webp"
+        alt={"Flower 3"}
+        width={1}
+        class={
+          "absolute -bottom-4 -right-4 w-10 animate-rotateSlow md:-bottom-6 md:-right-6 md:w-14"
+        }
+        height={1}
+      />
+    )
+  }
+
+  <CategoryHeading category={category.type} />
+  <ul class="space-y-6">
+    {
+      category.faqs.map((faq, index) => (
+        <FaqItem
+          id={category.type + "-" + index}
+          category={category.type}
+          question={faq.question}
+          answer={faq.answer}
+        />
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate the entire container
+  gsap.fromTo(
+    ".relative.mx-auto.h-fit.w-full.max-w-3xl.rounded-2xl.bg-white\\/40.p-6",
+    { opacity: 0, translateY: 10 },
+    {
+      opacity: 1,
+      translateY: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger:
+          ".relative.mx-auto.h-fit.w-full.max-w-3xl.rounded-2xl.bg-white\\/40.p-6",
+        start: "top 80%",
+      },
+    },
+  );
+
+  // Animate each FAQ item with a staggered effect
+  gsap.fromTo(
+    ".faq-item",
+    { opacity: 0, translateY: 10 },
+    {
+      opacity: 1,
+      translateY: 0,
+      duration: 0.2,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger:
+          ".relative.mx-auto.h-fit.w-full.max-w-3xl.rounded-2xl.bg-white\\/40.p-6",
+        start: "top 80%",
+      },
+    },
+  );
+</script>

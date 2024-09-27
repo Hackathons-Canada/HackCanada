@@ -1,0 +1,140 @@
+---
+import type { FaqCategories } from "@/types/faqs";
+
+interface Props {
+  question: string;
+  answer: string;
+  category: FaqCategories;
+  id: string;
+}
+
+const { question, answer, category, id } = Astro.props;
+---
+
+<li
+  class={`faq-item group relative cursor-pointer overflow-hidden rounded-md bg-white/30 p-4 transition-shadow duration-300 ${category}-faq`}
+  data-category={category}
+  data-id={id}
+>
+  <button
+    class="faq-question-container relative flex w-full cursor-pointer justify-between gap-2.5 text-left font-baloo font-semibold md:text-lg"
+  >
+    <span class="faq-question">{question}</span>
+    <span class="faq-toggle text-lg md:text-xl">+</span>
+  </button>
+  <p
+    class="faq-answer relative z-10 hidden w-full origin-bottom pt-4 text-slate-600 max-md:text-sm"
+  >
+    {answer}
+  </p>
+</li>
+<script>
+  import gsap from "gsap";
+
+  // Keeping track of the open FAQs for each category
+  const openFaqs: { [key: string]: string | undefined } = {};
+
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((faqItem) => {
+    faqItem.addEventListener("click", () => toggleFaq(faqItem));
+  });
+
+  function toggleFaq(faqItem: Element) {
+    let category = faqItem.getAttribute("data-category");
+    category = category || "default";
+
+    const id = faqItem.getAttribute("data-id");
+    if (!id) return;
+
+    // Getting the currently open FAQ in this category
+    const currentOpenFaq = openFaqs[category];
+
+    if (currentOpenFaq === id) {
+      closeFaq(faqItem);
+      delete openFaqs[category];
+      return;
+    }
+
+    // Closing the currently open FAQ in this category
+    if (currentOpenFaq) {
+      const currentOpenElement = document.querySelector(
+        `[data-id="${currentOpenFaq}"]`,
+      );
+      if (currentOpenElement) closeFaq(currentOpenElement);
+    }
+
+    openFaqs[category] = id;
+    openFaq(faqItem);
+  }
+
+  function openFaq(faqItem: Element) {
+    const answerElement = faqItem.querySelector(".faq-answer");
+    const toggleIcon = faqItem.querySelector(".faq-toggle");
+
+    if (!answerElement || !toggleIcon) return;
+
+    const tl = gsap.timeline();
+    answerElement.classList.remove("hidden");
+
+    tl.to(faqItem, {
+      boxShadow: "0 0 24px rgba(0, 0, 0, 0.10)",
+      backgroundColor: "rgba(255, 255, 255, 0.7)",
+      duration: 0.1,
+    })
+      .fromTo(
+        answerElement,
+        {
+          height: 0,
+          y: 50,
+          opacity: 0,
+          scaleY: 0,
+        },
+        {
+          height: "auto",
+          y: 0,
+          opacity: 1,
+          scaleY: 1,
+          duration: 0.2,
+          ease: "back.out(2)",
+        },
+        0,
+      )
+      .to(toggleIcon, { rotate: 45, duration: 0.2 }, 0);
+  }
+
+  function closeFaq(faqItem: Element) {
+    const answerElement = faqItem.querySelector(".faq-answer");
+    const toggleIcon = faqItem.querySelector(".faq-toggle");
+
+    if (!answerElement || !toggleIcon) return;
+
+    const tl = gsap.timeline();
+
+    tl.to(toggleIcon, { rotate: 0, duration: 0.1 })
+      .to(
+        answerElement,
+        {
+          opacity: 0,
+          scaleY: 0,
+          y: 20,
+          duration: 0.15,
+          height: 0,
+          ease: "sine.in",
+          onComplete: () => {
+            answerElement.classList.add("hidden");
+          },
+        },
+        0,
+      )
+      .to(
+        faqItem,
+        {
+          boxShadow: "none",
+          duration: 0.2,
+          backgroundColor: "rgba(255, 255, 255, 0.3)",
+        },
+        0,
+      );
+  }
+</script>
