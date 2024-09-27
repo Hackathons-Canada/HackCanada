@@ -2,6 +2,7 @@
 import type { FaqCategory } from "@/types/faqs";
 import FaqItem from "./FaqItem.astro";
 import CategoryHeading from "@/components/FAQ/CategoryHeading.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   category: FaqCategory;
@@ -13,6 +14,20 @@ const { category } = Astro.props;
 <div
   class="relative mx-auto h-fit w-full max-w-3xl translate-y-10 rounded-2xl bg-white/40 p-6 opacity-0"
 >
+  {
+    category.type === "Code of Conduct" && (
+      <Image
+        src="/flower-3.webp"
+        alt={"Flower 3"}
+        width={1}
+        class={
+          "absolute -bottom-4 -right-4 w-10 animate-rotateSlow md:-bottom-6 md:-right-6 md:w-14"
+        }
+        height={1}
+      />
+    )
+  }
+
   <CategoryHeading category={category.type} />
   <ul class="space-y-6">
     {
