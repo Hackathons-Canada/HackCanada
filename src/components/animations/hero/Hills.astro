@@ -1,50 +1,46 @@
 ---
-import { cn } from "@/lib/utils";
 
-interface Props {
-  className?: string;
-}
-
-const { className = "" } = Astro.props;
 ---
 
-<div class={cn("absolute bottom-0 w-full lg:-bottom-32", className)}>
-  <img
-    src="hero-hills1.svg"
-    alt=""
-    class="gsapHill1Popup absolute -bottom-36 right-0 w-full min-w-[800px] opacity-0 md:-bottom-44 lg:-bottom-64"
-  />
-  <img
-    src="hero-hills2.svg"
-    alt=""
-    class="gsapHill2Popup absolute -bottom-10 -left-28 w-full min-w-[800px] opacity-0 sm:bottom-3 sm:left-0 md:-bottom-10 lg:-bottom-14"
-  />
-  <div class="absolute bottom-0 w-full md:-bottom-14">
-    <svg
-      viewBox="0 0 874 220"
+<div
+  class="absolute bottom-0 left-0 right-0 h-[15vh] w-full overflow-hidden sm:h-[30vh]"
+>
+  <svg
+    class="absolute bottom-0 right-0 h-full max-h-full w-full max-w-full"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 550 220"
+    preserveAspectRatio="none"
+  >
+    <path
+      fill="#EDF2F8"
+      d="M0 217c3-2 137-68 163-81 26-13 55-25 75-35 40-20 115-50 175-70C464 16 516 5 550 0v220H0z"
+    ></path>
+  </svg>
+
+  <svg
+    class="absolute bottom-0 left-0 h-full max-h-full w-full max-w-full"
+    width="875"
+    height="200"
+    preserveAspectRatio="none"
+    viewBox="0 0 875 200"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Curved line path -->
+    <path
+      id="sledgeMotionPath"
+      d="M0 1C50 1 100 0 150 1s100 3 150 7 100 12 150 24 100 29 150 50 100 46 150 65 100 32 124 32"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      class="max-w-screen h-auto w-full min-w-[320px]"
-    >
-      <path
-        id="sledgeMotionPath"
-        d="M0 1
-            C50 1, 100 0, 150 1
-            S250 4, 300 8
-            S400 20, 450 32
-            S550 61, 600 82
-            S700 128, 750 147
-            S850 179, 874 179"
-        stroke-linecap="round"
-        stroke="none"
-        vector-effect="non-scaling-stroke"></path>
-    </svg>
-  </div>
+      stroke="white"
+      stroke-width="2"></path>
+
+    <!-- Rest of the shape -->
+    <path
+      d="M0 1C50 1 100 0 150 1s100 3 150 7 100 12 150 24 100 29 150 50 100 46 150 65 100 32 124 32v20H0Z"
+      fill="white"></path>
+  </svg>
 </div>
 
 <script>
-  import { initGsapPopup } from "@/lib/gsapAnimations";
   import { gsap } from "gsap";
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -58,7 +54,7 @@ const { className = "" } = Astro.props;
     if (screenWidth < normalDesktopWidth) {
       return 2; // 2 seconds for screens smaller than normal desktop
     } else {
-      return 4; // 4 seconds for normal desktop and larger screens
+      return 3; // 4 seconds for normal desktop and larger screens
     }
   }
 
@@ -97,8 +93,8 @@ const { className = "" } = Astro.props;
         duration: calculateDuration(), // Use the calculated duration
         scrollTrigger: {
           trigger: "#heroSection",
-          start: "10% top",
-          end: "10% center",
+          start: "15% top",
+          end: "15% center",
           markers: false,
         },
         onComplete: () => {
@@ -109,23 +105,8 @@ const { className = "" } = Astro.props;
     }
   }
 
-  function initAnimations() {
-    // Initialize popup animations for hills
-    initGsapPopup(".gsapHill1Popup", {
-      duration: 0.8,
-      delay: 0.6,
-      start: "top bottom-=50",
-    });
-    initGsapPopup(".gsapHill2Popup", {
-      duration: 0.8,
-      delay: 0.9,
-      start: "top bottom-=50",
-    });
-    setupAnimation();
-  }
-
   // Initialize animations on DOM content loaded
-  document.addEventListener("DOMContentLoaded", initAnimations);
+  document.addEventListener("DOMContentLoaded", setupAnimation);
 
   // Reinitialize animations on window width change
   let prevWidth = window.innerWidth;
