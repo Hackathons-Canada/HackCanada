@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { selectedMember, clearSelectedMember } from "@/stores/memberStore";
 import { ModalContent } from "./ModalContent";
-import { useModalAnimation } from "./useModalAnimation";
+import { useModalAnimation } from "@/lib/useModalAnimation";
 
 export default function TeamMemberModal() {
   const member = useStore(selectedMember);

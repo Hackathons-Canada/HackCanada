@@ -1,12 +1,12 @@
 ---
-import SectionWrapper from "@/components/layout/SectionWrapper.astro";
-import SectionHeading from "@/components/utility/SectionHeading.astro";
+import SectionWrapper from "@/components/utilities/SectionWrapper.astro";
+import SectionHeading from "@/components/utilities/SectionHeading.astro";
 import Boat from "@/components/animations/teams/Boat.astro";
 import { teams } from "@/config/teams";
 import { cn } from "@/lib/utils";
 import { getCompartmentSizes, getContainerWidth } from "@/lib/TeamUtils";
 import { teamSection } from "@/config/site";
-import Prose from "@/components/utility/Prose.astro";
+import Prose from "@/components/common/Prose.astro";
 import Wave from "@/components/animations/teams/Wave.astro";
 import TeamMemberModal from "@/components/animations/teams/card/TeamMemberModal";
 interface Props {
