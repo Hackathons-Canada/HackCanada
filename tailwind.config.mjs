@@ -39,7 +39,7 @@ export default {
           "50%": { transform: "translateY(-10px)" },
         },
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(3rem)" },
+          "0%": { opacity: "0", transform: "translateY(2rem)" },
           "100%": { opacity: "1", scale: 1, transform: "translateY(0)" },
         },
       },

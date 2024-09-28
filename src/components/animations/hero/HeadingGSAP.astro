@@ -26,49 +26,18 @@ const { title, tagline, buttonText, buttonLink } = heroSectionConfig;
   )}
 >
   <h1
-    class="heading-animation hero-heading heading-font text-center text-7xl opacity-0 md:text-right md:text-8xl lg:text-8xl"
+    class="hero-heading heading-font animate-fade-up text-center text-7xl opacity-0 animation-delay-100 md:text-right md:text-8xl lg:text-8xl"
   >
     {title}
   </h1>
   <Prose
-    className="gsapFade hero-tagline text-center text-xl font-black uppercase tracking-tighter opacity-0 md:text-right"
+    className="mt-4 animate-fade-up text-center text-xl font-black uppercase tracking-tighter opacity-0 animation-delay-300 md:text-right"
   >
     {tagline}
   </Prose>
-  <div class="gsapFade hero-button mt-6 w-auto opacity-0">
+  <div class="mt-6 w-auto animate-fade-up opacity-0 animation-delay-500">
     <Button variant="hero" size="lg" link={buttonLink}>
       {buttonText}
     </Button>
   </div>
 </div>
-<script>
-  import { initGsapFade } from "@/lib/gsapAnimations";
-
-  function headingAnimations() {
-    // Animate title characters
-    initGsapFade(".hero-heading", {
-      duration: 1.5,
-      direction: "up",
-      distance: 50,
-      delay: 0,
-    });
-
-    // Animate tagline
-    initGsapFade(".hero-tagline", {
-      duration: 0.5,
-      delay: 0.4,
-      direction: "up",
-      distance: 20,
-    });
-
-    // Animate button
-    initGsapFade(".hero-button", {
-      duration: 0.5,
-      delay: 0.6,
-      direction: "up",
-      distance: 20,
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", headingAnimations);
-</script>
