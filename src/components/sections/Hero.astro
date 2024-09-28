@@ -1,5 +1,4 @@
 ---
-import { cn } from "@/lib/utils";
 import { heroSection } from "@/config/site";
 import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
 import Snowfall from "@/components/animations/hero/Snowfall.astro";
@@ -10,7 +9,7 @@ interface Props {
   id?: string;
 }
 
-const { className, id } = Astro.props;
+const { id } = Astro.props;
 ---
 
 <div id="sledge" class="absolute -left-80 z-10 w-80">
@@ -23,10 +22,7 @@ const { className, id } = Astro.props;
   />
 </div>
 <section
-  class={cn(
-    "flex flex-col justify-center w-full overflow-hidden relative min-h-screen",
-    className,
-  )}
+  class="relative flex min-h-screen w-full flex-col justify-center overflow-hidden"
   aria-labelledby="Hero Section"
   id={id}
 >
