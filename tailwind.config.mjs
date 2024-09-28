@@ -38,18 +38,40 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(3rem)" },
+          "100%": { opacity: "1", scale: 1, transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         rotateSlow: "rotateSlow 20s linear infinite",
         float: "float 6s ease-in-out infinite",
+        "fade-up": "fadeUp 0.5s ease-out forwards",
+      },
+      animationDelay: {
+        100: "100ms",
+        200: "200ms",
+        300: "300ms",
+        400: "400ms",
+        500: "500ms",
       },
     },
   },
   plugins: [
-    plugin(({ addVariant }) => {
+    plugin(({ addVariant, matchUtilities, theme }) => {
       addVariant("hocus", ["&:hover", "&:focus"]);
+
+      // Add custom animation delay utilities
+      matchUtilities(
+        {
+          "animation-delay": (value) => ({
+            "animation-delay": value,
+          }),
+        },
+        { values: theme("animationDelay") },
+      );
     }),
     animatePlugin,
     tailwindTypography,
