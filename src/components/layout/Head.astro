@@ -42,4 +42,19 @@ const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
     type={siteConfig.icons.favicon.type}
     sizes={siteConfig.icons.favicon.sizes}
   />
+  <!-- Preload Font Files -->
+  <link
+    rel="preload"
+    href="/fonts/temp_content.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/temp_heading.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
 </head>
