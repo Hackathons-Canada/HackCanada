@@ -40,3 +40,100 @@ const { id } = Astro.props;
   />
   <Hills />
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+
+  function calculateDuration() {
+    const screenWidth = window.innerWidth;
+    const normalDesktopWidth = 1024; // Assuming 1024px as the breakpoint for normal desktop
+
+    if (screenWidth < normalDesktopWidth) {
+      return 2; // 2 seconds for screens smaller than normal desktop
+    } else {
+      return 3; // 4 seconds for normal desktop and larger screens
+    }
+  }
+  function calculateOrigin() {
+    const screenWidth = window.innerWidth;
+    const minWidth = 320; // Minimum screen width (e.g., small mobile)
+    const maxWidth = 1920; // Maximum screen width (e.g., large desktop)
+    const minOrigin = 0.7;
+    const maxOrigin = 0.9;
+
+    // Calculate the origin value based on screen width
+    const origin =
+      minOrigin +
+      (maxOrigin - minOrigin) *
+        ((screenWidth - minWidth) / (maxWidth - minWidth));
+
+    // Ensure the origin value is between 0.7 and 0.9
+    return Math.max(minOrigin, Math.min(maxOrigin, origin));
+  }
+
+  function setupAnimation() {
+    const sledge = document.getElementById("sledge");
+    const path = document.getElementById("sledgeMotionPath");
+
+    if (sledge && path) {
+      // Initial animation to move the sledge into view
+      gsap.fromTo(
+        sledge,
+        {
+          x: "0",
+          opacity: 0,
+        },
+        {
+          x: "100%",
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          delay: 1.5,
+        },
+      );
+
+      // Motion path animation
+      gsap.to(sledge, {
+        motionPath: {
+          path: "#sledgeMotionPath",
+          align: "#sledgeMotionPath",
+          autoRotate: true,
+          // 0.7 on small screen and 0.9 on big
+          alignOrigin: [0, calculateOrigin()],
+          start: 0,
+          end: 1,
+        },
+        ease: "power4.Out",
+        duration: calculateDuration(), // Use the calculated duration
+        scrollTrigger: {
+          trigger: "#heroSection",
+          start: "15% top",
+          end: "15% center",
+          markers: false,
+        },
+        onComplete: () => {
+          // Remove the sledge element after the animation is complete
+          sledge.remove();
+        },
+      });
+    }
+  }
+
+  // Initialize animations on DOM content loaded
+  document.addEventListener("DOMContentLoaded", setupAnimation);
+
+  // Reinitialize animations on window width change
+  let prevWidth = window.innerWidth;
+  window.addEventListener("resize", () => {
+    const currentWidth = window.innerWidth;
+    if (currentWidth !== prevWidth) {
+      prevWidth = currentWidth;
+      gsap.killTweensOf("#sledge");
+      setupAnimation();
+    }
+  });
+</script>
