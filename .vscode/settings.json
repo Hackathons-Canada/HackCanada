@@ -9,9 +9,9 @@
   "editor.formatOnType": true,
   "eslint.format.enable": true,
   "editor.quickSuggestions": {
-    "comments": "on",
-    "strings": "on",
-    "other": "on"
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
   },
   "eslint.validate": ["astro", "typescript", "typescriptreact"],
   "editor.tabSize": 2,
@@ -22,6 +22,10 @@
   "typescript.format.enable": true,
   "typescript.suggest.autoImports": true,
   "typescript.suggest.completeJSDocs": true,
+  "typescript.tsserver.maxTsServerMemory": 3072,
+  "javascript.suggest.enabled": false,
+  "javascript.validate.enable": false,
+
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -31,7 +35,8 @@
   },
   "files.exclude": {
     "**/.git": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "**/build/**": true
   },
   "search.exclude": {
     "**/node_modules": true,
