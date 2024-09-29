@@ -21,9 +21,9 @@ const { className, id } = Astro.props;
     src="/bee.gif"
     alt="Animated bee flying"
     id="bee"
-    class="pointer-events-none fixed left-0 top-0 h-auto w-full max-w-[8rem] scale-0 opacity-0"
-    width={158}
-    height={158}
+    class="pointer-events-none fixed left-0 top-0 h-auto w-full max-w-[8rem] scale-0 bg-white opacity-0"
+    width={200}
+    height={200}
     loading="lazy"
     decoding="async"
   />
@@ -55,10 +55,6 @@ const { className, id } = Astro.props;
     });
 
   const animateSponsorsSection = () => {
-    const bee = document.getElementById("bee");
-    const section = document.getElementById("sponsorSection");
-    if (!bee || !section) return;
-
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: "#sponsorSection",
@@ -100,7 +96,6 @@ const { className, id } = Astro.props;
         { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.7)" },
         1.3,
       )
-      .to(bee, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" })
       .add(() => {
         gsap.utils.toArray('[id^="sponsor-group-"]').forEach((group) => {
           gsap.fromTo(
@@ -145,7 +140,8 @@ const { className, id } = Astro.props;
 
   const animateBee = () => {
     const bee = document.getElementById("bee");
-    if (!bee) return;
+    const section = document.getElementById("sponsorSection");
+    if (!bee || !section) return;
 
     const beeRect = bee.getBoundingClientRect();
     const beeWidth = beeRect.width;
@@ -154,19 +150,42 @@ const { className, id } = Astro.props;
     const beeXTo = gsap.quickTo(bee, "left", { duration: 0.8, ease: "power3" });
     const beeYTo = gsap.quickTo(bee, "top", { duration: 0.8, ease: "power3" });
 
+    let isMouseInSection = false;
+
     const moveBee = (e: MouseEvent) => {
+      if (!isMouseInSection) return;
+
+      const sectionRect = section.getBoundingClientRect();
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
-      // Adjust bee position to center it on the cursor
-      const adjustedX = mouseX - beeWidth / 2;
-      const adjustedY = mouseY - beeHeight / 2;
+      // Adjust bee position to center it on the cursor and keep it within bounds
+      const adjustedX = Math.max(
+        sectionRect.left,
+        Math.min(sectionRect.right - beeWidth, mouseX - beeWidth / 2),
+      );
+      const adjustedY = Math.max(
+        sectionRect.top,
+        Math.min(sectionRect.bottom - beeHeight, mouseY - beeHeight / 2),
+      );
 
       beeXTo(adjustedX);
       beeYTo(adjustedY);
     };
 
+    const handleMouseEnter = () => {
+      isMouseInSection = true;
+      gsap.to(bee, { opacity: 1, scale: 1, duration: 0.3 });
+    };
+
+    const handleMouseLeave = () => {
+      isMouseInSection = false;
+      gsap.to(bee, { opacity: 0, scale: 0, duration: 0.3 });
+    };
+
     document.addEventListener("mousemove", moveBee);
+    section.addEventListener("mouseenter", handleMouseEnter);
+    section.addEventListener("mouseleave", handleMouseLeave);
   };
 
   document.addEventListener("DOMContentLoaded", () => {
