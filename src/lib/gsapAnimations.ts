@@ -1,7 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 type Direction = "up" | "down" | "left" | "right";
@@ -11,7 +10,7 @@ interface BaseAnimationOptions {
   ease?: string;
   delay?: number;
   start?: string;
-  end?: string; // New property
+  end?: string;
   inView?: boolean;
   animateEachTime?: boolean;
 }
@@ -30,147 +29,121 @@ interface BounceOptions extends BaseAnimationOptions {
   squash?: number;
 }
 
-function validateSelector(selector: string): void {
-  if (typeof selector !== "string" || selector.trim() === "") {
+const validateSelector = (s: string): void => {
+  if (!s.trim())
     throw new Error("Invalid selector: must be a non-empty string");
-  }
-}
+};
 
-function createAnimation(
-  selector: string,
-  from: gsap.TweenVars,
-  to: gsap.TweenVars,
-  options: BaseAnimationOptions,
-): gsap.core.Tween {
-  validateSelector(selector);
-
+const createAnimation = (
+  s: string,
+  f: gsap.TweenVars,
+  t: gsap.TweenVars,
+  o: BaseAnimationOptions,
+): gsap.core.Tween => {
+  validateSelector(s);
   const {
     inView = true,
     start = "top bottom-=100",
-    end = "bottom top+=100", // New default end value
+    end = "bottom top+=100",
     animateEachTime = false,
-  } = options;
-
-  const tween = gsap.fromTo(selector, from, to);
+  } = o;
+  const w = gsap.fromTo(s, f, t);
 
   if (inView) {
     ScrollTrigger.create({
-      trigger: selector,
-      start: start,
-      end: end,
+      trigger: s,
+      start,
+      end,
       toggleActions: animateEachTime
         ? "play reverse play reverse"
         : "play none none none",
-      animation: tween,
+      animation: w,
     });
   }
 
-  return tween;
-}
+  return w;
+};
 
-function createTimelineAnimation(
-  selector: string,
-  timeline: gsap.core.Timeline,
-  options: BaseAnimationOptions,
-): gsap.core.Timeline {
-  validateSelector(selector);
-
+const createTimelineAnimation = (
+  s: string,
+  l: gsap.core.Timeline,
+  o: BaseAnimationOptions,
+): gsap.core.Timeline => {
+  validateSelector(s);
   const {
     inView = true,
     start = "top bottom-=100",
-    end = "bottom top+=100", // New default end value
+    end = "bottom top+=100",
     animateEachTime = false,
-  } = options;
+  } = o;
 
   if (inView) {
     ScrollTrigger.create({
-      trigger: selector,
-      start: start,
-      end: end,
+      trigger: s,
+      start,
+      end,
       toggleActions: animateEachTime
         ? "play reverse play reverse"
         : "play none none none",
-      animation: timeline,
+      animation: l,
     });
   }
 
-  return timeline;
-}
+  return l;
+};
 
-export function initGsapFade(
-  selector: string,
-  options: FadeOptions = {},
-): gsap.core.Tween {
+export const initGsapFade = (
+  s: string,
+  o: FadeOptions = {},
+): gsap.core.Tween => {
   const {
     duration = 1,
     ease = "power3.out",
     delay = 0,
     direction = "up",
     distance = 50,
-  } = options;
-
-  const from: gsap.TweenVars = {
+  } = o;
+  const f: gsap.TweenVars = {
     opacity: 0,
     x: direction === "left" ? distance : direction === "right" ? -distance : 0,
     y: direction === "up" ? distance : direction === "down" ? -distance : 0,
   };
+  const t: gsap.TweenVars = { opacity: 1, x: 0, y: 0, duration, ease, delay };
 
-  const to: gsap.TweenVars = {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    duration,
-    ease,
-    delay,
-  };
+  return createAnimation(s, f, t, o);
+};
 
-  return createAnimation(selector, from, to, options);
-}
+export const initGsapPopup = (
+  s: string,
+  o: PopupOptions = {},
+): gsap.core.Tween => {
+  const { duration = 0.8, ease = "back.out(1.7)", delay = 0, y = 70 } = o;
+  const f: gsap.TweenVars = { opacity: 0, y };
+  const t: gsap.TweenVars = { opacity: 1, y: 0, duration, ease, delay };
 
-export function initGsapPopup(
-  selector: string,
-  options: PopupOptions = {},
-): gsap.core.Tween {
-  const { duration = 0.8, ease = "back.out(1.7)", delay = 0, y = 70 } = options;
+  return createAnimation(s, f, t, o);
+};
 
-  const from: gsap.TweenVars = {
-    opacity: 0,
-    y,
-  };
-
-  const to: gsap.TweenVars = {
-    opacity: 1,
-    y: 0,
-    duration,
-    ease,
-    delay,
-  };
-
-  return createAnimation(selector, from, to, options);
-}
-
-export function initGsapBounceUp(
-  selector: string,
-  options: BounceOptions = {},
-): gsap.core.Timeline {
+export const initGsapBounceUp = (
+  s: string,
+  o: BounceOptions = {},
+): gsap.core.Timeline => {
   const {
     duration = 0.8,
     ease = "bounce.out",
     delay = 0,
     height = 100,
     squash = 0.8,
-  } = options;
+  } = o;
+  const l = gsap.timeline({ delay });
 
-  const timeline = gsap.timeline({ delay });
-
-  timeline
-    .from(selector, {
-      y: height,
-      opacity: 0,
-      duration: duration * 0.5,
-      ease: "power2.in",
-    })
-    .to(selector, {
+  l.from(s, {
+    y: height,
+    opacity: 0,
+    duration: duration * 0.5,
+    ease: "power2.in",
+  })
+    .to(s, {
       y: 0,
       scaleY: squash,
       scaleX: 1 / squash,
@@ -178,12 +151,7 @@ export function initGsapBounceUp(
       duration: duration * 0.25,
       ease: "power2.out",
     })
-    .to(selector, {
-      scaleY: 1,
-      scaleX: 1,
-      duration: duration * 0.25,
-      ease,
-    });
+    .to(s, { scaleY: 1, scaleX: 1, duration: duration * 0.25, ease });
 
-  return createTimelineAnimation(selector, timeline, options);
-}
+  return createTimelineAnimation(s, l, o);
+};
