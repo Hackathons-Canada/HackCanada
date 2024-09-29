@@ -1,155 +1,57 @@
 ---
+// FaqAssets.astro
 import { Image } from "astro:assets";
+
+const assets = [
+  {
+    src: "/faq/flower-1.webp",
+    alt: "Flower 1",
+    class:
+      "left-[5%] top-52 sm:left-[15%] md:top-64 lg:left-[20%] xl:left-1/2 xl:top-72 xl:w-16 animate-rotateSlow",
+  },
+  {
+    src: "/faq/flower-2.webp",
+    alt: "Flower 2",
+    class:
+      "right-[10%] top-[600px] md:right-1/4 xl:left-40 xl:top-64 xl:w-16 animate-float",
+  },
+  {
+    src: "/faq/flower-2.webp",
+    alt: "Flower 3",
+    class:
+      "left-1/4 top-[1100px] xl:left-3/4 xl:top-[500px] xl:w-16 animate-float",
+  },
+  {
+    src: "/faq/flower-1.webp",
+    alt: "Flower 4",
+    class:
+      "left-2/3 top-[1650px] xl:left-[60%] xl:top-[825px] xl:w-16 animate-rotateSlow",
+  },
+  {
+    src: "/faq/butterfly.webp",
+    alt: "Butterfly",
+    class:
+      "right-[5%] top-[1000px] sm:top-[1050px] lg:right-[15%] xl:left-1/3 xl:top-[600px] xl:w-16 xl:-translate-x-1/2 animate-float",
+  },
+  {
+    src: "/faq/butterfly-2.webp",
+    alt: "Butterfly 2",
+    class:
+      "bottom-[200px] left-[5%] -translate-x-1/2 sm:bottom-[100px] sm:left-[15%] xl:left-[40%] xl:top-[1000px] xl:w-16 animate-float",
+  },
+];
 ---
 
-<!-- Assets -->
-<div class="pointer-events-none absolute inset-x-0 bottom-0 h-fit select-none">
-  <!-- Grass background -->
-  <Image
-    src="/grass.webp"
-    alt={"Grass"}
-    width={1}
-    height={1}
-    class="absolute inset-x-0 bottom-0 h-80 w-full object-cover lg:h-[600px]"
-  />
-
-  <!-- Grass and dandelions -->
-  <Image
-    src="/grass-top.png"
-    alt="Grass top"
-    width={1}
-    height={1}
-    class="absolute bottom-[450px] left-1/2 w-[60%] -translate-x-1/2 object-contain"
-  />
-  <Image
-    src="/dandelion-1.png"
-    alt="Dandelion 1"
-    width={1}
-    height={1}
-    class="absolute bottom-[500px] left-[70%] -translate-x-1/2 object-contain lg:w-24 xl:w-32 2xl:w-40"
-  />
-  <Image
-    src="/dandelion-2.png"
-    alt="Dandelion 2"
-    width={1}
-    height={1}
-    class="absolute bottom-[500px] left-[80%] w-28 -translate-x-1/2 object-contain 2xl:w-36"
-  />
-  <Image
-    src="/dandelion-3.png"
-    alt="Dandelion 3"
-    width={1}
-    height={1}
-    class="absolute bottom-[550px] left-[55%] -translate-x-1/2 object-contain lg:w-20 xl:w-24 2xl:w-32"
-  />
-  <Image
-    src="/dandelion-4.png"
-    alt="Dandelion 4"
-    width={1}
-    height={1}
-    class="absolute bottom-[475px] left-[97%] w-32 -translate-x-1/2 object-contain 2xl:left-[calc(100%-48px)]"
-  />
-  <Image
-    src="/dandelion-6.png"
-    alt="Dandelion 6"
-    width={1}
-    height={1}
-    class="absolute bottom-[500px] left-[5%] -translate-x-1/2 object-contain lg:w-20 xl:w-28"
-  />
-
-  <Image
-    src="/dandelion-3.png"
-    alt="Dandelion 3"
-    width={1}
-    height={1}
-    class="absolute bottom-[550px] left-[90%] -translate-x-1/2 object-contain lg:w-20 xl:w-24"
-  />
-  <Image
-    src="/dandelion-5.png"
-    alt="Dandelion 6"
-    width={1}
-    height={1}
-    class="absolute bottom-[450px] left-[46%] w-24 -translate-x-1/2 rotate-12 object-contain max-2xl:hidden"
-  />
-  <Image
-    src="/dandelion-root.png"
-    alt="Dandelion root"
-    width={1}
-    height={1}
-    class="absolute bottom-[475px] left-[12%] -translate-x-1/2 rotate-[21deg] object-contain lg:w-16 xl:bottom-[425px] xl:left-[15%] xl:w-24"
-  />
-  <Image
-    src="/dandelion-root.png"
-    alt="Dandelion root"
-    width={1}
-    height={1}
-    class="absolute bottom-[450px] left-[65%] w-24 -translate-x-1/2 rotate-[20deg] object-contain max-2xl:hidden"
-  />
-  <Image
-    src="/dandelion-root.png"
-    alt="Dandelion root"
-    width={1}
-    height={1}
-    class="absolute bottom-[500px] left-[47%] w-24 -translate-x-1/2 object-contain xl:bottom-[475px] 2xl:left-[40%]"
-  />
-
-  <!-- Dandelion tips -->
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute bottom-[675px] left-[67%] w-10 -translate-x-1/2 object-contain"
-  />
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute bottom-[675px] left-[12%] w-8 -translate-x-1/2 object-contain"
-  />
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute bottom-[575px] left-[50%] w-10 -translate-x-1/2 object-contain"
-  />
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute left-[75%] -translate-x-1/2 object-contain xl:bottom-[575px] xl:w-8 2xl:bottom-[600px] 2xl:w-10"
-  />
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute bottom-[575px] left-[86%] -translate-x-1/2 object-contain lg:w-8 xl:w-12"
-  />
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute bottom-[450px] left-[80%] w-8 -translate-x-1/2 object-contain"
-  />
-  <Image
-    src="/dandelion-tip.png"
-    alt="Dandelion tip"
-    width={1}
-    height={1}
-    class="absolute bottom-[625px] left-[35%] w-10 -translate-x-1/2 object-contain"
-  />
-
-  <!-- Beaver -->
-  <Image
-    src="/beaver-sitting.png"
-    alt="Beaver sitting"
-    width={1}
-    height={1}
-    class="absolute bottom-0 lg:bottom-[500px] lg:left-[15%] lg:w-[450px] xl:w-[500px]"
-  />
+<div class="absolute inset-0">
+  {
+    assets.map((asset) => (
+      <Image
+        src={asset.src}
+        alt={asset.alt}
+        width={1}
+        height={1}
+        class={`faq-asset absolute w-12 object-cover ${asset.class}`}
+      />
+    ))
+  }
 </div>
