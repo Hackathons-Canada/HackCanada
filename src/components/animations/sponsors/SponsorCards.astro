@@ -1,10 +1,9 @@
 ---
-import { sponsorConfig } from "@/config/sponsorConfig";
-import { sponsorsInfo } from "@/config/sponsorConfig";
-import { type Sponsor } from "@/types/sponsors";
+import { sponsorConfig, sponsorsInfo } from "@/config/sponsorConfig";
 import { Image } from "astro:assets";
+import { type Sponsor } from "@/types/sponsors";
 
-const getCardClass = (value: number) =>
+export const getCardClass = (value: number) =>
   [
     "lg:col-span-1 col-span-2",
     "col-span-1 lg:col-span-2",
@@ -12,7 +11,7 @@ const getCardClass = (value: number) =>
     "col-span-4",
   ][value - 1] || "";
 
-const groupSponsors = (sponsors: Sponsor[]) =>
+export const groupSponsors = (sponsors: Sponsor[]) =>
   sponsors
     .sort((a, b) => b.value - a.value)
     .reduce((groups, sponsor) => {
@@ -34,7 +33,6 @@ const groupSponsors = (sponsors: Sponsor[]) =>
         b.sponsors.reduce((sum, s) => sum + s.value, 0) -
           a.sponsors.reduce((sum, s) => sum + s.value, 0),
     );
-
 const sponsorGroups = groupSponsors(sponsorsInfo);
 ---
 
@@ -62,7 +60,7 @@ const sponsorGroups = groupSponsors(sponsorsInfo);
               href={sponsor.website}
               target="_blank"
               rel="noopener noreferrer"
-              class={`sponsor-card group relative max-h-[200px] overflow-hidden rounded-3xl bg-orange-400 shadow-md ${getCardClass(sponsor.value)}`}
+              class={`sponsor-card group relative max-h-[300px] overflow-hidden rounded-3xl bg-orange-400 opacity-0 shadow-md ${getCardClass(sponsor.value)}`}
               data-sponsor-index={sponsorIndex}
             >
               <div class="sponsor-overlay absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/40 opacity-0" />
@@ -85,55 +83,6 @@ const sponsorGroups = groupSponsors(sponsorsInfo);
     )
   }
 </div>
-
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const animateSponsors = () => {
-    const sponsorGroups = document.querySelectorAll('[id^="sponsor-group-"]');
-
-    sponsorGroups.forEach((group) => {
-      const sponsors = group.querySelectorAll(".sponsor-card");
-      const overlays = group.querySelectorAll(".sponsor-overlay");
-      const contents = group.querySelectorAll(".sponsor-content h3");
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: group,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      tl.fromTo(
-        sponsors,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-      );
-
-      sponsors.forEach((sponsor, index) => {
-        sponsor.addEventListener("mouseenter", () => {
-          gsap.to(overlays[index], { opacity: 1, duration: 0.3 });
-          gsap.to(sponsors[index], { scale: 1.05, zIndex: 10 });
-          gsap.to(contents[index], { opacity: 1, duration: 0.3, scale: 1.5 });
-        });
-
-        sponsor.addEventListener("mouseleave", () => {
-          gsap.to(overlays[index], { opacity: 0, duration: 0.3 });
-          gsap.to(sponsors[index], { scale: 1, zIndex: 0 });
-
-          gsap.to(contents[index], { opacity: 0, duration: 0.3, scale: 1 });
-        });
-      });
-    });
-  };
-
-  // Run the animation when the DOM is ready
-  document.addEventListener("DOMContentLoaded", animateSponsors);
-</script>
 
 <style>
   .sponsor-card {

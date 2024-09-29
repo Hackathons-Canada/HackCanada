@@ -1,45 +1,11 @@
 ---
 import SectionHeading from "@/components/utilities/SectionHeading.astro";
 import SectionWrapper from "@/components/utilities/SectionWrapper.astro";
-import { sponsorConfig, sponsorsInfo } from "@/config/sponsorConfig";
-import Button from "@/components/common/Button.astro";
-import { Sparkles } from "lucide-react";
+import { sponsorConfig } from "@/config/sponsorConfig";
+import SponsorPool from "@/components/animations/sponsors/SponsorPool.astro";
+import SponsorCards from "@/components/animations/sponsors/SponsorCards.astro";
+import SponsorJars from "@/components/animations/sponsors/SponsorJars.astro";
 import { cn } from "@/lib/utils";
-import { type Sponsor } from "@/types/sponsors";
-import { Image } from "astro:assets";
-
-const getCardClass = (value: number) =>
-  [
-    "lg:col-span-1 col-span-2",
-    "col-span-1 lg:col-span-2",
-    "col-span-3",
-    "col-span-4",
-  ][value - 1] || "";
-
-const groupSponsors = (sponsors: Sponsor[]) =>
-  sponsors
-    .sort((a, b) => b.value - a.value)
-    .reduce((groups, sponsor) => {
-      const group =
-        groups.find(
-          (g) => g.reduce((sum, s) => sum + s.value, 0) + sponsor.value <= 4,
-        ) || [];
-      group.push(sponsor);
-      if (!groups.includes(group)) groups.push(group);
-      return groups;
-    }, [] as Sponsor[][])
-    .map((group) => ({
-      sponsors: group,
-      notFull: group.reduce((sum, s) => sum + s.value, 0) < 4,
-    }))
-    .sort(
-      (a, b) =>
-        b.sponsors.length - a.sponsors.length ||
-        b.sponsors.reduce((sum, s) => sum + s.value, 0) -
-          a.sponsors.reduce((sum, s) => sum + s.value, 0),
-    );
-
-const sponsorGroups = groupSponsors(sponsorsInfo);
 
 interface Props {
   className?: string;
@@ -49,164 +15,18 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<section id={id} class={cn("relative pt-32 bg-white h-[150vh]", className)}>
-  <SectionHeading className="text-center"
-    >{sponsorConfig.heading}</SectionHeading
-  >
-  <p class="container mx-auto max-w-xl text-center md:text-2xl">
-    {sponsorConfig.description.join(" ")}
-  </p>
+<section id={id} class={cn("relative pt-32 h-[1200px]", className)}>
+  <SectionHeading className="text-center">
+    {sponsorConfig.heading}
+  </SectionHeading>
 
-  <div class="relative mt-8 flex w-full justify-center">
-    <div
-      class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
-    >
-      {
-        ["left", "right"].map((side) => (
-          <div
-            class={`jar-${side} relative z-0 h-28 w-28 origin-center ${side === "left" ? "-rotate-[135deg]" : "rotate-[135deg]"} md:h-40 md:w-40`}
-          >
-            <div
-              class={`absolute -bottom-44 ${side === "left" ? "-right-8" : "-left-5"} -z-10 h-[200px] w-[60px] rounded-tr-full`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 43.5 250"
-                class="jar-drip h-[150px] w-[45px] origin-top scale-y-0 md:h-[200px]"
-                version="1.1"
-              >
-                <path
-                  d={
-                    side === "left"
-                      ? "M0 6.3s11.4 108.4 8 236.4c0 .3.3.6.5.7 1.6.7 5-3 5.8-3.2 3-1.2 1.3 6 3.6 6.5s3.4-1.3 5.7-1.3c2.3 0 3.3 4.8 5.6 4.6 3.2-.3 2.3-8.2 4.5-11 1.6-2.2 4 4.6 6 3 .2 0 .4-.8.4-.8C56.4 93 9.5 0 9.5 0"
-                      : "M44 6s-11 108-8 236c0 0-0 1-1 1-2 1-5-3-6-3-3-1-1 6-4 7-2 1-3-1-6-1-2 0-3 5-6 5-3-0-2-8-5-11-2-2-4 5-6 3-0 0-0-1-0-1C-13 93 34 0 34 0"
-                  }
-                  fill="#fb923c"
-                />
-              </svg>
-            </div>
-            <img
-              src={`/sponsors/design/jar${side}.svg`}
-              alt="jar"
-              width="100"
-              height="100"
-              class="w-full"
-            />
-          </div>
-        ))
-      }
-    </div>
+  <SponsorJars />
+  <SponsorPool />
 
-    <div
-      class="syrup-pool absolute left-1/2 top-[calc(100%+115px)] h-80 w-[90%] max-w-4xl origin-top -translate-x-1/2 scale-y-0 rounded-[3px] rounded-t-[50px] bg-orange-400 shadow-2xl md:top-[calc(100%+160px)] md:rounded-t-[80px]"
-    >
-      <div class="syrup-wave absolute top-[98%] h-fit w-full">
-        <svg
-          id="morphingSvg"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 871.18 111.83"
-          class="w-full"
-        >
-          <path
-            fill="#fb923c"
-            d="M0 0s-3 0 56 0c57 0 49 0 74 0 15 0 32 0 56 0s37 0 58 0c19 0 18 0 54 0 31 0 32 0 45 0 8 0 18 0 31 0 16 0 16 0 30 0S418 0 433 0s15 0 36 0c20 0-4 0 33 0 40 0 20 0 40 0 10 0 20 0 45 0 29 0 37 0 55 0 13 0 28 0 48 0 28 0 36 0 52 0 28 0 18 0 66 0C844 0 871 0 871 0"
-          ></path>
-        </svg>
-      </div>
-    </div>
-
-    <div
-      class="sponsor-text absolute left-1/2 top-[calc(100%+115px+5rem)] z-10 flex h-32 w-fit -translate-x-1/2 scale-[0.85] flex-col items-center justify-center gap-5 opacity-0 md:top-[calc(100%+160px+5rem)]"
-    >
-      <span class="heading-font text-nowrap text-3xl text-white md:text-6xl">
-        {sponsorConfig.sponsorText.text}
-      </span>
-      <Button
-        class="group relative overflow-hidden"
-        variant="sponsor"
-        size="lg"
-        id="sponsorButton"
-        link={`mailto:${sponsorConfig.sponsorText.email}`}
-      >
-        <div class="relative z-10 flex items-center space-x-2">
-          <Sparkles
-            className="h-5 w-5 transition-transform duration-300 ease-in-out group-hover:scale-125 group-active:scale-90"
-          />
-          <span
-            class="transition-transform duration-300 ease-in-out group-hover:scale-105 group-active:scale-95"
-            >{sponsorConfig.sponsorText.buttonText}</span
-          >
-        </div>
-        <div class="absolute inset-0 z-0">
-          {
-            [0, 300, 700].map((delay, index) => (
-              <div
-                class={`absolute ${index === 0 ? "left-0 top-0" : index === 1 ? "right-0 top-1/2" : "bottom-0 left-1/2"} h-2 w-2 animate-ping rounded-full bg-yellow-400 ${delay ? `animation-delay-${delay}` : ""}`}
-              />
-            ))
-          }
-        </div>
-      </Button>
-    </div>
-  </div>
+  <SectionWrapper class="bg-[#fce6a9]">
+    <SponsorCards />
+  </SectionWrapper>
 </section>
-
-<SectionWrapper class="bg-[#fce6a9]">
-  <div class="container space-y-6 p-6">
-    {
-      sponsorGroups.length === 0 ? (
-        <div class="mb-20 flex h-40 items-center justify-center">
-          <div class="text-center">
-            <p class="mb-2 text-2xl font-semibold text-gray-700">
-              {sponsorConfig.sponsorText.altText}
-            </p>
-            <div class="inline-block">
-              <span class="dots-flow" />
-            </div>
-          </div>
-        </div>
-      ) : (
-        sponsorGroups.map(({ sponsors, notFull }, index) => (
-          <div
-            id={`sponsor-group-${index}`}
-            class={`grid grid-cols-2 gap-4 lg:grid-cols-4 ${notFull ? "justify-center" : ""}`}
-          >
-            {sponsors.map((sponsor, sponsorIndex) => (
-              <a
-                href={sponsor.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`sponsor-card group relative max-h-[300px] overflow-hidden rounded-3xl bg-orange-400 opacity-0 shadow-md ${getCardClass(sponsor.value)}`}
-                data-sponsor-index={sponsorIndex}
-              >
-                <div class="sponsor-overlay absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/40 opacity-0" />
-                <Image
-                  src={sponsor.logoUrl}
-                  alt={`${sponsor.name} logo`}
-                  width={sponsor.value >= 3 ? 400 : 200}
-                  height={sponsor.value >= 3 ? 200 : 100}
-                  class="h-full w-full object-cover"
-                />
-                <div class="sponsor-content absolute inset-0 flex items-center justify-center p-4">
-                  <h3 class="text-center text-xl font-bold text-white opacity-0">
-                    {sponsor.name}
-                  </h3>
-                </div>
-              </a>
-            ))}
-          </div>
-        ))
-      )
-    }
-  </div>
-</SectionWrapper>
-
-<style>
-  .sponsor-card {
-    transform: translateZ(0);
-    will-change: transform;
-  }
-</style>
 
 <script>
   import { gsap } from "gsap";
