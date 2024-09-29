@@ -60,11 +60,15 @@ import { sponsorConfig } from "@/config/sponsorConfig";
   </div>
 
   <div class="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-    <p class="container mx-auto max-w-xl text-center md:text-2xl">
-      {sponsorConfig.description[0]}
-    </p>
-    <p class="container mx-auto max-w-xl text-center md:text-2xl">
-      {sponsorConfig.description[1]}
-    </p>
+    {
+      sponsorConfig.description.map((paragraph, index) => (
+        <p
+          data-key={`${index}`}
+          class="container mx-auto max-w-xl text-center md:text-2xl"
+        >
+          {paragraph}
+        </p>
+      ))
+    }
   </div>
 </div>
