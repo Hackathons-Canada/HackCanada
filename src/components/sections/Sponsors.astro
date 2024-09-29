@@ -153,13 +153,6 @@ const { className, id } = Astro.props;
 
     const beeXTo = gsap.quickTo(bee, "left", { duration: 0.8, ease: "power3" });
     const beeYTo = gsap.quickTo(bee, "top", { duration: 0.8, ease: "power3" });
-    const beeRotationTo = gsap.quickTo(bee, "rotation", {
-      duration: 0.5,
-      ease: "power2",
-    });
-
-    let lastX = 0;
-    let lastY = 0;
 
     const moveBee = (e: MouseEvent) => {
       const mouseX = e.clientX;
@@ -171,15 +164,6 @@ const { className, id } = Astro.props;
 
       beeXTo(adjustedX);
       beeYTo(adjustedY);
-
-      // Calculate rotation based on movement direction
-      const dx = mouseX - lastX;
-      const dy = mouseY - lastY;
-      const rotation = Math.atan2(dy, dx) * (180 / Math.PI);
-      beeRotationTo(rotation);
-
-      lastX = mouseX;
-      lastY = mouseY;
     };
 
     document.addEventListener("mousemove", moveBee);
