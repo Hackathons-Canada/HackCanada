@@ -24,35 +24,3 @@
 >
   <img src="about/glacier2.svg" alt="" class="h-auto w-full" />
 </div>
-
-<script>
-  import { initGsapFade, initGsapPopup } from "@/lib/gsapAnimations";
-
-  // Animate the sea
-  initGsapFade(".about-sea", {
-    direction: "up",
-    duration: 1,
-    distance: 100,
-    delay: 0,
-    start: "top bottom",
-    animateEachTime: true,
-  });
-
-  // Animate the first glacier
-  initGsapPopup(".about-glacier-1", {
-    y: 100,
-    duration: 1,
-    delay: 0.5,
-    start: "top bottom-=50",
-    animateEachTime: true,
-  });
-
-  // Animate the second glacier
-  initGsapPopup(".about-glacier-2", {
-    y: 100,
-    duration: 1,
-    delay: 0.5,
-    start: "top bottom-=50",
-    animateEachTime: true,
-  });
-</script>
