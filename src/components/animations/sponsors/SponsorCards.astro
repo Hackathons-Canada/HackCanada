@@ -3,16 +3,20 @@ import { sponsorConfig, sponsorsInfo } from "@/config/sponsorConfig";
 import { Image } from "astro:assets";
 import { type Sponsor } from "@/types/sponsors";
 
-export const getCardClass = (value: number) =>
-  [
+const getCardClass = (value: number): string => {
+  const classes = [
     "lg:col-span-1 col-span-2",
     "col-span-1 lg:col-span-2",
     "col-span-3",
     "col-span-4",
-  ][value - 1] || "";
+  ];
+  return classes[value - 1] || "";
+};
 
-export const groupSponsors = (sponsors: Sponsor[]) =>
-  sponsors
+const groupSponsors = (
+  sponsors: Sponsor[],
+): { sponsors: Sponsor[]; notFull: boolean }[] => {
+  return sponsors
     .sort((a, b) => b.value - a.value)
     .reduce((groups, sponsor) => {
       const group =
@@ -33,6 +37,8 @@ export const groupSponsors = (sponsors: Sponsor[]) =>
         b.sponsors.reduce((sum, s) => sum + s.value, 0) -
           a.sponsors.reduce((sum, s) => sum + s.value, 0),
     );
+};
+
 const sponsorGroups = groupSponsors(sponsorsInfo);
 ---
 
