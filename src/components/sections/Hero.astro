@@ -85,7 +85,7 @@ const { id } = Astro.props;
       gsap.fromTo(
         sledge,
         { x: "0", opacity: 0 },
-        { x: "100%", opacity: 1, duration: 1, ease: "power2.out", delay: 1.5 },
+        { x: "100%", opacity: 1, duration: 1, ease: "power2.out", delay: 1.5 }
       );
 
       gsap.to(sledge, {
@@ -109,7 +109,9 @@ const { id } = Astro.props;
           gsap.to(sledge, {
             opacity: 0,
             duration: 0.5,
-            onComplete: () => sledge.remove(),
+            onComplete: () => {
+              sledge.remove();
+            },
           });
         },
       });
@@ -117,14 +119,4 @@ const { id } = Astro.props;
   }
 
   document.addEventListener("DOMContentLoaded", setupAnimation);
-
-  let prevWidth = window.innerWidth;
-  window.addEventListener("resize", () => {
-    const currentWidth = window.innerWidth;
-    if (currentWidth !== prevWidth) {
-      prevWidth = currentWidth;
-      gsap.killTweensOf("#sledge");
-      setupAnimation();
-    }
-  });
 </script>
