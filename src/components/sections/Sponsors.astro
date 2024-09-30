@@ -8,6 +8,7 @@ import SponsorPool from "@/components/animations/sponsors/SponsorPool.astro";
 import SponsorCards from "@/components/animations/sponsors/SponsorCards.astro";
 import SponsorJars from "@/components/animations/sponsors/SponsorJars.astro";
 import { cn } from "@/lib/utils";
+import beeGif from "@/assets/bee.gif";
 
 const { className, id } = Astro.props;
 ---
@@ -19,15 +20,14 @@ const { className, id } = Astro.props;
   <SponsorJars />
   <SponsorPool />
   <Image
-    src="/bee.gif"
+    src={beeGif}
     alt="Animated bee flying"
     id="bee"
     class="pointer-events-none fixed left-0 top-0 h-auto w-full max-w-[13rem] -translate-x-[80%] -translate-y-[80%] scale-0 opacity-0"
-    width={208}
-    height={208}
-    loading="lazy"
+    width={300}
+    height={300}
+    loading="eager"
     decoding="async"
-    format="gif"
   />
 </section>
 
