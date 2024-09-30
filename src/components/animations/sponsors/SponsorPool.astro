@@ -1,7 +1,7 @@
 ---
 import { sponsorConfig } from "@/config/sponsorConfig";
 import Button from "@/components/common/Button.astro";
-import { Sparkles } from "lucide-react";
+import { Sparkles } from "@/lib/icon-library";
 ---
 
 <div class="relative mt-[115px] md:mt-[160px]">
@@ -37,8 +37,12 @@ import { Sparkles } from "lucide-react";
       id="sponsorButton"
     >
       <div class="relative z-10 flex items-center space-x-2">
-        <Sparkles
-          className="h-5 w-5 transition-transform duration-300 ease-in-out group-hover:scale-125 group-active:scale-90"
+        <span
+          set:html={Sparkles({
+            size: 20,
+            className:
+              "h-5 w-5 transition-transform duration-300 ease-in-out group-hover:scale-125 group-active:scale-90",
+          })}
         />
         <span
           class="transition-transform duration-300 ease-in-out group-hover:scale-105 group-active:scale-95"

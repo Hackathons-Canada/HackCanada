@@ -1,12 +1,10 @@
 import React from "react";
 import type { TeamMember } from "@/types/teams";
-import { Globe } from "lucide-react";
-// import { Linkedin, Github } from 'simple-icons-astro';
-import { SiLinkedin, SiGithub } from "@icons-pack/react-simple-icons";
+import { Github, Linkedin, Globe } from "@/lib/icon-library";
 
 const getLinkIcon = (link: string) => {
-  if (link.includes("github.com")) return SiGithub;
-  if (link.includes("linkedin.com")) return SiLinkedin;
+  if (link.includes("github.com")) return Github;
+  if (link.includes("linkedin.com")) return Linkedin;
   return Globe;
 };
 
@@ -51,7 +49,11 @@ export function ModalContent({ member, contentRef }: ModalContentProps) {
           onClick={() => window.open(link, "_blank")}
           aria-label={`Visit ${firstName}'s ${linkType} profile`}
         >
-          <LinkIcon width={24} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: LinkIcon({ size: 24, color: "currentColor" }),
+            }}
+          />
         </button>
       </div>
       <p className="mt-4 text-lg italic text-gray-300 animate-in">{quote}</p>
