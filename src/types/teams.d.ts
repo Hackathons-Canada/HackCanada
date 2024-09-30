@@ -9,6 +9,7 @@ export type TeamName =
   | "Mentor";
 
 export interface TeamMember {
+  id: number;
   firstName: string;
   lastName?: string;
   image?: string;

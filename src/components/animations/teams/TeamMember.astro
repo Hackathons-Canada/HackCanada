@@ -16,6 +16,9 @@ const memberClass = `team-member-${compartmentNumber} border-1 absolute h-[80px]
 const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1 ? "33" : "20"}px;`;
 
 const placeholder = teamSection.placeholder;
+
+// Generate a unique ID for each team member
+const memberId = `team-member-${member.id || memberIndex}`;
 ---
 
 <div class={memberClass} style={memberStyle}>
@@ -32,10 +35,27 @@ const placeholder = teamSection.placeholder;
       loading="lazy"
       decoding="async"
       format="webp"
+      id={memberId}
     />
   </div>
   <TeamMemberTooltip member={member} />
 </div>
+
+<script define:vars={{ memberId }}>
+  // Inline script to handle image loading
+  document.addEventListener("DOMContentLoaded", () => {
+    const img = document.getElementById(memberId);
+    if (img && img instanceof HTMLImageElement) {
+      if (img.complete) {
+        img.style.opacity = "1";
+      } else {
+        img.onload = () => {
+          img.style.opacity = "1";
+        };
+      }
+    }
+  });
+</script>
 
 <script>
   import { gsap } from "gsap";
