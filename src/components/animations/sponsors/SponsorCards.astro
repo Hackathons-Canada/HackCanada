@@ -75,6 +75,9 @@ const sponsorGroups = groupSponsors(sponsorsInfo);
                 alt={`${sponsor.name} logo`}
                 width={sponsor.value >= 3 ? 400 : 200}
                 height={sponsor.value >= 3 ? 200 : 100}
+                loading="lazy"
+                decoding="async"
+                format="webp"
                 class="h-full w-full object-cover"
               />
               <div class="sponsor-content absolute inset-0 flex items-center justify-center p-4">

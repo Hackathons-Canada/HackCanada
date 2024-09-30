@@ -23,6 +23,9 @@ const { category } = Astro.props;
         width={1}
         height={1}
         class="absolute -bottom-4 -right-4 w-10 animate-rotateSlow md:-bottom-6 md:-right-6 md:w-14"
+        loading="lazy"
+        decoding="async"
+        format="webp"
       />
     )
   }

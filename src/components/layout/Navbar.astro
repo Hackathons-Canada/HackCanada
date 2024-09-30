@@ -28,9 +28,12 @@ const { className } = Astro.props;
         <Image
           src={"/logo-v1.webp"}
           alt="logo"
-          width={144}
-          height={144}
-          class="size-12 object-contain max-sm:size-10"
+          width={48}
+          height={48}
+          class="object-contain max-sm:size-10 sm:size-12"
+          loading="lazy"
+          decoding="async"
+          format="webp"
         />
       </a>
 
