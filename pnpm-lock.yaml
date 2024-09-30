@@ -8,15 +8,12 @@ importers:
 
   .:
     dependencies:
-      '@astrojs/check':
-        specifier: ^0.9.3
-        version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.2)
       '@astrojs/react':
         specifier: ^3.6.2
-        version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3))
+        version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3))
       '@astrojs/tailwind':
         specifier: ^5.1.1
-        version: 5.1.1(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(tailwindcss@3.4.13)
+        version: 5.1.1(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(tailwindcss@3.4.13)
       '@icons-pack/react-simple-icons':
         specifier: ^10.0.0
         version: 10.0.0(react@18.3.1)
@@ -25,28 +22,19 @@ importers:
         version: 0.7.3(nanostores@0.11.3)(react@18.3.1)
       '@playform/compress':
         specifier: ^0.1.1
-        version: 0.1.1(@types/node@22.5.4)(rollup@4.22.5)(typescript@5.6.2)
+        version: 0.1.1(@types/node@20.14.12)(rollup@4.22.5)(typescript@5.6.2)
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.10)(react@18.3.1)
-      '@types/react':
-        specifier: ^18.3.10
-        version: 18.3.10
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
       animejs:
         specifier: ^3.2.2
         version: 3.2.2
       astro:
         specifier: ^4.15.9
-        version: 4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
+        version: 4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
       astro-lenis:
         specifier: ^1.0.0
-        version: 1.0.0(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(lenis@1.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      class-variance-authority:
-        specifier: ^0.7.0
-        version: 0.7.0
+        version: 1.0.0(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(lenis@1.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -73,17 +61,11 @@ importers:
         version: 18.3.1(react@18.3.1)
       simple-icons-astro:
         specifier: ^13.12.0
-        version: 13.12.0(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))
-      tailwind-merge:
-        specifier: ^2.5.2
-        version: 2.5.2
-      tailwindcss:
-        specifier: ^3.4.13
-        version: 3.4.13
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.13)
+        version: 13.12.0(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))
     devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.3
+        version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.2)
       '@eslint/js':
         specifier: ^9.11.1
         version: 9.11.1
@@ -93,6 +75,12 @@ importers:
       '@types/animejs':
         specifier: ^3.1.12
         version: 3.1.12
+      '@types/react':
+        specifier: ^18.3.10
+        version: 18.3.10
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.7.0
         version: 8.7.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)
@@ -102,6 +90,9 @@ importers:
       astro-eslint-parser:
         specifier: ^1.0.3
         version: 1.0.3(typescript@5.6.2)
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.0
       eslint:
         specifier: ^9.11.1
         version: 9.11.1(jiti@1.21.6)
@@ -129,6 +120,15 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.8
         version: 0.6.8(prettier-plugin-astro@0.14.1)(prettier@3.3.3)
+      tailwind-merge:
+        specifier: ^2.5.2
+        version: 2.5.2
+      tailwindcss:
+        specifier: ^3.4.13
+        version: 3.4.13
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.13)
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -967,9 +967,6 @@ packages:
 
   '@types/node@20.14.12':
     resolution: {integrity: sha512-r7wNXakLeSsGT0H1AU863vS2wa5wBOK4bWMjZz2wj+8nBx+m5PeIn0k8AloSLpRuiwdRQZwarZqHE4FNArPuJQ==}
-
-  '@types/node@22.5.4':
-    resolution: {integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==}
 
   '@types/prop-types@15.7.13':
     resolution: {integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==}
@@ -3315,9 +3312,6 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
-  undici-types@6.19.8:
-    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
-
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
@@ -3703,11 +3697,11 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3))':
+  '@astrojs/react@3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3))':
     dependencies:
       '@types/react': 18.3.10
       '@types/react-dom': 18.3.0
-      '@vitejs/plugin-react': 4.3.2(vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3))
+      '@vitejs/plugin-react': 4.3.2(vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3))
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       ultrahtml: 1.5.3
@@ -3715,9 +3709,9 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/tailwind@5.1.1(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(tailwindcss@3.4.13)':
+  '@astrojs/tailwind@5.1.1(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(tailwindcss@3.4.13)':
     dependencies:
-      astro: 4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
+      astro: 4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
       autoprefixer: 10.4.20(postcss@8.4.47)
       postcss: 8.4.47
       postcss-load-config: 4.0.2(postcss@8.4.47)
@@ -4236,12 +4230,12 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@playform/compress@0.1.1(@types/node@22.5.4)(rollup@4.22.5)(typescript@5.6.2)':
+  '@playform/compress@0.1.1(@types/node@20.14.12)(rollup@4.22.5)(typescript@5.6.2)':
     dependencies:
       '@playform/pipe': 0.1.0
       '@types/csso': 5.0.4
       '@types/html-minifier-terser': 7.0.2
-      astro: 4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
+      astro: 4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
       csso: 5.0.5
       deepmerge-ts: 7.1.0
       html-minifier-terser: 7.2.0
@@ -4430,11 +4424,6 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@22.5.4':
-    dependencies:
-      undici-types: 6.19.8
-    optional: true
-
   '@types/prop-types@15.7.13': {}
 
   '@types/react-dom@18.3.0':
@@ -4531,14 +4520,14 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react@4.3.2(vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3))':
+  '@vitejs/plugin-react@4.3.2(vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.25.2)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3)
+      vite: 5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -4736,22 +4725,22 @@ snapshots:
       - supports-color
       - typescript
 
-  astro-integration-kit@0.13.3(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)):
+  astro-integration-kit@0.13.3(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)):
     dependencies:
-      astro: 4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
+      astro: 4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
       pathe: 1.1.2
       recast: 0.23.9
 
-  astro-lenis@1.0.0(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(lenis@1.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
+  astro-lenis@1.0.0(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))(lenis@1.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
     dependencies:
-      astro: 4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
-      astro-integration-kit: 0.13.3(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))
+      astro: 4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
+      astro-integration-kit: 0.13.3(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2))
       lenis: 1.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       typescript: 5.6.2
     transitivePeerDependencies:
       - '@astrojs/db'
 
-  astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2):
+  astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -4810,8 +4799,8 @@ snapshots:
       tsconfck: 3.1.3(typescript@5.6.2)
       unist-util-visit: 5.0.0
       vfile: 6.0.3
-      vite: 5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3)
-      vitefu: 1.0.2(vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3))
+      vite: 5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3)
+      vitefu: 1.0.2(vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -7049,9 +7038,9 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-icons-astro@13.12.0(astro@4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)):
+  simple-icons-astro@13.12.0(astro@4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)):
     dependencies:
-      astro: 4.15.9(@types/node@22.5.4)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
+      astro: 4.15.9(@types/node@20.14.12)(lightningcss@1.25.1)(rollup@4.22.5)(terser@5.31.3)(typescript@5.6.2)
 
   simple-swizzle@0.2.2:
     dependencies:
@@ -7338,9 +7327,6 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici-types@6.19.8:
-    optional: true
-
   unified@11.0.5:
     dependencies:
       '@types/unist': 3.0.3
@@ -7420,20 +7406,20 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3):
+  vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.22.5
     optionalDependencies:
-      '@types/node': 22.5.4
+      '@types/node': 20.14.12
       fsevents: 2.3.3
       lightningcss: 1.25.1
       terser: 5.31.3
 
-  vitefu@1.0.2(vite@5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3)):
+  vitefu@1.0.2(vite@5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3)):
     optionalDependencies:
-      vite: 5.4.8(@types/node@22.5.4)(lightningcss@1.25.1)(terser@5.31.3)
+      vite: 5.4.8(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.3)
 
   volar-service-css@0.0.61(@volar/language-service@2.4.5):
     dependencies:
