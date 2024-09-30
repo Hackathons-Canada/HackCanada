@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { TeamMember as TeamMemberType } from "@/types/teams";
 import TeamMemberTooltip from "./TeamMemberTooltip.astro";
 import { teamSection } from "@/config/site";
@@ -17,17 +18,12 @@ const memberStyle = `left: ${memberIndex * 90}px; top: ${compartmentNumber === 1
 const placeholder = teamSection.placeholder;
 ---
 
-<div
-  class={memberClass}
-  style={memberStyle}
-  role="img"
-  aria-label={`${member.firstName}'s avatar`}
->
+<div class={memberClass} style={memberStyle}>
   <div
     class="team-member-gsap h-full w-full cursor-pointer overflow-hidden rounded-full"
     data-member={JSON.stringify(member)}
   >
-    <img
+    <Image
       src={member.image || placeholder}
       alt={`${member.firstName}'s avatar`}
       width={100}
@@ -65,25 +61,24 @@ const placeholder = teamSection.placeholder;
         if (bubble1 && bubble2 && bubble3) {
           // Set initial state
           gsap.set(chatBubble, { visibility: "hidden" });
-          gsap.set(bubble1, { scale: 0, x: 0, y: 8 });
-          gsap.set(bubble2, { scale: 0, x: -10, y: 15 });
-          gsap.set(bubble3, { scale: 0, x: -15, y: 15 });
+          gsap.set([bubble1, bubble2, bubble3], { scale: 0 });
+          gsap.set(bubble2, { x: -10, y: 15 });
+          gsap.set(bubble3, { x: -15, y: 15 });
 
           // Create timeline for animation
           const tl = gsap.timeline({ paused: true });
 
-          tl.to(chatBubble, { visibility: "visible", duration: 0.01 })
-            .to(bubble1, { scale: 1, duration: 0.3, ease: "back.out(1.7)" })
-            .to(
-              bubble2,
-              { scale: 1, x: 0, y: 0, duration: 0.3, ease: "back.out(1.7)" },
-              "-=0.2",
-            )
-            .to(
-              bubble3,
-              { scale: 1, x: 0, y: 0, duration: 0.3, ease: "back.out(1.7)" },
-              "-=0.3",
-            );
+          tl.to(chatBubble, { visibility: "visible", duration: 0.01 }).to(
+            [bubble1, bubble2, bubble3],
+            {
+              scale: 1,
+              x: 0,
+              y: 0,
+              duration: 0.3,
+              ease: "back.out(1.7)",
+              stagger: 0.1,
+            },
+          );
 
           // Add event listeners
           member.addEventListener("mouseenter", () => tl.play());

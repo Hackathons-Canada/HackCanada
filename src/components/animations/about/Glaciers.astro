@@ -1,5 +1,5 @@
 ---
-
+import { Image } from "astro:assets";
 ---
 
 <!-- sea -->
@@ -16,11 +16,27 @@
 <div
   class="about-glacier-1 absolute -bottom-4 -right-32 w-[100%] max-w-[800px] opacity-0 md:w-full"
 >
-  <img src="about/Scene.svg" alt="" class="h-auto w-full" />
+  <Image
+    src="/about/Scene.svg"
+    alt="Scenic glacier landscape"
+    width={800}
+    height={600}
+    loading="lazy"
+    decoding="async"
+    format="webp"
+  />
 </div>
 
 <div
   class="about-glacier-2 1g:left-0 absolute -bottom-7 -left-48 w-[70%] max-w-72 opacity-0 md:max-w-96"
 >
-  <img src="about/glacier2.svg" alt="" class="h-auto w-full" />
+  <Image
+    src="/about/glacier2.svg"
+    alt="Secondary glacier view"
+    width={384}
+    height={288}
+    loading="lazy"
+    decoding="async"
+    format="webp"
+  />
 </div>

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { heroSection } from "@/config/site";
 import HeadingGSAP from "@/components/animations/hero/HeadingGSAP.astro";
 import Snowfall from "@/components/animations/hero/Snowfall.astro";
@@ -17,18 +18,18 @@ const { id } = Astro.props;
   class="pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden"
 >
   <div id="sledge" class="absolute -left-80 z-10 w-80">
-    <img
-      src="hero-beaver-sledge.svg"
-      alt="Beaver on a sledge"
-      width="320"
-      height="320"
+    <Image
+      src="/hero-beaver-sledge.svg"
+      alt="Beaver riding on a sledge"
+      width={320}
+      height={320}
       style="width: 100%; height: auto; opacity: 1;"
     />
   </div>
 </div>
 <section
   class="relative flex min-h-screen w-full flex-col justify-center overflow-hidden"
-  aria-labelledby="Hero Section"
+  aria-label="Hero Section"
   id={id}
 >
   <HeadingGSAP
@@ -55,14 +56,10 @@ const { id } = Astro.props;
 
   function calculateDuration() {
     const screenWidth = window.innerWidth;
-    const normalDesktopWidth = 1024; // Assuming 1024px as the breakpoint for normal desktop
-
-    if (screenWidth < normalDesktopWidth) {
-      return 2; // 2 seconds for screens smaller than normal desktop
-    } else {
-      return 3; // 4 seconds for normal desktop and larger screens
-    }
+    const normalDesktopWidth = 1024;
+    return screenWidth < normalDesktopWidth ? 2 : 3;
   }
+
   function calculateOrigin() {
     const screenWidth = window.innerWidth;
     const minWidth = 320;
@@ -82,7 +79,6 @@ const { id } = Astro.props;
     const path = document.getElementById("sledgeMotionPath");
 
     if (sledge && path) {
-      // Initial animation to move the sledge into view
       gsap.fromTo(
         sledge,
         { x: "0", opacity: 0 },
@@ -98,8 +94,8 @@ const { id } = Astro.props;
           start: 0,
           end: 1,
         },
-        ease: "power.out",
-        duration: calculateDuration(), // Use the calculated duration
+        ease: "power1.out",
+        duration: calculateDuration(),
         scrollTrigger: {
           trigger: "#heroSection",
           start: "15% top",
