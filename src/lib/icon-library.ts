@@ -1,3 +1,27 @@
+// usage in .Astro code
+// ---
+// import { Github } from '@/lib/icon-library';
+// ---
+
+// <div>
+//   <Span set:html={Github({ size: 32, color: "#333" })} />
+//   <span>GitHub</span>
+// </div>
+
+// usage in .tsx code
+
+// import React from 'react';
+// import { Github } from '@/lib/icon-library';
+
+// const GitHubIcon: React.FC = () => (
+//   <div>
+//     <div dangerouslySetInnerHTML={{ __html: Github({ size: 32, color: "#333" }) }} />
+//     <span>GitHub</span>
+//   </div>
+// );
+
+// export default GitHubIcon;
+
 type IconName =
   | "Discord"
   | "Github"
