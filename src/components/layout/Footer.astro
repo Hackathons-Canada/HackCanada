@@ -46,7 +46,7 @@ const footerLinksRow2 = [
 
 <footer
   class={cn(
-    "bg-gradient-to-b from-[#32BAFA] to-[#aad6fa] text-[#112546] w-full px-4 sm:px-6 py-8 sm:py-10",
+    "bg-gradient-to-b from-[#32BAFA] to-[#aad6fa] text-[#0a1c3d] w-full px-4 sm:px-6 py-8 sm:py-10",
     className,
   )}
 >
@@ -66,20 +66,20 @@ const footerLinksRow2 = [
         />
         <div class="text-center sm:text-left">
           <h2 class="text-2xl font-bold sm:text-3xl">Hack Canada</h2>
-          <p class="mt-1 text-base text-[#1e3a6d] sm:text-sm">
+          <p class="mt-1 text-base text-[#0a1c3d] sm:text-lg">
             Powered by Hackathons Canada
           </p>
         </div>
       </div>
       <nav class="w-full sm:w-auto">
         <ul
-          class="mb-4 flex flex-wrap justify-center gap-4 text-base sm:justify-end sm:gap-x-8 sm:text-lg"
+          class="mb-4 flex flex-wrap justify-center gap-4 text-lg sm:justify-end sm:gap-x-8"
         >
           {
             footerLinksRow1.map((link) => (
               <li>
                 <span
-                  class="cursor-not-allowed text-[#3a5280]"
+                  class="cursor-not-allowed text-[#0a1c3d] opacity-70"
                   aria-disabled="true"
                 >
                   {link.label}
@@ -89,13 +89,13 @@ const footerLinksRow2 = [
           }
         </ul>
         <ul
-          class="flex flex-wrap justify-center gap-4 text-base sm:justify-end sm:gap-x-8 sm:text-lg"
+          class="flex flex-wrap justify-center gap-4 text-lg sm:justify-end sm:gap-x-8"
         >
           {
             footerLinksRow2.map((link) => (
               <li>
                 <a
-                  class="text-[#112546] hover:text-[#0a1c3d] hover:underline"
+                  class="text-[#0a1c3d] hover:text-[#051429] hover:underline"
                   href={link.href}
                   target={link.blank ? "_blank" : "_self"}
                   rel={link.blank ? "noopener noreferrer" : null}
@@ -111,7 +111,7 @@ const footerLinksRow2 = [
     <div
       class="mt-8 flex flex-col items-center gap-6 pt-6 sm:mt-10 sm:flex-row sm:justify-between"
     >
-      <p class="text-center text-sm text-[#1e3a6d] sm:text-left sm:text-base">
+      <p class="text-center text-base text-[#0a1c3d] sm:text-left">
         © {year} Hack Canada. All rights reserved.
       </p>
       <div class="flex items-center space-x-6">
@@ -122,9 +122,9 @@ const footerLinksRow2 = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Follow us on ${link.label}`}
-              class="text-[#1e3a6d] hover:text-[#0a1c3d]"
+              class="text-[#0a1c3d] hover:text-[#051429]"
             >
-              <span set:html={link.icon({ size: 28, color: "#1e3a6d" })} />
+              <span set:html={link.icon({ size: 28, color: "#0a1c3d" })} />
             </a>
           ))
         }
@@ -133,7 +133,7 @@ const footerLinksRow2 = [
         href="https://hackathonscanada.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center space-x-3 text-[#112546] hover:text-[#0a1c3d] hover:underline"
+        class="flex items-center space-x-3 text-[#0a1c3d] hover:text-[#051429] hover:underline"
       >
         <Image
           src="/hackathons-canada-logo.webp"
@@ -145,7 +145,7 @@ const footerLinksRow2 = [
           decoding="async"
           format="webp"
         />
-        <span class="text-base sm:text-lg">A Hackathons Canada Initiative</span>
+        <span class="text-lg">A Hackathons Canada Initiative</span>
       </a>
     </div>
   </div>
