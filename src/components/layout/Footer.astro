@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
-import { Discord, Gmail, Instagram, Linkedin } from "simple-icons-astro";
+import { Discord, Gmail, Instagram, Linkedin } from "@/lib/icon-library";
 
 interface Props {
   className?: string;
@@ -12,7 +12,8 @@ const year = new Date().getFullYear();
 
 interface SocialLink {
   href: string;
-  icon: any;
+  // eslint-disable-next-line
+  icon: (props: { size: number; color: string }) => string;
   label: string;
 }
 
@@ -123,7 +124,7 @@ const footerLinksRow2 = [
               aria-label={`Follow us on ${link.label}`}
               class="text-[#1e3a6d] hover:text-[#0a1c3d]"
             >
-              <link.icon size={28} class="sm:h-8 sm:w-8" />
+              <span set:html={link.icon({ size: 28, color: "#1e3a6d" })} />
             </a>
           ))
         }
