@@ -8,41 +8,40 @@ type Props = {
 
 const { title, description = siteConfig.description } = Astro.props;
 const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
+const ogImageUrl = `${siteConfig.url}${siteConfig.og.url}`;
 ---
 
 <head>
-  <!-- Global Metadata -->
-  <meta charset={siteConfig.meta.charset} />
-  <meta name="viewport" content={siteConfig.meta.viewport} />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="generator" content={Astro.generator} />
-
-  <!-- Primary Meta Tags -->
   <title>{pageTitle}</title>
   <meta name="title" content={pageTitle} />
   <meta name="description" content={description} />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content={siteConfig.og.type} />
-  <meta property="og:url" content={siteConfig.url} />
+  <link rel="canonical" href={siteConfig.url} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={siteConfig.og.image} />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content={siteConfig.twitter.card} />
-  <meta name="twitter:url" content={siteConfig.url} />
+  <meta property="og:url" content={siteConfig.url} />
+  <meta property="og:site_name" content={siteConfig.title} />
+  <meta property="og:image:type" content={siteConfig.og.imageType} />
+  <meta property="og:image:width" content={siteConfig.og.imageWidth} />
+  <meta property="og:image:height" content={siteConfig.og.imageHeight} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content={siteConfig.twitter} />
+  <meta name="twitter:creator" content={siteConfig.twitter} />
   <meta name="twitter:title" content={pageTitle} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={siteConfig.twitter.image} />
-
-  <!-- Favicon -->
+  <meta name="twitter:image:type" content={siteConfig.og.imageType} />
+  <meta name="twitter:image:width" content={siteConfig.og.imageWidth} />
+  <meta name="twitter:image:height" content={siteConfig.og.imageHeight} />
+  <meta name="twitter:image" content={ogImageUrl} />
   <link
     rel="icon"
-    href={siteConfig.icons.favicon.href}
-    type={siteConfig.icons.favicon.type}
-    sizes={siteConfig.icons.favicon.sizes}
+    href={siteConfig.favicon.href}
+    type={siteConfig.favicon.type}
   />
-  <!-- Preload Font Files -->
   <link
     rel="preload"
     href="/fonts/temp_content.woff2"
