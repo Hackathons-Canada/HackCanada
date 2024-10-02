@@ -70,12 +70,8 @@
   background: linear-gradient(180deg, #ffffff 0%, #aad6fa 50.5%, #aad6fa 100%);
 }
 
-#locationInfoSection {
-  background: linear-gradient(180deg, #aad6fa 0%, #aad6fa 50.5%, #abd7fb 100%);
-}
-
 #sponsorSection {
-  background: linear-gradient(180deg, #abd7fb 0%, #fce6a9 15%, #fce6a9 100%);
+  background: linear-gradient(180deg, #aad6fa 0%, #fce6a9 15%, #fce6a9 100%);
 }
 
 #faqsSection {
