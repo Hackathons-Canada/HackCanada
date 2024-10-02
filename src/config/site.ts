@@ -20,7 +20,7 @@ export const siteConfig = {
     imageType: "image/png",
     imageWidth: "1200",
     imageHeight: "600",
-    url: "/assets/opengraph-image.png",
+    url: "/opengraph-image.png",
   },
   twitter: "@hackcanada",
   favicon: {
