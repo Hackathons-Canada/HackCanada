@@ -33,11 +33,17 @@ const year = new Date().getFullYear();
           alt="Hack Canada logo"
           width={72}
           height={72}
-          class="h-18 w-18 object-contain"
+          class="h-18 w-18 animate-float select-none object-contain"
         />
         <div class="text-center sm:text-left">
-          <h2 class="text-2xl font-bold sm:text-3xl">Hack Canada</h2>
-          <p class="mt-1 text-base text-[#0a1c3d] sm:text-lg">
+          <h2
+            class="text-2xl font-bold transition-colors duration-300 hover:text-[#051429] sm:text-3xl"
+          >
+            Hack Canada
+          </h2>
+          <p
+            class="mt-1 text-base text-[#0a1c3d] transition-opacity duration-300 hover:opacity-80 sm:text-lg"
+          >
             Powered by Hackathons Canada
           </p>
         </div>
@@ -50,7 +56,7 @@ const year = new Date().getFullYear();
             footerLinksRow1.map((link) => (
               <li>
                 <span
-                  class="cursor-not-allowed text-[#0a1c3d] opacity-70"
+                  class="cursor-not-allowed text-[#0a1c3d] opacity-70 transition-opacity duration-300 hover:opacity-50"
                   aria-disabled="true"
                 >
                   {link.label}
@@ -66,7 +72,7 @@ const year = new Date().getFullYear();
             footerLinksRow2.map((link) => (
               <li>
                 <a
-                  class="text-[#0a1c3d] hover:text-[#051429] hover:underline"
+                  class="text-[#0a1c3d] transition-all duration-300 hover:text-[#051429] hover:underline"
                   href={link.href}
                   target={link.blank ? "_blank" : "_self"}
                   rel={link.blank ? "noopener noreferrer" : null}
@@ -82,7 +88,9 @@ const year = new Date().getFullYear();
     <div
       class="mt-8 flex flex-col items-center gap-6 pt-6 sm:mt-10 sm:flex-row sm:justify-between"
     >
-      <p class="text-center text-base text-[#0a1c3d] sm:text-left">
+      <p
+        class="text-center text-base text-[#0a1c3d] transition-opacity duration-300 hover:opacity-80 sm:text-left"
+      >
         © {year} Hack Canada. All rights reserved.
       </p>
       <div class="flex items-center space-x-6">
@@ -93,9 +101,9 @@ const year = new Date().getFullYear();
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Follow us on ${link.label}`}
-              class="text-[#0a1c3d] hover:text-[#051429]"
+              class="text-[#0a1c3d] transition-transform duration-300 hover:scale-110 hover:text-[#051429]"
             >
-              <span set:html={link.icon({ size: 28, color: "#0a1c3d" })} />
+              <span set:html={link.icon({ size: 35, color: "#0a1c3d" })} />
             </a>
           ))
         }
@@ -104,14 +112,14 @@ const year = new Date().getFullYear();
         href="https://hackathonscanada.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center space-x-3 text-[#0a1c3d] hover:text-[#051429] hover:underline"
+        class="group flex items-center space-x-3 text-[#0a1c3d] transition-all duration-300 hover:text-[#051429] hover:underline"
       >
         <Image
           src="/hackathons-canada-logo.webp"
           alt="Hackathons Canada logo"
           width={36}
           height={36}
-          class="h-8 w-8 object-contain sm:h-9 sm:w-9"
+          class="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9"
           loading="lazy"
           decoding="async"
           format="webp"
@@ -121,3 +129,21 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<style>
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>

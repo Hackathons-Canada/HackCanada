@@ -28,7 +28,7 @@ export const footerLinksRow1 = [
 ];
 
 export const footerLinksRow2 = [
-  { label: "Terms of Service", href: "" },
+  { label: "Code Of Conduct", href: "" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Contact Us", href: "mailto:contact@hackcanada.org", blank: true },
 ];
