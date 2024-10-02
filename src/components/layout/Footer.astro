@@ -1,7 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
-import { Discord, Gmail, Instagram, Linkedin } from "@/lib/icon-library";
+import {
+  footerLinksRow2,
+  footerLinksRow1,
+  socialLinks,
+} from "@/config/layoutConfig";
 
 interface Props {
   className?: string;
@@ -9,39 +13,6 @@ interface Props {
 
 const { className } = Astro.props;
 const year = new Date().getFullYear();
-
-interface SocialLink {
-  href: string;
-  // eslint-disable-next-line
-  icon: (props: { size: number; color: string }) => string;
-  label: string;
-}
-
-const socialLinks: SocialLink[] = [
-  { href: "https://discord.gg/wp42amwcWy", icon: Discord, label: "Discord" },
-  {
-    href: "https://www.instagram.com/hackathoncanada/",
-    icon: Instagram,
-    label: "Instagram",
-  },
-  {
-    href: "https://www.linkedin.com/company/hackathonscanada/",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  { href: "mailto:contact@hackcanada.org", icon: Gmail, label: "Email" },
-];
-
-const footerLinksRow1 = [
-  { label: "Apply as a Mentor", href: "", disabled: true },
-  { label: "Apply as a Judge", href: "", disabled: true },
-];
-
-const footerLinksRow2 = [
-  { label: "Terms of Service", href: "" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Contact Us", href: "mailto:contact@hackcanada.org", blank: true },
-];
 ---
 
 <footer

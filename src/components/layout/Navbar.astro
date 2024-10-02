@@ -1,25 +1,17 @@
 ---
 import { cn } from "@/lib/utils";
 import Image from "astro/components/Image.astro";
-import { Discord, Gmail, Instagram, Linkedin } from "@/lib/icon-library";
+import { navLinks, socialLinks } from "@/config/layoutConfig";
 
 const { className } = Astro.props;
-const navLinks = [
-  { label: "About", href: "aboutSection" },
-  { label: "Venue", href: "locationInfoSection" },
-  { label: "Sponsors", href: "sponsorSection" },
-  { label: "FAQs", href: "faqsSection" },
-  { label: "Team", href: "teamsSection" },
-];
-const socialLinks = [
-  { href: "https://discord.gg/wp42amwcWy", icon: Discord },
-  { href: "https://www.instagram.com/hackathoncanada/", icon: Instagram },
-  {
-    href: "https://www.linkedin.com/company/hackathonscanada/",
-    icon: Linkedin,
-  },
-  { href: "mailto:contact@hackcanada.org", icon: Gmail },
-];
+
+// Add this type declaration
+declare global {
+  interface Window {
+    // eslint-disable-next-line
+    handleScrollToSection: (section: string) => void;
+  }
+}
 ---
 
 <header
@@ -144,6 +136,7 @@ const socialLinks = [
     </div>
   </nav>
 </header>
+
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -251,6 +244,7 @@ const socialLinks = [
     if (document.readyState === "complete") runInitialAnimation();
     else window.addEventListener("load", runInitialAnimation);
     document.addEventListener("astro:after-swap", runInitialAnimation);
+
     window.handleScrollToSection = (section: string) => {
       const element = document.getElementById(section);
       if (element) {
@@ -258,6 +252,7 @@ const socialLinks = [
         if (isDropdownOpen) toggleDropdown();
       }
     };
+
     document
       .querySelector("#dropdownToggle")
       ?.addEventListener("click", toggleDropdown);
