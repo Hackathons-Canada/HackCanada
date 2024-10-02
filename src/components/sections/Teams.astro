@@ -66,7 +66,8 @@ const { className, id } = Astro.props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  let marqueeTimeline: gsap.core.Timeline;
+  let marqueeAnimation: gsap.core.Tween;
+
   function setupInfiniteScroll() {
     const boatContainer = document.querySelector(".boat-container");
     if (!boatContainer) return;
@@ -89,41 +90,29 @@ const { className, id } = Astro.props;
 
     // Create the marquee animation
     const duration = 30; // Adjust this value to control the speed
-    const marqueeAnimation = gsap.to(boatContainer, {
+    marqueeAnimation = gsap.to(boatContainer, {
       x: -totalWidth,
       duration: duration,
       ease: "none",
       repeat: -1,
+      paused: true, // Start paused
     });
 
-    const hoverClassNames = ["team-member-gsap"];
-    // Add hover pause functionality
-    hoverClassNames.forEach((className) => {
-      const elements = document.querySelectorAll(`.${className}`);
-      elements.forEach((element) => {
-        element.addEventListener("mouseenter", () => marqueeAnimation.pause());
-        element.addEventListener("mouseleave", () => marqueeAnimation.play());
-      });
-    });
-
-    // Use ScrollTrigger to start the animation seconds after the section comes into view
+    // Use ScrollTrigger to start the animation when the section comes into view
     ScrollTrigger.create({
       trigger: ".team-container",
-      start: "bottom-=50 bottom-=50",
-      once: true, // This makes the trigger fire only once
-      onEnter: () => {
-        setTimeout(() => {
-          marqueeAnimation.play();
-        }, 1000);
-      },
+      start: "top bottom",
+      onEnter: () => marqueeAnimation.play(),
+      onLeaveBack: () => marqueeAnimation.pause(),
     });
   }
+
   function addWiggleEffect() {
     gsap.utils.toArray<HTMLElement>(".boat").forEach((boat) => {
       gsap.to(boat, {
-        yPercent: () => gsap.utils.random(-15, 15),
-        rotate: () => gsap.utils.random(-2, 2),
-        duration: () => gsap.utils.random(1.5, 2.5),
+        yPercent: "random(-15, 15)",
+        rotate: "random(-2, 2)",
+        duration: "random(1.5, 2.5)",
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -133,20 +122,21 @@ const { className, id } = Astro.props;
 
   function setupTeamMemberInteractions() {
     const teamMembers = document.querySelectorAll(
-      ".team-member-1, .team-member-2",
+      ".team-member-1, .team-member-2, .team-member-gsap",
     );
     teamMembers.forEach((member) => {
-      member.addEventListener("mouseenter", () => marqueeTimeline?.pause());
-      member.addEventListener("mouseleave", () => marqueeTimeline?.play());
+      member.addEventListener("mouseenter", () => marqueeAnimation?.pause());
+      member.addEventListener("mouseleave", () => marqueeAnimation?.play());
     });
   }
 
   function animateBoat(boat: Element | unknown) {
     if (!(boat instanceof Element)) return;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: boat,
-        start: "top bottom-=50",
+        start: "top bottom",
         end: "bottom top",
         toggleActions: "play none none reverse",
       },
@@ -159,22 +149,20 @@ const { className, id } = Astro.props;
       ease: "power2.out",
     });
 
-    const compartments = [".compartment-2-group", ".compartment-1-group"];
-    compartments.forEach((compartment) => {
-      const element = boat.querySelector(compartment);
-      if (element) {
-        tl.from(
-          element,
-          {
-            scaleY: 0,
-            transformOrigin: "bottom",
-            duration: 0.5,
-            ease: "back.out(1.7)",
-          },
-          "-=0.3",
-        );
-      }
-    });
+    const compartments = boat.querySelectorAll(
+      ".compartment-2-group, .compartment-1-group",
+    );
+    tl.from(
+      compartments,
+      {
+        scaleY: 0,
+        transformOrigin: "bottom",
+        duration: 0.5,
+        ease: "back.out(1.7)",
+        stagger: 0.1,
+      },
+      "-=0.3",
+    );
 
     const members = boat.querySelectorAll(".team-member-1, .team-member-2");
     tl.from(
@@ -206,23 +194,20 @@ const { className, id } = Astro.props;
       );
 
       compartments.forEach((compartment) => {
-        const element = boat.querySelector(compartment);
-        if (element) {
-          element.addEventListener("mouseenter", () => {
-            gsap.to([flagpole, flag], {
-              y: 10,
-              duration: 0.3,
-              ease: "power2.out",
-            });
+        compartment.addEventListener("mouseenter", () => {
+          gsap.to([flagpole, flag], {
+            y: 10,
+            duration: 0.3,
+            ease: "power2.out",
           });
-          element.addEventListener("mouseleave", () => {
-            gsap.to([flagpole, flag], {
-              y: 0,
-              duration: 0.3,
-              ease: "power2.out",
-            });
+        });
+        compartment.addEventListener("mouseleave", () => {
+          gsap.to([flagpole, flag], {
+            y: 0,
+            duration: 0.3,
+            ease: "power2.out",
           });
-        }
+        });
       });
     }
   }
@@ -250,5 +235,10 @@ const { className, id } = Astro.props;
     animateTeams();
   }
 
-  document.addEventListener("DOMContentLoaded", initializeAnimations);
+  // Use requestIdleCallback for non-critical initialization
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(initializeAnimations);
+  } else {
+    setTimeout(initializeAnimations, 1);
+  }
 </script>
