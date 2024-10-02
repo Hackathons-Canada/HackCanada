@@ -107,14 +107,3 @@ export const Gmail = createIconComponent("gmail");
 export const Instagram = createIconComponent("instagram");
 export const Linkedin = createIconComponent("linkedin");
 export const Sparkles = createIconComponent("sparkles");
-
-// If you still want to export all icons as a single object, you can do:
-export const Icons = {
-  Discord,
-  Github,
-  Globe,
-  Gmail,
-  Instagram,
-  Linkedin,
-  Sparkles,
-};

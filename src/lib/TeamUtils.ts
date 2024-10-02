@@ -1,4 +1,4 @@
-export const containerWidths = {
+const containerWidths = {
   13: "1000px",
   12: "950px",
   11: "900px",
@@ -12,7 +12,7 @@ export const containerWidths = {
   3: "550px",
 };
 
-export const compartmentSizes: { [key: number]: [number, number] } = {
+const compartmentSizes: { [key: number]: [number, number] } = {
   13: [5, 8],
   12: [5, 7],
   11: [4, 7],

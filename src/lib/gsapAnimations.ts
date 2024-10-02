@@ -24,11 +24,6 @@ interface PopupOptions extends BaseAnimationOptions {
   y?: number;
 }
 
-interface BounceOptions extends BaseAnimationOptions {
-  height?: number;
-  squash?: number;
-}
-
 const validateSelector = (s: string): void => {
   if (!s.trim())
     throw new Error("Invalid selector: must be a non-empty string");
@@ -64,34 +59,6 @@ const createAnimation = (
   return w;
 };
 
-const createTimelineAnimation = (
-  s: string,
-  l: gsap.core.Timeline,
-  o: BaseAnimationOptions,
-): gsap.core.Timeline => {
-  validateSelector(s);
-  const {
-    inView = true,
-    start = "top bottom-=100",
-    end = "bottom top+=100",
-    animateEachTime = false,
-  } = o;
-
-  if (inView) {
-    ScrollTrigger.create({
-      trigger: s,
-      start,
-      end,
-      toggleActions: animateEachTime
-        ? "play reverse play reverse"
-        : "play none none none",
-      animation: l,
-    });
-  }
-
-  return l;
-};
-
 export const initGsapFade = (
   s: string,
   o: FadeOptions = {},
@@ -122,36 +89,4 @@ export const initGsapPopup = (
   const t: gsap.TweenVars = { opacity: 1, y: 0, duration, ease, delay };
 
   return createAnimation(s, f, t, o);
-};
-
-export const initGsapBounceUp = (
-  s: string,
-  o: BounceOptions = {},
-): gsap.core.Timeline => {
-  const {
-    duration = 0.8,
-    ease = "bounce.out",
-    delay = 0,
-    height = 100,
-    squash = 0.8,
-  } = o;
-  const l = gsap.timeline({ delay });
-
-  l.from(s, {
-    y: height,
-    opacity: 0,
-    duration: duration * 0.5,
-    ease: "power2.in",
-  })
-    .to(s, {
-      y: 0,
-      scaleY: squash,
-      scaleX: 1 / squash,
-      opacity: 1,
-      duration: duration * 0.25,
-      ease: "power2.out",
-    })
-    .to(s, { scaleY: 1, scaleX: 1, duration: duration * 0.25, ease });
-
-  return createTimelineAnimation(s, l, o);
 };

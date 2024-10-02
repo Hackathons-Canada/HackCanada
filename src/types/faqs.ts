@@ -1,9 +1,8 @@
-export type FaqEntry = {
+type FaqEntry = {
   question: string;
   answer: string;
 };
-
-export type FaqCategories =
+type FaqCategories =
   | "General"
   | "Registration"
   | "Logistics"
