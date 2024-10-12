@@ -1,6 +1,6 @@
 import { Discord, Gmail, Instagram, Linkedin } from "@/lib/icon-library";
 
-export interface SocialLink {
+interface SocialLink {
   href: string;
   // eslint-disable-next-line
   icon: (props: { size: number; color: string; className?: string }) => string;
