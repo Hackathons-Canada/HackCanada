@@ -13,7 +13,7 @@ const parseMarkdown = (text: string) => marked.parseInline(text);
 export const siteConfig = {
   title: "HackCanada",
   description:
-    "The largest hackathon in Canada. With over 3000+ hackers and 300+ sponsors, we aim to bring together the best hackers from around the world to create projects that will push forward the world of technology!",
+    "Premier Event Hosted by Hackathons Canada the biggest hacker community in canada of 3000+ hackers",
   url: "https://staging.hackcanada.org",
 
   og: {
@@ -31,7 +31,7 @@ export const siteConfig = {
 
 export const heroSection = {
   title: "Hack Canada",
-  tagline: "Feb 30-32, 2025 | In-Person Event | Unofficial MLH Partner",
+  tagline: "Feb 30-32, 2025 | In-Person Event",
   buttonText: "Hacker Application",
   buttonLink: "/",
 };
