@@ -2,11 +2,15 @@
 import { sponsorConfig } from "../../../config/sponsorConfig";
 ---
 
-<div class="container relative z-10 mx-auto translate-y-32 text-center">
-  <p class="mx-auto mb-4 max-w-xl text-balance font-light md:text-lg">
+<div
+  class="container relative z-10 mx-auto text-center sm:translate-y-16 md:translate-y-24"
+>
+  <p
+    class="mx-auto mb-4 text-balance font-light text-gray-500 max-sm:hidden sm:max-w-lg md:text-lg lg:max-w-xl"
+  >
     {sponsorConfig.description[0]}
   </p>
-  <p class="mx-auto max-w-md text-2xl font-semibold md:text-3xl">
+  <p class="mx-auto max-w-md text-balance text-2xl font-semibold md:text-3xl">
     {sponsorConfig.description[1]}
   </p>
 </div>
