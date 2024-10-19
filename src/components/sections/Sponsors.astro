@@ -14,7 +14,8 @@ import SponsorDescription from "@/components/animations/sponsors/SponsorDescript
 const { className, id } = Astro.props;
 ---
 
-<section id={id} class={cn("relative pt-32 h-[1200px]", className)}>
+<section id={id} class={cn("relative pt-32 h-[1024px]", className)}>
+  <!-- TODO: Add animations for the heading and descriptions -->
   <SectionHeading className="text-center">
     {sponsorConfig.heading}
   </SectionHeading>

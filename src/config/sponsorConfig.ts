@@ -12,7 +12,7 @@ export const sponsorConfig = {
     buttonClassName:
       "bg-yellow-100 text-slate-700 hover:bg-yellow-200 focus:ring-2 focus:ring-yellow-500 rounded-md py-2 px-4 transition duration-200 ",
     email: "sponsor@hackcanada.org", //change this or wtv
-    altText: "🚀Sponsors to be announced Soon!🚀",
+    altText: "🚀Sponsors to be announced soon!🚀",
   },
 };
 
