@@ -1,0 +1,28 @@
+---
+import { socialLinks } from "@/config/layoutConfig";
+---
+
+<ul class="flex shrink-0 items-center gap-8 max-lg:hidden">
+  {
+    socialLinks.map((item, index) => (
+      <li class="social-icon-animation" style={`--index: ${index};`}>
+        <a
+          class="relative text-slate-600 transition-transform duration-300 hover:scale-110"
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${new URL(item.href).hostname} page for Hack Canada`}
+        >
+          <span
+            set:html={item.icon({
+              size: 40,
+              color: "#07152e",
+              className:
+                "size-7 hover:scale-110 xl:size-8 transition-transform duration-300",
+            })}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

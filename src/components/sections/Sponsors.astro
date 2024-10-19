@@ -9,14 +9,17 @@ import SponsorCards from "@/components/animations/sponsors/SponsorCards.astro";
 import SponsorJars from "@/components/animations/sponsors/SponsorJars.astro";
 import { cn } from "@/lib/utils";
 import beeGif from "@/assets/bee.gif";
+import SponsorDescription from "@/components/animations/sponsors/SponsorDescription.astro";
 
 const { className, id } = Astro.props;
 ---
 
-<section id={id} class={cn("relative pt-32 h-[1200px]", className)}>
+<section id={id} class={cn("relative pt-32 h-[1024px]", className)}>
+  <!-- TODO: Add animations for the heading and descriptions -->
   <SectionHeading className="text-center">
     {sponsorConfig.heading}
   </SectionHeading>
+  <SponsorDescription />
   <SponsorJars />
   <SponsorPool />
   <Image

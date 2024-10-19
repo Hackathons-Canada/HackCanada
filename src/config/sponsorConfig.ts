@@ -3,8 +3,8 @@ import type { Sponsor } from "@/types/sponsors";
 export const sponsorConfig = {
   heading: "Our Sponsors",
   description: [
-    "Be a part of an extraordinary journey to host Canada's top hackathon.",
-    "Your contribution will be more valued than the richest maple syrup.",
+    "Be a part of an extraordinary journey to host Canada's greatest hackathon.",
+    "Your contribution is sweeter than even the richest maple syrup.",
   ],
   sponsorText: {
     text: "BECOME A SPONSOR",
@@ -12,7 +12,7 @@ export const sponsorConfig = {
     buttonClassName:
       "bg-yellow-100 text-slate-700 hover:bg-yellow-200 focus:ring-2 focus:ring-yellow-500 rounded-md py-2 px-4 transition duration-200 ",
     email: "sponsor@hackcanada.org", //change this or wtv
-    altText: "🚀Sponsors to be announced Soon!🚀",
+    altText: "🚀Sponsors to be announced soon!🚀",
   },
 };
 

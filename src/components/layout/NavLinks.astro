@@ -1,0 +1,22 @@
+---
+import { navLinks } from "@/config/layoutConfig";
+---
+
+<ul class="flex items-center gap-8 max-sm:hidden">
+  {
+    navLinks.map((link, index) => (
+      <li
+        class="nav-link-animation group relative font-bold"
+        style={`--index: ${index};`}
+      >
+        <button
+          onclick={`window.handleScrollToSection('${link.href}')`}
+          class="relative overflow-hidden xl:text-lg"
+        >
+          {link.label}
+          <span class="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform rounded-full bg-black transition-transform duration-300 group-hover:scale-x-100" />
+        </button>
+      </li>
+    ))
+  }
+</ul>
