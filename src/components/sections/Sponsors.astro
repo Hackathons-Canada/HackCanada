@@ -9,6 +9,7 @@ import SponsorCards from "@/components/animations/sponsors/SponsorCards.astro";
 import SponsorJars from "@/components/animations/sponsors/SponsorJars.astro";
 import { cn } from "@/lib/utils";
 import beeGif from "@/assets/bee.gif";
+import SponsorDescription from "@/components/animations/sponsors/SponsorDescription.astro";
 
 const { className, id } = Astro.props;
 ---
@@ -17,6 +18,7 @@ const { className, id } = Astro.props;
   <SectionHeading className="text-center">
     {sponsorConfig.heading}
   </SectionHeading>
+  <SponsorDescription />
   <SponsorJars />
   <SponsorPool />
   <Image

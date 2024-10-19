@@ -3,8 +3,8 @@ import type { Sponsor } from "@/types/sponsors";
 export const sponsorConfig = {
   heading: "Our Sponsors",
   description: [
-    "Be a part of an extraordinary journey to host Canada's top hackathon.",
-    "Your contribution will be more valued than the richest maple syrup.",
+    "Be a part of an extraordinary journey to host Canada's greatest hackathon.",
+    "Your contribution is sweeter than even the richest maple syrup.",
   ],
   sponsorText: {
     text: "BECOME A SPONSOR",

@@ -1,9 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { sponsorConfig } from "@/config/sponsorConfig";
 ---
 
-<div class="relative mt-20 flex w-full justify-center">
+<div class="relative -mt-32 flex w-full justify-center">
   <div
     class="jar-container relative flex h-fit w-full max-w-4xl justify-between"
   >
@@ -66,18 +65,5 @@ import { sponsorConfig } from "@/config/sponsorConfig";
         format="svg"
       />
     </div>
-  </div>
-
-  <div class="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-    {
-      sponsorConfig.description.map((paragraph, index) => (
-        <p
-          data-key={`${index}`}
-          class="container mx-auto max-w-xl text-center md:text-2xl"
-        >
-          {paragraph}
-        </p>
-      ))
-    }
   </div>
 </div>
