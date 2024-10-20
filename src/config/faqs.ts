@@ -23,12 +23,12 @@ const faqs: FaqCategory[] = [
       {
         question: "What if I don't know how to code?",
         answer:
-          "No problem! Hackathons are all about learning. Whether you want to start coding or explore other roles like design or project management, there's something for everyone. Plus, coding wizards will be around to help you conjure up some code magic.",
+          "Hack Canada welcomes hackers of all skill levels! You'll learn at workshops designed for beginners and experts alike. If you want to start learning from home, check out some great YouTube tutorials. And don't worry—you'll pick up new skills surprisingly fast at a hackathon!",
       },
       {
         question: "What if I don't have a team?",
         answer:
-          "Don't worry! We'll have team-building activities to help you find your squad. If you're still solo, we'll pair you up with others in the same boat. Collaboration is the key to hackathons, and we'll make sure you're part of the fun.",
+          "Don't worry! We'll have team-building activities to help you find your squad. If you're still solo, we'll pair you up with others in the same boat. Collaboration is the key to hackathons, and we'll make sure you're part of the fun. Teams can have up to 4 members.",
       },
     ],
   },
@@ -50,6 +50,11 @@ const faqs: FaqCategory[] = [
         answer:
           "You can register on our website. All you'll need is some basic information and a government-issued ID to verify your eligibility. Easy, right?",
       },
+      {
+        question: "How else can I contribute to Hack Canada?",
+        answer:
+          "Apart from joining as a hacker, we will also be looking for volunteers, mentors and judges! Keep an eye out for announcements on our social media pages. If you'd like to collaborate as a sponsor or a workshop host, react out to us at contact@hackcanada.org.",
+      },
     ],
   },
   {
@@ -58,7 +63,7 @@ const faqs: FaqCategory[] = [
       {
         question: "How much does it cost to attend Hack Canada?",
         answer:
-          "It's completely free! All you need to bring is your energy and ideas. We've got everything else covered—food, swag, and plenty of caffeine!",
+          "It's completely free! Participating in Hack Canada costs you nothing. From meals to mini-events, we've got everything covered to make Hack Canada accessible to everyone.",
       },
       {
         question: "What documents do I need to apply?",
@@ -73,7 +78,7 @@ const faqs: FaqCategory[] = [
       {
         question: "What should I bring to the event?",
         answer:
-          "Bring your laptop, charger, and whatever gadgets you need to be productive. Don't forget a good pair of headphones and maybe a comfy hoodie for the long haul. Oh, and a thirst for innovation!",
+          "Be sure to bring a photo ID, your laptop and charger, a sleeping bag, a deodorant, toiletries, a water bottle, and your imagination.",
       },
     ],
   },
@@ -94,6 +99,11 @@ const faqs: FaqCategory[] = [
         question: "How can I report a violation?",
         answer:
           "You can report violations confidentially to any organizer in person or via discord. We'll handle the situation promptly and professionally.",
+      },
+      {
+        question: "My parents are concerned—what should I tell them?",
+        answer:
+          "Hack Canada will have 24/7 supervision by background-checked adults, with access to the venue strictly limited to participants. For any concerns, please reach out to us at contact@hackcanada.org",
       },
     ],
   },
