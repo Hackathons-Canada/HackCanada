@@ -12,9 +12,11 @@ interface Props {
 const { className, id } = Astro.props;
 ---
 
-<SectionWrapper id={id} className={cn("overflow-hidden pt-20", className)}>
+<SectionWrapper
+  id={id}
+  className={cn("relative overflow-hidden pt-20", className)}
+>
   <AboutHeading />
-
   <Glaciers />
 </SectionWrapper>
 

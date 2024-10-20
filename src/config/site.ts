@@ -31,7 +31,7 @@ export const siteConfig = {
 
 export const heroSection = {
   title: "Hack Canada",
-  tagline: "Feb 30-32, 2025 | In-Person Event",
+  tagline: "Feb 21-23, 2024 @ Lazaridis Center, Wilfred Laurier University",
   buttonText: "Hacker Application",
   buttonLink: "/",
 };
@@ -40,11 +40,14 @@ export const aboutSection = {
   title: "Who Are We?",
   descriptions: [
     parseMarkdown(
-      "Hack Canada is the premier event organized by [Hackathons Canada](https://hackathonscanada.com). It's where the brightest minds gather to push the limits of innovation—because who needs sleep when you have code to write? Expect 36 hours of creativity, collaboration, and the occasional 'I-just-fixed-it' dance.",
+      "Hack Canada is Hackathons NA's first annual hackathon, inviting hackers of all ages and experience levels from all over Canada and beyond to solve the universe's most pressing problems with technology. We gather the most innovative and talented minds to come together to create and connect in a dynamic and igniting environment.",
     ),
     parseMarkdown(
-      "At Hack Canada, our motto is simple: have fun, make something awesome, and maybe even catch a nap between all the brilliance.",
+      "Experience hands-on workshops, expert mentorship, and exciting activities designed to fuel your creativity and enhance your skills. Come for cool swag, prizes, connections, and life-long memories. From February 21st-23rd, join us in shaping a brighter future for Canada through innovation and collaboration.",
     ),
+    // parseMarkdown(
+    //   "At Hack Canada, our motto is simple: have fun, make something awesome, and maybe even catch a nap between all the brilliance.",
+    // ),
   ],
 };
 
