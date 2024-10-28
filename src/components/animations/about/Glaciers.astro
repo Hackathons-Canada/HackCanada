@@ -26,12 +26,12 @@ import { Image } from "astro:assets";
     loading="lazy"
     decoding="async"
     format="svg"
-    class="drop-shadow-lg filter"
+    class="drop-shadow-lg filter transition-transform duration-1000 hover:translate-y-4"
   />
 </div>
 
 <div
-  class="about-glacier-2 1g:left-0 absolute -left-48 bottom-7 z-20 w-[70%] max-w-72 select-none opacity-0 md:max-w-96"
+  class="about-glacier-2 absolute -left-48 bottom-7 z-20 w-[70%] max-w-72 select-none opacity-0 md:max-w-96 lg:left-0"
 >
   <Image
     src="/about/glacier2.svg"
@@ -41,7 +41,7 @@ import { Image } from "astro:assets";
     loading="lazy"
     decoding="async"
     format="svg"
-    class="drop-shadow-lg filter"
+    class="drop-shadow-lg filter transition-transform duration-1000 hover:translate-y-4 hover:rotate-3"
   />
 </div>
 
