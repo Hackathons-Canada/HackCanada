@@ -1,4 +1,5 @@
 ---
+import Countdown from "@/components/animations/about/Countdown.astro";
 import Prose from "@/components/common/Prose.astro";
 import SectionHeading from "@/components/utilities/SectionHeading.astro";
 import { aboutSection } from "@/config/site";
@@ -19,7 +20,7 @@ import { aboutSection } from "@/config/site";
         aboutSection.descriptions.map((description, index) => (
           <Prose
             id={`about-paragraph-${index}`}
-            className="about-paragraph opacity-0"
+            className="about-paragraph max-md:text-lg opacity-0"
             set:html={description}
           />
         ))
@@ -28,4 +29,5 @@ import { aboutSection } from "@/config/site";
       )
     }
   </div>
+  <Countdown />
 </div>
