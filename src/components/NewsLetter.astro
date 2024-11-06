@@ -9,7 +9,7 @@ import Button from "@/components/common/Button.astro";
   class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50"
 >
   <div class="mx-4 w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
-    <h2 class="mb-4 text-2xl font-bold">Subscribe to Our Newsletter</h2>
+    <h2 class="mb-4 text-2xl font-bold">Join the Inner Circle</h2>
     <form id="newsletterForm">
       <input
         type="email"
@@ -20,7 +20,7 @@ import Button from "@/components/common/Button.astro";
         aria-label="Email address"
       />
       <Button variant="hero" size="lg" class="w-full" type="submit">
-        Subscribe
+        Add
       </Button>
     </form>
     <div
@@ -59,16 +59,13 @@ import Button from "@/components/common/Button.astro";
         result.classList.remove("hidden");
       }
 
-      const response = await fetch(scriptURL, {
+      await fetch(scriptURL, {
         method: "POST",
         body: new FormData(form),
         mode: "no-cors",
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
+      // If we reach this point, assume the submission was successful
       form.reset();
       if (result) result.textContent = "Thanks for subscribing!";
     } catch (error) {
