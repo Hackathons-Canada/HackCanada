@@ -1,7 +1,7 @@
 ---
 import Button from "@/components/common/Button.astro";
 
-// Newsletter.astro
+// NewsletterPopup.astro
 ---
 
 <div
@@ -17,10 +17,19 @@ import Button from "@/components/common/Button.astro";
         required
         class="mb-4 w-full rounded-xl border p-2 outline-none"
         placeholder="you@example.com"
+        aria-label="Email address"
       />
-      <Button variant="hero" size="lg" class="w-full">Subscribe</Button>
+      <Button variant="hero" size="lg" class="w-full" type="submit">
+        Subscribe
+      </Button>
     </form>
-    <div id="result" class="mt-4 hidden text-center"></div>
+    <div
+      id="result"
+      class="mt-4 hidden text-center"
+      role="status"
+      aria-live="polite"
+    >
+    </div>
   </div>
 </div>
 
@@ -50,11 +59,15 @@ import Button from "@/components/common/Button.astro";
         result.classList.remove("hidden");
       }
 
-      await fetch(scriptURL, {
+      const response = await fetch(scriptURL, {
         method: "POST",
         body: new FormData(form),
         mode: "no-cors",
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
       form.reset();
       if (result) result.textContent = "Thanks for subscribing!";

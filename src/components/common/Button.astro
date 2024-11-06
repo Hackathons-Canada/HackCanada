@@ -35,16 +35,33 @@ export interface Props extends VariantProps<typeof buttonVariants> {
   link?: string;
   class?: string;
   id?: string;
+  type?: "button" | "submit" | "reset";
 }
 
-const { variant, size, link, id, class: className, ...rest } = Astro.props;
+const {
+  variant,
+  size,
+  link,
+  id,
+  type = "button",
+  class: className,
+  ...rest
+} = Astro.props;
 
 const classes = cn(buttonVariants({ variant, size, className }));
 ---
 
-<a class={classes} href={link} id={id} {...rest}>
-  <slot />
-</a>
+{
+  link ? (
+    <a class={classes} href={link} id={id} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button class={classes} id={id} type={type} {...rest}>
+      <slot />
+    </button>
+  )
+}
 
 <script>
   // If we need any client-side JavaScript in future
