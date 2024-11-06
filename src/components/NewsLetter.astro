@@ -1,0 +1,68 @@
+---
+import Button from "@/components/common/Button.astro";
+
+// Newsletter.astro
+---
+
+<div
+  id="popup"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50"
+>
+  <div class="mx-4 w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
+    <h2 class="mb-4 text-2xl font-bold">Subscribe to Our Newsletter</h2>
+    <form id="newsletterForm">
+      <input
+        type="email"
+        name="email"
+        required
+        class="mb-4 w-full rounded-xl border p-2 outline-none"
+        placeholder="you@example.com"
+      />
+      <Button variant="hero" size="lg" class="w-full">Subscribe</Button>
+    </form>
+    <div id="result" class="mt-4 hidden text-center"></div>
+  </div>
+</div>
+
+<script>
+  const openPopup = document.getElementById("openPopup");
+  const popup = document.getElementById("popup");
+  const form = document.getElementById(
+    "newsletterForm",
+  ) as HTMLFormElement | null;
+  const result = document.getElementById("result");
+
+  openPopup?.addEventListener("click", () =>
+    popup?.classList.replace("hidden", "flex"),
+  );
+
+  popup?.addEventListener("click", (e) => {
+    if (e.target === popup) popup.classList.replace("flex", "hidden");
+  });
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const scriptURL = import.meta.env.PUBLIC_FORM_SCRIPT_URL;
+
+    try {
+      if (result) {
+        result.textContent = "Submitting...";
+        result.classList.remove("hidden");
+      }
+
+      await fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form),
+        mode: "no-cors",
+      });
+
+      form.reset();
+      if (result) result.textContent = "Thanks for subscribing!";
+    } catch (error) {
+      if (result)
+        result.textContent = "Oops! There was a problem. Please try again.";
+      // eslint-disable-next-line no-console
+      console.error("Error:", error);
+    }
+  });
+</script>

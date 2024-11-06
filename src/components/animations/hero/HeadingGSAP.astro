@@ -1,6 +1,7 @@
 ---
 import Button from "@/components/common/Button.astro";
 import Prose from "@/components/common/Prose.astro";
+import NewsLetter from "@/components/NewsLetter.astro";
 import { cn } from "@/lib/utils";
 
 interface HeroSection {
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const { heroSectionConfig, className } = Astro.props;
-const { title, tagline, buttonText, buttonLink } = heroSectionConfig;
+const { title, tagline } = heroSectionConfig;
 ---
 
 <div
@@ -36,8 +37,14 @@ const { title, tagline, buttonText, buttonLink } = heroSectionConfig;
     {tagline}
   </Prose>
   <div class="mt-6 w-auto animate-fade-up opacity-0 animation-delay-500">
-    <Button variant="hero" size="lg" link={buttonLink}>
+    <!-- JUST REPLACE THESE BUTTONS ;) -->
+    <!-- <Button variant="hero" size="lg" link={buttonLink}>
       {buttonText}
+    </Button> -->
+    <Button variant="hero" size="lg" id="openPopup">
+      Subscribe to Newsletter
     </Button>
   </div>
 </div>
+
+<NewsLetter />
