@@ -3,8 +3,10 @@ import { Image } from "astro:assets";
 ---
 
 <!-- sea -->
-<div class="about-sea absolute bottom-0 left-0 h-72 w-full opacity-0">
-  <div class="absolute inset-0 bg-gradient-to-b from-blue-400 to-[#aad6fa]">
+<div class="about-sea absolute bottom-32 left-0 h-72 w-full opacity-0">
+  <div
+    class="animate-ocean absolute inset-0 bg-gradient-to-b from-blue-400 to-[#aad6fa]"
+  >
   </div>
   <div
     class="absolute inset-x-0 top-0 h-3 bg-gradient-to-b from-[#aad6fa] to-transparent backdrop-blur-md"
@@ -14,7 +16,7 @@ import { Image } from "astro:assets";
 
 <!-- Glaciers -->
 <div
-  class="about-glacier-1 absolute -bottom-4 -right-32 w-[100%] max-w-[800px] select-none opacity-0 md:w-full"
+  class="about-glacier-1 absolute -right-32 bottom-24 z-10 w-[100%] max-w-[800px] select-none opacity-0 md:w-full"
 >
   <Image
     src="/about/Scene.svg"
@@ -24,11 +26,12 @@ import { Image } from "astro:assets";
     loading="lazy"
     decoding="async"
     format="svg"
+    class="drop-shadow-lg filter transition-transform duration-1000 hover:translate-y-4"
   />
 </div>
 
 <div
-  class="about-glacier-2 1g:left-0 absolute -bottom-7 -left-48 w-[70%] max-w-72 select-none opacity-0 md:max-w-96"
+  class="about-glacier-2 absolute -left-48 bottom-7 z-20 w-[70%] max-w-72 select-none opacity-0 md:max-w-96 lg:left-0"
 >
   <Image
     src="/about/glacier2.svg"
@@ -38,5 +41,22 @@ import { Image } from "astro:assets";
     loading="lazy"
     decoding="async"
     format="svg"
+    class="drop-shadow-lg filter transition-transform duration-1000 hover:translate-y-4 hover:rotate-3"
   />
 </div>
+
+<style>
+  @keyframes oceanWave {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  .animate-ocean {
+    animation: oceanWave 10s ease-in-out infinite;
+  }
+</style>

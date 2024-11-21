@@ -1,0 +1,92 @@
+---
+
+---
+
+<div
+  class="countdown-container mt-12 max-w-xl rounded-2xl bg-white/10 p-4 text-center shadow-md backdrop-blur-md sm:p-8"
+>
+  <h3 class="countdown-heading mb-4 text-xl font-bold sm:text-2xl">
+    Time Until HackCanada 2025
+  </h3>
+  <div class="flex justify-center gap-2 text-center sm:gap-8">
+    <div class="countdown-item">
+      <span id="days" class="block text-2xl font-bold sm:text-4xl">00</span>
+      <span class="text-xs sm:text-sm">Days</span>
+    </div>
+    <div class="countdown-item">
+      <span id="hours" class="block text-2xl font-bold sm:text-4xl">00</span>
+      <span class="text-xs sm:text-sm">Hours</span>
+    </div>
+    <div class="countdown-item">
+      <span id="minutes" class="block text-2xl font-bold sm:text-4xl">00</span>
+      <span class="text-xs sm:text-sm">Minutes</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .countdown-item {
+    @apply w-20 rounded-[8px] bg-white/15 px-4 py-4 transition-transform duration-300 sm:min-h-[100px] sm:w-28 sm:px-8;
+  }
+</style>
+
+<script>
+  import { initGsapFade } from "@/lib/gsapAnimations";
+
+  function updateCountdown() {
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+
+    if (!daysElement || !hoursElement || !minutesElement) {
+      return;
+    }
+
+    const targetDate = new Date("2025-02-21T18:00:00-05:00");
+    const now = new Date();
+    const diff = targetDate.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      daysElement.textContent = "00";
+      hoursElement.textContent = "00";
+      minutesElement.textContent = "00";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    daysElement.textContent = days.toString().padStart(2, "0");
+    hoursElement.textContent = hours.toString().padStart(2, "0");
+    minutesElement.textContent = minutes.toString().padStart(2, "0");
+  }
+
+  setInterval(updateCountdown, 60000);
+  updateCountdown();
+
+  // GSAP Animations
+  document.addEventListener("DOMContentLoaded", () => {
+    const countdownItems = document.querySelectorAll(".countdown-item");
+
+    // Fade in heading
+    initGsapFade(".countdown-container", {
+      duration: 0.8,
+      delay: 0.9,
+      direction: "up",
+      distance: 30,
+      animateEachTime: true,
+    });
+
+    // Fade in countdown items with stagger
+    countdownItems.forEach((_, index) => {
+      initGsapFade(`.countdown-item:nth-child(${index + 1})`, {
+        duration: 0.8,
+        delay: 0.9 + index * 0.2,
+        direction: "up",
+        distance: 15,
+        animateEachTime: true,
+      });
+    });
+  });
+</script>
