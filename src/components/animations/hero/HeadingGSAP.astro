@@ -13,11 +13,9 @@ interface HeroSection {
 interface Props {
   heroSectionConfig: HeroSection;
   className?: string;
-  buttonText?: string;
-  buttonLink?: string;
 }
 
-const { heroSectionConfig, className, buttonText, buttonLink } = Astro.props;
+const { heroSectionConfig, className } = Astro.props;
 const { title, tagline } = heroSectionConfig;
 ---
 
@@ -37,18 +35,13 @@ const { title, tagline } = heroSectionConfig;
   >
     {tagline}
   </p>
-  <div
-    class="relative mt-8 w-auto animate-fade-up opacity-0 animation-delay-500"
-  >
-    <Button
-      variant="hero"
-      size="lg"
-      link={buttonLink}
-      class="group rounded-xl md:text-lg"
-    >
-      <span class="transition-[letter-spacing] group-hover:tracking-[0.125em]"
-        >{buttonText}</span
-      >
+  <div class="mt-6 w-auto animate-fade-up opacity-0 animation-delay-500">
+    <!-- JUST REPLACE THESE BUTTONS ;) -->
+    <!-- <Button variant="hero" size="lg" link={buttonLink}>
+      {buttonText}
+    </Button> -->
+    <Button variant="hero" size="lg" id="openPopup">
+      Get Exclusive Updates
     </Button>
   </div>
 </div>
