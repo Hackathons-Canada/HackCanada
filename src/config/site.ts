@@ -31,7 +31,7 @@ export const siteConfig = {
 
 export const heroSection = {
   title: "Hack Canada",
-  tagline: "Feb 21-23, 2024 @ Lazaridis Center, Wilfred Laurier University",
+  tagline: "Feb 21–23, 2024 @ Lazaridis Hall, Wilfrid Laurier University",
   buttonText: "Hacker Application",
   buttonLink: "/",
 };
