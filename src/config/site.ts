@@ -11,7 +11,7 @@ import { marked } from "marked";
 const parseMarkdown = (text: string) => marked.parseInline(text);
 
 export const siteConfig = {
-  title: "HackCanada",
+  title: "Hack Canada",
   description:
     "In-person hackathon Hosted by Hackathons Canada, the biggest hacker community in Canada of 3000 members.",
   url: "https://staging.hackcanada.org",
