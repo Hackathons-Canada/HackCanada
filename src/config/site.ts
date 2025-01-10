@@ -13,7 +13,7 @@ const parseMarkdown = (text: string) => marked.parseInline(text);
 export const siteConfig = {
   title: "HackCanada",
   description:
-    "Premier Event Hosted by Hackathons Canada the biggest hacker community in canada of 3000+ hackers",
+    "In-person hackathon Hosted by Hackathons Canada, the biggest hacker community in Canada of 3000 members.",
   url: "https://staging.hackcanada.org",
 
   og: {
