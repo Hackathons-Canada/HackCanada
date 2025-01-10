@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { heroSectionConfig, className } = Astro.props;
-const { title, tagline } = heroSectionConfig;
+const { title, tagline, buttonText, buttonLink } = heroSectionConfig;
 ---
 
 <div class={cn("flex flex-col items-center justify-center", className)}>
@@ -31,12 +31,8 @@ const { title, tagline } = heroSectionConfig;
     {tagline}
   </p>
   <div class="mt-6 w-auto animate-fade-up opacity-0 animation-delay-500">
-    <!-- JUST REPLACE THESE BUTTONS ;) -->
-    <!-- <Button variant="hero" size="lg" link={buttonLink}>
+    <Button variant="hero" size="lg" link={buttonLink}>
       {buttonText}
-    </Button> -->
-    <Button variant="hero" size="lg" id="openPopup">
-      Get Exclusive Updates
     </Button>
   </div>
 </div>
