@@ -41,7 +41,7 @@ const { className, id } = Astro.props;
           const [compartment1Count, compartment2Count] =
             getCompartmentSizes(memberCount);
           const containerWidth = getContainerWidth(memberCount);
-          const shouldDisplayBoat = memberCount >= 3;
+          const shouldDisplayBoat = memberCount > 2;
 
           return (
             shouldDisplayBoat && (
@@ -64,6 +64,7 @@ const { className, id } = Astro.props;
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { selectMember } from "@/stores/memberStore";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -80,9 +81,19 @@ const { className, id } = Astro.props;
       0,
     );
 
-    // Clone boats and append to the container
+    // Clone boats and append to the container while preserving event listeners
     Array.from(boats).forEach((boat) => {
-      const clone = boat.cloneNode(true);
+      const clone = boat.cloneNode(true) as HTMLElement;
+      // Reattach event listeners to cloned elements
+      const members = clone.querySelectorAll<HTMLElement>(".team-member-gsap");
+      members.forEach((member: HTMLElement) => {
+        member.addEventListener("click", () => {
+          const memberData = member.getAttribute("data-member");
+          if (memberData) {
+            selectMember(JSON.parse(memberData));
+          }
+        });
+      });
       boatContainer.appendChild(clone);
     });
 

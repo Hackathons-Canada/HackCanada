@@ -19,12 +19,10 @@ export const teams: Team[] = [
     teamMembers: teamMembers.filter((member) => member.team === "Design"),
   },
   {
-    teamName: "Outreach",
-    teamMembers: teamMembers.filter((member) => member.team === "Outreach"),
-  },
-  {
-    teamName: "Finance",
-    teamMembers: teamMembers.filter((member) => member.team === "Finance"),
+    teamName: "Outreach & Finance",
+    teamMembers: teamMembers.filter(
+      (member) => member.team === "Outreach" || member.team === "Finance",
+    ),
   },
   {
     teamName: "Logistics",
