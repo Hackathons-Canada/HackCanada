@@ -41,7 +41,7 @@ const { className, id } = Astro.props;
           const [compartment1Count, compartment2Count] =
             getCompartmentSizes(memberCount);
           const containerWidth = getContainerWidth(memberCount);
-          const shouldDisplayBoat = memberCount > 0;
+          const shouldDisplayBoat = memberCount > 2;
 
           return (
             shouldDisplayBoat && (

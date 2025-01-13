@@ -142,6 +142,16 @@ export const teamMembers: TeamMember[] = [
     quote: "No bug, no gain",
   },
   {
+    firstName: "Tanvir",
+    lastName: "Sarao",
+    image: "/teamAvatars/tanvir-sarao.webp",
+    team: "Tech",
+    tag: "Tech Member",
+    pronouns: "he/him",
+    links: ["https://tanvirsarao.com"],
+    quote: "Console.Log(oneLiner)",
+  },
+  {
     firstName: "Sohel",
     lastName: "Shekh",
     // image: "/teamAvatars/sohel.webp",
@@ -199,6 +209,15 @@ export const teamMembers: TeamMember[] = [
       "This is a rat race. But I'm no rat. I'm a f***ing turtle, ninja turtle. So which one is your favourite? I like Michelangelo.",
   },
   {
+    firstName: "Uday",
+    lastName: "Khanna",
+    image: "/teamAvatars/uday-khanna.webp",
+    team: "Finance",
+    tag: "Finance Lead",
+    links: ["https://www.linkedin.com/in/udaykhanna25/"],
+    quote: '"There is No Tomorrow!" - Apollo Creed (Rocky III)',
+  },
+  {
     firstName: "Jad",
     lastName: "Menkara",
     // image: "/teamAvatars/jad.webp",
@@ -228,7 +247,6 @@ export const teamMembers: TeamMember[] = [
     links: ["https://www.linkedin.com/in/udaykhanna25/"],
     quote: '"There is No Tomorrow!" - Apollo Creed (Rocky III)',
   },
-  
   {
     firstName: "Sardul",
     lastName: "Subedi",
