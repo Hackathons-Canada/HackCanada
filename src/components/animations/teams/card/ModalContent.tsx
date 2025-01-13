@@ -13,16 +13,18 @@ export function ModalContent({ member, contentRef }: ModalContentProps) {
   return (
     <div
       ref={contentRef}
-      className="w-[350px] rounded-3xl bg-amber-950 p-6 shadow-xl focus:outline-none"
+      className="w-[350px] rounded-3xl bg-amber-950 p-6 shadow-xl focus:outline-none md:w-[400px]"
       onClick={(e) => e.stopPropagation()}
       tabIndex={-1}
     >
       <div className="flex items-center space-x-4">
-        <div
-          className="h-16 w-16 rounded-full bg-cover bg-center animate-in"
-          style={{
-            backgroundImage: `url(${image || "/teamAvatars/default-avatar.webp"})`,
-          }}
+        <img
+          src={image || "/teamAvatars/default-avatar.webp"}
+          srcSet={image || "/teamAvatars/default-avatar.webp"}
+          sizes="(max-width: 768px) 64px, 80px"
+          alt={`${firstName} ${lastName || ""}`}
+          className="size-16 rounded-full object-cover animate-in md:size-20"
+          loading="lazy"
         />
         <div className="flex-1 animate-in">
           <h2 id="modal-title" className="text-2xl font-bold text-white">

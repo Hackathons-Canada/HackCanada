@@ -71,7 +71,10 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/araf.webp",
     team: "Tech",
     tag: "Project Manager",
-    links: ["https://www.linkedin.com/in/arafa821/"],
+    links: [
+      "https://github.com/araf821",
+      "https://www.linkedin.com/in/arafa821/",
+    ],
     quote: "Code like crazy!",
   },
   {
@@ -341,6 +344,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Anushka",
+    lastName: "Kshirsagar",
     image: "/teamAvatars/anushka-kshirsagar.webp",
     team: "Marketing",
     tag: "Marketing Member",
