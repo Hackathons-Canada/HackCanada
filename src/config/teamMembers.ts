@@ -93,15 +93,6 @@ export const teamMembers: TeamMember[] = [
     links: ["https://www.linkedin.com/in/aayan-karmali/"],
     quote: "Minecraft, Python, and Netflix enthusiast :)",
   },
-  // TODO: May be removed
-  // {
-  //   firstName: "Aiden",
-  //   // image: "/teamAvatars/aiden.webp",
-  //   team: "Tech",
-  //   tag: "Tech Member",
-  //   links: ["https://example.com/aiden"],
-  //   quote: "Placeholder quote",
-  // },
   {
     firstName: "Joudat",
     lastName: "Haroon",
@@ -130,14 +121,6 @@ export const teamMembers: TeamMember[] = [
     links: ["http://linkedin.com/in/fiona--cai"],
     quote: "I like matcha very mucha",
   },
-  // {
-  //   firstName: "Edem",
-  //   // image: "/teamAvatars/edem.webp",
-  //   team: "Tech",
-  //   tag: "Tech Member",
-  //   links: ["https://example.com/edem"],
-  //   quote: "Placeholder quote",
-  // },
   {
     firstName: "Aryan",
     lastName: "Dhawan",
@@ -227,15 +210,6 @@ export const teamMembers: TeamMember[] = [
       "Why don't skeletons fight each other? Because they don't have the guts!",
   },
   {
-    firstName: "Ray",
-    lastName: "Tan",
-    // image: "/teamAvatars/greg.webp",
-    team: "Outreach",
-    tag: "Outreach Officer",
-    links: ["https://www.linkedin.com/in/ray-tan-054ab4228/"],
-    quote: "I am Ray Tan of Canada",
-  },
-  {
     firstName: "Tom",
     // image: "/teamAvatars/uday-khanna.webp",
     team: "Outreach",
@@ -254,22 +228,7 @@ export const teamMembers: TeamMember[] = [
     links: ["https://www.linkedin.com/in/udaykhanna25/"],
     quote: '"There is No Tomorrow!" - Apollo Creed (Rocky III)',
   },
-  // {
-  //   firstName: "Derek",
-  //   // image: "/teamAvatars/derek.webp",
-  //   team: "Finance",
-  //   tag: "Finance Member",
-  //   links: ["https://example.com/derek"],
-  //   quote: "Placeholder quote",
-  // },
-  // {
-  //   firstName: "Shayaan",
-  //   // image: "/teamAvatars/shayaan.webp",
-  //   team: "Finance",
-  //   tag: "Finance Member",
-  //   links: ["https://example.com/shayaan"],
-  //   quote: "Placeholder quote",
-  // },
+  
   {
     firstName: "Sardul",
     lastName: "Subedi",
@@ -327,14 +286,6 @@ export const teamMembers: TeamMember[] = [
     quote: "Placeholder quote",
   },
   {
-    firstName: "Advaith",
-    // image: "/teamAvatars/advaith.webp",
-    team: "Logistics",
-    tag: "Logistics Member",
-    links: ["https://example.com/advaith"],
-    quote: "Placeholder quote",
-  },
-  {
     firstName: "Edward",
     image: "/teamAvatars/edward.webp",
     team: "Logistics",
@@ -360,14 +311,6 @@ export const teamMembers: TeamMember[] = [
     team: "Marketing",
     tag: "Marketing Lead",
     links: ["https://www.evelynw.ong"],
-    quote: "Placeholder quote",
-  },
-  {
-    firstName: "Yashas",
-    // image: "/teamAvatars/yashas.webp",
-    team: "Marketing",
-    tag: "Marketing Lead",
-    links: ["https://example.com/yashas"],
     quote: "Placeholder quote",
   },
   {
