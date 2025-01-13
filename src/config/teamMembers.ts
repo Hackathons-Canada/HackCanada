@@ -232,7 +232,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Sardul",
     lastName: "Subedi",
-    // image: "/teamAvatars/sardaul.webp",
+    image: "/teamAvatars/sardul.webp",
     team: "Finance",
     tag: "Finance Member",
     pronouns: "he/him",
@@ -271,7 +271,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Yang",
-    // image: "/teamAvatars/yang.webp",
+    image: "/teamAvatars/yang.webp",
     team: "Logistics",
     tag: "Logistics Lead",
     links: ["https://yangxue.ca"],
@@ -335,6 +335,6 @@ export const teamMembers: TeamMember[] = [
     team: "Marketing",
     tag: "Animator",
     links: ["https://youtu.be/xvFZjo5PgG0?si=HaX9zZHYIwuW-h6e"],
-    quote: "Placeholder quote",
+    quote: "Can u put in the Rick roll link pls",
   },
 ];
