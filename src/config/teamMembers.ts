@@ -7,13 +7,14 @@ export const teamMembers: TeamMember[] = [
     lastName: "Wang",
     team: "Admin",
     tag: "Founder",
+    image: "/teamAvatars/william wang.webp",
     pronouns: "",
     links: ["https://www.linkedin.com/in/williamuw/"],
     quote: "55x hackathon winner, karaoke enthusiast!",
   },
   {
     firstName: "James",
-    // image: "/teamAvatars/james.webp",
+    image: "/teamAvatars/james c.webp",
     team: "Admin",
     tag: "Admin Member",
     links: ["https://example.com/james"],
@@ -21,7 +22,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Jerry",
-    // image: "/teamAvatars/jerry.webp",
+    image: "/teamAvatars/jerry zhu.webp",
     team: "Admin",
     tag: "Admin Member",
     links: ["https://example.com/jerry"],
@@ -38,7 +39,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Arnnav",
-    // image: "/teamAvatars/arnnav.webp",
+    image: "/teamAvatars/arnnav kudale.webp",
     team: "Mentor",
     tag: "Mentor",
     links: ["https://example.com/arnnav"],
@@ -49,7 +50,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Jason",
     lastName: "Cameron",
-    // image: "/teamAvatars/jason.webp",
+    image: "/teamAvatars/jason cameron.webp",
     team: "Tech",
     tag: "Tech Lead",
     links: [
@@ -61,7 +62,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Araf",
     lastName: "A Alam",
-    // image: "/teamAvatars/araf.webp",
+    image: "/teamAvatars/araf a a.webp",
     team: "Tech",
     tag: "Project Manager",
     links: ["https://www.linkedin.com/in/arafa821/"],
@@ -102,7 +103,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Joudat",
-    // image: "/teamAvatars/joudat.webp",
+    image: "/teamAvatars/joudat.webp",
     team: "Tech",
     tag: "Tech Member",
     links: ["https://example.com/joudat"],
@@ -110,7 +111,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "James",
-    // image: "/teamAvatars/james_l.webp",
+    image: "/teamAvatars/james liang.webp",
     team: "Tech",
     tag: "Tech Member",
     links: ["https://example.com/james_l"],
@@ -118,7 +119,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Fiona",
-    // image: "/teamAvatars/fiona.webp",
+    image: "/teamAvatars/fiona cai.webp",
     team: "Tech",
     tag: "Tech Member",
     links: ["https://example.com/fiona"],
@@ -142,7 +143,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Wahib",
-    // image: "/teamAvatars/wahib.webp",
+    image: "/teamAvatars/wahib barqawi.webp",
     team: "Tech",
     tag: "Tech Member",
     links: ["https://example.com/wahib"],
@@ -152,7 +153,7 @@ export const teamMembers: TeamMember[] = [
   // Design team
   {
     firstName: "Jess",
-    // image: "/teamAvatars/jess.webp",
+    image: "/teamAvatars/jess.webp",
     team: "Design",
     tag: "Design Lead",
     links: ["https://example.com/jess"],
@@ -160,7 +161,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Julia",
-    // image: "/teamAvatars/julia.webp",
+    image: "/teamAvatars/julia wu.webp",
     team: "Design",
     tag: "Design Member",
     links: ["https://example.com/julia"],
@@ -193,14 +194,6 @@ export const teamMembers: TeamMember[] = [
     quote: "Placeholder quote",
   },
   {
-    firstName: "Greg",
-    // image: "/teamAvatars/greg.webp",
-    team: "Outreach",
-    tag: "Outreach Member",
-    links: ["https://example.com/greg"],
-    quote: "Placeholder quote",
-  },
-  {
     firstName: "Ray",
     lastName: "Tan",
     // image: "/teamAvatars/greg.webp",
@@ -211,7 +204,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Tom",
-    // image: "/teamAvatars/tom.webp",
+    image: "/teamAvatars/uday khanna.webp",
     team: "Outreach",
     tag: "Outreach Member",
     links: ["https://example.com/tom"],
@@ -228,22 +221,22 @@ export const teamMembers: TeamMember[] = [
     links: ["https://www.linkedin.com/in/udaykhanna25/"],
     quote: '"There is No Tomorrow!" - Apollo Creed (Rocky III)',
   },
-  {
-    firstName: "Derek",
-    // image: "/teamAvatars/derek.webp",
-    team: "Finance",
-    tag: "Finance Member",
-    links: ["https://example.com/derek"],
-    quote: "Placeholder quote",
-  },
-  {
-    firstName: "Shayaan",
-    // image: "/teamAvatars/shayaan.webp",
-    team: "Finance",
-    tag: "Finance Member",
-    links: ["https://example.com/shayaan"],
-    quote: "Placeholder quote",
-  },
+  // {
+  //   firstName: "Derek",
+  //   // image: "/teamAvatars/derek.webp",
+  //   team: "Finance",
+  //   tag: "Finance Member",
+  //   links: ["https://example.com/derek"],
+  //   quote: "Placeholder quote",
+  // },
+  // {
+  //   firstName: "Shayaan",
+  //   // image: "/teamAvatars/shayaan.webp",
+  //   team: "Finance",
+  //   tag: "Finance Member",
+  //   links: ["https://example.com/shayaan"],
+  //   quote: "Placeholder quote",
+  // },
   {
     firstName: "Sardaul",
     // image: "/teamAvatars/sardaul.webp",
@@ -272,7 +265,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Jia",
-    // image: "/teamAvatars/jia.webp",
+    image: "/teamAvatars/jia.webp",
     team: "Logistics",
     tag: "Logistics Member",
     links: ["https://example.com/jia"],
