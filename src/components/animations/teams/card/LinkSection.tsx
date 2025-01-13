@@ -1,11 +1,9 @@
 import React from "react";
-import { Globe } from "lucide-react";
-// import { Linkedin, Github } from 'simple-icons-astro';
-import { SiLinkedin, SiGithub } from "@icons-pack/react-simple-icons";
+import { Github, Linkedin, Globe } from "@/lib/icon-library";
 
 const getLinkIcon = (link: string) => {
-  if (link.includes("github.com")) return SiGithub;
-  if (link.includes("linkedin.com")) return SiLinkedin;
+  if (link.includes("github.com")) return Github;
+  if (link.includes("linkedin.com")) return Linkedin;
   return Globe;
 };
 
@@ -21,7 +19,7 @@ interface LinkSectionProps {
 }
 
 export const LinkSection = (props: LinkSectionProps) => {
-  if (!props.links) return <></>;
+  if (!props.links) return null;
 
   return (
     <>
@@ -36,7 +34,11 @@ export const LinkSection = (props: LinkSectionProps) => {
             href={link}
             aria-label={`Visit ${props.firstName}'s ${getLinkType(link)} profile`}
           >
-            <LinkIcon width={24} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: LinkIcon({ size: 24, color: "currentColor" }),
+              }}
+            />
           </a>
         );
       })}
