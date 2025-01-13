@@ -8,16 +8,16 @@ const { teamName, isCompartment1Visible } = Astro.props;
 ---
 
 <div
-  class="flag-container absolute transition-all duration-300 ease-in-out"
+  class="group absolute transition-all duration-300 ease-in-out"
   style={`top: ${isCompartment1Visible ? -400 : -300}px; right: ${isCompartment1Visible ? 75 : 50}px;`}
 >
   <div
-    class="flag-wrapper flag absolute -left-[0px] top-2 flex h-[70px] w-[120px] flex-col items-center justify-center overflow-hidden rounded-lg bg-white text-red-900 shadow-md transition-transform duration-300 ease-in-out hover:scale-105"
+    class="flag absolute -left-[0px] top-2 flex h-[70px] w-[120px] flex-col items-center justify-center overflow-hidden rounded-lg bg-white text-red-900 shadow-md transition-transform duration-300 ease-in-out hover:scale-105"
   >
     <div class="absolute left-0 h-full w-5 bg-red-600"></div>
     <div class="absolute right-0 h-full w-5 bg-red-600"></div>
     <span
-      class="z-10 mb-1 transition-transform duration-300 ease-in-out hover:scale-110"
+      class="z-10 transition-transform duration-300 ease-in-out group-hover:scale-105"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ const { teamName, isCompartment1Visible } = Astro.props;
       </svg>
     </span>
     <span
-      class="z-10 text-sm font-semibold transition-all duration-300 ease-in-out hover:text-red-600"
+      class="z-10 text-center text-sm font-semibold transition-all duration-300 ease-in-out group-hover:scale-105"
       >{teamName}</span
     >
   </div>

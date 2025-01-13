@@ -61,52 +61,82 @@ const memberId = `team-member-${memberIndex}`;
   import { gsap } from "gsap";
   import { selectMember } from "@/stores/memberStore";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const teamMembers = document.querySelectorAll(".team-member-gsap");
+  function setupTeamMemberInteractions(member: HTMLElement) {
+    if (!member) return;
 
-    teamMembers.forEach((member) => {
-      if (!(member instanceof HTMLElement)) return;
-
-      member.addEventListener("click", () => {
-        const memberData = member.getAttribute("data-member");
-        if (memberData) {
-          selectMember(JSON.parse(memberData));
-        }
-      });
-
-      const chatBubble = member.nextElementSibling;
-      if (chatBubble) {
-        const bubble1 = chatBubble.querySelector(".bubble1");
-        const bubble2 = chatBubble.querySelector(".bubble2");
-        const bubble3 = chatBubble.querySelector(".bubble3");
-
-        if (bubble1 && bubble2 && bubble3) {
-          // Set initial state
-          gsap.set(chatBubble, { visibility: "hidden" });
-          gsap.set([bubble1, bubble2, bubble3], { scale: 0 });
-          gsap.set(bubble2, { x: -5, y: 5 });
-          gsap.set(bubble3, { x: -15, y: 15 });
-
-          // Create timeline for animation
-          const tl = gsap.timeline({ paused: true });
-
-          tl.to(chatBubble, { visibility: "visible", duration: 0.01 }).to(
-            [bubble1, bubble2, bubble3],
-            {
-              scale: 1,
-              x: 0,
-              y: 0,
-              duration: 0.3,
-              ease: "back.out(1.7)",
-              stagger: 0.1,
-            },
-          );
-
-          // Add event listeners
-          member.addEventListener("mouseenter", () => tl.play());
-          member.addEventListener("mouseleave", () => tl.reverse());
-        }
+    // Click handler for member selection
+    member.addEventListener("click", () => {
+      const memberData = member.getAttribute("data-member");
+      if (memberData) {
+        selectMember(JSON.parse(memberData));
       }
+    });
+
+    // Tooltip animation setup
+    const chatBubble = member.nextElementSibling;
+    if (chatBubble) {
+      const bubble1 = chatBubble.querySelector(".bubble1");
+      const bubble2 = chatBubble.querySelector(".bubble2");
+      const bubble3 = chatBubble.querySelector(".bubble3");
+
+      if (bubble1 && bubble2 && bubble3) {
+        // Set initial state
+        gsap.set(chatBubble, { visibility: "hidden" });
+        gsap.set([bubble1, bubble2, bubble3], { scale: 0 });
+        gsap.set(bubble2, { x: -5, y: 5 });
+        gsap.set(bubble3, { x: -15, y: 15 });
+
+        // Create timeline for animation
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(chatBubble, { visibility: "visible", duration: 0.01 }).to(
+          [bubble1, bubble2, bubble3],
+          {
+            scale: 1,
+            x: 0,
+            y: 0,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+            stagger: 0.1,
+          },
+        );
+
+        // Add event listeners
+        member.addEventListener("mouseenter", () => tl.play());
+        member.addEventListener("mouseleave", () => tl.reverse());
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Setup initial team members
+    const teamMembers = document.querySelectorAll(".team-member-gsap");
+    teamMembers.forEach((member) => {
+      if (member instanceof HTMLElement) {
+        setupTeamMemberInteractions(member);
+      }
+    });
+
+    // Watch for new team members being added (clones)
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) {
+            const newMembers = node.querySelectorAll(".team-member-gsap");
+            newMembers.forEach((member) => {
+              if (member instanceof HTMLElement) {
+                setupTeamMemberInteractions(member);
+              }
+            });
+          }
+        });
+      });
+    });
+
+    // Start observing the document body for changes
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     });
   });
 </script>
