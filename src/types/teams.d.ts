@@ -16,7 +16,7 @@ export interface TeamMember {
   pronouns?: string;
   team: TeamName;
   tag: string;
-  link: string;
+  links: string[];
   quote: string;
 }
 
