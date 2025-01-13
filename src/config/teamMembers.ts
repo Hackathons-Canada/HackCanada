@@ -66,7 +66,7 @@ export const teamMembers: TeamMember[] = [
     quote: "Sleep is for the week",
   },
   {
-    firstName: "ArafA",
+    firstName: "Araf",
     lastName: "A",
     image: "/teamAvatars/araf.webp",
     team: "Tech",
@@ -323,7 +323,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/arnnav-kudale.webp",
     team: "Logistics",
     tag: "Logistics Member",
-    links: ["https://example.com/arnav"],
+    links: [],
     quote: "Placeholder quote",
   },
   {
@@ -339,7 +339,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/edward.webp",
     team: "Logistics",
     tag: "Logistics Member",
-    links: ["https://example.com/edward"],
+    links: ["https://www.linkedin.com/in/edward-drobnis"],
     quote: "Placeholder quote",
   },
 
@@ -359,7 +359,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/ev-wong.webp",
     team: "Marketing",
     tag: "Marketing Lead",
-    links: ["https://example.com/ev"],
+    links: ["https://www.evelynw.ong"],
     quote: "Placeholder quote",
   },
   {
@@ -375,7 +375,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/sycora.webp",
     team: "Marketing",
     tag: "Marketing Member",
-    links: ["https://example.com/naman"],
+    links: ["https://namansonawane.vercel.app/"],
     quote: "Placeholder quote",
   },
   {
@@ -383,7 +383,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/anushka-kshirsagar.webp",
     team: "Marketing",
     tag: "Marketing Member",
-    links: ["https://example.com/anushka"],
+    links: ["https://www.linkedin.com/in/anushka-kshirsagar211/"],
     quote: "Placeholder quote",
   },
   {
