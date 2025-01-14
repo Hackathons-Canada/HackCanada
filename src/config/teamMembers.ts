@@ -38,7 +38,7 @@ export const teamMembers: TeamMember[] = [
     firstName: "Nausher",
     team: "Mentor",
     tag: "Mentor",
-    links: ["https://example.com/nausher"],
+    links: [],
     quote: "Placeholder quote",
   },
   {
@@ -67,13 +67,13 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Araf",
-    lastName: "A",
+    lastName: "A Alam",
     image: "/teamAvatars/araf.webp",
     team: "Tech",
     tag: "Project Manager",
     links: [
       "https://github.com/araf821",
-      "https://www.linkedin.com/in/arafa821/",
+      "https://www.linkedin.com/in/araf821/",
     ],
     quote: "Code like crazy!",
   },
@@ -259,7 +259,7 @@ export const teamMembers: TeamMember[] = [
     // image: "/teamAvatars/tom.webp",
     team: "Outreach",
     tag: "Outreach Member",
-    links: ["https://example.com/tom"],
+    links: [],
     quote: "Placeholder quote",
   },
 
@@ -301,7 +301,7 @@ export const teamMembers: TeamMember[] = [
     // image: "/teamAvatars/emilo.webp",
     team: "Logistics",
     tag: "Logistics Lead",
-    links: ["https://example.com/emilo"],
+    links: [],
     quote: "Placeholder quote",
   },
   {
@@ -315,6 +315,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Yang",
+    lastName: "Xue",
     image: "/teamAvatars/yang.webp",
     team: "Logistics",
     tag: "Logistics Lead",
@@ -326,7 +327,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teamAvatars/arnnav-kudale.webp",
     team: "Logistics",
     tag: "Logistics Member",
-    links: [],
+    links: ["https://blazecoding.xyz"],
     quote: "before you get hacking, remember to be ready for some smacking",
   },
   {
@@ -359,6 +360,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Naman",
+    lastName: "Sonawane",
     image: "/teamAvatars/sycora.webp",
     team: "Marketing",
     tag: "Marketing Member",

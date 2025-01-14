@@ -34,7 +34,9 @@ export function ModalContent({ member, contentRef }: ModalContentProps) {
         </div>
         <LinkSection links={links} firstName={firstName} />
       </div>
-      <p className="mt-4 text-lg italic text-gray-300 animate-in">{quote}</p>
+      <p className="mt-4 break-words text-lg italic text-gray-300 animate-in">
+        &ldquo;{quote}&rdquo;
+      </p>
     </div>
   );
 }
