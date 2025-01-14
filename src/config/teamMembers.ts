@@ -116,6 +116,29 @@ export const teamMembers: TeamMember[] = [
     quote: "uwu",
   },
   {
+    firstName: "Hamza",
+    lastName: "Khan",
+    team: "Tech",
+    tag: "Full-Stack Developer",
+    image: "/teamAvatars/hamza.webp",
+    pronouns: "he/him",
+    links: [
+      "https://www.hamzak.dev/",
+      "https://www.linkedin.com/in/hamza-khan-bbba03217/",
+    ],
+    quote: "I code sometimes",
+  },
+  {
+    firstName: "Aaron",
+    lastName: "Ye",
+    // image: "/teamAvatars/aaronye.webp",
+    team: "Tech",
+    tag: "Tech Member",
+    pronouns: "he/him",
+    links: ["https://www.linkedin.com/in/aaron-ye-7574872a0/"],
+    quote: "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj11SGd0OGdpdzFMWQ==",
+  },
+  {
     firstName: "Fiona",
     lastName: "Cai",
     image: "/teamAvatars/fiona.webp",
@@ -137,7 +160,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Wahib",
     lastName: "Barqawi",
-    image: "/teamAvatars/wahib-barqawi.webp",
+    image: "/teamAvatars/wahib.webp",
     team: "Tech",
     tag: "Tech Member",
     pronouns: "he/him",
@@ -203,7 +226,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Nirek",
     lastName: "Shetty",
-    // image: "/teamAvatars/nirek.webp",
+    image: "/teamAvatars/nirek.webp",
     team: "Outreach",
     tag: "Outreach Lead",
     pronouns: "he/him",
@@ -296,7 +319,7 @@ export const teamMembers: TeamMember[] = [
     team: "Logistics",
     tag: "Logistics Lead",
     links: ["https://yangxue.ca"],
-    quote: "Placeholder quote",
+    quote: "hiya 🍬",
   },
   {
     firstName: "Arnnav",
@@ -304,7 +327,7 @@ export const teamMembers: TeamMember[] = [
     team: "Logistics",
     tag: "Logistics Member",
     links: [],
-    quote: "Placeholder quote",
+    quote: "before you get hacking, remember to be ready for some smacking",
   },
   {
     firstName: "Edward",
@@ -312,7 +335,7 @@ export const teamMembers: TeamMember[] = [
     team: "Logistics",
     tag: "Logistics Executive",
     links: ["https://www.linkedin.com/in/edward-drobnis"],
-    quote: "Placeholder quote",
+    quote: "Chirag is a goat 🐐",
   },
 
   // Marketing team
@@ -332,7 +355,7 @@ export const teamMembers: TeamMember[] = [
     team: "Marketing",
     tag: "Marketing Lead",
     links: ["https://www.evelynw.ong"],
-    quote: "Placeholder quote",
+    quote: "i make super bad memes 🔥",
   },
   {
     firstName: "Naman",
@@ -340,7 +363,7 @@ export const teamMembers: TeamMember[] = [
     team: "Marketing",
     tag: "Marketing Member",
     links: ["https://namansonawane.vercel.app/"],
-    quote: "Placeholder quote",
+    quote: "competitive figma 1v1 no plugins",
   },
   {
     firstName: "Anushka",
@@ -349,7 +372,8 @@ export const teamMembers: TeamMember[] = [
     team: "Marketing",
     tag: "Marketing Member",
     links: ["https://www.linkedin.com/in/anushka-kshirsagar211/"],
-    quote: "Placeholder quote",
+    quote:
+      "Cheers, from attending 20 hackathons; Now being part of organizing one-idk how bro😮 ",
   },
   {
     firstName: "Claire",
