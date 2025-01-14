@@ -1,6 +1,7 @@
 import React from "react";
 import type { TeamMember } from "@/types/teams";
 import { LinkSection } from "./LinkSection";
+import { cn } from "@/lib/utils";
 
 type ModalContentProps = {
   member: TeamMember;
@@ -13,7 +14,13 @@ export function ModalContent({ member, contentRef }: ModalContentProps) {
   return (
     <div
       ref={contentRef}
-      className="w-[350px] rounded-3xl bg-amber-950 p-6 shadow-xl focus:outline-none md:w-[400px]"
+      className={cn(
+        "w-[350px] rounded-3xl bg-amber-950 p-6 shadow-xl focus:outline-none md:w-[400px]",
+        {
+          "w-[90vw] max-md:max-w-[400px] md:w-[450px]": links.length > 1,
+          "md:max-w-[475px]": links.length > 2,
+        },
+      )}
       onClick={(e) => e.stopPropagation()}
       tabIndex={-1}
     >
