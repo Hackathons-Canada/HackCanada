@@ -233,7 +233,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Tom",
-    // image: "/teamAvatars/uday-khanna.webp",
+    // image: "/teamAvatars/tom.webp",
     team: "Outreach",
     tag: "Outreach Member",
     links: ["https://example.com/tom"],
@@ -241,15 +241,15 @@ export const teamMembers: TeamMember[] = [
   },
 
   // Finance team
-  {
-    firstName: "Uday",
-    lastName: "Khanna",
-    // image: "/teamAvatars/uday.webp",
-    team: "Finance",
-    tag: "Finance Lead",
-    links: ["https://www.linkedin.com/in/udaykhanna25/"],
-    quote: '"There is No Tomorrow!" - Apollo Creed (Rocky III)',
-  },
+  // {
+  //   firstName: "Uday",
+  //   lastName: "Khanna",
+  //   // image: "/teamAvatars/uday.webp",
+  //   team: "Finance",
+  //   tag: "Finance Lead",
+  //   links: ["https://www.linkedin.com/in/udaykhanna25/"],
+  //   quote: '"There is No Tomorrow!" - Apollo Creed (Rocky III)',
+  // }, // Moved along with Outreach team
   {
     firstName: "Sardul",
     lastName: "Subedi",
