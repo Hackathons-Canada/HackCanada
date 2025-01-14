@@ -1,5 +1,7 @@
 ---
 import { navLinks } from "@/config/layoutConfig";
+
+const lastIndex = navLinks.length;
 ---
 
 <ul class="flex items-center gap-8 max-sm:hidden">
@@ -19,4 +21,20 @@ import { navLinks } from "@/config/layoutConfig";
       </li>
     ))
   }
+
+  <li
+    class="nav-link-animation group relative font-bold"
+    style={`--index: ${lastIndex};`}
+  >
+    <a
+      href="https://app.hackcanada.org"
+      target="_blank"
+      class="relative overflow-hidden xl:text-lg"
+    >
+      Log In
+      <span
+        class="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform rounded-full bg-black transition-transform duration-300 group-hover:scale-x-100"
+      ></span>
+    </a>
+  </li>
 </ul>

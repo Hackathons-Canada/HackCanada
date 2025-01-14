@@ -35,7 +35,7 @@ export const footerLinksRow2 = [
 
 export const navLinks = [
   { label: "About", href: "aboutSection" },
-  { label: "Venue", href: "locationInfoSection" },
+  // { label: "Venue", href: "locationInfoSection" },
   { label: "Sponsors", href: "sponsorSection" },
   { label: "FAQs", href: "faqsSection" },
   { label: "Team", href: "teamsSection" },
