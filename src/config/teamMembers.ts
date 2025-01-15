@@ -207,7 +207,7 @@ export const teamMembers: TeamMember[] = [
     lastName: "Wu",
     image: "/teamAvatars/julia-wu.webp",
     team: "Design",
-    tag: "Design Member",
+    tag: "Graphic Designer",
     pronouns: "she/her",
     links: ["https://www.linkedin.com/in/julia-wu-413391319/"],
     quote: "art kid™",
@@ -215,12 +215,12 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Tina",
     lastName: "Zhang",
-    // image: "/teamAvatars/tina.webp",
+    image: "/teamAvatars/tina.webp",
     team: "Design",
-    tag: "Design Member",
+    tag: "Graphic Designer",
     pronouns: "she/her",
     links: ["https://instagram.com/redonionn2"],
-    quote: "Yippee!",
+    quote: "the song of Achilles :o ",
   },
 
   // Outreach team
@@ -371,7 +371,7 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Anushka",
     lastName: "Kshirsagar",
-    image: "/teamAvatars/anushka-kshirsagar.webp",
+    image: "/teamAvatars/anushka.webp",
     team: "Marketing",
     tag: "Marketing + Web Design",
     links: ["https://www.linkedin.com/in/anushka-kshirsagar211/"],
@@ -381,9 +381,13 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Claire",
     lastName: "Lee",
+    image: "/teamAvatars/claire.webp",
     team: "Marketing",
     tag: "Animator",
-    links: ["https://youtu.be/xvFZjo5PgG0?si=HaX9zZHYIwuW-h6e"],
+    links: [
+      "https://youtu.be/xvFZjo5PgG0?si=HaX9zZHYIwuW-h6e",
+      "https://www.youtube.com/@klaki_bear",
+    ],
     quote: "Can u put in the Rick roll link pls",
   },
 ];
