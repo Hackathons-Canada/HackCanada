@@ -1,4 +1,3 @@
-import React from "react";
 import { Github, Linkedin, Globe } from "@/lib/icon-library";
 
 const getLinkIcon = (link: string) => {
