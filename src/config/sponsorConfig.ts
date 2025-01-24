@@ -17,75 +17,66 @@ export const sponsorConfig = {
 };
 
 export const sponsorsInfo: Sponsor[] = [
-  // sample data. value determines the space they are given in the page
-  // {
-  //   name: "Alpha Corp",
-  //   value: 4,
-  //   website: "https://alpha.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Leading technology solutions",
-  // },
-  // {
-  //   name: "Beta Inc",
-  //   value: 2,
-  //   website: "https://beta.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Innovative software development",
-  // },
-  // {
-  //   name: "Gamma LLC",
-  //   value: 1,
-  //   website: "https://gamma.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Cutting-edge research",
-  // },
-  // {
-  //   name: "Delta Co",
-  //   value: 3,
-  //   website: "https://delta.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Sustainable energy solutions",
-  // },
-  // {
-  //   name: "Epsilon Ltd",
-  //   value: 1,
-  //   website: "https://epsilon.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Advanced manufacturing",
-  // },
-  // {
-  //   name: "Zeta Enterprises",
-  //   value: 2,
-  //   website: "https://zeta.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Global logistics services",
-  // },
-  // {
-  //   name: "Eta Industries",
-  //   value: 4,
-  //   website: "https://eta.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Aerospace and defense",
-  // },
-  // {
-  //   name: "Theta Systems",
-  //   value: 1,
-  //   website: "https://theta.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Cybersecurity experts",
-  // },
-  // {
-  //   name: "Iota Group",
-  //   value: 3,
-  //   website: "https://iota.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Financial technology solutions",
-  // },
-  // {
-  //   name: "Kappa Solutions",
-  //   value: 2,
-  //   website: "https://kappa.com",
-  //   logoUrl: "/teamAvatars/chirag.webp?height=100&width=300",
-  //   description: "Healthcare innovations",
-  // },
+  {
+    name: "Google",
+    value: 4,
+    website: "https://about.google/",
+    logoUrl: "/sponsors/companies/google.png?height=100&width=300",
+    description:
+      "Organizing the world's information to make it universally accessible and useful.",
+  },
+  {
+    name: "Orkes",
+    value: 4,
+    website: "https://www.orkes.io/",
+    logoUrl: "/sponsors/companies/orkes.png?height=90&width=300",
+    description: "Empowering seamless workflows with intelligent automation.",
+  },
+  {
+    name: "Spur",
+    value: 2,
+    website: "https://spuric.com/",
+    logoUrl: "/sponsors/companies/spur.svg?height=100&width=300",
+    description:
+      "SPUR INNOVATORS with the best resourceS • community • support",
+  },
+  {
+    name: "ICP",
+    value: 2,
+    website: "https://internetcomputer.org/",
+    logoUrl: "/sponsors/companies/ICP.svg?height=100&width=300",
+    description:
+      "The Internet Computer hosts secure, network-resident code and data.",
+  },
+  {
+    name: "Konfer",
+    value: 2,
+    website: "https://konfer.ca/",
+    logoUrl: "/sponsors/companies/konfer.png?height=100&width=300",
+    description: "A premier consultancy based in Canada.",
+  },
+  {
+    name: "Kitchener Screen Printing",
+    value: 2,
+    website: "https://kitchenerscreenprinting.com/",
+    logoUrl: "/sponsors/companies/ksp.png?height=100&width=300",
+    description:
+      "Kitchener Screen Printing specialize in screen printing, t-shirt printing, direct to garment t-shirts, vinyl, embroidery of team and corporate apparel",
+  },
+  {
+    name: "Perplexity AI",
+    value: 1,
+    website: "https://www.perplexity.ai/hub/careers",
+    logoUrl: "/sponsors/companies/perplexity.png?height=100&width=300",
+    description:
+      "A Free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question.",
+  },
+  {
+    name: "Dora Hacks",
+    value: 1,
+    website: "https://dorahacks.io/home",
+    logoUrl: "/sponsors/companies/dorahacks.png?height=100&width=300",
+    description:
+      "Explore the world of innovation and connect hackers around the world via BUIDLs, hackathons, and more",
+  },
 ];
