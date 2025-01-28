@@ -362,10 +362,10 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Naman",
     lastName: "Sonawane",
-    image: "/teamAvatars/sycora.webp",
+    image: "/teamAvatars/naman.webp",
     team: "Marketing",
     tag: "Web Design",
-    links: ["https://namansonawane.vercel.app/"],
+    links: ["https://namansonawane.xyz/"],
     quote: "competitive figma 1v1 no plugins",
   },
   {
