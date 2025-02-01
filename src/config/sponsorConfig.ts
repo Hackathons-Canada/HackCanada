@@ -19,22 +19,30 @@ export const sponsorConfig = {
 export const sponsorsInfo: Sponsor[] = [
   {
     name: "Google",
-    value: 4,
+    value: 3,
     website: "https://about.google/",
     logoUrl: "/sponsors/companies/google.png?height=100&width=300",
     description:
       "Organizing the world's information to make it universally accessible and useful.",
   },
   {
+    name: "Perplexity AI",
+    value: 3,
+    website: "https://www.perplexity.ai/hub/careers",
+    logoUrl: "/sponsors/companies/perplexity.png?height=100&width=300",
+    description:
+      "A Free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question.",
+  },
+  {
     name: "Orkes",
-    value: 4,
+    value: 1,
     website: "https://www.orkes.io/",
     logoUrl: "/sponsors/companies/orkes.png?height=90&width=300",
     description: "Empowering seamless workflows with intelligent automation.",
   },
   {
     name: "Spur",
-    value: 2,
+    value: 1,
     website: "https://spuric.com/",
     logoUrl: "/sponsors/companies/spur.svg?height=100&width=300",
     description:
@@ -42,7 +50,7 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "ICP",
-    value: 2,
+    value: 1,
     website: "https://internetcomputer.org/",
     logoUrl: "/sponsors/companies/ICP.svg?height=100&width=300",
     description:
@@ -50,26 +58,18 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "Konfer",
-    value: 2,
+    value: 1,
     website: "https://konfer.ca/",
     logoUrl: "/sponsors/companies/konfer.png?height=100&width=300",
     description: "A premier consultancy based in Canada.",
   },
   {
     name: "Kitchener Screen Printing",
-    value: 2,
+    value: 1,
     website: "https://kitchenerscreenprinting.com/",
     logoUrl: "/sponsors/companies/ksp.png?height=100&width=300",
     description:
       "Kitchener Screen Printing specialize in screen printing, t-shirt printing, direct to garment t-shirts, vinyl, embroidery of team and corporate apparel",
-  },
-  {
-    name: "Perplexity AI",
-    value: 1,
-    website: "https://www.perplexity.ai/hub/careers",
-    logoUrl: "/sponsors/companies/perplexity.png?height=100&width=300",
-    description:
-      "A Free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question.",
   },
   {
     name: "Dora Hacks",

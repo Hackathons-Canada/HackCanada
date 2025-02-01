@@ -31,12 +31,19 @@ const groupSponsors = (
       sponsors: group,
       notFull: group.reduce((sum, s) => sum + s.value, 0) < 4,
     }))
-    .sort(
-      (a, b) =>
-        b.sponsors.length - a.sponsors.length ||
-        b.sponsors.reduce((sum, s) => sum + s.value, 0) -
-          a.sponsors.reduce((sum, s) => sum + s.value, 0),
-    );
+    .sort((a, b) => {
+      const maxValueA = Math.max(...a.sponsors.map((s) => s.value));
+      const maxValueB = Math.max(...b.sponsors.map((s) => s.value));
+
+      if (maxValueB !== maxValueA) {
+        return maxValueB - maxValueA;
+      }
+
+      const totalValueA = a.sponsors.reduce((sum, s) => sum + s.value, 0);
+      const totalValueB = b.sponsors.reduce((sum, s) => sum + s.value, 0);
+
+      return totalValueB - totalValueA;
+    });
 };
 
 const sponsorGroups = groupSponsors(sponsorsInfo);
