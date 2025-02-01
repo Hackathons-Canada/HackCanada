@@ -27,7 +27,7 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "Perplexity AI",
-    value: 3,
+    value: 1,
     website: "https://www.perplexity.ai/hub/careers",
     logoUrl: "/sponsors/companies/perplexity.png?height=100&width=300",
     description:
@@ -35,7 +35,7 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "Orkes",
-    value: 1,
+    value: 3,
     website: "https://www.orkes.io/",
     logoUrl: "/sponsors/companies/orkes.png?height=90&width=300",
     description: "Empowering seamless workflows with intelligent automation.",
