@@ -20,7 +20,7 @@ export const sponsorsInfo: Sponsor[] = [
   // Tier 1
   {
     name: "Google",
-    value: 3,
+    value: 4,
     website: "https://about.google/",
     logoUrl: "/sponsors/companies/google.png",
     description:
@@ -28,7 +28,7 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "NEAR",
-    value: 3,
+    value: 4,
     website: "https://near.org/",
     logoUrl: "/sponsors/companies/near.png",
     description:
@@ -36,7 +36,7 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "Avalanche",
-    value: 3,
+    value: 4,
     website: "https://www.avax.network/",
     logoUrl: "/sponsors/companies/avalanche.png",
     description:
@@ -44,7 +44,7 @@ export const sponsorsInfo: Sponsor[] = [
   },
   {
     name: "Orkes",
-    value: 3,
+    value: 4,
     website: "https://www.orkes.io/",
     logoUrl: "/sponsors/companies/orkes.png",
     description: "Empowering seamless workflows with intelligent automation.",
@@ -113,6 +113,13 @@ export const sponsorsInfo: Sponsor[] = [
       "A Free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question.",
   },
   {
+    name: "Warp",
+    value: 1,
+    website: "https://www.warp.dev/",
+    logoUrl: "/sponsors/companies/warp.png",
+    description: "The terminal for the 21st century.",
+  },
+  {
     name: "Dora Hacks",
     value: 1,
     website: "https://dorahacks.io/home",
@@ -129,18 +136,32 @@ export const sponsorsInfo: Sponsor[] = [
       "Real-time organization and collaboration tool for remote teams.",
   },
   {
-    name: "Warp",
-    value: 1,
-    website: "https://www.warp.dev/",
-    logoUrl: "/sponsors/companies/warp.png",
-    description: "The terminal for the 21st century.",
-  },
-  {
     name: "Kitchener Screen Printing",
-    value: 1,
+    value: 2,
     website: "https://kitchenerscreenprinting.com/",
     logoUrl: "/sponsors/companies/ksp.png",
     description:
       "Kitchener Screen Printing specialize in screen printing, t-shirt printing, direct to garment t-shirts, vinyl, embroidery of team and corporate apparel",
+  },
+  {
+    name: "JamHacks",
+    value: 1,
+    website: "https://jamhacks.ca/",
+    logoUrl: "/sponsors/companies/jamhacks.png",
+    description: "Waterloo Region's Largest High School Hackathon",
+  },
+  {
+    name: "Hack the 6ix",
+    value: 1,
+    website: "https://hackthe6ix.com/",
+    logoUrl: "/sponsors/companies/ht6.png",
+    description: "Toronto's Largest Summer Hackathon",
+  },
+  {
+    name: "GenAI Genesis",
+    value: 1,
+    website: "https://genaigenesis.ca/",
+    logoUrl: "/sponsors/companies/genai.png",
+    description: "Empowering the next generation of AI innovation",
   },
 ];
