@@ -164,4 +164,19 @@ export const sponsorsInfo: Sponsor[] = [
     logoUrl: "/sponsors/companies/genai.png",
     description: "Empowering the next generation of AI innovation",
   },
+  {
+    name: "AoPS",
+    value: 1,
+    website: "https://artofproblemsolving.com/",
+    logoUrl: "/sponsors/companies/aops.png",
+    description: "The leader in math education for high-performing students",
+  },
+  {
+    name: "XYZ",
+    value: 1,
+    website: "https://gen.xyz/",
+    logoUrl: "/sponsors/companies/xyz.png",
+    description:
+      "The most popular new domain for the next generation of internet users",
+  },
 ];
