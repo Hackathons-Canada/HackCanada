@@ -256,6 +256,15 @@ export const teamMembers: TeamMember[] = [
       "Why don't skeletons fight each other? Because they don't have the guts!",
   },
   {
+    firstName: "Siddharth",
+    lastName: "Tiwari",
+    pronouns: "he/him",
+    team: "Outreach",
+    tag: "Outreach Member",
+    links: ["https://www.instagram.com/sidfrom_nt/"],
+    quote: "Ready to help",
+  },
+  {
     firstName: "Tom",
     // image: "/teamAvatars/tom.webp",
     team: "Outreach",
