@@ -40,7 +40,7 @@ export const aboutSection = {
   title: "Who Are We?",
   descriptions: [
     parseMarkdown(
-      "Hack Canada is [Hackathons Canada's](https://hackathonscanada.com) first annual event, inviting hackers of all ages and skill levels from Canada and beyond to solve pressing challenges with technology. We bring together innovative minds to connect, create, and collaborate in an exciting environment.",
+      "Hack Canada is [Hackathons Canada's](https://discord.gg/wp42amwcWy) first annual event, inviting hackers of all ages and skill levels from Canada and beyond to solve pressing challenges with technology. We bring together innovative minds to connect, create, and collaborate in an exciting environment.",
     ),
     parseMarkdown(
       "Join us from February 21st to 23rd for hands-on workshops, expert mentorship, and fun activities designed to spark creativity and grow your skills. Enjoy cool swag, prizes, new connections, and lifelong memories as we shape a brighter future for Canada through innovation.",
@@ -84,7 +84,7 @@ export const faqsSection = {
 export const teamSection = {
   title: "Meet Our Team",
   tagline: parseMarkdown(
-    "[@hackcanada](/) / [@hackathonscanada](https://hackathonscanada.com)",
+    "[@hackcanada](/) / [@hackathonscanada](https://discord.gg/wp42amwcWy)",
   ),
   placeholder: "/teamAvatars/default-avatar.webp",
 };
