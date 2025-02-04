@@ -26,12 +26,10 @@ export const footerLinksRow1 = [
   {
     label: "Apply as a Mentor",
     href: "https://docs.google.com/forms/d/e/1FAIpQLScCS76RX3C1AvGGFOQ5J69XpoYb6rvdYQ-B0aYxS_GLaf4jmQ/viewform?usp=sf_link",
-    disabled: false,
   },
   {
     label: "Apply as a Judge",
     href: "https://docs.google.com/forms/d/e/1FAIpQLScCS76RX3C1AvGGFOQ5J69XpoYb6rvdYQ-B0aYxS_GLaf4jmQ/viewform?usp=sf_link",
-    disabled: false,
   },
 ];
 

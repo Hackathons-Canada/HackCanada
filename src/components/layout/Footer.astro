@@ -55,12 +55,14 @@ const year = new Date().getFullYear();
           {
             footerLinksRow1.map((link) => (
               <li>
-                <span
-                  class="cursor-not-allowed text-[#0a1c3d] opacity-70 transition-opacity duration-300 hover:opacity-50"
-                  aria-disabled="true"
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[#0a1c3d] transition-opacity duration-300 hover:opacity-50"
                 >
                   {link.label}
-                </span>
+                </a>
               </li>
             ))
           }
