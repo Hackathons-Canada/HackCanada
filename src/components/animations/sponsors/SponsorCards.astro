@@ -5,13 +5,18 @@ import { type Sponsor } from "@/types/sponsors";
 import { cn } from "@/lib/utils";
 
 const getCardClass = (value: number): string => {
-  const classes = [
-    "lg:col-span-1 col-span-2",
-    "col-span-1 lg:col-span-2",
-    "col-span-3",
-    "col-span-4",
-  ];
-  return classes[value - 1] || "";
+  switch (value) {
+    case 4: // Diamond
+      return "col-span-4 md:col-span-4 h-52 p-6 sm:p-10 lg:p-12";
+    case 3: // Gold
+      return "col-span-3 md:col-span-3 h-44 p-8"; // TODO: Update when we add gold sponsors
+    case 2: // Silver
+      return "col-span-2 md:col-span-2 h-36 p-9 sm:p-11";
+    case 1: // Basic
+      return "col-span-1 md:col-span-1 h-36 p-6 sm:p-8";
+    default:
+      return "";
+  }
 };
 
 const groupSponsors = (
@@ -67,14 +72,14 @@ const sponsorGroups = groupSponsors(sponsorsInfo);
       sponsorGroups.map(({ sponsors, notFull }, index) => (
         <div
           id={`sponsor-group-${index}`}
-          class={`grid grid-cols-2 gap-3 lg:grid-cols-4 ${notFull ? "justify-center" : ""}`}
+          class={`grid grid-cols-2 items-center gap-3 lg:grid-cols-4 ${notFull ? "justify-center" : ""}`}
         >
           {sponsors.map((sponsor, sponsorIndex) => (
             <a
               href={sponsor.website}
               target="_blank"
               rel="noopener noreferrer"
-              class={`sponsor-card group relative max-h-[200px] overflow-hidden rounded-2xl bg-orange-400 opacity-0 shadow-md ${getCardClass(sponsor.value)}`}
+              class={`sponsor-card group relative max-h-[200px] w-full overflow-hidden rounded-2xl bg-orange-400 opacity-0 shadow-md ${getCardClass(sponsor.value)}`}
               data-sponsor-index={sponsorIndex}
             >
               <div class="sponsor-overlay absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/40 opacity-0" />
@@ -86,7 +91,7 @@ const sponsorGroups = groupSponsors(sponsorsInfo);
                 loading="lazy"
                 decoding="async"
                 format="webp"
-                class="h-full w-full object-contain p-12"
+                class="h-full w-full object-contain"
               />
               <div
                 class={cn(

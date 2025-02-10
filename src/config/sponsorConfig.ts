@@ -17,72 +17,7 @@ export const sponsorConfig = {
 };
 
 export const sponsorsInfo: Sponsor[] = [
-  // Tier 1
-  {
-    name: "Google",
-    value: 4,
-    website: "https://about.google/",
-    logoUrl: "/sponsors/companies/google.png",
-    description:
-      "Organizing the world's information to make it universally accessible and useful.",
-  },
-  {
-    name: "NEAR",
-    value: 4,
-    website: "https://near.org/",
-    logoUrl: "/sponsors/companies/near.png",
-    description:
-      "The climate-neutral blockchain built for real-world adoption.",
-  },
-  {
-    name: "Avalanche",
-    value: 4,
-    website: "https://www.avax.network/",
-    logoUrl: "/sponsors/companies/avalanche.png",
-    description:
-      "The fastest smart contracts platform in the blockchain industry.",
-  },
-  {
-    name: "Orkes",
-    value: 4,
-    website: "https://www.orkes.io/",
-    logoUrl: "/sponsors/companies/orkes.png",
-    description: "Empowering seamless workflows with intelligent automation.",
-  },
-
-  // Tier 2
-  {
-    name: "ICP",
-    value: 2,
-    website: "https://internetcomputer.org/",
-    logoUrl: "/sponsors/companies/ICP.svg",
-    description:
-      "The Internet Computer hosts secure, network-resident code and data.",
-  },
-  {
-    name: "PCBWay",
-    value: 2,
-    website: "https://www.pcbway.com/",
-    logoUrl: "/sponsors/companies/pcbway.png",
-    description: "Professional PCB manufacturer and assembly services.",
-  },
-  {
-    name: "Spur",
-    value: 2,
-    website: "https://spuric.com/",
-    logoUrl: "/sponsors/companies/spur.svg",
-    description:
-      "SPUR INNOVATORS with the best resourceS • community • support",
-  },
-  {
-    name: "Konfer",
-    value: 2,
-    website: "https://konfer.ca/",
-    logoUrl: "/sponsors/companies/konfer.png",
-    description: "A premier consultancy based in Canada.",
-  },
-
-  // Tier 3
+  // Tier 1 (Basic)
   {
     name: "1Password",
     value: 1,
@@ -94,7 +29,7 @@ export const sponsorsInfo: Sponsor[] = [
     name: "NordVPN",
     value: 1,
     website: "https://nordsecurity.com/",
-    logoUrl: "/sponsors/companies/nordvpn.png",
+    logoUrl: "/sponsors/companies/nordvpn.webp",
     description: "Digital security and privacy solutions for everyone.",
   },
   {
@@ -108,7 +43,7 @@ export const sponsorsInfo: Sponsor[] = [
     name: "Perplexity AI",
     value: 1,
     website: "https://www.perplexity.ai/",
-    logoUrl: "/sponsors/companies/perplexity.png",
+    logoUrl: "/sponsors/companies/perplexity.webp",
     description:
       "A Free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question.",
   },
@@ -134,14 +69,6 @@ export const sponsorsInfo: Sponsor[] = [
     logoUrl: "/sponsors/companies/taskade.png",
     description:
       "Real-time organization and collaboration tool for remote teams.",
-  },
-  {
-    name: "Kitchener Screen Printing",
-    value: 2,
-    website: "https://kitchenerscreenprinting.com/",
-    logoUrl: "/sponsors/companies/ksp.png",
-    description:
-      "Kitchener Screen Printing specialize in screen printing, t-shirt printing, direct to garment t-shirts, vinyl, embroidery of team and corporate apparel",
   },
   {
     name: "AoPS",
@@ -185,5 +112,81 @@ export const sponsorsInfo: Sponsor[] = [
     website: "https://genaigenesis.ca/",
     logoUrl: "/sponsors/companies/genai.png",
     description: "Empowering the next generation of AI innovation",
+  },
+
+  // Tier 2 (Silver)
+  {
+    name: "ICP",
+    value: 2,
+    website: "https://internetcomputer.org/",
+    logoUrl: "/sponsors/companies/ICP.svg",
+    description:
+      "The Internet Computer hosts secure, network-resident code and data.",
+  },
+  {
+    name: "PCBWay",
+    value: 2,
+    website: "https://www.pcbway.com/",
+    logoUrl: "/sponsors/companies/pcbway.png",
+    description: "Professional PCB manufacturer and assembly services.",
+  },
+  {
+    name: "Spur",
+    value: 2,
+    website: "https://spuric.com/",
+    logoUrl: "/sponsors/companies/spur.webp",
+    description:
+      "SPUR INNOVATORS with the best resourceS • community • support",
+  },
+  {
+    name: "Konfer",
+    value: 2,
+    website: "https://konfer.ca/",
+    logoUrl: "/sponsors/companies/konfer.png",
+    description: "A premier consultancy based in Canada.",
+  },
+  {
+    name: "Kitchener Screen Printing",
+    value: 2,
+    website: "https://kitchenerscreenprinting.com/",
+    logoUrl: "/sponsors/companies/ksp.png",
+    description:
+      "Kitchener Screen Printing specialize in screen printing, t-shirt printing, direct to garment t-shirts, vinyl, embroidery of team and corporate apparel",
+  },
+
+  // Tier 3 (Gold)
+  // TODO: Confirm things with the sponsorship team
+
+  // Tier 4 (Diamond)
+  {
+    name: "Google",
+    value: 4,
+    website: "https://about.google/",
+    logoUrl: "/sponsors/companies/google.png",
+    description:
+      "Organizing the world's information to make it universally accessible and useful.",
+  },
+  {
+    name: "NEAR",
+    value: 4,
+    website: "https://near.org/",
+    logoUrl: "/sponsors/companies/near.png",
+    description:
+      "The climate-neutral blockchain built for real-world adoption.",
+  },
+  {
+    name: "Avalanche",
+    value: 4,
+    website: "https://www.avax.network/",
+    logoUrl: "/sponsors/companies/avalanche.png",
+    description:
+      "The fastest smart contracts platform in the blockchain industry.",
+  },
+  {
+    name: "Orkes",
+    value: 4,
+    website: "https://www.orkes.io/",
+    logoUrl: "/sponsors/companies/orkes.png",
+    description: "Empowering seamless workflows with intelligent automation.",
   },
 ];
