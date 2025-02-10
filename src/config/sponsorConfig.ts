@@ -80,7 +80,7 @@ export const sponsorsInfo: Sponsor[] = [
   {
     name: "First Robotics Canada",
     value: 1,
-    website: "https://firstroboticscanada.com/",
+    website: "https://firstroboticscanada.org/",
     logoUrl: "/sponsors/companies/first-robotics-canada.webp",
     description: "The first robotics company in Canada",
   },
