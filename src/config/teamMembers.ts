@@ -67,7 +67,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     firstName: "Araf",
-    lastName: "A Alam",
+    lastName: "A",
     image: "/teamAvatars/araf.webp",
     team: "Tech",
     tag: "Project Manager",
@@ -258,7 +258,8 @@ export const teamMembers: TeamMember[] = [
   {
     firstName: "Siddharth",
     lastName: "Tiwari",
-    pronouns: "he/him",
+    image: "/teamAvatars/sid.webp",
+    pronouns: "He/Him",
     team: "Outreach",
     tag: "Outreach Member",
     links: ["https://www.instagram.com/sidfrom_nt/"],
@@ -307,21 +308,17 @@ export const teamMembers: TeamMember[] = [
       "I don't write code, but I make sure the hackers are fueled to write theirs.",
   },
   {
-    firstName: "Emilo",
-    // image: "/teamAvatars/emilo.webp",
+    firstName: "Emilio",
+    lastName: "Mendoza",
+    image: "/teamAvatars/emilio.webp",
     team: "Logistics",
     tag: "Logistics Lead",
-    links: [],
-    quote: "Placeholder quote",
-  },
-  {
-    firstName: "Jia",
-    lastName: "Peng",
-    image: "/teamAvatars/jia.webp",
-    team: "Logistics",
-    tag: "Logistics Member",
-    links: ["https://www.instagram.com/itsacedar_/"],
-    quote: "child consumer (on wednesdays)",
+    pronouns: "He/Him",
+    links: [
+      "https://github.com/a3l6",
+      "https://www.linkedin.com/in/emilio-mendoza-5aa302296",
+    ],
+    quote: "I tell computers what to do",
   },
   {
     firstName: "Yang",
@@ -331,6 +328,15 @@ export const teamMembers: TeamMember[] = [
     tag: "Logistics Lead",
     links: ["https://yangxue.ca"],
     quote: "hiya 🍬",
+  },
+  {
+    firstName: "Jia",
+    lastName: "Peng",
+    image: "/teamAvatars/jia.webp",
+    team: "Logistics",
+    tag: "Logistics Member",
+    links: ["https://www.instagram.com/itsacedar_/"],
+    quote: "child consumer (on wednesdays)",
   },
   {
     firstName: "Arnnav",
@@ -346,7 +352,7 @@ export const teamMembers: TeamMember[] = [
     team: "Logistics",
     tag: "Logistics Executive",
     links: ["https://www.linkedin.com/in/edward-drobnis"],
-    quote: "Chirag is a goat 🐐",
+    quote: "Chirag is the goat 🐐",
   },
 
   // Marketing team
