@@ -2,6 +2,7 @@
 import { sponsorConfig, sponsorsInfo } from "@/config/sponsorConfig";
 import { Image } from "astro:assets";
 import { type Sponsor } from "@/types/sponsors";
+import { cn } from "@/lib/utils";
 
 const getCardClass = (value: number): string => {
   const classes = [
@@ -87,8 +88,15 @@ const sponsorGroups = groupSponsors(sponsorsInfo);
                 format="webp"
                 class="h-full w-full object-contain p-12"
               />
-              <div class="sponsor-content absolute inset-0 flex items-center justify-center p-4">
-                <h3 class="text-center text-lg font-bold text-white opacity-0">
+              <div
+                class={cn(
+                  "sponsor-content absolute inset-0 mx-auto flex items-center justify-center p-4",
+                  {
+                    "max-w-48": sponsor.value === 1,
+                  },
+                )}
+              >
+                <h3 class="text-wrap text-center text-lg font-bold text-white opacity-0">
                   {sponsor.name}
                 </h3>
               </div>

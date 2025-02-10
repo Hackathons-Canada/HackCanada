@@ -151,6 +151,13 @@ export const sponsorsInfo: Sponsor[] = [
     description: "The leader in math education for high-performing students",
   },
   {
+    name: "First Robotics Canada",
+    value: 1,
+    website: "https://firstroboticscanada.com/",
+    logoUrl: "/sponsors/companies/first-robotics-canada.webp",
+    description: "The first robotics company in Canada",
+  },
+  {
     name: "XYZ",
     value: 1,
     website: "https://gen.xyz/",
