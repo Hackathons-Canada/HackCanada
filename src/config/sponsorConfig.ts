@@ -116,6 +116,14 @@ export const sponsorsInfo: Sponsor[] = [
 
   // Tier 2 (Silver)
   {
+    name: "Microsoft",
+    value: 2,
+    website: "https://www.microsoft.com/",
+    logoUrl: "/sponsors/companies/microsoft.png",
+    description:
+      "Empowering every person and every organization on the planet to achieve more.",
+  },
+  {
     name: "ICP",
     value: 2,
     website: "https://internetcomputer.org/",
