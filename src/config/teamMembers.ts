@@ -233,7 +233,7 @@ export const teamMembers: TeamMember[] = [
     pronouns: "he/him",
     links: ["https://nirekshetty.com"],
     quote:
-      "This is a rat race. But I'm no rat. I'm a f***ing turtle, ninja turtle. So which one is your favourite? I like Michelangelo.",
+      "This is a rat race. But I'm no rat. I'm a turtle, ninja turtle. So which one is your favourite? I like Michelangelo.",
   },
   {
     firstName: "Uday",
