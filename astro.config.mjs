@@ -8,7 +8,7 @@ import playformCompress from "@playform/compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://staging.hackcanada.org", // Used to generate your sitemap and canonical URLs.
+  site: "https://hackcanada.org", // Used to generate your sitemap and canonical URLs.
   integrations: [
     tailwind({
       applyBaseStyles: false,
