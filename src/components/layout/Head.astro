@@ -8,7 +8,7 @@ type Props = {
 
 const { title, description = siteConfig.description } = Astro.props;
 const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
-const ogImageUrl = `${siteConfig.url}${siteConfig.og.url}`;
+const ogImageUrl = new URL(siteConfig.og.url, Astro.site).href;
 ---
 
 <head>
@@ -18,10 +18,10 @@ const ogImageUrl = `${siteConfig.url}${siteConfig.og.url}`;
   <title>{pageTitle}</title>
   <meta name="title" content={pageTitle} />
   <meta name="description" content={description} />
-  <link rel="canonical" href={siteConfig.url} />
+  <link rel="canonical" href={Astro.url.href} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content={siteConfig.url} />
+  <meta property="og:url" content={Astro.url.href} />
   <meta property="og:site_name" content={siteConfig.title} />
   <meta property="og:image:type" content={siteConfig.og.imageType} />
   <meta property="og:image:width" content={siteConfig.og.imageWidth} />

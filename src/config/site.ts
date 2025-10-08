@@ -14,7 +14,7 @@ export const siteConfig = {
   title: "Hack Canada",
   description:
     "In-person hackathon Hosted by Hackathons Canada, the biggest hacker community in Canada of 3000 members.",
-  url: "https://staging.hackcanada.org",
+  url: "https://hackcanada.org",
 
   og: {
     imageType: "image/png",
