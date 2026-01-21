@@ -405,4 +405,12 @@ export const teamMembers: TeamMember[] = [
     ],
     quote: "Can u put in the Rick roll link pls",
   },
+    {
+    firstName: "David",
+    lastName: "Chen",
+    image: "/teamAvatars/david.webp",
+    team: "Marketing",
+    tag: "Video Editor",
+    quote: "hey! My name's david chen!",
+  },
 ];
